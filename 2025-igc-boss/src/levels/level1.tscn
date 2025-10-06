@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://k2nblcpnt072"]
+
+[ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="1_3o7sa"]
+[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="1_wyrbo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3o7sa"]
+size = Vector2(2000, 100)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wyrbo"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ay5hh"]
+normal = Vector2(-1, 0)
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -12.0
+offset_top = 296.0
+offset_right = 1965.0
+offset_bottom = 1017.0
+texture = ExtResource("1_3o7sa")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_wyrbo")]
+position = Vector2(638, 757)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_bottom = 1080
+position_smoothing_enabled = true
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 1072)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(960, 0)
+shape = SubResource("RectangleShape2D_3o7sa")
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -50.0
+offset_right = 1965.0
+offset_bottom = 50.0
+grow_vertical = 2
+color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+
+[node name="WorldBorder" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBorder"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_wyrbo")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="WorldBorder"]
+position = Vector2(1920, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder/StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_ay5hh")

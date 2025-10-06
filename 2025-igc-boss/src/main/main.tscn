@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dm8lcv7yglbdf"]
+[gd_scene load_steps=2 format=3 uid="uid://dm8lcv7yglbdf"]
+
+[ext_resource type="PackedScene" uid="uid://k2nblcpnt072" path="res://src/levels/level1.tscn" id="1_3eh75"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -19,3 +21,5 @@ offset_right = 79.0
 offset_bottom = 55.0
 grow_horizontal = 2
 text = "2025 IGC Boss Game"
+
+[node name="Level1" parent="." instance=ExtResource("1_3eh75")]

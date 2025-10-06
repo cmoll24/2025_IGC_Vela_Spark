@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6m2t238knjov"]
+
+[ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/player_controller.gd" id="1_4anbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
+size = Vector2(50, 100)
+
+[sub_resource type="Animation" id="Animation_mf2ua"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_244u8"]
+resource_name = "Move"
+
+[sub_resource type="Animation" id="Animation_5f2sf"]
+resource_name = "Fall"
+
+[sub_resource type="Animation" id="Animation_jiejy"]
+resource_name = "Jump"
+step = 0.0333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o822w"]
+_data = {
+&"Fall": SubResource("Animation_5f2sf"),
+&"Idle": SubResource("Animation_mf2ua"),
+&"Jump": SubResource("Animation_jiejy"),
+&"Move": SubResource("Animation_244u8")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4anbu")
+MAX_JUMP_AMOUNT = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rxibo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o822w")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -50.0
+offset_right = 24.0
+offset_bottom = 51.0
+color = Color(0, 1, 0, 1)
