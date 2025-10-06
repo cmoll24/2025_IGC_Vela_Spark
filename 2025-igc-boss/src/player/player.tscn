@@ -5,18 +5,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
 size = Vector2(50, 100)
 
-[sub_resource type="Animation" id="Animation_mf2ua"]
-resource_name = "Idle"
-
-[sub_resource type="Animation" id="Animation_244u8"]
-resource_name = "Move"
-
 [sub_resource type="Animation" id="Animation_5f2sf"]
 resource_name = "Fall"
+
+[sub_resource type="Animation" id="Animation_mf2ua"]
+resource_name = "Idle"
 
 [sub_resource type="Animation" id="Animation_jiejy"]
 resource_name = "Jump"
 step = 0.0333
+
+[sub_resource type="Animation" id="Animation_244u8"]
+resource_name = "Move"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o822w"]
 _data = {
@@ -28,7 +28,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4anbu")
-MAX_JUMP_AMOUNT = 1
+MAX_AIR_JUMP_AMOUNT = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -46,3 +46,19 @@ offset_top = -50.0
 offset_right = 24.0
 offset_bottom = 51.0
 color = Color(0, 1, 0, 1)
+
+[node name="Debug_Label" type="Label" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -90.0
+offset_right = 25.0
+offset_bottom = -67.0
+text = "Debug"
+
+[node name="JumpGraceTime" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="CoyoteTime" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
