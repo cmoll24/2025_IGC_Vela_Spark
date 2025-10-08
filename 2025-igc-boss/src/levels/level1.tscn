@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://k2nblcpnt072"]
+[gd_scene load_steps=10 format=3 uid="uid://k2nblcpnt072"]
 
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="1_3o7sa"]
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level_1.gd" id="1_ih7hf"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="1_wyrbo"]
 [ext_resource type="PackedScene" uid="uid://bcib60i58xv64" path="res://src/obstacles/platforms/platform.tscn" id="3_ay5hh"]
+[ext_resource type="PackedScene" uid="uid://3m5kpxpyc6v2" path="res://src/enemies/enemy.tscn" id="4_ghtb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3o7sa"]
 size = Vector2(4976, 100)
@@ -35,6 +36,10 @@ position = Vector2(638, 757)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_bottom = 1080
 position_smoothing_enabled = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("4_ghtb1")]
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 1072)
@@ -83,7 +88,6 @@ position = Vector2(902, 690)
 position = Vector2(1313, 476)
 
 [node name="Line2D" type="Line2D" parent="."]
-visible = false
 width = 2.0
 default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")

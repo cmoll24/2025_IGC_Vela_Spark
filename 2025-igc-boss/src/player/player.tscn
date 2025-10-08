@@ -27,8 +27,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_4anbu")
-MAX_AIR_JUMP_AMOUNT = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
