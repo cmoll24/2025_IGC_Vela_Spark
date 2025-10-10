@@ -18,7 +18,7 @@ extends CharacterBody2D
 var air_jump_amount : int = MAX_AIR_JUMP_AMOUNT
 @export var JUMP_PEAK_RANGE : float = 20.0
 
-var dash_attack_ready = true
+var has_dash = true
 var dash_attack_state = false
 var move_input = Vector2.ZERO
 var current_gravity = GRAVITY
@@ -41,6 +41,9 @@ func _physics_process(delta: float) -> void:
 		dash_movement(delta)
 	jump(delta)
 	
+	if is_touching_floor:
+		has_dash = true
+	
 	debug_animation()
 	
 	move_and_slide()
@@ -60,9 +63,11 @@ func horizontal_movement(delta):
 		velocity.x = move_input * current_move_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta * H_DECELERATION * current_move_speed)
-func dash_movement(delta):
+
+func dash_movement(_delta):
 	move_input = Input.get_axis("move_left", "move_right")
 	velocity.x = 1250 * move_input
+
 func jump(_delta):
 	if can_player_jump():
 		air_jump_amount = MAX_AIR_JUMP_AMOUNT
@@ -104,26 +109,16 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		jump_grace_timer.start()
 	elif event.is_action_pressed("dash"):
-		if dash_attack_ready == true: 
+		if has_dash and dash_attack_cooldown.is_stopped():
 			dash_attack()
 			
 func dash_attack() -> void:
-	dash_attack_ready = false
+	has_dash = false
 	dash_attack_state = true
 	dash_attack_cooldown.start()
 	velocity.y = 0
 	dash_duration.start()
-	
-	
-	
-
-
-func _on_dash_attack_cooldown_timeout() -> void:
-	dash_attack_ready = true
-		
-		
-
 
 func _on_dash_duration_timeout() -> void:
-	velocity.y = -JUMP_SPEED * 0.7 
+	velocity.y = -JUMP_SPEED * 0.1
 	dash_attack_state = false

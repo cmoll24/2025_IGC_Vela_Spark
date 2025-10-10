@@ -64,7 +64,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="DashAttackCooldown" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [node name="DashDuration" type="Timer" parent="."]
