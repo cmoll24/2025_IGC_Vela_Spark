@@ -1,4 +1,4 @@
-extends "res://src/projectile/baseProjectile.gd"
+extends Projectile
 
 @onready var hitArea = $Area2D
 
@@ -9,4 +9,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Hello")
+	if not body.is_in_group("projectiles"):
+		print(body)
+		queue_free()

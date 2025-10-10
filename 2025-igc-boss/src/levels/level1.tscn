@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k2nblcpnt072"]
+[gd_scene load_steps=12 format=3 uid="uid://k2nblcpnt072"]
 
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="1_3o7sa"]
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level_1.gd" id="1_ih7hf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bcib60i58xv64" path="res://src/obstacles/platforms/platform.tscn" id="3_ay5hh"]
 [ext_resource type="PackedScene" uid="uid://3m5kpxpyc6v2" path="res://src/enemies/enemy.tscn" id="4_ghtb1"]
 [ext_resource type="PackedScene" uid="uid://ctod2gbe1ct6w" path="res://src/projectile/straightProjectile.tscn" id="6_bn18y"]
+[ext_resource type="PackedScene" uid="uid://jg4oxwtwhbts" path="res://src/projectile/arcProjectile.tscn" id="7_tyup7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3o7sa"]
 size = Vector2(4976, 100)
@@ -93,5 +94,9 @@ width = 2.0
 default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
 
-[node name="BaseProjectile" parent="." instance=ExtResource("6_bn18y")]
-position = Vector2(892, 960)
+[node name="ArcProjectile" parent="." instance=ExtResource("7_tyup7")]
+position = Vector2(618, 517)
+SPEED = 100
+
+[node name="StraightProjectile" parent="." instance=ExtResource("6_bn18y")]
+position = Vector2(599, 397)
