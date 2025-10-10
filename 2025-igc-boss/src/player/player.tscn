@@ -61,3 +61,13 @@ one_shot = true
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="DashAttackCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="DashAttackCooldown" to="." method="_on_dash_attack_cooldown_timeout"]
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

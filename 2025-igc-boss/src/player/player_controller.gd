@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var jump_grace_timer = $JumpGraceTime
 @onready var coyote_timer = $CoyoteTime
+@onready var dash_attack_cooldown = $DashAttackCooldown
+@onready var dash_duration = $DashDuration
+
 
 @export_category("Movement variables")
 @export var MOVE_SPEED : float = 400.0
@@ -15,6 +18,8 @@ extends CharacterBody2D
 var air_jump_amount : int = MAX_AIR_JUMP_AMOUNT
 @export var JUMP_PEAK_RANGE : float = 20.0
 
+var has_dash = true
+var dash_attack_state = false
 var move_input = Vector2.ZERO
 var current_gravity = GRAVITY
 var current_move_speed = MOVE_SPEED
@@ -29,9 +34,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		current_gravity = GRAVITY
 	
-	velocity.y += current_gravity * delta
-	horizontal_movement(delta)
+	if dash_attack_state == false:
+		velocity.y += current_gravity * delta
+		horizontal_movement(delta)
+	else:
+		dash_movement(delta)
 	jump(delta)
+	
+	if is_touching_floor:
+		has_dash = true
 	
 	debug_animation()
 	
@@ -54,13 +65,16 @@ func horizontal_movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
+func dash_movement(_delta):
+	move_input = Input.get_axis("move_left", "move_right")
+	velocity.x = 1250 * move_input
+
 func jump(_delta):
 	if can_player_jump():
 		air_jump_amount = MAX_AIR_JUMP_AMOUNT
 		if is_jump_just_pressed():
 			coyote_timer.stop()
 			velocity.y = -JUMP_SPEED
-	
 	else:
 		if air_jump_amount > 0:
 			if is_jump_just_pressed():
@@ -95,3 +109,17 @@ func can_player_jump():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		jump_grace_timer.start()
+	elif event.is_action_pressed("dash"):
+		if has_dash and dash_attack_cooldown.is_stopped():
+			dash_attack()
+			
+func dash_attack() -> void:
+	has_dash = false
+	dash_attack_state = true
+	dash_attack_cooldown.start()
+	velocity.y = 0
+	dash_duration.start()
+
+func _on_dash_duration_timeout() -> void:
+	velocity.y = -JUMP_SPEED * 0.1
+	dash_attack_state = false
