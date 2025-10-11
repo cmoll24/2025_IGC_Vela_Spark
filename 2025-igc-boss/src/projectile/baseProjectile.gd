@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Projectile
 
-@export var SPEED = 100
+@export var SPEED = 1000
 
 var direction : float
 var spawnPos : Vector2
