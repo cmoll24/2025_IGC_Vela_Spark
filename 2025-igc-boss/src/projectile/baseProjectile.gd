@@ -8,7 +8,7 @@ var spawnPos : Vector2
 var spawnRot : float
 
 func _ready():
-	global_position = Vector2(599, 397)
+	global_position = spawnPos
 	global_rotation = spawnRot
 	self.add_to_group("projectiles")
 	
