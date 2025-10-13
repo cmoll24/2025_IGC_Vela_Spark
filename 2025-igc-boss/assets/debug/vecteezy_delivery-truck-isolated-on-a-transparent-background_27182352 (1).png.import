@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7ni0tfa1j0iw"
-path="res://.godot/imported/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png-d8ae0a14d66e17e98c7e313f74b2fe39.ctex"
+path="res://.godot/imported/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png-8b21c0687e176927d13130ad52f2997a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png"
-dest_files=["res://.godot/imported/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png-d8ae0a14d66e17e98c7e313f74b2fe39.ctex"]
+source_file="res://assets/debug/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png"
+dest_files=["res://.godot/imported/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png-8b21c0687e176927d13130ad52f2997a.ctex"]
 
 [params]
 

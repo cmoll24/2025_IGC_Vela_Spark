@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ch7qi2ugoypm2"]
 
 [ext_resource type="Script" uid="uid://d3x2nfc8fqoa" path="res://src/projectile/fallProjectile.gd" id="1_pdsh1"]
-[ext_resource type="Texture2D" uid="uid://b7ni0tfa1j0iw" path="res://assets/temp/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png" id="1_wwl1w"]
+[ext_resource type="Texture2D" uid="uid://b7ni0tfa1j0iw" path="res://assets/debug/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png" id="1_wwl1w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdsh1"]
 

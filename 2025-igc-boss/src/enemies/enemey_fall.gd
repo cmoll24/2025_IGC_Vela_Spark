@@ -9,4 +9,4 @@ func _physics_process(delta: float) -> void:
 	cooldown -= delta
 	if cooldown <= 0:
 		summon_projectile()
-		cooldown = 5.0
+		cooldown = 2.0

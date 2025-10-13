@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://jg4oxwtwhbts"]
 
 [ext_resource type="Script" uid="uid://d2ecjt1mkbvjr" path="res://src/projectile/arcProjectile.gd" id="1_jvxmy"]
-[ext_resource type="Texture2D" uid="uid://b7ni0tfa1j0iw" path="res://assets/temp/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png" id="2_y84je"]
+[ext_resource type="Texture2D" uid="uid://b7ni0tfa1j0iw" path="res://assets/debug/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png" id="2_y84je"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7ro2"]
 radius = 16.03122
