@@ -10,6 +10,11 @@ var direction = -1
 var timer = 0.0
 var active = false
 
+var projectile
+@onready var level = get_tree().current_scene
+
+var cooldown = 5.0
+
 func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
 	move_and_slide()
@@ -22,3 +27,14 @@ func _process(delta: float) -> void:
 	if timer >= move_time:
 		direction *= -1
 		timer = 0.0
+	cooldown -= delta
+	if cooldown <= 0:
+		summon_projectile()
+		cooldown = 5.0
+	
+	
+func summon_projectile() -> void:
+	var instance = projectile.instantiate()
+	instance.spawnPos = global_position
+	level.add_child(instance)
+	

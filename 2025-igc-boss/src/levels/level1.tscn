@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k2nblcpnt072"]
+[gd_scene load_steps=13 format=3 uid="uid://k2nblcpnt072"]
 
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="1_3o7sa"]
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level_1.gd" id="1_ih7hf"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bcib60i58xv64" path="res://src/obstacles/platforms/platform.tscn" id="3_ay5hh"]
 [ext_resource type="PackedScene" uid="uid://3m5kpxpyc6v2" path="res://src/enemies/enemy.tscn" id="4_ghtb1"]
 [ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/Boss.tscn" id="6_bn18y"]
+[ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemy_arc.tscn" id="5_juu1d"]
+[ext_resource type="PackedScene" uid="uid://bp07skrp1lpff" path="res://src/enemies/enemey_straight.tscn" id="5_ou3gi"]
+[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemey_fall.tscn" id="6_ou3gi"]
+[ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="8_ou3gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3o7sa"]
 size = Vector2(4976, 100)
@@ -39,8 +43,16 @@ limit_bottom = 1080
 position_smoothing_enabled = true
 
 [node name="Enemies" type="Node2D" parent="."]
+position = Vector2(388, 659)
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("4_ghtb1")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("5_ou3gi")]
+position = Vector2(520, -34)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("5_juu1d")]
+position = Vector2(-132, -259)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("6_ou3gi")]
+position = Vector2(270, -229)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 1072)
@@ -79,6 +91,13 @@ shape = SubResource("WorldBoundaryShape2D_ay5hh")
 [node name="Platform" parent="Platforms" instance=ExtResource("3_ay5hh")]
 position = Vector2(386, 842)
 
+[node name="Platform5" parent="Platforms" instance=ExtResource("3_ay5hh")]
+position = Vector2(264, 459)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("3_ay5hh")]
+position = Vector2(1802, 660.99994)
+rotation = -1.5670973
+
 [node name="Platform2" parent="Platforms" instance=ExtResource("3_ay5hh")]
 position = Vector2(1177, 834)
 
@@ -94,3 +113,5 @@ default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
 
 [node name="Boss" parent="." instance=ExtResource("6_bn18y")]
+[node name="FallProjectile" parent="." instance=ExtResource("8_ou3gi")]
+position = Vector2(437, 112)

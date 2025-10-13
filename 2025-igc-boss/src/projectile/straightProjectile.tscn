@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctod2gbe1ct6w"]
+
+[ext_resource type="Script" uid="uid://28bvxldc8hho" path="res://src/projectile/straightProjectile.gd" id="1_11cb4"]
+[ext_resource type="Texture2D" uid="uid://b7ni0tfa1j0iw" path="res://assets/debug/vecteezy_delivery-truck-isolated-on-a-transparent-background_27182352 (1).png" id="2_swhk2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3t4g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11cb4"]
+radius = 21.0
+
+[node name="StraightProjectile" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 3
+script = ExtResource("1_11cb4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x3t4g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.014183392, 0.011160717)
+texture = ExtResource("2_swhk2")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_11cb4")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
