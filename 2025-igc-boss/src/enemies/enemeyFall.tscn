@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp07skrp1lpff"]
+[gd_scene load_steps=3 format=3 uid="uid://xw52pno6uah0"]
 
-[ext_resource type="Script" uid="uid://bqy0sk0nkcyw1" path="res://src/enemies/enemey_straight.gd" id="1_8oy22"]
+[ext_resource type="Script" uid="uid://cfouxtqteiiby" path="res://src/enemies/enemeyFall.gd" id="1_7uiu7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jg4ye"]
 radius = 30.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_8oy22")
+script = ExtResource("1_7uiu7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jg4ye")

@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl2j811r6vaa7"]
+[gd_scene load_steps=6 format=3 uid="uid://bl2j811r6vaa7"]
 
-[ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_rok3u"]
+[ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
+[ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
+[ext_resource type="Script" uid="uid://b2tw3xmq2dmkd" path="res://src/boss/boss_states/idleState.gd" id="3_0wgbl"]
+[ext_resource type="Script" uid="uid://bwol4gnh5hoit" path="res://src/boss/boss_states/moveState.gd" id="4_qh7uy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
 size = Vector2(400, 400)
 
 [node name="Boss" type="CharacterBody2D"]
-script = ExtResource("1_rok3u")
+collision_layer = 4
+script = ExtResource("1_3kou8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xw3os")
@@ -17,3 +21,26 @@ offset_top = -202.0
 offset_right = 201.0
 offset_bottom = 200.0
 color = Color(0.7058824, 0, 0, 1)
+
+[node name="Phase1StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "debug_state_label")]
+script = ExtResource("2_trtgp")
+initial_state = NodePath("IdleState")
+debug_state_label = NodePath("../Debug")
+metadata/_custom_type_script = "uid://cvisiyccpem42"
+
+[node name="IdleState" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("3_0wgbl")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://b2tw3xmq2dmkd"
+
+[node name="MoveState" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("4_qh7uy")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://bwol4gnh5hoit"
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -28.0
+offset_bottom = -5.0
+scale = Vector2(2, 2)
+text = "Current State"
