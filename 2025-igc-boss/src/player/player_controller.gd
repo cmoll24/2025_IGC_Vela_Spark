@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var MOVE_SPEED : float = 400.0
 @export var H_DECELERATION : float = 10
 @export var GRAVITY : float = 1000.0
-@export var MAX_FALL_SPEED : float = 50.0
+@export var MAX_FALL_SPEED : float = 1000.0
 
 @export_category("Jump variables")
 @export var JUMP_SPEED : float = 700.0
@@ -71,6 +71,7 @@ func _physics_process(delta: float) -> void:
 	
 	debug_animation()
 	
+	velocity.y = min(velocity.y, MAX_FALL_SPEED)
 	move_and_slide()
 
 	if is_on_floor():
