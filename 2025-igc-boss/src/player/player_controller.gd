@@ -20,11 +20,32 @@ var air_jump_amount : int = MAX_AIR_JUMP_AMOUNT
 
 var has_dash = true
 var dash_attack_state = false
+@export_category("Knockback variables")
+@export var knockback_force: float = 2000.0
+@export var knockback_upward_force: float = 300.0
+@export var knockback_duration: float = 0.2
+
+var knockback_vector: Vector2 = Vector2.ZERO
+var is_knocked_back: bool = false
+var knockback_timer: float = 0.0
+
 var move_input = Vector2.ZERO
 var current_gravity = GRAVITY
 var current_move_speed = MOVE_SPEED
-
 var is_touching_floor = false
+
+#for health 
+@onready var health_bar = $ProgressBar
+@export var max_health := 100
+var health: int = 100
+var current_health = max_health
+
+
+func _ready():
+	add_to_group("player")
+	health_bar.max_value = max_health
+	health_bar.value = current_health
+
 
 func _physics_process(delta: float) -> void:
 	if velocity.y < JUMP_PEAK_RANGE and velocity.y > -JUMP_PEAK_RANGE and not is_on_floor(): 
@@ -44,10 +65,21 @@ func _physics_process(delta: float) -> void:
 	if is_touching_floor:
 		has_dash = true
 	
+
+	velocity.y += min(current_gravity * delta, MAX_FALL_SPEED)
+	
+	if is_knocked_back:
+		knockback_process(delta)
+	else:
+		horizontal_movement(delta)
+		jump(delta)
+	
+	horizontal_movement(delta)
+	jump(delta)
 	debug_animation()
 	
 	move_and_slide()
-	
+
 	if is_on_floor():
 		is_touching_floor = true
 	elif is_touching_floor:
@@ -57,8 +89,9 @@ func _physics_process(delta: float) -> void:
 	$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
 
 func horizontal_movement(delta):
+	if is_knocked_back:
+		return
 	move_input = Input.get_axis("move_left", "move_right")
-	
 	if move_input:
 		velocity.x = move_input * current_move_speed
 	else:
@@ -67,6 +100,15 @@ func horizontal_movement(delta):
 func dash_movement(_delta):
 	move_input = Input.get_axis("move_left", "move_right")
 	velocity.x = 1250 * move_input
+func knockback_process(delta):
+	#replace the normal velocity to one that's determind by knockback_vector
+	velocity = knockback_vector
+	#subtract time from each frame until it become 0
+	knockback_timer -= delta
+	#gradually reduce knockback force -> Vector2.ZERO, delta * knockback_force * 2 is how fast it decays
+	knockback_vector = knockback_vector.move_toward(Vector2.ZERO, delta * knockback_force * 2)
+	if knockback_timer <= 0:
+		is_knocked_back = false
 
 func jump(_delta):
 	if can_player_jump():
@@ -75,16 +117,12 @@ func jump(_delta):
 			coyote_timer.stop()
 			velocity.y = -JUMP_SPEED
 	else:
-		if air_jump_amount > 0:
-			if is_jump_just_pressed():
-				air_jump_amount -= 1
-				velocity.y = -JUMP_SPEED * 0.8
-			
-	if not is_on_floor() and Input.is_action_just_released("jump") and velocity.y < 0: #add extra gravity
-		#velocity.y = 0
+		if air_jump_amount > 0 and is_jump_just_pressed():
+			air_jump_amount -= 1
+			velocity.y = -JUMP_SPEED * 0.8
+	
+	if not is_on_floor() and Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = lerp(velocity.y, 0.0, 0.8)
-		#velocity.y = lerp(velocity.y, GRAVITY, 0.2)
-		#velocity.y *= 0.3
 
 func debug_animation():
 	if air_jump_amount == 1:
@@ -122,3 +160,32 @@ func dash_attack() -> void:
 func _on_dash_duration_timeout() -> void:
 	velocity.y = -JUMP_SPEED * 0.1
 	dash_attack_state = false
+		
+func take_damage(amount: int) -> void:
+	#current_health - amount, 0 to make sure the health dont go under 0
+	current_health = max(current_health - amount, 0)
+	health_bar.value = current_health
+	print("Player hit! Health:", current_health)
+
+	if current_health <= 0:
+		die()
+
+func apply_knockback(from_position: Vector2) -> void:
+	#knock player off the opposite direction
+	var direction = (global_position - from_position).normalized()
+	knockback_vector = direction * knockback_force
+	#small upward lift
+	knockback_vector.y = -knockback_upward_force
+	is_knocked_back = true
+	knockback_timer = knockback_duration
+
+		
+func die():
+	print("player died")
+	get_tree().reload_current_scene()
+
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	if area.name == "enemy_hitbox":
+		take_damage(10)
+		apply_knockback(area.global_position)
+		print("hit!")
