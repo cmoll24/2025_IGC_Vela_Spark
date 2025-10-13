@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=10 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/player_controller.gd" id="1_4anbu"]
+[ext_resource type="Script" uid="uid://c1n2scoew64b3" path="res://src/player/progress_bar.gd" id="2_rxibo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
 size = Vector2(50, 100)
@@ -25,6 +26,9 @@ _data = {
 &"Jump": SubResource("Animation_jiejy"),
 &"Move": SubResource("Animation_244u8")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4anbu"]
+size = Vector2(48, 101)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -62,3 +66,20 @@ one_shot = true
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -72.0
+offset_top = -95.0
+offset_right = 78.0
+offset_bottom = -65.0
+step = 1.0
+fill_mode = 1
+script = ExtResource("2_rxibo")
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_4anbu")
+
+[connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
