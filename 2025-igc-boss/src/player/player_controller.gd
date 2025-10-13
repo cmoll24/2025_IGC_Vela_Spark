@@ -21,8 +21,8 @@ var air_jump_amount : int = MAX_AIR_JUMP_AMOUNT
 var has_dash = true
 var dash_attack_state = false
 @export_category("Knockback variables")
-@export var knockback_force: float = 2000.0
-@export var knockback_upward_force: float = 300.0
+@export var knockback_force: float = 1000.0
+@export var knockback_upward_force: float = 250.0
 @export var knockback_duration: float = 0.2
 
 var knockback_vector: Vector2 = Vector2.ZERO
@@ -55,27 +55,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		current_gravity = GRAVITY
 	
-	if dash_attack_state == false:
-		velocity.y += min(current_gravity * delta, MAX_FALL_SPEED)
-		horizontal_movement(delta)
+	#Movement States
+	if is_knocked_back:
+		knockback_process(delta)
 	else:
-		dash_movement(delta)
-	jump(delta)
+		if dash_attack_state:
+			dash_movement(delta)
+		else:
+			velocity.y += current_gravity * delta
+			horizontal_movement(delta)
+		jump(delta)
 	
 	if is_touching_floor:
 		has_dash = true
 	
-
-	velocity.y += min(current_gravity * delta, MAX_FALL_SPEED)
-	
-	if is_knocked_back:
-		knockback_process(delta)
-	else:
-		horizontal_movement(delta)
-		jump(delta)
-	
-	horizontal_movement(delta)
-	jump(delta)
 	debug_animation()
 	
 	move_and_slide()
@@ -172,10 +165,10 @@ func take_damage(amount: int) -> void:
 
 func apply_knockback(from_position: Vector2) -> void:
 	#knock player off the opposite direction
-	var direction = (global_position - from_position).normalized()
-	knockback_vector = direction * knockback_force
-	#small upward lift
-	knockback_vector.y = -knockback_upward_force
+	var direction_sign = sign(global_position.x - from_position.x)
+	var k_vector = Vector2(direction_sign * knockback_force, -knockback_upward_force)
+	knockback_vector = k_vector
+	#set timer
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
