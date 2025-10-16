@@ -1,9 +1,11 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var jump_grace_timer = $JumpGraceTime
 @onready var coyote_timer = $CoyoteTime
 @onready var dash_attack_cooldown = $DashAttackCooldown
 @onready var dash_duration = $DashDuration
+@onready var invincibility_timer = $InvincibilityTimer
 
 
 @export_category("Movement variables")
@@ -178,8 +180,12 @@ func die():
 	print("player died")
 	get_tree().reload_current_scene()
 
-func _on_player_hitbox_area_entered(area: Area2D) -> void:
-	if area.name == "enemy_hitbox":
+func apply_invincibility():
+	invincibility_timer.start()
+
+func get_hit(pos: Vector2) -> void:
+	if invincibility_timer.is_stopped():
 		take_damage(10)
-		apply_knockback(area.global_position)
+		apply_knockback(pos)
+		apply_invincibility()
 		print("hit!")

@@ -13,8 +13,3 @@ func _physics_process(delta: float) -> void:
 	velocity.x = randx
 	velocity.y += 100 * delta
 	move_and_slide()
-	
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("projectiles"):
-		queue_free()

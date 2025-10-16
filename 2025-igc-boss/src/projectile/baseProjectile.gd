@@ -11,4 +11,9 @@ func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
 	self.add_to_group("projectiles")
-	
+
+func collide(body: Node2D) -> void:
+	if not body.is_in_group("projectiles"):
+		if body is Player:
+			body.get_hit(self.global_position)
+		queue_free()

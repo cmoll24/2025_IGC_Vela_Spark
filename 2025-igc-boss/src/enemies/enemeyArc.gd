@@ -6,9 +6,7 @@ func _ready() -> void:
 	projectile = load("res://src/projectile/arcProjectile.tscn")
 
 func _physics_process(delta: float) -> void:
-	
-	velocity.y += GRAVITY * delta
-	move_and_slide()
+	super._physics_process(delta)
 	
 	cooldown -= delta
 	if cooldown <= 0:
