@@ -13,6 +13,8 @@ collision_layer = 4
 script = ExtResource("1_a8hw6")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("RectangleShape2D_jg4ye")
@@ -26,3 +28,5 @@ color = Color(0.76862746, 0, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_a8hw6")
+
+[connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]

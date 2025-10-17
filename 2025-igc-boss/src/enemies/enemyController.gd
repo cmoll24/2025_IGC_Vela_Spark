@@ -37,4 +37,8 @@ func summon_projectile() -> void:
 	var instance = projectile.instantiate()
 	instance.spawnPos = global_position
 	level.add_child(instance)
-	
+
+
+func collide(body: Node2D) -> void:
+	if body is Player:
+		body.get_hit(self.global_position)

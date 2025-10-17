@@ -48,12 +48,8 @@ offset_bottom = 1017.0
 texture = ExtResource("1_3o7sa")
 stretch_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("1_wyrbo")]
-position = Vector2(638, 757)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_bottom = 1080
-position_smoothing_enabled = true
+[node name="Boss" parent="." instance=ExtResource("6_bn18y")]
+position = Vector2(-94, 762)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
@@ -66,6 +62,13 @@ position = Vector2(-132, -259)
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("6_ou3gi")]
 position = Vector2(270, -229)
+
+[node name="Player" parent="." instance=ExtResource("1_wyrbo")]
+position = Vector2(638, 757)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_bottom = 1080
+position_smoothing_enabled = true
 
 [node name="WorldBorder" type="Node2D" parent="."]
 process_mode = 4
@@ -90,9 +93,6 @@ navigation_enabled = false
 width = 2.0
 default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
-
-[node name="Boss" parent="." instance=ExtResource("6_bn18y")]
-position = Vector2(-94, 762)
 
 [node name="FallProjectile" parent="." instance=ExtResource("8_ou3gi")]
 position = Vector2(437, 112)

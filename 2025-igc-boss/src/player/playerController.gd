@@ -36,6 +36,8 @@ var current_gravity = GRAVITY
 var current_move_speed = MOVE_SPEED
 var is_touching_floor = false
 
+var direction_facing = 1
+
 #for health 
 @onready var health_bar = $ProgressBar
 @export var max_health := 100
@@ -58,6 +60,10 @@ func _physics_process(delta: float) -> void:
 		current_gravity = GRAVITY
 	
 	#Movement States
+	move_input = Input.get_axis("move_left", "move_right")
+	if move_input != 0:
+		direction_facing = sign(move_input)
+	
 	if is_knocked_back:
 		knockback_process(delta)
 	else:
@@ -87,15 +93,14 @@ func _physics_process(delta: float) -> void:
 func horizontal_movement(delta):
 	if is_knocked_back:
 		return
-	move_input = Input.get_axis("move_left", "move_right")
 	if move_input:
 		velocity.x = move_input * current_move_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
 func dash_movement(_delta):
-	move_input = Input.get_axis("move_left", "move_right")
-	velocity.x = 1250 * move_input
+	velocity.x = 1250 * direction_facing
+
 func knockback_process(delta):
 	#replace the normal velocity to one that's determind by knockback_vector
 	velocity = knockback_vector
@@ -115,7 +120,7 @@ func jump(_delta):
 	else:
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
-			velocity.y = -JUMP_SPEED * 0.8
+			velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
 	
 	if not is_on_floor() and Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = lerp(velocity.y, 0.0, 0.8)
