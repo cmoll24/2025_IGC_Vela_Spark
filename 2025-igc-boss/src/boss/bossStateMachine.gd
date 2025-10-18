@@ -31,7 +31,7 @@ func transition_to(new_state_name : String, arg = null):
 		return
 	
 	if current_state:
-		print('Boss switching: {0} -> {1}'.format([current_state.name, new_state_name]))
+		#print('Boss switching: {0} -> {1}'.format([current_state.name, new_state_name]))
 		current_state.exit()
 	
 	new_state.enter(arg)

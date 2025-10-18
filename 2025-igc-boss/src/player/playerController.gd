@@ -7,7 +7,6 @@ class_name Player
 @onready var dash_duration = $DashDuration
 @onready var invincibility_timer = $InvincibilityTimer
 
-
 @export_category("Movement variables")
 @export var MOVE_SPEED : float = 400.0
 @export var H_DECELERATION : float = 10
@@ -20,8 +19,12 @@ class_name Player
 var air_jump_amount : int = MAX_AIR_JUMP_AMOUNT
 @export var JUMP_PEAK_RANGE : float = 20.0
 
+@export_category("Dash variables")
 var has_dash = true
 var dash_attack_state = false
+var dash_direction
+@export var DASH_SPEED : float = 1000
+
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
 @export var knockback_upward_force: float = 400.0
@@ -73,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y += current_gravity * delta
 			horizontal_movement(delta)
-		jump(delta)
+			jump(delta)
 	
 	if is_touching_floor:
 		has_dash = true
@@ -81,6 +84,7 @@ func _physics_process(delta: float) -> void:
 	debug_animation()
 	
 	velocity.y = min(velocity.y, MAX_FALL_SPEED)
+	$Debug_Label.text = str(velocity.round())
 	move_and_slide()
 
 	if is_on_floor():
@@ -89,7 +93,7 @@ func _physics_process(delta: float) -> void:
 		is_touching_floor = false
 		coyote_timer.start()
 	
-	$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
+	#$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
 
 func horizontal_movement(delta):
 	if is_knocked_back:
@@ -100,7 +104,8 @@ func horizontal_movement(delta):
 		velocity.x = move_toward(velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
 func dash_movement(_delta):
-	velocity.x = 1250 * direction_facing
+	velocity.x = DASH_SPEED * dash_direction
+	velocity.y = 0
 
 func knockback_process(delta):
 	#replace the normal velocity to one that's determind by knockback_vector
@@ -147,7 +152,7 @@ func can_player_jump():
 	return false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed("jump") and not dash_attack_state:
 		jump_grace_timer.start()
 	elif event.is_action_pressed("dash"):
 		if has_dash and dash_attack_cooldown.is_stopped():
@@ -156,12 +161,14 @@ func _input(event: InputEvent) -> void:
 func dash_attack() -> void:
 	has_dash = false
 	dash_attack_state = true
+	dash_direction = direction_facing
 	dash_attack_cooldown.start()
 	velocity.y = 0
 	dash_duration.start()
 
 func _on_dash_duration_timeout() -> void:
 	velocity.y = -JUMP_SPEED * 0.1
+	velocity.x = dash_direction * current_move_speed
 	dash_attack_state = false
 		
 func take_damage(amount: int) -> void:
@@ -191,9 +198,10 @@ func die():
 func apply_invincibility():
 	invincibility_timer.start()
 
-func get_hit(pos: Vector2) -> void:
-	if invincibility_timer.is_stopped():
+func get_hit(attacker: Node2D) -> void:
+	if invincibility_timer.is_stopped() and (not dash_attack_state or attacker is Projectile):
+		$AnimationPlayer.play("Hit")
 		take_damage(10)
 		apply_invincibility()
-		apply_knockback(pos)
+		apply_knockback(attacker.global_position)
 		print("hit!")

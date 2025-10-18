@@ -20,17 +20,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 
-func _process(delta: float) -> void:
-	#going left and right
-	position.x += direction * speed * delta
-	timer += delta
-	if timer >= move_time:
-		direction *= -1
-		timer = 0.0
-	cooldown -= delta
-	if cooldown <= 0:
-		summon_projectile()
-		cooldown = 5.0
+#func _process(delta: float) -> void:
+#	#going left and right
+#	position.x += direction * speed * delta
+#	timer += delta
+#	if timer >= move_time:
+#		direction *= -1
+#		timer = 0.0
+#	cooldown -= delta
+#	if cooldown <= 0:
+#		summon_projectile()
+#		cooldown = 5.0
 	
 	
 func summon_projectile() -> void:
@@ -41,4 +41,4 @@ func summon_projectile() -> void:
 
 func collide(body: Node2D) -> void:
 	if body is Player:
-		body.get_hit(self.global_position)
+		body.get_hit(self)

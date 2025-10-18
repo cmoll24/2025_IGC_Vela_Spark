@@ -1,6 +1,9 @@
 extends Enemy
 
-var volley_duration = 0.1
+@export var VOLLEY_DURATION = 0.1
+@export var VOLLEY_COOLDOWN = 5.0
+
+var volley_timer = VOLLEY_DURATION
 
 func _ready() -> void:
 	projectile = load("res://src/projectile/arcProjectile.tscn")
@@ -10,12 +13,12 @@ func _physics_process(delta: float) -> void:
 	
 	cooldown -= delta
 	if cooldown <= 0:
-		volley_duration -= delta
-		if volley_duration > 0:
+		volley_timer -= delta
+		if volley_timer > 0:
 			summon_projectile()
 		else:
-			cooldown = 5.0
-			volley_duration = 0.1
+			cooldown = VOLLEY_COOLDOWN
+			volley_timer = VOLLEY_DURATION
 	
 	
 func summon_projectile() -> void:

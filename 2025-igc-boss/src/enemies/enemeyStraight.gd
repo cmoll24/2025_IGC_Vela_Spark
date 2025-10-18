@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
 	move_and_slide()
 	
+	#print(cooldown, ' and ', laser_duration)
 	cooldown -= delta
 	if cooldown <= 0:
 		laser_duration -= delta
