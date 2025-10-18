@@ -40,5 +40,6 @@ func summon_projectile() -> void:
 
 
 func collide(body: Node2D) -> void:
-	if body is Player:
-		body.get_hit(self)
+	pass
+	#if body is Player:
+	#	body.damage(self)

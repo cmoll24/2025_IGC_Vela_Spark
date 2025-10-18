@@ -6,6 +6,7 @@ class_name Player
 @onready var dash_attack_cooldown = $DashAttackCooldown
 @onready var dash_duration = $DashDuration
 @onready var invincibility_timer = $InvincibilityTimer
+@onready var hitbox = $player_hitbox
 
 @export_category("Movement variables")
 @export var MOVE_SPEED : float = 400.0
@@ -170,7 +171,8 @@ func _on_dash_duration_timeout() -> void:
 	velocity.y = -JUMP_SPEED * 0.1
 	velocity.x = dash_direction * current_move_speed
 	dash_attack_state = false
-		
+	_on_invincibility_timer_timeout()
+
 func take_damage(amount: int) -> void:
 	#current_health - amount, 0 to make sure the health dont go under 0
 	current_health = max(current_health - amount, 0)
@@ -190,7 +192,7 @@ func apply_knockback(from_position: Vector2) -> void:
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
-		
+
 func die():
 	print("player died")
 	get_tree().reload_current_scene()
@@ -198,10 +200,23 @@ func die():
 func apply_invincibility():
 	invincibility_timer.start()
 
-func get_hit(attacker: Node2D) -> void:
+func damage(attacker: Node2D) -> void:
 	if invincibility_timer.is_stopped() and (not dash_attack_state or attacker is Projectile):
 		$AnimationPlayer.play("Hit")
 		take_damage(10)
 		apply_invincibility()
 		apply_knockback(attacker.global_position)
 		print("hit!")
+
+
+func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	if body is Enemy or body is Boss:
+		damage(body)
+
+
+func _on_invincibility_timer_timeout() -> void:
+	print('end involn ------------------')
+	print(hitbox.get_overlapping_bodies())
+	for body in hitbox.get_overlapping_bodies():
+		print('overlapping', body)
+		_on_player_hitbox_body_entered(body)

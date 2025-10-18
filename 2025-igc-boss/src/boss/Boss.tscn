@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl2j811r6vaa7"]
+[gd_scene load_steps=7 format=3 uid="uid://bl2j811r6vaa7"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -8,12 +8,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
 size = Vector2(400, 400)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh7uy"]
+size = Vector2(371, 383)
+
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_3kou8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xw3os")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -201.0
@@ -21,6 +21,17 @@ offset_top = -202.0
 offset_right = 201.0
 offset_bottom = 200.0
 color = Color(0.7058824, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xw3os")
+
+[node name="boss_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="hitbox_collision_shape" type="CollisionShape2D" parent="boss_hitbox"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_qh7uy")
 
 [node name="Phase1StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "debug_state_label")]
 script = ExtResource("2_trtgp")
@@ -44,3 +55,5 @@ offset_top = -28.0
 offset_bottom = -5.0
 scale = Vector2(2, 2)
 text = "Current State"
+
+[connection signal="body_entered" from="boss_hitbox" to="." method="_on_boss_hitbox_body_entered"]

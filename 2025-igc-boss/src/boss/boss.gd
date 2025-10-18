@@ -10,3 +10,8 @@ class_name Boss
 
 func switch_to_random_state():
 	state_machine.transition_to(state_machine.states.keys().pick_random())
+
+func _on_boss_hitbox_body_entered(body: Node2D) -> void:
+	pass
+	#if body is Player:
+	#	body.damage(self)
