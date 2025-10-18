@@ -24,8 +24,8 @@ var has_dash = true
 var dash_attack_state = false
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
-@export var knockback_upward_force: float = 250.0
-@export var knockback_duration: float = 0.2
+@export var knockback_upward_force: float = 400.0
+@export var knockback_duration: float = 0.5
 
 var knockback_vector: Vector2 = Vector2.ZERO
 var is_knocked_back: bool = false
@@ -65,6 +65,7 @@ func _physics_process(delta: float) -> void:
 		direction_facing = sign(move_input)
 	
 	if is_knocked_back:
+		velocity.y += GRAVITY * delta
 		knockback_process(delta)
 	else:
 		if dash_attack_state:
@@ -103,7 +104,8 @@ func dash_movement(_delta):
 
 func knockback_process(delta):
 	#replace the normal velocity to one that's determind by knockback_vector
-	velocity = knockback_vector
+	#velocity = knockback_vector
+	velocity.x = move_toward(velocity.x, 0, delta * 5 * current_move_speed)
 	#subtract time from each frame until it become 0
 	knockback_timer -= delta
 	#gradually reduce knockback force -> Vector2.ZERO, delta * knockback_force * 2 is how fast it decays
@@ -176,6 +178,7 @@ func apply_knockback(from_position: Vector2) -> void:
 	var direction_sign = sign(global_position.x - from_position.x)
 	var k_vector = Vector2(direction_sign * knockback_force, -knockback_upward_force)
 	knockback_vector = k_vector
+	velocity = knockback_vector
 	#set timer
 	is_knocked_back = true
 	knockback_timer = knockback_duration
@@ -191,6 +194,6 @@ func apply_invincibility():
 func get_hit(pos: Vector2) -> void:
 	if invincibility_timer.is_stopped():
 		take_damage(10)
-		apply_knockback(pos)
 		apply_invincibility()
+		apply_knockback(pos)
 		print("hit!")
