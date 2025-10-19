@@ -23,14 +23,17 @@ var air_jump_amount : int = MAX_AIR_JUMP_AMOUNT
 
 @export_category("Dash variables")
 var has_dash = true
+var dash_state = false
 var dash_attack_state = false
 var dash_direction
 @export var DASH_SPEED : float = 1000
+var current_dash_speed = DASH_SPEED
 
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
 @export var knockback_upward_force: float = 400.0
 @export var knockback_duration: float = 0.5
+@export var INVINCIBILITY_DURATION : float = 1.0
 
 var knockback_vector: Vector2 = Vector2.ZERO
 var is_knocked_back: bool = false
@@ -56,6 +59,10 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 
+func get_player_direction():
+	move_input = Input.get_axis("move_left", "move_right")
+	if move_input != 0:
+		direction_facing = sign(move_input)
 
 func _physics_process(delta: float) -> void:
 	if velocity.y < JUMP_PEAK_RANGE and velocity.y > -JUMP_PEAK_RANGE and not is_on_floor(): 
@@ -66,15 +73,13 @@ func _physics_process(delta: float) -> void:
 		current_gravity = GRAVITY
 	
 	#Movement States
-	move_input = Input.get_axis("move_left", "move_right")
-	if move_input != 0:
-		direction_facing = sign(move_input)
+	get_player_direction()
 	
 	if is_knocked_back:
 		velocity.y += GRAVITY * delta
 		knockback_process(delta)
 	else:
-		if dash_attack_state:
+		if dash_state or dash_attack_state:
 			dash_movement(delta)
 		else:
 			velocity.y += current_gravity * delta
@@ -110,7 +115,7 @@ func horizontal_movement(delta):
 		velocity.x = move_toward(velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
 func dash_movement(_delta):
-	velocity.x = DASH_SPEED * dash_direction
+	velocity.x = current_dash_speed * dash_direction
 	velocity.y = 0
 
 func knockback_process(delta):
@@ -139,7 +144,11 @@ func jump(_delta):
 		velocity.y = lerp(velocity.y, 0.0, 0.8)
 
 func debug_animation():
-	if air_jump_amount == 1:
+	if dash_attack_state:
+		$ColorRect.color = Color.ORANGE_RED
+	elif dash_state:
+		$ColorRect.color = Color.ORANGE
+	elif air_jump_amount == 1:
 		$ColorRect.color = Color.GREEN
 	elif air_jump_amount == 0:
 		$ColorRect.color = Color.DARK_GREEN
@@ -162,19 +171,34 @@ func _input(event: InputEvent) -> void:
 		jump_grace_timer.start()
 	elif event.is_action_pressed("dash"):
 		if has_dash and dash_attack_cooldown.is_stopped():
-			dash_attack()
-			
-func dash_attack() -> void:
+			dash()
+
+func dash() -> void:
+	get_player_direction()
 	has_dash = false
-	dash_attack_state = true
+	dash_state = true
+	current_dash_speed = DASH_SPEED
 	dash_direction = direction_facing
-	dash_attack_cooldown.start()
 	velocity.y = 0
 	dash_duration.start()
 
+func dash_attack() -> void:
+	has_dash = false
+	dash_state = false
+	dash_attack_state = true
+	current_dash_speed = DASH_SPEED * 2
+	dash_direction = direction_facing
+	velocity.y = 0
+
 func _on_dash_duration_timeout() -> void:
+	if dash_state:
+		dash_attack_cooldown.start()
+		end_dash()
+	
+func end_dash():
 	velocity.y = -JUMP_SPEED * 0.1
 	velocity.x = dash_direction * current_move_speed
+	dash_state = false
 	dash_attack_state = false
 	_on_invincibility_timer_timeout()
 
@@ -201,12 +225,11 @@ func die():
 	print("player died")
 	get_tree().reload_current_scene()
 
-func apply_invincibility():
-	invincibility_timer.start()
+func apply_invincibility(new_invincibility_time = INVINCIBILITY_DURATION):
+	invincibility_timer.start(new_invincibility_time)
 
 func hit(attacker: Node2D) -> void:
-	if invincibility_timer.is_stopped() and \
-	(not dash_attack_state or attacker is Projectile):
+	if invincibility_timer.is_stopped():
 		$AnimationPlayer.play("Hit")
 		take_damage(10)
 		apply_invincibility()
@@ -222,10 +245,27 @@ func respawn():
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy or body is Boss:
-		hit(body)
-
+		if dash_state:
+			dash_attack()
+			#velocity.x = -dash_direction * current_move_speed
+			#dash_state = false
+			#dash_attack_state = false
+			#apply_knockback(body.global_position)
+			#apply_invincibility()
+		elif not dash_attack_state:
+			hit(body)
+	if body.is_in_group("obstacles") and dash_attack_state:
+		end_dash()
 
 func _on_invincibility_timer_timeout() -> void:
-	print(hitbox.get_overlapping_bodies())
 	for body in hitbox.get_overlapping_bodies():
 		_on_player_hitbox_body_entered(body)
+
+func _on_player_hitbox_body_exited(body: Node2D) -> void:
+	if dash_attack_state and (body is Enemy or body is Boss):
+		#for other_bodies in hitbox.get_overlapping_bodies():
+		#	if other_bodies is Enemy or body is Boss:
+		#		return
+		has_dash = true
+		air_jump_amount = MAX_AIR_JUMP_AMOUNT
+		end_dash()
