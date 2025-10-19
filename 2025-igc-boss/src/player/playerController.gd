@@ -7,6 +7,7 @@ class_name Player
 @onready var dash_duration = $DashDuration
 @onready var invincibility_timer = $InvincibilityTimer
 @onready var hitbox = $player_hitbox
+@onready var ground_detector = $GroundDetector
 
 @export_category("Movement variables")
 @export var MOVE_SPEED : float = 400.0
@@ -48,6 +49,7 @@ var direction_facing = 1
 var health: int = 100
 var current_health = max_health
 
+var last_ground_location : Vector2
 
 func _ready():
 	add_to_group("player")
@@ -93,6 +95,9 @@ func _physics_process(delta: float) -> void:
 	elif is_touching_floor:
 		is_touching_floor = false
 		coyote_timer.start()
+		
+	if ground_detector.is_colliding():
+		last_ground_location = global_position
 	
 	#$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
 
@@ -192,7 +197,6 @@ func apply_knockback(from_position: Vector2) -> void:
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
-
 func die():
 	print("player died")
 	get_tree().reload_current_scene()
@@ -200,23 +204,28 @@ func die():
 func apply_invincibility():
 	invincibility_timer.start()
 
-func damage(attacker: Node2D) -> void:
-	if invincibility_timer.is_stopped() and (not dash_attack_state or attacker is Projectile):
+func hit(attacker: Node2D) -> void:
+	if invincibility_timer.is_stopped() and \
+	(not dash_attack_state or attacker is Projectile):
 		$AnimationPlayer.play("Hit")
 		take_damage(10)
 		apply_invincibility()
 		apply_knockback(attacker.global_position)
 		print("hit!")
 
+func respawn():
+	#or attacker.is_in_group("obstacles")
+	$AnimationPlayer.play("Hit")
+	global_position = last_ground_location
+	apply_invincibility()
+	take_damage(10)
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy or body is Boss:
-		damage(body)
+		hit(body)
 
 
 func _on_invincibility_timer_timeout() -> void:
-	print('end involn ------------------')
 	print(hitbox.get_overlapping_bodies())
 	for body in hitbox.get_overlapping_bodies():
-		print('overlapping', body)
 		_on_player_hitbox_body_entered(body)
