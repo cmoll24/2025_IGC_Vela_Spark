@@ -254,7 +254,7 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 			#apply_invincibility()
 		elif not dash_attack_state:
 			hit(body)
-	if body.is_in_group("obstacles") and dash_attack_state:
+	if (body.is_in_group("obstacles") or body is TileMapLayer) and dash_attack_state:
 		end_dash()
 
 func _on_invincibility_timer_timeout() -> void:

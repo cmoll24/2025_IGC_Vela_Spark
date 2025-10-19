@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://djunyxb4vomm8"]
+[gd_scene load_steps=16 format=4 uid="uid://djunyxb4vomm8"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level_1.gd" id="1_qbvj3"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_lknex"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="7_nx3gn"]
 [ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/Boss.tscn" id="8_8acoy"]
 [ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="9_rg3au"]
+[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="10_lknex"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wyrbo"]
 normal = Vector2(1, 0)
@@ -48,12 +49,8 @@ offset_bottom = 1017.0
 texture = ExtResource("2_lknex")
 stretch_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("3_d5jfb")]
-position = Vector2(638, 757)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_bottom = 1080
-position_smoothing_enabled = true
+[node name="Boss" parent="." instance=ExtResource("8_8acoy")]
+position = Vector2(-94, 762)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
@@ -66,6 +63,13 @@ position = Vector2(-132, -259)
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("6_ei3uw")]
 position = Vector2(270, -229)
+
+[node name="Player" parent="." instance=ExtResource("3_d5jfb")]
+position = Vector2(638, 757)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_bottom = 1080
+position_smoothing_enabled = true
 
 [node name="WorldBorder" type="Node2D" parent="."]
 process_mode = 4
@@ -91,8 +95,8 @@ width = 2.0
 default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
 
-[node name="Boss" parent="." instance=ExtResource("8_8acoy")]
-position = Vector2(-94, 762)
-
 [node name="FallProjectile" parent="." instance=ExtResource("9_rg3au")]
 position = Vector2(437, 112)
+
+[node name="OutOfBounds" parent="." instance=ExtResource("10_lknex")]
+position = Vector2(0, 1264)
