@@ -50,7 +50,7 @@ texture = ExtResource("2_kt24x")
 stretch_mode = 1
 
 [node name="Boss" parent="." instance=ExtResource("8_f4emq")]
-position = Vector2(-94, 762)
+position = Vector2(-76, 243)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
