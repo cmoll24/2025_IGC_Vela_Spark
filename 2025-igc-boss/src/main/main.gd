@@ -9,3 +9,6 @@ func _ready() -> void:
 		var level_button = level_selector.instantiate()
 		level_button.set_level_number(i)
 		level_container.add_child(level_button)
+		
+		if i == 1:
+			level_button.grab_focus()

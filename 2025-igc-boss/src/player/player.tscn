@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=14 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
 [ext_resource type="Script" uid="uid://c1n2scoew64b3" path="res://src/player/progressBar.gd" id="2_rxibo"]
-[ext_resource type="Script" uid="uid://1opxf68sk37p" path="res://src/player/playerHealth.gd" id="3_mf2ua"]
+[ext_resource type="PackedScene" uid="uid://dkjqxy1egu868" path="res://src/player/playerMovement.tscn" id="3_244u8"]
+[ext_resource type="PackedScene" uid="uid://d0m2s3pjfjhlx" path="res://src/player/playerHealth.tscn" id="4_5f2sf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
 size = Vector2(50, 100)
@@ -60,7 +61,7 @@ _data = {
 &"RESET": SubResource("Animation_o822w")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4anbu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_244u8"]
 size = Vector2(52, 98)
 
 [node name="Player" type="CharacterBody2D"]
@@ -91,25 +92,6 @@ offset_right = 25.0
 offset_bottom = -107.0
 text = "Debug"
 
-[node name="JumpGraceTime" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[node name="CoyoteTime" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
-[node name="DashAttackCooldown" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
-
-[node name="DashDuration" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[node name="InvincibilityTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -72.0
 offset_top = -95.0
@@ -119,20 +101,22 @@ step = 1.0
 fill_mode = 1
 script = ExtResource("2_rxibo")
 
+[node name="PlayerMovement" parent="." node_paths=PackedStringArray("player", "debug_label") instance=ExtResource("3_244u8")]
+player = NodePath("..")
+debug_label = NodePath("../Debug_Label")
+
+[node name="PlayerHealth" parent="." node_paths=PackedStringArray("player", "hitbox", "health_bar") instance=ExtResource("4_5f2sf")]
+player = NodePath("..")
+hitbox = NodePath("../player_hitbox")
+health_bar = NodePath("../ProgressBar")
+
 [node name="player_hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 133
-script = ExtResource("3_mf2ua")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_4anbu")
+shape = SubResource("RectangleShape2D_244u8")
 
-[node name="GroundDetector" type="RayCast2D" parent="."]
-target_position = Vector2(0, 60)
-
-[connection signal="timeout" from="DashAttackCooldown" to="." method="_on_dash_attack_cooldown_timeout"]
-[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
-[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
-[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
-[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="enemy_collide" from="PlayerHealth" to="." method="_on_enemy_collide"]
+[connection signal="enemy_exit" from="PlayerHealth" to="." method="_on_enemy_exit"]

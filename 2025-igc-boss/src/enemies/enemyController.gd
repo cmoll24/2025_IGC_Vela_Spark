@@ -43,3 +43,6 @@ func collide(body: Node2D) -> void:
 	pass
 	#if body is Player:
 	#	body.damage(self)
+
+func die():
+	queue_free()
