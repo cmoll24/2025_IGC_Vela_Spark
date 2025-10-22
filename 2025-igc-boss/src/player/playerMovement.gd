@@ -5,9 +5,9 @@ class_name PlayerMovement
 @onready var coyote_timer = $CoyoteTime
 @onready var dash_attack_cooldown = $DashAttackCooldown
 @onready var dash_duration = $DashDuration
-@onready var ground_detector = $GroundDetector
 
 @export var player : Player
+@export var ground_detector : RayCast2D
 
 @export var debug_label : Label
 
@@ -90,7 +90,7 @@ func physics_update(delta: float) -> void:
 		coyote_timer.start()
 		
 	if ground_detector.is_colliding():
-		player.last_ground_location = player.global_position
+		last_ground_location = player.global_position
 	
 	#$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
 
