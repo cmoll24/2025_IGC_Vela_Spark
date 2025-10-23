@@ -98,7 +98,10 @@ func horizontal_movement(delta):
 	if is_knocked_back:
 		return
 	if move_input:
-		player.velocity.x = move_input * current_move_speed
+		if abs(player.velocity.x) <= abs(current_move_speed):
+			player.velocity.x = move_input * current_move_speed
+		else:
+			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, delta * current_move_speed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
@@ -158,10 +161,10 @@ func dash_attack() -> void:
 	has_dash = false
 	dash_state = false
 	dash_attack_state = true
-	current_dash_speed = DASH_SPEED * 2
+	current_dash_speed = DASH_SPEED * 3
 	dash_direction = direction_facing
 	player.velocity.y = 0
-	player.attack_control.attack()
+	player.health_control.apply_invincibility(1)
 
 func _on_dash_duration_timeout() -> void:
 	if dash_state:
@@ -178,7 +181,14 @@ func end_dash():
 func end_dash_attack():
 	has_dash = true
 	air_jump_amount = MAX_AIR_JUMP_AMOUNT
-	end_dash()
+	
+	player.velocity.y = -JUMP_SPEED * 0.1
+	player.velocity.x = dash_direction * DASH_SPEED
+	dash_state = false
+	dash_attack_state = false
+	player.health_control._on_invincibility_timer_timeout()
+	dash_attack_cooldown.stop()
+	#end_dash()
 
 func apply_knockback(from_position: Vector2) -> void:
 	#knock player off the opposite direction
@@ -194,5 +204,5 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and not dash_attack_state:
 		jump_grace_timer.start()
 	elif event.is_action_pressed("dash"):
-		if has_dash and dash_attack_cooldown.is_stopped():
+		if has_dash and not dash_state and dash_attack_cooldown.is_stopped():
 			dash()
