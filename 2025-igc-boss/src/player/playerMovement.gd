@@ -161,6 +161,7 @@ func dash_attack() -> void:
 	current_dash_speed = DASH_SPEED * 2
 	dash_direction = direction_facing
 	player.velocity.y = 0
+	player.attack_control.attack()
 
 func _on_dash_duration_timeout() -> void:
 	if dash_state:

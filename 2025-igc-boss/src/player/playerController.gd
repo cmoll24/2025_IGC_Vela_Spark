@@ -3,6 +3,7 @@ class_name Player
 
 @onready var move_control = $PlayerMovement
 @onready var health_control = $PlayerHealth
+@onready var attack_control = $PlayerAttack
 
 @onready var animation_player = $AnimationPlayer
 
@@ -26,6 +27,9 @@ func debug_animation():
 
 func hit(attacker: Node2D) -> void:
 	health_control.hit(attacker)
+
+func attack():
+	attack_control.attack()
 
 func die():
 	print("player died")
@@ -56,4 +60,11 @@ func _on_enemy_collide(body: Node2D) -> void:
 
 func _on_enemy_exit(body: Node2D) -> void:
 	if move_control.dash_attack_state and (body is Enemy or body is Boss):
-		move_control.end_dash_attack()
+		if body.health > 0:
+			move_control.end_dash_attack()
+		else:
+			move_control.dash()
+
+func killed_enemy(_body: Node2D):
+	pass
+	#move_control.dash()

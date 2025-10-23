@@ -10,6 +10,8 @@ var direction = -1
 var timer = 0.0
 var active = false
 
+var health = 1
+
 var projectile
 @onready var level = get_tree().current_scene
 
@@ -39,10 +41,22 @@ func summon_projectile() -> void:
 	level.add_child(instance)
 
 
-func collide(body: Node2D) -> void:
+func collide(_body: Node2D) -> void:
 	pass
 	#if body is Player:
 	#	body.damage(self)
+
+func take_damage(amount: int) -> void:
+	health = max(health - amount, 0)
+
+	if health <= 0:
+		die()
+
+func hit(attacker: Node2D) -> void:
+	take_damage(1)
+	
+	if health <= 0:
+		attacker.killed_enemy(self)
 
 func die():
 	queue_free()
