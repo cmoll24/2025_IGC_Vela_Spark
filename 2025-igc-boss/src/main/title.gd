@@ -3,6 +3,8 @@ extends Control
 @onready var level_container = $VBoxContainer
 @onready var level_selector = preload("res://src/ui/levelSelector.tscn")
 
+var current_level : Level
+
 func _ready() -> void:
 	var number_of_levels = 9
 	for i in range(1,number_of_levels+1):
@@ -12,3 +14,6 @@ func _ready() -> void:
 		
 		if i == 1:
 			level_button.grab_focus()
+
+func get_level():
+	return current_level

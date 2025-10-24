@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://dm8lcv7yglbdf"]
 
-[ext_resource type="Script" uid="uid://cjct8pgjoy4u3" path="res://src/main/main.gd" id="1_3s6yk"]
+[ext_resource type="Script" uid="uid://cjct8pgjoy4u3" path="res://src/main/title.gd" id="1_yohi1"]
 
-[node name="Main" type="Control"]
+[node name="Title" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3s6yk")
+script = ExtResource("1_yohi1")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
