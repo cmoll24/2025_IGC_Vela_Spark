@@ -61,7 +61,8 @@ func _on_enemy_collide(body: Node2D) -> void:
 			#apply_invincibility()
 		elif not move_control.dash_attack_state:
 			hit(body)
-	elif (body.is_in_group("obstacles") or body is TileMapLayer) and move_control.dash_attack_state:
+	if (body.is_in_group("obstacles") or body is TileMapLayer) and move_control.dash_attack_state:
+		health_control.cancel_invincibility()
 		move_control.end_dash()
 
 

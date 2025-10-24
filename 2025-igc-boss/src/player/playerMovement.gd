@@ -14,11 +14,11 @@ class_name PlayerMovement
 @export_category("Movement variables")
 @export var MOVE_SPEED : float = 500.0
 @export var H_DECELERATION : float = 10
-@export var GRAVITY : float = 1100.0
-@export var MAX_FALL_SPEED : float = 1200.0
+@export var GRAVITY : float = 1200.0
+@export var MAX_FALL_SPEED : float = 1500.0
 
 @export_category("Jump variables")
-@export var JUMP_SPEED : float = 750.0
+@export var JUMP_SPEED : float = 800.0
 @export var MAX_AIR_JUMP_AMOUNT : int = 1
 var air_jump_amount : int = MAX_AIR_JUMP_AMOUNT
 @export var JUMP_PEAK_RANGE : float = 20.0
@@ -50,7 +50,7 @@ var direction_facing = 1
 var last_ground_location : Vector2
 
 func get_player_direction():
-	move_input = Input.get_axis("move_left", "move_right")
+	move_input = sign(Input.get_axis("move_left", "move_right"))
 	if move_input != 0:
 		direction_facing = sign(move_input)
 
@@ -130,6 +130,7 @@ func jump(_delta):
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
 			player.velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
+			has_dash = true #DEBUG TEST GIVES YOU DASH AFTER JUMPING SECOND TIME
 	
 	if not player.is_on_floor() and Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y = lerp(player.velocity.y, 0.0, 0.8)

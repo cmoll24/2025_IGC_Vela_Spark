@@ -40,6 +40,9 @@ func _on_invincibility_timer_timeout() -> void:
 func apply_invincibility(new_invincibility_time = INVINCIBILITY_DURATION):
 	invincibility_timer.start(new_invincibility_time)
 
+func cancel_invincibility():
+	invincibility_timer.stop()
+
 func hit(attacker: Node2D) -> void:
 	if invincibility_timer.is_stopped():
 		player.animation_player.play("Hit")
