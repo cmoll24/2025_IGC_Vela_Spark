@@ -103,6 +103,13 @@ step = 1.0
 fill_mode = 1
 script = ExtResource("2_rxibo")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+page = 6.0
+rounded = true
+
 [node name="PlayerMovement" parent="." node_paths=PackedStringArray("player", "ground_detector", "debug_label") instance=ExtResource("3_244u8")]
 player = NodePath("..")
 ground_detector = NodePath("../GroundDetector")
