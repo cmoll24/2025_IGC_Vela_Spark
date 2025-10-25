@@ -5,6 +5,7 @@ class_name PlayerMovement
 @onready var coyote_timer = $CoyoteTime
 @onready var dash_attack_cooldown = $DashAttackCooldown
 @onready var dash_duration = $DashDuration
+@onready var immobile_timer = $ImmobileTime
 
 @export var player : Player
 @export var ground_detector : RayCast2D
@@ -50,9 +51,12 @@ var direction_facing = 1
 var last_ground_location : Vector2
 
 func get_player_direction():
-	move_input = sign(Input.get_axis("move_left", "move_right"))
+	if immobile_timer.is_stopped():
+		move_input = sign(Input.get_axis("move_left", "move_right"))
+	else:
+		move_input = 0
 	if move_input != 0:
-		direction_facing = sign(move_input)
+			direction_facing = sign(move_input)
 
 func physics_update(delta: float) -> void:
 	if player.velocity.y < JUMP_PEAK_RANGE and player.velocity.y > -JUMP_PEAK_RANGE and not player.is_on_floor(): 
@@ -203,9 +207,14 @@ func apply_knockback(from_position: Vector2) -> void:
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
+func apply_immobility(time_amount : float):
+	immobile_timer.start(time_amount)
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump") and not dash_attack_state:
-		jump_grace_timer.start()
-	elif event.is_action_pressed("dash"):
-		if has_dash and not dash_state and dash_attack_cooldown.is_stopped():
-			dash()
+	if immobile_timer.is_stopped():
+		if event.is_action_pressed("jump") and not dash_attack_state:
+			jump_grace_timer.start()
+		elif event.is_action_pressed("dash"):
+			if has_dash and not dash_state and dash_attack_cooldown.is_stopped():
+				dash()
+		

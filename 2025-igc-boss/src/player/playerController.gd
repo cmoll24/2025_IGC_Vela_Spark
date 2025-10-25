@@ -17,6 +17,9 @@ func _physics_process(delta: float) -> void:
 	
 	debug_animation()
 
+func _process(_delta: float) -> void:
+	$DashIndicator.visible = move_control.has_dash
+
 func debug_animation():
 	flip_node.scale.x = move_control.direction_facing
 	
@@ -26,8 +29,10 @@ func debug_animation():
 		$ColorRect.color = Color.BLUE
 	elif move_control.air_jump_amount == 1:
 		$ColorRect.color = Color.GREEN
+		$DashIndicator.color = Color.BLUE
 	elif move_control.air_jump_amount == 0:
 		$ColorRect.color = Color.DARK_GREEN
+		$DashIndicator.color = Color.DARK_BLUE
 
 func hit(attacker: Node2D) -> void:
 	health_control.hit(attacker)
@@ -45,6 +50,7 @@ func respawn():
 	global_position = move_control.last_ground_location
 	health_control.apply_invincibility()
 	health_control.take_damage(10)
+	move_control.apply_immobility(1)
 
 
 func _on_enemy_collide(body: Node2D) -> void:

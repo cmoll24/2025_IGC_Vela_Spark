@@ -80,6 +80,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_o822w")
 }
 
+[node name="DashIndicator" type="ColorRect" parent="."]
+offset_left = -30.0
+offset_top = -52.0
+offset_right = 31.0
+offset_bottom = 51.0
+color = Color(0, 1, 1, 1)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -26.0
 offset_top = -50.0
