@@ -89,7 +89,7 @@ func physics_update(delta: float) -> void:
 		is_touching_floor = false
 		coyote_timer.start()
 		
-	if ground_detector.is_colliding():
+	if ground_detector.is_colliding() and player.health_control.is_safe():
 		last_ground_location = player.global_position
 	
 	#$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
@@ -157,6 +157,8 @@ func dash() -> void:
 	dash_direction = direction_facing
 	player.velocity.y = 0
 	dash_duration.start()
+	
+	player.attack_control.check_dash_attack()
 
 func dash_attack() -> void:
 	has_dash = false
@@ -165,7 +167,7 @@ func dash_attack() -> void:
 	current_dash_speed = DASH_SPEED * 3
 	dash_direction = direction_facing
 	player.velocity.y = 0
-	player.health_control.apply_invincibility(1)
+	player.health_control.apply_invincibility(0.5)
 
 func _on_dash_duration_timeout() -> void:
 	if dash_state:

@@ -56,3 +56,10 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 
 func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	enemy_exit.emit(body)
+
+func is_safe() -> bool:
+	var danger_count = 0
+	for x in hitbox.get_overlapping_bodies():
+		if x is Enemy or x is Boss or x is Projectile:
+			danger_count += 1
+	return danger_count == 0

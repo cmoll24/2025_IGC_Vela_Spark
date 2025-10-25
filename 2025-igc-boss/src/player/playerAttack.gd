@@ -9,6 +9,10 @@ func _ready() -> void:
 	attackbox.body_entered.connect(_on_player_attackbox_body_entered)
 	attackbox.body_exited.connect(_on_player_attackbox_body_exited)
 	
+func check_dash_attack():
+	for x in attackbox.get_overlapping_bodies():
+		_on_player_attackbox_body_entered(x)
+
 func _on_player_attackbox_body_entered(body : Node2D) -> void:
 	if player.move_control.dash_state and (body is Enemy or body is Boss):
 		if not player.move_control.dash_attack_state:
