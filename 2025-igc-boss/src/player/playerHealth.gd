@@ -8,9 +8,10 @@ class_name PlayerHealth
 @export var health_bar : ProgressBar
 
 @export_category("Health variables")
-@export var MAX_HEALTH := 100
-var health: int = 100
+@export var MAX_HEALTH := 50
+var health: int = 50
 var current_health = MAX_HEALTH
+var healthBarSegments = 5
 
 @export var INVINCIBILITY_DURATION : float = 1.0
 
@@ -29,7 +30,19 @@ func take_damage(amount: int) -> void:
 	current_health = max(current_health - amount, 0)
 	health_bar.value = current_health
 	print("Player hit! Health:", current_health)
-
+	if hitbox.body_entered.connect(_on_player_hitbox_body_entered):	
+		if current_health <= 20 and current_health > 10:
+			current_health = 10
+			health_bar.value = current_health
+		if current_health <= 30 and current_health > 20:
+			current_health = 20
+			health_bar.value = current_health
+		if current_health <= 40 and current_health > 30:
+			current_health = 30
+			health_bar.value = current_health
+		if current_health <= 50 and current_health > 40:
+			current_health = 40
+			health_bar.value = current_health
 	if current_health <= 0:
 		player.die()
 
