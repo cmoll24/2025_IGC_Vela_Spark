@@ -49,8 +49,8 @@ func respawn():
 	$AnimationPlayer.play("Hit")
 	global_position = move_control.last_ground_location
 	health_control.apply_invincibility()
+	health_control.take_damage(10)
 	move_control.apply_immobility(1)
-	health_control.take_damage()
 
 
 func _on_enemy_collide(body: Node2D) -> void:
