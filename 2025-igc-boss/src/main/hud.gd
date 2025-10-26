@@ -1,10 +1,25 @@
 extends CanvasLayer
 
-@onready var dash_indicator = $DashIndicator
+@onready var player_input = $PlayerInputs
+
+var held_keys = {}
 
 func _ready() -> void:
-	dash_indicator.visible = false
+	pass
 
 func _process(_delta: float) -> void:
-	var player_has_dash = Global.get_player().move_control.has_dash
-	dash_indicator.visible = player_has_dash
+	if held_keys.is_empty():
+		player_input.text = "Keys: (none)"
+	else:
+		var key_names = []
+		for key in held_keys.keys():
+			key_names.append(OS.get_keycode_string(key))
+		player_input.text = "Keys: " + ", ".join(key_names)
+		
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_pressed():
+			held_keys[event.keycode] = true
+		else:
+			held_keys.erase(event.keycode)

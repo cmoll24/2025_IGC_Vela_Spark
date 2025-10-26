@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxq44n7s3ceta"]
+[gd_scene load_steps=2 format=3 uid="uid://dxq44n7s3ceta"]
 
 [ext_resource type="Script" uid="uid://cbu755oj7nlxw" path="res://src/main/hud.gd" id="1_7of0l"]
-[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="2_4dl7s"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7of0l")
 
-[node name="DashIndicator" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0.17254902, 1, 1)
-position = Vector2(63, 65)
-scale = Vector2(1.125, 1.125)
-texture = ExtResource("2_4dl7s")
+[node name="PlayerInputs" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 65.0
+offset_bottom = 30.0
+text = "Inputs:"
