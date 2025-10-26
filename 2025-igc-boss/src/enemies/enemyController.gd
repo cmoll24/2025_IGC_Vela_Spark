@@ -17,8 +17,10 @@ var projectile
 
 var cooldown = 5.0
 
-func _physics_process(delta: float) -> void:
-	velocity.y += GRAVITY * delta
+func _ready() -> void:
+	pass
+
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 

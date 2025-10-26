@@ -1,4 +1,4 @@
-extends Enemy
+extends EnemyGrounded
 
 @export var VOLLEY_DURATION = 0.1
 @export var VOLLEY_COOLDOWN = 5.0

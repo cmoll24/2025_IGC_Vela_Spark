@@ -1,4 +1,4 @@
-extends Enemy
+extends EnemyGrounded
 
 var rng = RandomNumberGenerator.new()
 var laser_duration = 10.0

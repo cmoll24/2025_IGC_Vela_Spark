@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bp07skrp1lpff"]
 
-[ext_resource type="Script" uid="uid://bqy0sk0nkcyw1" path="res://src/enemies/enemeyStraight.gd" id="1_8oy22"]
+[ext_resource type="Script" uid="uid://bqy0sk0nkcyw1" path="res://src/enemies/enemyLaser/enemeyLaser.gd" id="1_8oy22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct2l"]
 size = Vector2(38, 38)
@@ -8,7 +8,7 @@ size = Vector2(38, 38)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ur41"]
 size = Vector2(90, 80)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="EnemyLaser" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_8oy22")
 
