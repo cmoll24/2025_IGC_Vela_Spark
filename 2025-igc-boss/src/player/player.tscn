@@ -1,13 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=16 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
-[ext_resource type="Script" uid="uid://c1n2scoew64b3" path="res://src/player/progressBar.gd" id="2_rxibo"]
 [ext_resource type="PackedScene" uid="uid://dkjqxy1egu868" path="res://src/player/playerMovement.tscn" id="3_244u8"]
-[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="3_jiejy"]
 [ext_resource type="PackedScene" uid="uid://d0m2s3pjfjhlx" path="res://src/player/playerHealth.tscn" id="4_5f2sf"]
-[ext_resource type="Script" uid="uid://b3fkkmq335ygu" path="res://src/player/texture_progress_bar.gd" id="4_o822w"]
 [ext_resource type="PackedScene" uid="uid://quo4cjhqfu2a" path="res://src/player/playerAttack.tscn" id="5_5f2sf"]
-[ext_resource type="Texture2D" uid="uid://b5fylubgb472u" path="res://assets/background/Adobe Express - file (1).png" id="7_x42xx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
 size = Vector2(50, 100)
@@ -65,6 +61,13 @@ _data = {
 &"RESET": SubResource("Animation_o822w")
 }
 
+[sub_resource type="GDScript" id="GDScript_244u8"]
+script/source = "extends ProgressBar
+
+func _ready():
+	hide()
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_244u8"]
 size = Vector2(52, 98)
 
@@ -103,7 +106,7 @@ offset_top = -95.0
 offset_right = 78.0
 offset_bottom = -65.0
 fill_mode = 1
-script = ExtResource("2_rxibo")
+script = SubResource("GDScript_244u8")
 
 [node name="PlayerMovement" parent="." node_paths=PackedStringArray("player", "ground_detector", "debug_label") instance=ExtResource("3_244u8")]
 player = NodePath("..")
@@ -143,20 +146,6 @@ collision_mask = 4
 position = Vector2(19, 0.5)
 shape = SubResource("RectangleShape2D_jiejy")
 debug_color = Color(0.99947137, 0, 0.1284638, 0.41960785)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -31.0
-offset_top = -133.0
-offset_right = 33.0
-offset_bottom = -69.0
-fill_mode = 4
-texture_under = ExtResource("3_jiejy")
-texture_over = ExtResource("7_x42xx")
-texture_progress = ExtResource("3_jiejy")
-tint_under = Color(0, 1, 0, 1)
-tint_over = Color(0.0051856074, 0.9282323, 1.0431446, 1)
-tint_progress = Color(1, 0, 0, 1)
-script = ExtResource("4_o822w")
 
 [connection signal="enemy_collide" from="PlayerHealth" to="." method="_on_enemy_collide"]
 [connection signal="enemy_exit" from="PlayerHealth" to="." method="_on_enemy_exit"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxq44n7s3ceta"]
+[gd_scene load_steps=4 format=3 uid="uid://dxq44n7s3ceta"]
 
 [ext_resource type="Script" uid="uid://cbu755oj7nlxw" path="res://src/main/hud.gd" id="1_7of0l"]
 [ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="2_4dl7s"]
+[ext_resource type="Texture2D" uid="uid://b5fylubgb472u" path="res://assets/background/Adobe Express - file (1).png" id="3_yo4nc"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7of0l")
@@ -11,3 +12,16 @@ self_modulate = Color(0, 0.17254902, 1, 1)
 position = Vector2(63, 65)
 scale = Vector2(1.125, 1.125)
 texture = ExtResource("2_4dl7s")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 135.0
+offset_top = 36.0
+offset_right = 199.0
+offset_bottom = 100.0
+fill_mode = 4
+texture_under = ExtResource("2_4dl7s")
+texture_over = ExtResource("3_yo4nc")
+texture_progress = ExtResource("2_4dl7s")
+tint_under = Color(1, 0, 0, 1)
+tint_over = Color(0.0051856074, 0.9282323, 1.0431446, 1)
+tint_progress = Color(0, 1, 0, 1)

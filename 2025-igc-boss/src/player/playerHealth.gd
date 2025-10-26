@@ -9,8 +9,7 @@ class_name PlayerHealth
 
 @export_category("Health variables")
 @export var MAX_HEALTH := 50
-var health: int = 50
-var current_health = MAX_HEALTH
+var health : float = MAX_HEALTH
 var healthBarSegments = 5
 
 @export var INVINCIBILITY_DURATION : float = 1.0
@@ -20,25 +19,24 @@ signal enemy_exit(body : Node2D)
 
 func _ready() -> void:
 	health_bar.max_value = MAX_HEALTH
-	health_bar.value = current_health
+	health_bar.value = health
 	
 	hitbox.body_entered.connect(_on_player_hitbox_body_entered)
 	hitbox.body_exited.connect(_on_player_hitbox_body_exited)
 	
 
-func take_damage(amount: int) -> void:
-	#current_health - amount, 0 to make sure the health dont go under 0
-	current_health = int(max(current_health - amount, 0))
-	current_health = current_health - (current_health % 10)
-	health_bar.value = current_health
-	print("Player hit! Health:", current_health)
-	if current_health <= 0:
+func take_damage() -> void:
+	#health - amount, 0 to make sure the health dont go under 0
+	health = int(health) - (int(health) % 10)
+	health_bar.value = health
+	print("Player hit! Health:", health)
+	if health <= 0:
 		player.die()
+
 func _process(delta):
-	if current_health >= 1:
-		current_health = current_health - 0.01
-		health_bar.value = current_health
-	if current_health <= 0:
+	health = health - delta
+	health_bar.value = health
+	if health <= 0:
 		player.die()
 	
 func _on_invincibility_timer_timeout() -> void:
@@ -54,7 +52,7 @@ func cancel_invincibility():
 func hit(attacker: Node2D) -> void:
 	if invincibility_timer.is_stopped():
 		player.animation_player.play("Hit")
-		take_damage(10)
+		take_damage()
 		apply_invincibility()
 		player.move_control.apply_knockback(attacker.global_position)
 		print("hit!")
