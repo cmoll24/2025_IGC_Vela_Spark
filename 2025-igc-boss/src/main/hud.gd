@@ -4,14 +4,21 @@ extends CanvasLayer
 
 var inputs = {}
 
+@onready var healthbar = $TextureProgressBar
+
 func _ready() -> void:
 	pass
+
+func setup():
+	healthbar.max_value = Global.get_player().health_control.MAX_HEALTH
 
 func _process(_delta: float) -> void:
 	if inputs.is_empty():
 		player_input.text = "Inputs: (none)"
 	else:
 		player_input.text = "Inputs:\n" + "\n".join(inputs.values())
+	
+	healthbar.value = Global.get_player().health_control.health
 		
 
 func _input(event: InputEvent) -> void:
@@ -35,3 +42,4 @@ func _input(event: InputEvent) -> void:
 			inputs["joyaxis_" + str(event.device) + "_" + str(event.axis)] = axis_name + " " + direction + " " + str(event.axis_value)
 		else:
 			inputs.erase("joyaxis_" + str(event.device) + "_" + str(event.axis))
+	
