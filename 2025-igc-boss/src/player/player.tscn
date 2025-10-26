@@ -101,6 +101,7 @@ offset_right = 78.0
 offset_bottom = -65.0
 max_value = 50.0
 step = 1.0
+rounded = true
 fill_mode = 1
 script = ExtResource("2_rxibo")
 

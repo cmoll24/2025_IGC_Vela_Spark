@@ -24,28 +24,24 @@ func _ready() -> void:
 	
 	hitbox.body_entered.connect(_on_player_hitbox_body_entered)
 	hitbox.body_exited.connect(_on_player_hitbox_body_exited)
+	
 
 func take_damage(amount: int) -> void:
 	#current_health - amount, 0 to make sure the health dont go under 0
 	current_health = max(current_health - amount, 0)
+	current_health = current_health - (current_health % 10)
 	health_bar.value = current_health
 	print("Player hit! Health:", current_health)
-	if hitbox.body_entered.connect(_on_player_hitbox_body_entered):	
-		if current_health <= 20 and current_health > 10:
-			current_health = 10
-			health_bar.value = current_health
-		if current_health <= 30 and current_health > 20:
-			current_health = 20
-			health_bar.value = current_health
-		if current_health <= 40 and current_health > 30:
-			current_health = 30
-			health_bar.value = current_health
-		if current_health <= 50 and current_health > 40:
-			current_health = 40
-			health_bar.value = current_health
 	if current_health <= 0:
 		player.die()
-
+func _process(delta):
+	if current_health >= 10:
+		current_health = current_health - 0.01
+		print("Decay", current_health)
+		health_bar.value = current_health
+	if current_health <= 0:
+		player.die()
+	
 func _on_invincibility_timer_timeout() -> void:
 	for body in hitbox.get_overlapping_bodies():
 		_on_player_hitbox_body_entered(body)
