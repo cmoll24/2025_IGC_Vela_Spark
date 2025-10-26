@@ -69,3 +69,8 @@ func is_safe() -> bool:
 		if x is Enemy or x is Boss or x is Projectile:
 			danger_count += 1
 	return danger_count == 0
+
+func heal():
+	#health = int(health) + (10 - int(health) % 10)
+	health += 15
+	health = min(health, MAX_HEALTH)
