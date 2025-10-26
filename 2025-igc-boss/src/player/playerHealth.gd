@@ -35,9 +35,8 @@ func take_damage(amount: int) -> void:
 	if current_health <= 0:
 		player.die()
 func _process(delta):
-	if current_health >= 10:
+	if current_health >= 1:
 		current_health = current_health - 0.01
-		print("Decay", current_health)
 		health_bar.value = current_health
 	if current_health <= 0:
 		player.die()
