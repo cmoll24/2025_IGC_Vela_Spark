@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func take_damage(amount: int) -> void:
 	#current_health - amount, 0 to make sure the health dont go under 0
-	current_health = max(current_health - amount, 0)
+	current_health = int(max(current_health - amount, 0))
 	current_health = current_health - (current_health % 10)
 	health_bar.value = current_health
 	print("Player hit! Health:", current_health)
