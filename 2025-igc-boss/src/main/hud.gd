@@ -2,24 +2,36 @@ extends CanvasLayer
 
 @onready var player_input = $PlayerInputs
 
-var held_keys = {}
+var inputs = {}
 
 func _ready() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	if held_keys.is_empty():
-		player_input.text = "Keys: (none)"
+	if inputs.is_empty():
+		player_input.text = "Inputs: (none)"
 	else:
-		var key_names = []
-		for key in held_keys.keys():
-			key_names.append(OS.get_keycode_string(key))
-		player_input.text = "Keys: " + ", ".join(key_names)
+		player_input.text = "Inputs:\n" + "\n".join(inputs.values())
 		
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.is_pressed():
-			held_keys[event.keycode] = true
+		if event.pressed and not event.echo:
+			inputs["key_" + str(event.keycode)] = OS.get_keycode_string(event.keycode)
+		elif not event.pressed:
+			inputs.erase("key_" + str(event.keycode))
+	
+	elif event is InputEventJoypadButton:
+		var button_name = "Button " + str(event.button_index)
+		if event.pressed:
+			inputs["joybtn_" + str(event.device) + "_" + str(event.button_index)] = button_name
 		else:
-			held_keys.erase(event.keycode)
+			inputs.erase("joybtn_" + str(event.device) + "_" + str(event.button_index))
+	
+	elif event is InputEventJoypadMotion:
+		if abs(event.axis_value) > 0.1:
+			var axis_name = "Axis " + str(event.axis)
+			var direction = "Right/Up" if event.axis_value > 0 else "Left/Down"
+			inputs["joyaxis_" + str(event.device) + "_" + str(event.axis)] = axis_name + " " + direction + " " + str(event.axis_value)
+		else:
+			inputs.erase("joyaxis_" + str(event.device) + "_" + str(event.axis))

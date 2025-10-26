@@ -69,6 +69,7 @@ func physics_update(delta: float) -> void:
 	
 	#Movement States
 	get_player_direction()
+	process_controller_dash()
 	
 	if is_knocked_back:
 		player.velocity.y += GRAVITY * delta
@@ -98,6 +99,14 @@ func physics_update(delta: float) -> void:
 		last_ground_location = player.global_position
 	
 	#$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
+
+var is_controller_dashed_pressed = false
+func process_controller_dash():
+	if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
+		is_controller_dashed_pressed = true
+		dash_input()
+	elif Input.get_action_strength("controller_dash") < 0.1:
+		is_controller_dashed_pressed = false
 
 func horizontal_movement(delta):
 	if is_knocked_back:
@@ -139,7 +148,7 @@ func jump(_delta):
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
 			player.velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
-			has_dash = true #DEBUG TEST GIVES YOU DASH AFTER JUMPING SECOND TIME
+			#has_dash = true #DEBUG TEST GIVES YOU DASH AFTER JUMPING SECOND TIME
 	
 	if not player.is_on_floor() and Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y = lerp(player.velocity.y, 0.0, 0.8)
@@ -222,6 +231,9 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("jump") and not dash_attack_state:
 			jump_grace_timer.start()
 		elif event.is_action_pressed("dash"):
-			if has_dash and not dash_state and dash_attack_cooldown.is_stopped():
-				dash()
+			dash_input()
+			
+func dash_input():
+	if has_dash and not dash_state and dash_attack_cooldown.is_stopped():
+		dash()
 		
