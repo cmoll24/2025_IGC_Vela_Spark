@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://dp3i36qxl3hlk"]
+[gd_scene load_steps=14 format=4 uid="uid://dp3i36qxl3hlk"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_lumac"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_yy8bf"]
-[ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/boss.tscn" id="3_byd4i"]
 [ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="4_kf2bk"]
 [ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="4_lumac"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="5_8t5b4"]
@@ -38,6 +37,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_lumac")
+level_name = "Enemy Testing Level"
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -47,9 +47,6 @@ offset_right = 3266.0
 offset_bottom = 1017.0
 texture = ExtResource("2_yy8bf")
 stretch_mode = 1
-
-[node name="Boss" parent="." instance=ExtResource("3_byd4i")]
-position = Vector2(5189, 667)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)

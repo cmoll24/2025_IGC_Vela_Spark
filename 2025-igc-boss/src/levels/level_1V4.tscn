@@ -33,8 +33,9 @@ sources/1 = SubResource("TileSetAtlasSource_fcumj")
 interpolation_color_space = 2
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
-[node name="Level1" type="Node2D"]
+[node name="Level4" type="Node2D"]
 script = ExtResource("1_wj61h")
+level_name = "Boss Testing Level"
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false

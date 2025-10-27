@@ -70,7 +70,10 @@ func is_safe() -> bool:
 			danger_count += 1
 	return danger_count == 0
 
-func heal():
+func heal(amount : float):
 	#health = int(health) + (10 - int(health) % 10)
-	health += 15
+	health += amount
 	health = min(health, MAX_HEALTH)
+
+func full_heal():
+	health = MAX_HEALTH

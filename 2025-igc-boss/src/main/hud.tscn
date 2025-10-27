@@ -8,17 +8,19 @@
 script = ExtResource("1_7of0l")
 
 [node name="PlayerInputs" type="Label" parent="."]
-offset_left = 17.0
-offset_top = 84.0
-offset_right = 71.0
-offset_bottom = 107.0
+offset_left = 9.0
+offset_top = 116.0
+offset_right = 77.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 20
 text = "Inputs:"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 14.0
-offset_top = 3.0
-offset_right = 78.0
-offset_bottom = 67.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 71.0
+offset_bottom = 70.0
+scale = Vector2(1.5, 1.5)
 fill_mode = 4
 texture_under = ExtResource("2_4dl7s")
 texture_over = ExtResource("3_yo4nc")

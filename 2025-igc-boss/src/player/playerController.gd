@@ -42,6 +42,7 @@ func hit(attacker: Node2D) -> void:
 
 func die():
 	print("player died")
+	queue_free()
 	get_tree().reload_current_scene()
 
 func respawn():
@@ -82,5 +83,5 @@ func _on_enemy_exit(_body: Node2D) -> void:
 
 func killed_enemy(_body: Node2D):
 	print('Enemy Slain')
-	health_control.heal()
+	health_control.heal(10)
 	#move_control.dash()

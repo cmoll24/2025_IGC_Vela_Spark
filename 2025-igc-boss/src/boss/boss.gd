@@ -41,4 +41,5 @@ func hit(_attacker: Node2D) -> void:
 	take_damage(1)
 
 func die():
+	Global.get_player().health_control.full_heal()
 	queue_free()

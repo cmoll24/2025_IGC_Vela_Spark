@@ -4,6 +4,8 @@ class_name Level
 @onready var player = $Player
 @onready var player_path = $Line2D
 
+@export var level_name : String
+
 func _process(_delta: float) -> void:
 	var current_player_pos = player.global_position
 	

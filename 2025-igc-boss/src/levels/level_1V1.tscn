@@ -39,6 +39,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_ih7hf")
+level_name = "Original Testing Level"
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -50,7 +51,8 @@ texture = ExtResource("1_3o7sa")
 stretch_mode = 1
 
 [node name="Boss" parent="." instance=ExtResource("6_bn18y")]
-position = Vector2(3630, 762)
+position = Vector2(3314, 795)
+boss_positions = Array[Vector2]([Vector2(2520, 775), Vector2(4162, 802)])
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
