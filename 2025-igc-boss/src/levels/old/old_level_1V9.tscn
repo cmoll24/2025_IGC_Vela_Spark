@@ -1,15 +1,15 @@
 [gd_scene load_steps=16 format=4 uid="uid://dse2e7q1kmuxq"]
 
-[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level_1.gd" id="1_ustpu"]
-[ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_t2fl8"]
-[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="3_h1h5f"]
-[ext_resource type="PackedScene" uid="uid://bp07skrp1lpff" path="res://src/enemies/enemyLaser/enemeyLaser.tscn" id="4_wlg21"]
-[ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_0866y"]
-[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_gy4gt"]
-[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="7_k20vf"]
-[ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/Boss.tscn" id="8_ubu7p"]
-[ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="9_tmb0l"]
-[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="10_t2fl8"]
+[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_bjvuf"]
+[ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_o1lcf"]
+[ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/boss.tscn" id="3_bf6qy"]
+[ext_resource type="PackedScene" uid="uid://bp07skrp1lpff" path="res://src/enemies/enemyLaser/enemeyLaser.tscn" id="4_52le8"]
+[ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_qca2v"]
+[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_pareh"]
+[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="7_ggooj"]
+[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="8_j1aqd"]
+[ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="9_n3nru"]
+[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="10_fp54r"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wyrbo"]
 normal = Vector2(1, 0)
@@ -19,7 +19,7 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
 resource_name = "Collision Tiles"
-texture = ExtResource("7_k20vf")
+texture = ExtResource("8_j1aqd")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -38,7 +38,7 @@ interpolation_color_space = 2
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_ustpu")
+script = ExtResource("1_bjvuf")
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -46,25 +46,25 @@ offset_left = -1713.0
 offset_top = 296.0
 offset_right = 3266.0
 offset_bottom = 1017.0
-texture = ExtResource("2_t2fl8")
+texture = ExtResource("2_o1lcf")
 stretch_mode = 1
 
-[node name="Boss" parent="." instance=ExtResource("8_ubu7p")]
+[node name="Boss" parent="." instance=ExtResource("3_bf6qy")]
 position = Vector2(-94, 762)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("4_wlg21")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_52le8")]
 position = Vector2(520, -34)
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("5_0866y")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("5_qca2v")]
 position = Vector2(-132, -259)
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("6_gy4gt")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("6_pareh")]
 position = Vector2(270, -229)
 
-[node name="Player" parent="." instance=ExtResource("3_h1h5f")]
+[node name="Player" parent="." instance=ExtResource("7_ggooj")]
 position = Vector2(-338, 51)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -95,8 +95,8 @@ width = 2.0
 default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
 
-[node name="FallProjectile" parent="." instance=ExtResource("9_tmb0l")]
+[node name="FallProjectile" parent="." instance=ExtResource("9_n3nru")]
 position = Vector2(437, 112)
 
-[node name="OutOfBounds" parent="." instance=ExtResource("10_t2fl8")]
+[node name="OutOfBounds" parent="." instance=ExtResource("10_fp54r")]
 position = Vector2(0, 1264)

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://wg543t8k11gl"]
+
+[ext_resource type="Script" uid="uid://w6qxycwcsycy" path="res://src/boss/boss_trail.gd" id="1_yls80"]
+
+[sub_resource type="Animation" id="Animation_uhydf"]
+resource_name = "decay"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 4.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"disapear"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hsf6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nvf5c"]
+_data = {
+&"RESET": SubResource("Animation_hsf6e"),
+&"decay": SubResource("Animation_uhydf")
+}
+
+[node name="BossTrail" type="Line2D"]
+points = PackedVector2Array(114, 0, 0, 0)
+default_color = Color(0, 0, 0, 1)
+script = ExtResource("1_yls80")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nvf5c")
+}
+autoplay = "decay"

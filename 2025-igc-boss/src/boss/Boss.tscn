@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl2j811r6vaa7"]
+[gd_scene load_steps=8 format=3 uid="uid://bl2j811r6vaa7"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
 [ext_resource type="Script" uid="uid://b2tw3xmq2dmkd" path="res://src/boss/boss_states/idleState.gd" id="3_0wgbl"]
 [ext_resource type="Script" uid="uid://bwol4gnh5hoit" path="res://src/boss/boss_states/moveState.gd" id="4_qh7uy"]
+[ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
 size = Vector2(400, 400)
@@ -48,6 +49,11 @@ metadata/_custom_type_script = "uid://b2tw3xmq2dmkd"
 script = ExtResource("4_qh7uy")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://bwol4gnh5hoit"
+
+[node name="TeleportState" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("5_f33m0")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://dpuar77scsx66"
 
 [node name="Debug" type="Label" parent="."]
 offset_left = -104.0

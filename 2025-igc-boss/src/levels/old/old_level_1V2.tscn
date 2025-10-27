@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=4 uid="uid://c5eoxqme3xnw1"]
+
+[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_f8si7"]
+[ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_0tnp4"]
+[ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/boss.tscn" id="3_4vayx"]
+[ext_resource type="PackedScene" uid="uid://bp07skrp1lpff" path="res://src/enemies/enemyLaser/enemeyLaser.tscn" id="4_at12i"]
+[ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_87gc8"]
+[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_fdb5v"]
+[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="7_bt17u"]
+[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="8_2jesj"]
+[ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="9_q8lfh"]
+[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="10_2wp2y"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wyrbo"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ay5hh"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
+resource_name = "Collision Tiles"
+texture = ExtResource("8_2jesj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_riplu"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_fcumj")
+
+[sub_resource type="Gradient" id="Gradient_ghtb1"]
+interpolation_color_space = 2
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_f8si7")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+offset_left = -1713.0
+offset_top = 296.0
+offset_right = 3266.0
+offset_bottom = 1017.0
+texture = ExtResource("2_0tnp4")
+stretch_mode = 1
+
+[node name="Boss" parent="." instance=ExtResource("3_4vayx")]
+position = Vector2(-94, 762)
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(388, 659)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_at12i")]
+position = Vector2(520, -34)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("5_87gc8")]
+position = Vector2(-132, -259)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("6_fdb5v")]
+position = Vector2(270, -229)
+
+[node name="Player" parent="." instance=ExtResource("7_bt17u")]
+position = Vector2(638, 757)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_bottom = 1080
+position_smoothing_enabled = true
+
+[node name="WorldBorder" type="Node2D" parent="."]
+process_mode = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBorder"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_wyrbo")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="WorldBorder"]
+position = Vector2(1920, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder/StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_ay5hh")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD7/xAAAQAAAAIAAAD8/xAAAQAAAAIAAAD9/xAAAQAAAAIAAAD+/xAAAQAAAAIAAAD//xAAAQAAAAIAAAAAABAAAQAAAAIAAAABABAAAQAAAAIAAAABABEAAQAAAAIAAAAAABEAAQAAAAIAAAD+/xEAAQAAAAIAAAD9/xEAAQAAAAIAAAD8/xEAAQAAAAIAAAD7/xEAAQAAAAIAAAD//xEAAQAAAAIAAAACABAAAQAAAAIAAAADABAAAQAAAAIAAAAEABAAAQAAAAIAAAAFABAAAQAAAAIAAAAGABAAAQAAAAIAAAAHABAAAQAAAAIAAAAIABAAAQAAAAIAAAAJABAAAQAAAAIAAAAKABAAAQAAAAIAAAALABAAAQAAAAIAAAAMABAAAQAAAAIAAAANABAAAQAAAAIAAAAOABAAAQAAAAIAAAAPABAAAQAAAAIAAAAQABAAAQAAAAIAAAARABAAAQAAAAIAAAASABAAAQAAAAIAAAATABAAAQAAAAIAAAACABEAAQAAAAIAAAADABEAAQAAAAIAAAAEABEAAQAAAAIAAAAFABEAAQAAAAIAAAAGABEAAQAAAAIAAAAHABEAAQAAAAIAAAAIABEAAQAAAAIAAAAJABEAAQAAAAIAAAAKABEAAQAAAAIAAAALABEAAQAAAAIAAAAMABEAAQAAAAIAAAANABEAAQAAAAIAAAAOABEAAQAAAAIAAAAPABEAAQAAAAIAAAAQABEAAQAAAAIAAAARABEAAQAAAAIAAAASABEAAQAAAAIAAAATABEAAQAAAAIAAAAUABAAAQAAAAIAAAAUABEAAQAAAAIAAAAVABAAAQAAAAIAAAAVABEAAQAAAAIAAAAWABAAAQAAAAIAAAAWABEAAQAAAAIAAAAXABAAAQAAAAIAAAAXABEAAQAAAAIAAAAYABAAAQAAAAIAAAAYABEAAQAAAAIAAAAZABAAAQAAAAIAAAAZABEAAQAAAAIAAAAaABAAAQAAAAIAAAAaABEAAQAAAAIAAAAbABAAAQAAAAIAAAAbABEAAQAAAAIAAAAcABAAAQAAAAIAAAAcABEAAQAAAAIAAAAdABAAAQAAAAIAAAAdABEAAQAAAAIAAAAeABAAAQAAAAIAAAAeABEAAQAAAAIAAAAfABAAAQAAAAIAAAAfABEAAQAAAAIAAAAgABAAAQAAAAIAAAAgABEAAQAAAAIAAAAhABAAAQAAAAIAAAAhABEAAQAAAAIAAAAiABAAAQAAAAIAAAAiABEAAQAAAAIAAAAjABAAAQAAAAIAAAAjABEAAQAAAAIAAAD5/xAAAQAAAAIAAAD5/xEAAQAAAAIAAAD6/xAAAQAAAAIAAAD6/xEAAQAAAAIAAAAkABAAAQAAAAIAAAAkABEAAQAAAAIAAAAlABAAAQAAAAIAAAAlABEAAQAAAAIAAAAmABAAAQAAAAIAAAAmABEAAQAAAAIAAAAnABAAAQAAAAIAAAAnABEAAQAAAAIAAAAoABAAAQAAAAIAAAAoABEAAQAAAAIAAAApABAAAQAAAAIAAAApABEAAQAAAAIAAAAqABAAAQAAAAIAAAAqABEAAQAAAAIAAAArABAAAQAAAAIAAAArABEAAQAAAAIAAAArAA8AAQAAAAAAAAArAA4AAQAAAAAAAAArAA0AAQAAAAAAAAArAAwAAQAAAAAAAAArAAsAAQAAAAAAAAArAAoAAQAAAAAAAAArAAkAAQAAAAAAAAArAAgAAQAAAAAAAAArAAcAAQAAAAAAAAArAAYAAQAAAAAAAAArAAUAAQAAAAAAAAArAAQAAQAAAAAAAAArAAMAAQAAAAAAAAArAAIAAQAAAAAAAAD5/w8AAQAAAAAAAAD5/w4AAQAAAAAAAAD5/w0AAQAAAAAAAAD5/wwAAQAAAAAAAAD5/wsAAQAAAAAAAAD5/woAAQAAAAAAAAD5/wkAAQAAAAAAAAD5/wgAAQAAAAAAAAD5/wcAAQAAAAAAAAD5/wYAAQAAAAAAAAD5/wUAAQAAAAAAAAD5/wQAAQAAAAAAAAD5/wMAAQAAAAAAAAD5/wIAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD6/wYAAQAAAAIAAAD7/wYAAQAAAAIAAAD8/wYAAQAAAAIAAAD9/wYAAQAAAAIAAAD+/wYAAQAAAAIAAAD//wYAAQAAAAIAAAAAAAYAAQAAAAIAAAAAAAcAAQAAAAIAAAD//wcAAQAAAAIAAAD+/wcAAQAAAAIAAAD9/wcAAQAAAAIAAAD8/wcAAQAAAAIAAAD7/wcAAQAAAAIAAAD6/wcAAQAAAAIAAAAqAAYAAQAAAAIAAAApAAYAAQAAAAIAAAAoAAYAAQAAAAIAAAAnAAYAAQAAAAIAAAAmAAYAAQAAAAIAAAAlAAYAAQAAAAIAAAAkAAYAAQAAAAIAAAAjAAYAAQAAAAIAAAAjAAcAAQAAAAIAAAAkAAcAAQAAAAIAAAAlAAcAAQAAAAIAAAAmAAcAAQAAAAIAAAAnAAcAAQAAAAIAAAAoAAcAAQAAAAIAAAApAAcAAQAAAAIAAAAqAAcAAQAAAAIAAAACAAkAAQAAAAEAAAADAAkAAQAAAAEAAAADAAoAAQAAAAEAAAACAAoAAQAAAAEAAAAhAAkAAQAAAAEAAAAgAAkAAQAAAAEAAAAgAAoAAQAAAAEAAAAhAAoAAQAAAAEAAAAhAAsAAQAAAAEAAAAgAAsAAQAAAAEAAAACAAsAAQAAAAEAAAADAAsAAQAAAAEAAAAEAAsAAQAAAAEAAAAFAAsAAQAAAAEAAAAGAAsAAQAAAAEAAAAHAAsAAQAAAAEAAAAIAAsAAQAAAAEAAAAMAA0AAQAAAAEAAAANAA0AAQAAAAEAAAAOAA0AAQAAAAEAAAAPAA0AAQAAAAEAAAAQAA0AAQAAAAEAAAARAA0AAQAAAAEAAAASAA0AAQAAAAEAAAATAA0AAQAAAAEAAAAUAA0AAQAAAAEAAAAVAA0AAQAAAAEAAAAfAAsAAQAAAAEAAAAeAAsAAQAAAAEAAAAdAAsAAQAAAAEAAAAcAAsAAQAAAAEAAAAbAAsAAQAAAAEAAAAXAA0AAQAAAAEAAAAWAA0AAQAAAAEAAAAJAAgAAQAAAAEAAAAKAAgAAQAAAAEAAAALAAgAAQAAAAEAAAAMAAgAAQAAAAEAAAAaAAgAAQAAAAEAAAAZAAgAAQAAAAEAAAAYAAgAAQAAAAEAAAAXAAgAAQAAAAEAAAAOAAUAAQAAAAEAAAAPAAUAAQAAAAEAAAAQAAUAAQAAAAEAAAARAAUAAQAAAAEAAAASAAUAAQAAAAEAAAATAAUAAQAAAAEAAAAUAAUAAQAAAAEAAAAVAAUAAQAAAAEAAAAWAAUAAQAAAAEAAAA=")
+tile_set = SubResource("TileSet_riplu")
+navigation_enabled = false
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0, 1, 1)
+gradient = SubResource("Gradient_ghtb1")
+
+[node name="FallProjectile" parent="." instance=ExtResource("9_q8lfh")]
+position = Vector2(437, 112)
+
+[node name="OutOfBounds" parent="." instance=ExtResource("10_2wp2y")]
+position = Vector2(0, 1264)
