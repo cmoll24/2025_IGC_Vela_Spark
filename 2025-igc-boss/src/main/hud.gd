@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var player_input = $PlayerInputs
+@onready var fps_label = $FPS
 
 var inputs = {}
 
@@ -19,6 +20,7 @@ func _process(_delta: float) -> void:
 		player_input.text = "Inputs:\n" + "\n".join(inputs.values())
 	
 	healthbar.value = Global.get_player().health_control.health
+	fps_label.text = "FPS: " + str(Engine.get_frames_per_second())
 		
 
 func _input(event: InputEvent) -> void:

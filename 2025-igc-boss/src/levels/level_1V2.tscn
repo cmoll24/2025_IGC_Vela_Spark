@@ -43,9 +43,9 @@ level_name = "Dash Testing Level"
 [node name="Background" type="TextureRect" parent="."]
 visible = false
 offset_left = -1713.0
-offset_top = 296.0
-offset_right = 3266.0
-offset_bottom = 1017.0
+offset_top = -1002.0
+offset_right = 14182.0
+offset_bottom = 1255.0
 texture = ExtResource("2_2jbrd")
 stretch_mode = 1
 

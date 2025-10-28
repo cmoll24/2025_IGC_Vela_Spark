@@ -5,7 +5,6 @@ class_name PlayerHealth
 
 @export var player : Player
 @export var hitbox : Area2D
-@export var health_bar : ProgressBar
 
 @export_category("Health variables")
 @export var MAX_HEALTH := 50
@@ -18,9 +17,6 @@ signal enemy_collide(body : Node2D)
 signal enemy_exit(body : Node2D)
 
 func _ready() -> void:
-	health_bar.max_value = MAX_HEALTH
-	health_bar.value = health
-	
 	hitbox.body_entered.connect(_on_player_hitbox_body_entered)
 	hitbox.body_exited.connect(_on_player_hitbox_body_exited)
 	
@@ -28,14 +24,12 @@ func _ready() -> void:
 func take_damage() -> void:
 	#health - amount, 0 to make sure the health dont go under 0
 	health = int(health) - (int(health) % 10)
-	health_bar.value = health
 	print("Player hit! Health:", health)
 	if health <= 0:
 		player.die()
 
 func _process(delta):
 	health = health - delta
-	health_bar.value = health
 	if health <= 0:
 		player.die()
 	

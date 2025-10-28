@@ -28,3 +28,13 @@ texture_progress = ExtResource("2_4dl7s")
 tint_under = Color(1, 0, 0, 1)
 tint_over = Color(0.0051856074, 0.9282323, 1.0431446, 1)
 tint_progress = Color(0, 1, 0, 1)
+
+[node name="FPS" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "FPS "
+horizontal_alignment = 2
