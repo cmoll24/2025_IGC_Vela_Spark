@@ -12,7 +12,7 @@ func physics_update(delta: float) -> void:
 	idle_duration -= delta
 	
 	if idle_duration < 0:
-		transition.emit("AimAttack")
+		transition.emit("BarageAttack")
 	
 	boss.velocity.y += boss.GRAVITY * delta
 	boss.velocity.x = move_toward(boss.velocity.x, 0, delta * boss.H_DECELERATION * boss.MOVE_SPEED)

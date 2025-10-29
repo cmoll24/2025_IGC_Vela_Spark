@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl2j811r6vaa7"]
+[gd_scene load_steps=10 format=3 uid="uid://bl2j811r6vaa7"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bwol4gnh5hoit" path="res://src/boss/boss_states/moveState.gd" id="4_qh7uy"]
 [ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
 [ext_resource type="Script" uid="uid://dbt6p8iuumtcu" path="res://src/boss/boss_states/aimAttack.gd" id="6_uiuc5"]
+[ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
 size = Vector2(400, 400)
@@ -60,6 +61,11 @@ metadata/_custom_type_script = "uid://dpuar77scsx66"
 script = ExtResource("6_uiuc5")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://dbt6p8iuumtcu"
+
+[node name="BarageAttack" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("7_ejgj4")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://w23uns11vmqo"
 
 [node name="Debug" type="Label" parent="."]
 offset_left = -104.0
