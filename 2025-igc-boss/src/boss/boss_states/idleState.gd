@@ -6,13 +6,13 @@ class_name IdleState
 var idle_duration
 
 func enter(_arg):
-	idle_duration = 2
+	idle_duration = 0.1
 
 func physics_update(delta: float) -> void:
 	idle_duration -= delta
 	
 	if idle_duration < 0:
-		transition.emit("MoveState")
+		transition.emit("AimAttack")
 	
 	boss.velocity.y += boss.GRAVITY * delta
 	boss.velocity.x = move_toward(boss.velocity.x, 0, delta * boss.H_DECELERATION * boss.MOVE_SPEED)

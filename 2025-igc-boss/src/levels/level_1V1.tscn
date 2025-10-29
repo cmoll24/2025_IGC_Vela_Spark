@@ -102,3 +102,5 @@ position = Vector2(437, 112)
 
 [node name="OutOfBounds" parent="." instance=ExtResource("10_fcumj")]
 position = Vector2(0, 1264)
+
+[node name="ProjectileTree" type="Node2D" parent="."]

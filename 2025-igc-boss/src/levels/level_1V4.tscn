@@ -86,3 +86,5 @@ gradient = SubResource("Gradient_ghtb1")
 
 [node name="OutOfBounds" parent="." instance=ExtResource("9_kof05")]
 position = Vector2(0, 1264)
+
+[node name="ProjectileTree" type="Node2D" parent="."]

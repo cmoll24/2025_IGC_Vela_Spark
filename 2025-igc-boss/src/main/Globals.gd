@@ -19,6 +19,9 @@ func get_game_scene():
 func get_player():
 	return game_scene.current_level.get_player()
 
+func get_projectile_tree():
+	return game_scene.current_level.get_projectile_tree()
+
 func switch_to_title():
 	print('switching back to title')
 	current_level_index = null

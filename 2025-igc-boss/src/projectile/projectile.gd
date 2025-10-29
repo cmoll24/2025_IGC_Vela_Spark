@@ -3,9 +3,9 @@ class_name Projectile
 
 @export var SPEED = 1000
 
-var direction : float
-var spawnPos : Vector2
-var spawnRot : float
+@export var angle : float = 0
+@export var spawnPos : Vector2 = Vector2.ZERO
+@export var spawnRot : float = 0
 
 var despawn_timer = 10
 
@@ -13,6 +13,8 @@ func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
 	self.add_to_group("projectiles")
+	
+	velocity = Vector2(SPEED, 0).rotated(-angle)
 
 func _process(delta: float) -> void:
 	despawn_timer -= delta

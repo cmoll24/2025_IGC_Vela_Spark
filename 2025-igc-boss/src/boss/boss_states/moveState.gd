@@ -6,7 +6,8 @@ class_name MoveState
 var target_location
 
 func enter(_arg):
-	target_location = boss.global_position + Vector2(50,0)
+	var direction_to_player = boss.global_position.direction_to(Global.get_player().global_position)
+	target_location = boss.global_position + direction_to_player * Vector2(50,0)
 
 func physics_update(delta: float) -> void:
 	var direction = boss.global_position.direction_to(target_location)
