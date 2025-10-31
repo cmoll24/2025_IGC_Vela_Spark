@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhxfgths2aa33"]
+
+[ext_resource type="Script" uid="uid://cg75tcxvxx1ns" path="res://src/ui/levelSelector.gd" id="1_rbfvw"]
+
+[sub_resource type="Theme" id="Theme_rbfvw"]
+
+[node name="LevelSelector" type="Button"]
+theme = SubResource("Theme_rbfvw")
+theme_override_font_sizes/font_size = 48
+text = "Level Selector"
+script = ExtResource("1_rbfvw")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

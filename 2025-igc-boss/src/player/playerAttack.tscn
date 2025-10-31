@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://quo4cjhqfu2a"]
+
+[ext_resource type="Script" uid="uid://dshx7i1mfdp8s" path="res://src/player/playerAttack.gd" id="1_tthoc"]
+
+[node name="PlayerAttack" type="Node"]
+script = ExtResource("1_tthoc")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://olle5ehbv4l3"]
+
+[ext_resource type="Script" uid="uid://b5ef2g6cfo7c2" path="res://src/main/game.gd" id="1_4n6et"]
+[ext_resource type="PackedScene" uid="uid://dxq44n7s3ceta" path="res://src/main/hud.tscn" id="2_lghd3"]
+[ext_resource type="PackedScene" uid="uid://dhygbolntnhnm" path="res://src/ui/pause.tscn" id="3_lghd3"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4n6et")
+
+[node name="level_container" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HUD" parent="." instance=ExtResource("2_lghd3")]
+
+[node name="Pause" parent="." instance=ExtResource("3_lghd3")]

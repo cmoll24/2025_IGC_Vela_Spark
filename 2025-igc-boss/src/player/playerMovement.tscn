@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkjqxy1egu868"]
+
+[ext_resource type="Script" uid="uid://dld35aj3y8qsc" path="res://src/player/playerMovement.gd" id="1_px13n"]
+
+[node name="PlayerMovement" type="Node"]
+script = ExtResource("1_px13n")
+
+[node name="JumpGraceTime" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="CoyoteTime" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashAttackCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DashTurnAround" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="ImmobileTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

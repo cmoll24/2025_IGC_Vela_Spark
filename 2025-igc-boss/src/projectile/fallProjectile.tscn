@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch7qi2ugoypm2"]
+
+[ext_resource type="Script" uid="uid://d3x2nfc8fqoa" path="res://src/projectile/fallProjectile.gd" id="1_pdsh1"]
+[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="2_pdsh1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdsh1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_156v8"]
+radius = 26.019224
+
+[node name="FallProjectile" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 3
+script = ExtResource("1_pdsh1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pdsh1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.5529412, 0.54509807, 1)
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_pdsh1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_156v8")
+
+[connection signal="body_entered" from="Area2D" to="." method="collide"]
