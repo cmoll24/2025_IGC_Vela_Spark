@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://b2wthbiliuvry"]
+[gd_scene load_steps=16 format=4 uid="uid://b2wthbiliuvry"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_ml2o2"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_2jbrd"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="3_hs3jm"]
+[ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_k441x"]
 [ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_l8eot"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_7g6o4"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="7_uxcgt"]
-[ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/boss.tscn" id="8_7gubv"]
+[ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/Boss.tscn" id="8_7gubv"]
 [ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="9_w2s1y"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="10_k441x"]
 
@@ -48,6 +49,11 @@ offset_right = 14182.0
 offset_bottom = 1255.0
 texture = ExtResource("2_2jbrd")
 stretch_mode = 1
+
+[node name="obstacles" type="Node2D" parent="."]
+
+[node name="Spikes" parent="obstacles" instance=ExtResource("3_k441x")]
+position = Vector2(135, 973)
 
 [node name="Boss" parent="." instance=ExtResource("8_7gubv")]
 position = Vector2(11417, 744)

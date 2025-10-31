@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://gsv221h3cqya"]
+
+[ext_resource type="Script" uid="uid://b8ajhgr82btkh" path="res://src/obstacles/spikes.gd" id="1_q6euu"]
+[ext_resource type="Texture2D" uid="uid://clr37rchabgf6" path="res://assets/debug/Adobe Express - file (2) (1).png" id="1_ve4pm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve4pm"]
+
+[node name="Spikes" type="Area2D" groups=["obstacles"]]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_q6euu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_ve4pm")
+debug_color = Color(0.33675003, 0.34981027, 0.39913458, 0.41960785)
+
+[node name="TextureRect" type="TextureRect" parent="CollisionShape2D"]
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 29.0
+offset_bottom = 29.0
+texture = ExtResource("1_ve4pm")
+stretch_mode = 3
+flip_h = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
