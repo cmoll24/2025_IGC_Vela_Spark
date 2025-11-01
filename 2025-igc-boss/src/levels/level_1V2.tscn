@@ -55,6 +55,12 @@ stretch_mode = 1
 [node name="Spikes" parent="obstacles" instance=ExtResource("3_k441x")]
 position = Vector2(135, 973)
 
+[node name="Spikes2" parent="obstacles" instance=ExtResource("3_k441x")]
+position = Vector2(960, 719)
+
+[node name="Spikes3" parent="obstacles" instance=ExtResource("3_k441x")]
+position = Vector2(1597, 526)
+
 [node name="Boss" parent="." instance=ExtResource("8_7gubv")]
 position = Vector2(11417, 744)
 boss_positions = Array[Vector2]([Vector2(11068, 774), Vector2(12573, 799)])
