@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://cco0obn5pak3i"]
+[gd_scene load_steps=2 format=3 uid="uid://cco0obn5pak3i"]
 
-[node name="RainSpawner" type="Node" groups=["obstacles"]]
+[ext_resource type="Script" uid="uid://ctw2d7sqjq0ms" path="res://src/obstacles/dropplet_obstacle.gd" id="1_2c83j"]
 
-[node name="Node" type="Timer" parent="."]
-wait_time = 5.0
+[node name="RainSpawner" type="Node2D" groups=["obstacles"]]
+
+[node name="Rain Timer" type="Timer" parent="." groups=["obstacles"]]
+wait_time = 3.0
+autostart = true
+script = ExtResource("1_2c83j")
