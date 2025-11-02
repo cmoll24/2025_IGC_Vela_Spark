@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://b2wthbiliuvry"]
+[gd_scene load_steps=17 format=4 uid="uid://b2wthbiliuvry"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_ml2o2"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_2jbrd"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="3_hs3jm"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_k441x"]
+[ext_resource type="PackedScene" uid="uid://bnorrf8wdweor" path="res://src/obstacles/dropplet_obstacle.tscn" id="4_kr3a1"]
 [ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_l8eot"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_7g6o4"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="7_uxcgt"]
@@ -60,6 +61,8 @@ position = Vector2(960, 719)
 
 [node name="Spikes3" parent="obstacles" instance=ExtResource("3_k441x")]
 position = Vector2(1597, 526)
+
+[node name="Dropplet Obstacle" parent="obstacles" instance=ExtResource("4_kr3a1")]
 
 [node name="Boss" parent="." instance=ExtResource("8_7gubv")]
 position = Vector2(11417, 744)

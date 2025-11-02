@@ -3,17 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="1_8238e"]
 [ext_resource type="Script" uid="uid://c5288upxgql0b" path="res://fallingProjectile.gd" id="1_twtem"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_twtem"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_twtem"]
+radius = 33.0
 
 [node name="Dropplet Obstacle" type="Node" groups=["obstacles"]]
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
 script = ExtResource("1_twtem")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(32, 32)
-shape = SubResource("RectangleShape2D_twtem")
 
 [node name="TextureRect" type="TextureRect" parent="Area2D"]
 modulate = Color(0.19607843, 0.4627451, 1, 1)
@@ -23,3 +21,9 @@ offset_bottom = 64.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_8238e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32, 32)
+shape = SubResource("CircleShape2D_twtem")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cco0obn5pak3i"]
+
+[node name="RainSpawner" type="Node" groups=["obstacles"]]
+
+[node name="Node" type="Timer" parent="."]
+wait_time = 5.0
