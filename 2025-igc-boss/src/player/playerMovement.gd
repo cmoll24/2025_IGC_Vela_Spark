@@ -52,6 +52,9 @@ var direction_facing = 1
 
 var last_ground_location : Vector2
 
+func _ready() -> void:
+	last_ground_location = player.global_position
+
 func get_player_direction():
 	if immobile_timer.is_stopped() and not is_knocked_back:
 		move_input = sign(Input.get_axis("move_left", "move_right"))
