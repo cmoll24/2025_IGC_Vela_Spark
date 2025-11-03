@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://dp3i36qxl3hlk"]
+[gd_scene load_steps=17 format=4 uid="uid://dp3i36qxl3hlk"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_lumac"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_yy8bf"]
+[ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_2p8e8"]
 [ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="4_kf2bk"]
 [ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="4_lumac"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="5_8t5b4"]
@@ -49,6 +50,12 @@ offset_right = 3266.0
 offset_bottom = 1017.0
 texture = ExtResource("2_yy8bf")
 stretch_mode = 1
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Spikes" parent="Obstacles" instance=ExtResource("3_2p8e8")]
+position = Vector2(309, 957)
+scale = Vector2(4, 1)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)

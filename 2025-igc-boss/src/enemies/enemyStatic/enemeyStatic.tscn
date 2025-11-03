@@ -30,7 +30,7 @@ script = ExtResource("1_bcxj1")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 
 [node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("RectangleShape2D_462bx")
