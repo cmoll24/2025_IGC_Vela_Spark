@@ -43,7 +43,7 @@ var knockback_vector: Vector2 = Vector2.ZERO
 var is_knocked_back: bool = false
 var knockback_timer: float = 0.0
 
-var move_input = Vector2.ZERO
+var move_input : int = 0
 var current_gravity = GRAVITY
 var current_move_speed = MOVE_SPEED
 var is_touching_floor = false
@@ -60,8 +60,14 @@ func get_player_direction():
 	if move_input != 0:
 			direction_facing = sign(move_input)
 
+func is_jump_peak():
+	return player.velocity.y < JUMP_PEAK_RANGE and player.velocity.y > -JUMP_PEAK_RANGE and not player.is_on_floor()
+
+func is_big_jump_peak():
+	return player.velocity.y < JUMP_PEAK_RANGE * 10 and player.velocity.y > -JUMP_PEAK_RANGE * 10 and not player.is_on_floor()
+
 func physics_update(delta: float) -> void:
-	if player.velocity.y < JUMP_PEAK_RANGE and player.velocity.y > -JUMP_PEAK_RANGE and not player.is_on_floor(): 
+	if is_jump_peak(): 
 		current_gravity = GRAVITY / 2
 	elif player.velocity.y > 0:
 		current_gravity = GRAVITY * 2.5
@@ -236,6 +242,8 @@ func _input(event: InputEvent) -> void:
 			dash_input()
 			
 func dash_input():
-	if has_dash and not dash_state and dash_attack_cooldown.is_stopped():
+	if can_dash():
 		dash()
 		
+func can_dash():
+	return has_dash and not dash_state and dash_attack_cooldown.is_stopped()

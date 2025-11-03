@@ -11,10 +11,8 @@ var static_enemy = load("res://src/enemies/enemyStatic/enemeyStatic.tscn")
   
 func enter(_arg):
 	porcupine_timer = PORCUPINE_DURATION
-	summon_projectile(deg_to_rad(30))
-	summon_projectile(deg_to_rad(60))
-	summon_projectile(deg_to_rad(120))
-	summon_projectile(deg_to_rad(150))
+	summon_projectile(deg_to_rad(50))
+	summon_projectile(deg_to_rad(130))
 
 func physics_update(delta: float) -> void:
 	porcupine_timer -= delta

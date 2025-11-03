@@ -4,5 +4,4 @@ extends Node2D
 
 func _on_timer_timeout() -> void:
 	var instance = projectile.instantiate()
-	print("Spawn")
 	add_child(instance)

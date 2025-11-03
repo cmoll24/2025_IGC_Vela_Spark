@@ -11,7 +11,7 @@ class_name PlayerHealth
 var health : float = MAX_HEALTH
 
 @export var INVINCIBILITY_DURATION : float = 1.0
-@export var DECAY_COEF := 0.8
+@export var DECAY_COEF := 1
 
 signal enemy_collide(body : Node2D)
 signal enemy_exit(body : Node2D)

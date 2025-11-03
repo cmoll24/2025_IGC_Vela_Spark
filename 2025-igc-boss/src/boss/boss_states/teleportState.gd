@@ -30,4 +30,5 @@ func teleport():
 	await get_tree().create_timer(1).timeout
 	
 	boss.global_position = target_location
+	boss.increase_boss_pos_index()
 	transition.emit("porcupineHeal")

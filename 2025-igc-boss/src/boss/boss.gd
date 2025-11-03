@@ -14,16 +14,17 @@ class_name Boss
 @export var GRAVITY : float = 1000.0
 
 @export var boss_positions : Array[Vector2]
-var current_pos_index : int = -1
+var current_pos_index : int = 0
 
-var health : int = 8
+var health : int = 16
 
 func get_next_boss_position():
+	return boss_positions[current_pos_index]
+
+func increase_boss_pos_index():
 	current_pos_index += 1
 	if current_pos_index >= len(boss_positions):
 		current_pos_index = 0
-	
-	return boss_positions[current_pos_index]
 
 func switch_to_random_state():
 	state_machine.transition_to(state_machine.states.keys().pick_random())

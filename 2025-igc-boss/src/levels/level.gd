@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	var current_player_pos = player.global_position
 	
 	player_path.add_point(current_player_pos)
-	if player_path.get_point_count() > 500:
+	if player_path.get_point_count() > 50:
 		player_path.remove_point(0)
 
 func get_player() -> Player:

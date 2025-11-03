@@ -1,12 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckeyt2issfig3"]
+[gd_scene load_steps=7 format=3 uid="uid://ckeyt2issfig3"]
 
 [ext_resource type="Script" uid="uid://bdvfctmte37sr" path="res://src/enemies/enemyStatic/enemeyStatic.gd" id="1_bcxj1"]
+[ext_resource type="Texture2D" uid="uid://gowseavq2kl2" path="res://assets/enemies/bubble_1.png" id="2_p371e"]
+[ext_resource type="Texture2D" uid="uid://dp0r85dfulxxs" path="res://assets/enemies/bubble_2.png" id="3_2rfnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_462bx"]
 size = Vector2(38, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dicg"]
 size = Vector2(90, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lv5pj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p371e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2rfnt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="EnemyStatic" type="CharacterBody2D"]
 collision_layer = 4
@@ -23,11 +39,17 @@ shape = SubResource("RectangleShape2D_462bx")
 shape = SubResource("RectangleShape2D_6dicg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -45.0
 offset_top = -40.0
 offset_right = 45.0
 offset_bottom = 40.0
 color = Color(0, 0.5324429, 0.9093324, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lv5pj")
+autoplay = "default"
+frame_progress = 0.057269823
 
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]

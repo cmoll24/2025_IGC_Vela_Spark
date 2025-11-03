@@ -8,6 +8,7 @@ class_name Player
 @onready var flip_node = $flippable
 
 @onready var animation_player = $AnimationPlayer
+@onready var animated_sprite = $flippable/PlayerSprite
 
 func _ready():
 	add_to_group("player")
@@ -18,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	debug_animation()
 
 func _process(_delta: float) -> void:
-	$DashIndicator.visible = move_control.has_dash
+	$DashIndicator.visible = move_control.can_dash()
 
 func debug_animation():
 	flip_node.scale.x = move_control.direction_facing
@@ -29,10 +30,20 @@ func debug_animation():
 		$ColorRect.color = Color.BLUE
 	elif move_control.air_jump_amount == 1:
 		$ColorRect.color = Color.GREEN
-		$DashIndicator.color = Color.BLUE
 	elif move_control.air_jump_amount == 0:
 		$ColorRect.color = Color.DARK_GREEN
-		$DashIndicator.color = Color.DARK_BLUE
+	
+	if move_control.is_big_jump_peak():
+		animated_sprite.play("jump2")
+	elif velocity.y > 0:
+		animated_sprite.play("fall")
+	elif velocity.y < 0:
+		animated_sprite.play("jump1")
+	elif velocity.x == 0:
+		animated_sprite.play("idle")
+	else:
+		animated_sprite.play("idle")
+		
 
 func hit(attacker: Node2D) -> void:
 	health_control.hit(attacker)
