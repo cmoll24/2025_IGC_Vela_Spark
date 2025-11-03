@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnorrf8wdweor"]
+[gd_scene load_steps=2 format=3 uid="uid://b85prkw1vd0oy"]
 
-[ext_resource type="Script" uid="uid://ctw2d7sqjq0ms" path="res://src/obstacles/dropplet_obstacle.gd" id="1_8238e"]
+[sub_resource type="GDScript" id="GDScript_bff7i"]
+script/source = "extends Node2D
+
+@onready var projectile = preload(\"res://src/projectile/fallProjectile.tscn\")
+
+func _on_timer_timeout() -> void:
+	var instance = projectile.instantiate()
+	add_child(instance)
+"
 
 [node name="Dropplet Obstacle" type="Node2D" groups=["obstacles"]]
-script = ExtResource("1_8238e")
+script = SubResource("GDScript_bff7i")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

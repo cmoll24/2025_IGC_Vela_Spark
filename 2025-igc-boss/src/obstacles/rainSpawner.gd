@@ -1,4 +1,4 @@
-extends Timer
+extends Node2D
 var isReady = true
 var projectile
 @onready var level = get_tree().current_scene

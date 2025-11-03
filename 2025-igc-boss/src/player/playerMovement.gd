@@ -102,7 +102,7 @@ func physics_update(delta: float) -> void:
 		is_touching_floor = false
 		coyote_timer.start()
 		
-	if ground_detector.is_colliding() and player.health_control.is_safe():
+	if player.is_on_floor() and ground_detector.is_colliding() and player.health_control.is_safe():
 		last_ground_location = player.global_position
 	
 	#$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
@@ -224,6 +224,7 @@ func end_dash_attack():
 func apply_knockback(from_position: Vector2) -> void:
 	#knock player off the opposite direction
 	var direction_sign = sign(player.global_position.x - from_position.x)
+	direction_facing = -direction_sign
 	var k_vector = Vector2(direction_sign * knockback_force, -knockback_upward_force)
 	knockback_vector = k_vector
 	player.velocity = knockback_vector
@@ -233,6 +234,8 @@ func apply_knockback(from_position: Vector2) -> void:
 
 func apply_immobility(time_amount : float):
 	immobile_timer.start(time_amount)
+	dash_state = false
+	dash_attack_state = false
 
 func _input(event: InputEvent) -> void:
 	if immobile_timer.is_stopped() and not is_knocked_back:

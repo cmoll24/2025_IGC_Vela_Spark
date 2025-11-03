@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=22 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
 [ext_resource type="Texture2D" uid="uid://bvfob1acpo2vg" path="res://assets/character/Jump1.png" id="2_5f2sf"]
@@ -18,14 +18,15 @@ resource_name = "Fall"
 
 [sub_resource type="Animation" id="Animation_rxibo"]
 resource_name = "Hit"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("flippable/Sprite2D2:modulate")
-tracks/0/interp = 1
+tracks/0/path = NodePath("flippable/PlayerSprite:modulate")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666666, 0.16666666, 0.26666668, 0.36666667, 0.56666666, 0.6666666),
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.25, 0.35, 0.44, 0.51),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0.9843137, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
@@ -43,6 +44,18 @@ resource_name = "Move"
 
 [sub_resource type="Animation" id="Animation_o822w"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o822w"]
 _data = {
@@ -55,7 +68,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_244u8"]
-size = Vector2(31, 157.5)
+size = Vector2(31, 158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l271a"]
+size = Vector2(192, 230)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2smqc"]
 animations = [{
@@ -137,9 +153,10 @@ ground_detector = NodePath("../GroundDetector")
 air_jump_detector = NodePath("../AirJumpDetector")
 debug_label = NodePath("../Debug_Label")
 
-[node name="PlayerHealth" parent="." node_paths=PackedStringArray("player", "hitbox") instance=ExtResource("4_5f2sf")]
+[node name="PlayerHealth" parent="." node_paths=PackedStringArray("player", "hitbox", "danger_detector") instance=ExtResource("4_5f2sf")]
 player = NodePath("..")
 hitbox = NodePath("../player_hitbox")
+danger_detector = NodePath("../danger_detector")
 
 [node name="PlayerAttack" parent="." node_paths=PackedStringArray("player", "attackbox") instance=ExtResource("5_5f2sf")]
 player = NodePath("..")
@@ -147,12 +164,21 @@ attackbox = NodePath("../flippable/player_attackbox")
 
 [node name="player_hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 133
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
-position = Vector2(0, -29.25)
+position = Vector2(0, -29)
 shape = SubResource("RectangleShape2D_244u8")
 debug_color = Color(0.7026044, 0.2792841, 1, 0.41960785)
+
+[node name="danger_detector" type="Area2D" parent="."]
+position = Vector2(0, -10)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="danger_detector"]
+shape = SubResource("RectangleShape2D_l271a")
+debug_color = Color(0.8948004, 0.00023064256, 0.7885427, 0.41960785)
 
 [node name="GroundDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 100)
