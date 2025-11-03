@@ -6,9 +6,9 @@ var randx : float
 func _ready():
 	SPEED = 0
 	super._ready()
-	randx = rng.randf_range(-20.0, 20.0)
+	#randx = rng.randf_range(-20.0, 20.0)
+	#velocity.y = 200
 	
-	velocity.y = 200
 func _physics_process(delta: float) -> void:
 	#velocity.x = randx
 	velocity.y += 100 * delta

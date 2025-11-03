@@ -11,10 +11,6 @@ size = Vector2(90, 80)
 [node name="EnemyFall" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_7uiu7")
-GRAVITY = null
-move_time = null
-speed = null
-activation_delay = null
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 4

@@ -9,9 +9,9 @@ class_name PlayerHealth
 @export_category("Health variables")
 @export var MAX_HEALTH := 50
 var health : float = MAX_HEALTH
-var healthBarSegments = 5
 
 @export var INVINCIBILITY_DURATION : float = 1.0
+@export var DECAY_COEF := 0.8
 
 signal enemy_collide(body : Node2D)
 signal enemy_exit(body : Node2D)
@@ -29,7 +29,7 @@ func take_damage() -> void:
 		player.die()
 
 func _process(delta):
-	health = health - delta
+	health = health - DECAY_COEF * delta
 	if health <= 0:
 		player.die()
 	

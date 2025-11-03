@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="1_wyrbo"]
 [ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_juu1d"]
 [ext_resource type="PackedScene" uid="uid://bp07skrp1lpff" path="res://src/enemies/enemyLaser/enemeyLaser.tscn" id="5_ou3gi"]
-[ext_resource type="PackedScene" uid="uid://bl2j811r6vaa7" path="res://src/boss/boss.tscn" id="6_bn18y"]
+[ext_resource type="PackedScene" uid="uid://cdiurkf4830i2" path="res://src/boss/boss.tscn" id="6_bn18y"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_ou3gi"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="7_fcumj"]
 [ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="8_ou3gi"]

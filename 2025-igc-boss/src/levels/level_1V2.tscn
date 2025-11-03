@@ -76,24 +76,52 @@ position = Vector2(2775, -596)
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("6_7g6o4")]
 position = Vector2(1622, -320)
+GRAVITY = 1000.0
+move_time = 3.0
+speed = 200.0
+activation_delay = 0.1
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("6_7g6o4")]
 position = Vector2(3375, -761)
+GRAVITY = 1000.0
+move_time = 3.0
+speed = 200.0
+activation_delay = 0.1
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("6_7g6o4")]
 position = Vector2(4410, -777)
+GRAVITY = 1000.0
+move_time = 3.0
+speed = 200.0
+activation_delay = 0.1
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("6_7g6o4")]
 position = Vector2(7070, -1349)
+GRAVITY = 1000.0
+move_time = 3.0
+speed = 200.0
+activation_delay = 0.1
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("6_7g6o4")]
 position = Vector2(7695, -1274)
+GRAVITY = 1000.0
+move_time = 3.0
+speed = 200.0
+activation_delay = 0.1
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("6_7g6o4")]
 position = Vector2(8378, -1210)
+GRAVITY = 1000.0
+move_time = 3.0
+speed = 200.0
+activation_delay = 0.1
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("6_7g6o4")]
 position = Vector2(9098, -1042)
+GRAVITY = 1000.0
+move_time = 3.0
+speed = 200.0
+activation_delay = 0.1
 
 [node name="Player" parent="." instance=ExtResource("3_hs3jm")]
 position = Vector2(-112, 793)

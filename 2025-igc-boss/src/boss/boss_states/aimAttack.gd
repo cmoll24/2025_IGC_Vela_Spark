@@ -20,6 +20,7 @@ func physics_update(delta: float) -> void:
 	volley(delta)
 	
 	boss.velocity.y += boss.GRAVITY * delta
+	boss.velocity.x = move_toward(boss.velocity.x, 0, delta * boss.H_DECELERATION * boss.MOVE_SPEED)
 	boss.move_and_slide()
 
 func volley(delta):
@@ -31,7 +32,7 @@ func volley(delta):
 		summon_projectile(0.5, 530)
 		summon_projectile(0.7, 500)
 	if volley_number < 0:
-		transition.emit("MoveState")
+		transition.emit("ChargeState")
 	
 
 func summon_projectile(offset_percent : float = 1, speed = 800) -> void:

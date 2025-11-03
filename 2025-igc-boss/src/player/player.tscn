@@ -115,15 +115,15 @@ offset_bottom = -65.0
 fill_mode = 1
 script = SubResource("GDScript_244u8")
 
-[node name="PlayerMovement" parent="." node_paths=PackedStringArray("player", "ground_detector", "debug_label") instance=ExtResource("3_244u8")]
+[node name="PlayerMovement" parent="." node_paths=PackedStringArray("player", "ground_detector", "air_jump_detector", "debug_label") instance=ExtResource("3_244u8")]
 player = NodePath("..")
 ground_detector = NodePath("../GroundDetector")
+air_jump_detector = NodePath("../AirJumpDetector")
 debug_label = NodePath("../Debug_Label")
 
-[node name="PlayerHealth" parent="." node_paths=PackedStringArray("player", "hitbox", "health_bar") instance=ExtResource("4_5f2sf")]
+[node name="PlayerHealth" parent="." node_paths=PackedStringArray("player", "hitbox") instance=ExtResource("4_5f2sf")]
 player = NodePath("..")
 hitbox = NodePath("../player_hitbox")
-health_bar = NodePath("../ProgressBar")
 
 [node name="PlayerAttack" parent="." node_paths=PackedStringArray("player", "attackbox") instance=ExtResource("5_5f2sf")]
 player = NodePath("..")
@@ -140,6 +140,9 @@ debug_color = Color(0.7026044, 0.2792841, 1, 0.41960785)
 
 [node name="GroundDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 60)
+
+[node name="AirJumpDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 150)
 
 [node name="flippable" type="Node2D" parent="."]
 

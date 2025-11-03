@@ -1,5 +1,7 @@
 extends EnemyGrounded
 
+var cooldown = 5.0
+
 var rng = RandomNumberGenerator.new()
 var laser_duration = 10.0
 var randy : float
@@ -28,4 +30,4 @@ func summon_projectile() -> void:
 	var instance = projectile.instantiate()
 	randy = rng.randf_range(-20, 8)
 	instance.spawnPos = global_position + Vector2(0, randy)
-	level.add_child(instance)
+	Global.get_projectile_tree().add_child(instance)

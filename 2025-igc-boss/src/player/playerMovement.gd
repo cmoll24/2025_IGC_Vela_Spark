@@ -10,6 +10,7 @@ class_name PlayerMovement
 
 @export var player : Player
 @export var ground_detector : RayCast2D
+@export var air_jump_detector : RayCast2D
 
 @export var debug_label : Label
 
@@ -144,7 +145,7 @@ func jump(_delta):
 		if is_jump_just_pressed():
 			coyote_timer.stop()
 			player.velocity.y = -JUMP_SPEED
-	else:
+	elif not air_jump_detector.is_colliding():
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
 			player.velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
@@ -212,6 +213,7 @@ func end_dash_attack():
 	player.health_control._on_invincibility_timer_timeout()
 	dash_attack_cooldown.stop()
 	#end_dash()
+	#player.attack_control.check_dash_attack()
 
 func apply_knockback(from_position: Vector2) -> void:
 	#knock player off the opposite direction

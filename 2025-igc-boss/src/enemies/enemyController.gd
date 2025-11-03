@@ -13,15 +13,17 @@ var active = false
 var health = 1
 
 var projectile
-@onready var level = get_tree().current_scene
 
-var cooldown = 5.0
+#var cooldown = 5.0
+
+var is_ridding = false
 
 func _ready() -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
-	move_and_slide()
+	if not is_ridding:
+		move_and_slide()
 	
 
 #func _process(delta: float) -> void:
@@ -35,13 +37,6 @@ func _physics_process(_delta: float) -> void:
 #	if cooldown <= 0:
 #		summon_projectile()
 #		cooldown = 5.0
-	
-	
-func summon_projectile() -> void:
-	var instance = projectile.instantiate()
-	instance.spawnPos = global_position
-	level.add_child(instance)
-
 
 func collide(_body: Node2D) -> void:
 	pass
