@@ -4,6 +4,7 @@ class_name Level
 @onready var player = $Player
 @onready var player_path = $Line2D
 @onready var projectile_tree = $ProjectileTree
+@onready var enemy_tree = $Enemies
 
 @export var level_name : String
 
@@ -19,3 +20,6 @@ func get_player() -> Player:
 
 func get_projectile_tree() -> Node2D:
 	return projectile_tree
+
+func get_enemy_tree() -> Node2D:
+	return enemy_tree

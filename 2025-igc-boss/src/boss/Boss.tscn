@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl2j811r6vaa7"]
+[gd_scene load_steps=12 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -7,12 +7,14 @@
 [ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
 [ext_resource type="Script" uid="uid://dbt6p8iuumtcu" path="res://src/boss/boss_states/aimAttack.gd" id="6_uiuc5"]
 [ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
+[ext_resource type="Script" uid="uid://c0xi0mepfssc" path="res://src/boss/boss_states/porcupineHeal.gd" id="8_ranff"]
+[ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="9_fbeph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
-size = Vector2(400, 400)
+size = Vector2(400, 379)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh7uy"]
-size = Vector2(371, 383)
+size = Vector2(371, 359)
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 4
@@ -20,12 +22,13 @@ script = ExtResource("1_3kou8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -201.0
-offset_top = -202.0
+offset_top = -177.0
 offset_right = 201.0
 offset_bottom = 200.0
 color = Color(0.7058824, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_xw3os")
 
 [node name="boss_hitbox" type="Area2D" parent="."]
@@ -33,7 +36,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="hitbox_collision_shape" type="CollisionShape2D" parent="boss_hitbox"]
-position = Vector2(-0.5, 0.5)
+position = Vector2(-0.5, 12.5)
 shape = SubResource("RectangleShape2D_qh7uy")
 
 [node name="Phase1StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "debug_state_label")]
@@ -67,11 +70,37 @@ script = ExtResource("7_ejgj4")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://w23uns11vmqo"
 
+[node name="PorcupineHeal" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("8_ranff")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://c0xi0mepfssc"
+
+[node name="ChargeState" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("9_fbeph")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://ji2we2m2t53t"
+
 [node name="Debug" type="Label" parent="."]
 offset_left = -104.0
 offset_top = -28.0
 offset_bottom = -5.0
 scale = Vector2(2, 2)
 text = "Current State"
+
+[node name="RightWallCheck" type="RayCast2D" parent="."]
+position = Vector2(0, 152)
+target_position = Vector2(400, 0)
+
+[node name="RightWallCheck2" type="RayCast2D" parent="."]
+position = Vector2(0, -128)
+target_position = Vector2(400, 0)
+
+[node name="LeftWallCheck" type="RayCast2D" parent="."]
+position = Vector2(0, 152)
+target_position = Vector2(-400, 0)
+
+[node name="LeftWallCheck2" type="RayCast2D" parent="."]
+position = Vector2(0, -128)
+target_position = Vector2(-400, 0)
 
 [connection signal="body_entered" from="boss_hitbox" to="." method="_on_boss_hitbox_body_entered"]
