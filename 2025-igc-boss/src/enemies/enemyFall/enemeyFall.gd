@@ -1,5 +1,7 @@
 extends Enemy
 
+var cooldown = 5.0
+
 @export var frequency : float = 4
 @export var amplitude : float = 200.0
 
@@ -23,3 +25,11 @@ func _process(delta: float) -> void:
 	if cooldown <= 0:
 		summon_projectile()
 		cooldown = 2.0
+
+	
+func summon_projectile() -> void:
+	var instance = projectile.instantiate()
+	instance.spawnPos = global_position
+	instance.SPEED = 200
+	instance.angle = deg_to_rad(-90)
+	Global.get_projectile_tree().add_child(instance)

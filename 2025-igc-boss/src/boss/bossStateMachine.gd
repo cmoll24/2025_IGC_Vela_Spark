@@ -28,6 +28,10 @@ func _physics_process(delta : float):
 func transition_to(new_state_name : String, arg = null):
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
+		assert(new_state, new_state_name + " is not a valid state name!!")
+		return
+	
+	if new_state == current_state:
 		return
 	
 	if current_state:

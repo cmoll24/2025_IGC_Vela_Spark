@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cco0obn5pak3i"]
+
+[ext_resource type="Script" uid="uid://b36pcf4t6dleh" path="res://src/obstacles/rainSpawner.gd" id="1_sky3d"]
+
+[node name="RainSpawner" type="Node2D" groups=["obstacles"]]
+script = ExtResource("1_sky3d")
+
+[node name="Rain Timer" type="Timer" parent="." groups=["obstacles"]]
+wait_time = 3.0
+autostart = true

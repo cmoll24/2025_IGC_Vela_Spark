@@ -13,8 +13,9 @@ func _ready() -> void:
 	starting_y = position.y
 
 func _physics_process(delta: float) -> void:
-	time_passed += delta
-	
-	velocity.y = cos(frequency * time_passed) * amplitude
-	
-	super._physics_process(delta)
+	if not is_ridding:
+		time_passed += delta
+		
+		velocity.y = cos(frequency * time_passed) * amplitude
+		
+		super._physics_process(delta)

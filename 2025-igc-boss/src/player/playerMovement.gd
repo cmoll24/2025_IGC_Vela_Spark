@@ -10,6 +10,7 @@ class_name PlayerMovement
 
 @export var player : Player
 @export var ground_detector : RayCast2D
+@export var air_jump_detector : RayCast2D
 
 @export var debug_label : Label
 
@@ -42,7 +43,7 @@ var knockback_vector: Vector2 = Vector2.ZERO
 var is_knocked_back: bool = false
 var knockback_timer: float = 0.0
 
-var move_input = Vector2.ZERO
+var move_input : int = 0
 var current_gravity = GRAVITY
 var current_move_speed = MOVE_SPEED
 var is_touching_floor = false
@@ -50,6 +51,9 @@ var is_touching_floor = false
 var direction_facing = 1
 
 var last_ground_location : Vector2
+
+func _ready() -> void:
+	last_ground_location = player.global_position
 
 func get_player_direction():
 	if immobile_timer.is_stopped() and not is_knocked_back:
@@ -59,8 +63,14 @@ func get_player_direction():
 	if move_input != 0:
 			direction_facing = sign(move_input)
 
+func is_jump_peak():
+	return player.velocity.y < JUMP_PEAK_RANGE and player.velocity.y > -JUMP_PEAK_RANGE and not player.is_on_floor()
+
+func is_big_jump_peak():
+	return player.velocity.y < JUMP_PEAK_RANGE * 10 and player.velocity.y > -JUMP_PEAK_RANGE * 10 and not player.is_on_floor()
+
 func physics_update(delta: float) -> void:
-	if player.velocity.y < JUMP_PEAK_RANGE and player.velocity.y > -JUMP_PEAK_RANGE and not player.is_on_floor(): 
+	if is_jump_peak(): 
 		current_gravity = GRAVITY / 2
 	elif player.velocity.y > 0:
 		current_gravity = GRAVITY * 2.5
@@ -95,7 +105,7 @@ func physics_update(delta: float) -> void:
 		is_touching_floor = false
 		coyote_timer.start()
 		
-	if ground_detector.is_colliding() and player.health_control.is_safe():
+	if player.is_on_floor() and ground_detector.is_colliding() and player.health_control.is_safe():
 		last_ground_location = player.global_position
 	
 	#$Debug_Label.text = "Gravity: {grav}".format({'grav' : current_gravity / 100})
@@ -144,7 +154,7 @@ func jump(_delta):
 		if is_jump_just_pressed():
 			coyote_timer.stop()
 			player.velocity.y = -JUMP_SPEED
-	else:
+	elif not air_jump_detector.is_colliding():
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
 			player.velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
@@ -212,10 +222,12 @@ func end_dash_attack():
 	player.health_control._on_invincibility_timer_timeout()
 	dash_attack_cooldown.stop()
 	#end_dash()
+	#player.attack_control.check_dash_attack()
 
 func apply_knockback(from_position: Vector2) -> void:
 	#knock player off the opposite direction
 	var direction_sign = sign(player.global_position.x - from_position.x)
+	direction_facing = -direction_sign
 	var k_vector = Vector2(direction_sign * knockback_force, -knockback_upward_force)
 	knockback_vector = k_vector
 	player.velocity = knockback_vector
@@ -225,6 +237,8 @@ func apply_knockback(from_position: Vector2) -> void:
 
 func apply_immobility(time_amount : float):
 	immobile_timer.start(time_amount)
+	dash_state = false
+	dash_attack_state = false
 
 func _input(event: InputEvent) -> void:
 	if immobile_timer.is_stopped() and not is_knocked_back:
@@ -234,6 +248,8 @@ func _input(event: InputEvent) -> void:
 			dash_input()
 			
 func dash_input():
-	if has_dash and not dash_state and dash_attack_cooldown.is_stopped():
+	if can_dash():
 		dash()
 		
+func can_dash():
+	return has_dash and not dash_state and dash_attack_cooldown.is_stopped()

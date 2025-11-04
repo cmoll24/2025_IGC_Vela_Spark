@@ -4,7 +4,7 @@ class_name BarageAttack
 @export var boss : Boss
 
 @export var VOLLEY_COOLDOWN = 1.5
-@export var VOLLEY_NUMBER = 15
+@export var VOLLEY_NUMBER = 5
 
 var volley_number = VOLLEY_NUMBER
 var volley_timer = VOLLEY_COOLDOWN
@@ -20,6 +20,7 @@ func physics_update(delta: float) -> void:
 	volley(delta)
 	
 	boss.velocity.y += boss.GRAVITY * delta
+	boss.velocity.x = move_toward(boss.velocity.x, 0, delta * boss.H_DECELERATION * boss.MOVE_SPEED)
 	boss.move_and_slide()
 
 func volley(delta):
@@ -31,7 +32,7 @@ func volley(delta):
 		summon_projectile(deg_to_rad(55), 500)
 		summon_projectile(deg_to_rad(75), 450)
 	if volley_number < 0:
-		transition.emit("MoveState")
+		transition.emit("porcupineHeal")
 	
 
 func summon_projectile(angle : float, speed = 400) -> void:

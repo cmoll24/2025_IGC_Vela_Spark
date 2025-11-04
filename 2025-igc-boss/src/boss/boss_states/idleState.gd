@@ -11,7 +11,7 @@ func enter(_arg):
 func physics_update(delta: float) -> void:
 	idle_duration -= delta
 	
-	if idle_duration < 0:
+	if idle_duration < 0 and boss.velocity.x < 1:
 		transition.emit("BarageAttack")
 	
 	boss.velocity.y += boss.GRAVITY * delta

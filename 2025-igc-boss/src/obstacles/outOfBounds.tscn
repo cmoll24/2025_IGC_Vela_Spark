@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chpu8dpd081yq"]
 
-[ext_resource type="Script" uid="uid://cf7g4d7c7lggl" path="res://src/obstacles/out_of_bounds.gd" id="1_eojr7"]
+[ext_resource type="Script" uid="uid://cf7g4d7c7lggl" path="res://src/obstacles/outOfBounds.gd" id="1_eojr7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r2x3k"]
 

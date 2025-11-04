@@ -5,23 +5,26 @@ extends CharacterBody2D
 @export var move_time : float = 3.0
 @export var speed : float = 200.0
 @export var activation_delay: float = 0.1
+@export var MAX_HEALTH = 1
 
 var direction = -1
 var timer = 0.0
 var active = false
 
-var health = 1
+var health = MAX_HEALTH
 
 var projectile
-@onready var level = get_tree().current_scene
 
-var cooldown = 5.0
+#var cooldown = 5.0
+
+var is_ridding = false
 
 func _ready() -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
-	move_and_slide()
+	if not is_ridding:
+		move_and_slide()
 	
 
 #func _process(delta: float) -> void:
@@ -35,16 +38,10 @@ func _physics_process(_delta: float) -> void:
 #	if cooldown <= 0:
 #		summon_projectile()
 #		cooldown = 5.0
-	
-	
-func summon_projectile() -> void:
-	var instance = projectile.instantiate()
-	instance.spawnPos = global_position
-	level.add_child(instance)
 
-
-func collide(_body: Node2D) -> void:
-	pass
+func collide(body: Node2D) -> void:
+	if body.is_in_group("obstacles"):
+		take_damage(MAX_HEALTH)
 	#if body is Player:
 	#	body.damage(self)
 

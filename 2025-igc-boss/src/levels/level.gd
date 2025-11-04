@@ -4,6 +4,7 @@ class_name Level
 @onready var player = $Player
 @onready var player_path = $Line2D
 @onready var projectile_tree = $ProjectileTree
+@onready var enemy_tree = $Enemies
 
 @export var level_name : String
 
@@ -11,7 +12,7 @@ func _process(_delta: float) -> void:
 	var current_player_pos = player.global_position
 	
 	player_path.add_point(current_player_pos)
-	if player_path.get_point_count() > 500:
+	if player_path.get_point_count() > 50:
 		player_path.remove_point(0)
 
 func get_player() -> Player:
@@ -19,3 +20,6 @@ func get_player() -> Player:
 
 func get_projectile_tree() -> Node2D:
 	return projectile_tree
+
+func get_enemy_tree() -> Node2D:
+	return enemy_tree

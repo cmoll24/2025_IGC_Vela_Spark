@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://gsv221h3cqya"]
+
+[ext_resource type="Script" uid="uid://b8ajhgr82btkh" path="res://src/obstacles/spikes.gd" id="1_q6euu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6euu"]
+size = Vector2(64, 64)
+
+[node name="Spikes" type="StaticBody2D" groups=["obstacles"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_q6euu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_q6euu")
+debug_color = Color(1, 0, 0.9333334, 0.5882353)
+
+[node name="TextureRect" type="ColorRect" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(1, 0.38, 0.38, 1)

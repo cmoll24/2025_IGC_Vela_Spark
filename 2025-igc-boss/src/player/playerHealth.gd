@@ -5,13 +5,14 @@ class_name PlayerHealth
 
 @export var player : Player
 @export var hitbox : Area2D
+@export var danger_detector : Area2D
 
 @export_category("Health variables")
 @export var MAX_HEALTH := 50
 var health : float = MAX_HEALTH
-var healthBarSegments = 5
 
 @export var INVINCIBILITY_DURATION : float = 1.0
+@export var DECAY_COEF := 1
 
 signal enemy_collide(body : Node2D)
 signal enemy_exit(body : Node2D)
@@ -29,7 +30,7 @@ func take_damage() -> void:
 		player.die()
 
 func _process(delta):
-	health = health - delta
+	health = health - DECAY_COEF * delta
 	if health <= 0:
 		player.die()
 	
@@ -59,8 +60,8 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 
 func is_safe() -> bool:
 	var danger_count = 0
-	for x in hitbox.get_overlapping_bodies():
-		if x is Enemy or x is Boss or x is Projectile:
+	for x in danger_detector.get_overlapping_bodies():
+		if x is Enemy or x is Boss or x is Projectile or x.is_in_group("obstacles"):
 			danger_count += 1
 	return danger_count == 0
 
