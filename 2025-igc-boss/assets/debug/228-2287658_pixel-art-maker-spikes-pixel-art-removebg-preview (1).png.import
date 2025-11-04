@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6t31ongxip75"
-path="res://.godot/imported/228-2287658_pixel-art-maker-spikes-pixel-art-removebg-preview (1).png-a7d0a4a42644ed3b969edfb6ff205ebc.ctex"
+path="res://.godot/imported/228-2287658_pixel-art-maker-spikes-pixel-art-removebg-preview (1).png-8fe30ea8c5c32f6fee0c7f10b3601992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/levels/228-2287658_pixel-art-maker-spikes-pixel-art-removebg-preview (1).png"
-dest_files=["res://.godot/imported/228-2287658_pixel-art-maker-spikes-pixel-art-removebg-preview (1).png-a7d0a4a42644ed3b969edfb6ff205ebc.ctex"]
+source_file="res://assets/debug/228-2287658_pixel-art-maker-spikes-pixel-art-removebg-preview (1).png"
+dest_files=["res://.godot/imported/228-2287658_pixel-art-maker-spikes-pixel-art-removebg-preview (1).png-8fe30ea8c5c32f6fee0c7f10b3601992.ctex"]
 
 [params]
 
