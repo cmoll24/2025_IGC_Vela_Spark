@@ -120,6 +120,6 @@ func _on_enemy_exit(_body: Node2D) -> void:
 		#	move_control.dash()
 
 func killed_enemy(_body: Node2D):
-	print('Enemy Slain')
+	#print('Enemy Slain')
 	health_control.heal(10)
 	#move_control.dash()

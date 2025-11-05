@@ -51,11 +51,13 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		die()
 
-func hit(attacker: Node2D) -> void:
+func hit(attacker: Player) -> void:
 	take_damage(1)
 	
 	if health <= 0:
 		attacker.killed_enemy(self)
 
 func die():
+	if is_ridding:
+		get_parent().kill_projectile()
 	queue_free()

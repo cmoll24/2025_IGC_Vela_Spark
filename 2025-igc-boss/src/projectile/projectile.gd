@@ -54,3 +54,6 @@ func pop_out_rider() -> void:
 	enemy_rider = null
 	
 	queue_free()
+
+func kill_projectile():
+	queue_free()

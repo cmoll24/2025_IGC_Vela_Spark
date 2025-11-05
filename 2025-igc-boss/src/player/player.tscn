@@ -240,7 +240,6 @@ scale = Vector2(0.16, 0.16)
 texture = ExtResource("9_cwolq")
 
 [node name="attack_look_ahead" type="Area2D" parent="flippable"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -250,7 +249,6 @@ shape = SubResource("RectangleShape2D_8ydov")
 debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 

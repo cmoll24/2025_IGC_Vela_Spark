@@ -112,11 +112,12 @@ func physics_update(delta: float) -> void:
 
 var is_controller_dashed_pressed = false
 func process_controller_dash():
-	if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
-		is_controller_dashed_pressed = true
-		dash_input()
-	elif Input.get_action_strength("controller_dash") < 0.1:
-		is_controller_dashed_pressed = false
+	if immobile_timer.is_stopped() and not is_knocked_back:
+		if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
+			is_controller_dashed_pressed = true
+			dash_input()
+		elif Input.get_action_strength("controller_dash") < 0.1:
+			is_controller_dashed_pressed = false
 
 func horizontal_movement(delta):
 	if is_knocked_back:
@@ -199,8 +200,10 @@ func continue_dash():
 	current_dash_speed = DASH_SPEED #* 3
 	player.velocity.y = 0
 	dash_duration.start()
-	get_player_direction()
-	dash_direction = direction_facing
+	#get_player_direction()
+	#dash_direction = direction_facing
+	
+	player.attack_control.try_dash_attack()
 
 func dash_attack() -> void:
 	has_dash = false
@@ -238,6 +241,7 @@ func end_dash_attack():
 	#end_dash()
 
 func apply_knockback(from_position: Vector2) -> void:
+	is_knocked_back = true
 	#knock player off the opposite direction
 	var direction_sign = sign(player.global_position.x - from_position.x)
 	direction_facing = -direction_sign
@@ -245,7 +249,6 @@ func apply_knockback(from_position: Vector2) -> void:
 	knockback_vector = k_vector
 	player.velocity = knockback_vector
 	#set timer
-	is_knocked_back = true
 	knockback_timer = knockback_duration
 
 func apply_immobility(time_amount : float):
