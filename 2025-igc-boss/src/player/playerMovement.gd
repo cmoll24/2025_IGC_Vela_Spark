@@ -222,7 +222,7 @@ func end_dash_attack():
 	player.health_control._on_invincibility_timer_timeout()
 	dash_attack_cooldown.stop()
 	#end_dash()
-	#player.attack_control.check_dash_attack()
+	player.attack_control.check_dash_attack()
 
 func apply_knockback(from_position: Vector2) -> void:
 	#knock player off the opposite direction

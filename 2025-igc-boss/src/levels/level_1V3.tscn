@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dp3i36qxl3hlk"]
+[gd_scene load_steps=18 format=4 uid="uid://dp3i36qxl3hlk"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_lumac"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_yy8bf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="6_o5ief"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="7_lbf1h"]
 [ext_resource type="PackedScene" uid="uid://dqcqmcwqjtn46" path="res://src/enemies/enemyCharge/enemeyCharge.tscn" id="7_ugt7k"]
+[ext_resource type="PackedScene" uid="uid://bxvfco2cg1dqw" path="res://src/enemies/enemyTurret/enemyTurret.tscn" id="9_4hnis"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="9_42ayu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wyrbo"]
@@ -80,6 +81,18 @@ position = Vector2(4758, -353)
 
 [node name="EnemyCharge" parent="Enemies" instance=ExtResource("7_ugt7k")]
 position = Vector2(770, 297)
+
+[node name="EnemyTurret" parent="Enemies" instance=ExtResource("9_4hnis")]
+position = Vector2(1050, -300)
+
+[node name="EnemyTurret2" parent="Enemies" instance=ExtResource("9_4hnis")]
+position = Vector2(653, -300)
+
+[node name="EnemyTurret3" parent="Enemies" instance=ExtResource("9_4hnis")]
+position = Vector2(259, -293)
+
+[node name="EnemyTurret4" parent="Enemies" instance=ExtResource("9_4hnis")]
+position = Vector2(-169, -348)
 
 [node name="Player" parent="." instance=ExtResource("6_o5ief")]
 position = Vector2(-112, 793)

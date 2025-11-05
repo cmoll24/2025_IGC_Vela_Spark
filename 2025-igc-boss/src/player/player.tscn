@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=23 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
 [ext_resource type="Texture2D" uid="uid://bvfob1acpo2vg" path="res://assets/character/Jump1.png" id="2_5f2sf"]
@@ -108,6 +108,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ydov"]
+size = Vector2(182, 157)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
 size = Vector2(78, 157)
 
@@ -200,6 +203,15 @@ modulate = Color(1, 0, 0, 1)
 position = Vector2(2.9999998, -20)
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("9_cwolq")
+
+[node name="attack_look_ahead" type="Area2D" parent="flippable"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/attack_look_ahead"]
+position = Vector2(83, -28.5)
+shape = SubResource("RectangleShape2D_8ydov")
+debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
 collision_layer = 0
