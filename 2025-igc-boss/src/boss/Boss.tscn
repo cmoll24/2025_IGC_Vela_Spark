@@ -87,6 +87,14 @@ offset_bottom = -5.0
 scale = Vector2(2, 2)
 text = "Current State"
 
+[node name="Health" type="Label" parent="."]
+offset_left = -104.0
+offset_top = 12.0
+offset_bottom = 35.0
+scale = Vector2(2, 2)
+text = "Health"
+horizontal_alignment = 1
+
 [node name="RightWallCheck" type="RayCast2D" parent="."]
 position = Vector2(0, 152)
 target_position = Vector2(400, 0)

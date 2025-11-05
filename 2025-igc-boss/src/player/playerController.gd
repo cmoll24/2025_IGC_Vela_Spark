@@ -10,12 +10,31 @@ class_name Player
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite = $flippable/PlayerSprite
 
+@onready var ground_collision = $GroundCollision
+@onready var air_collision = $AirCollision
+
+@onready var ground_detector_right = $GroundDetectorRight
+@onready var ground_detector_left = $GroundDetectorLeft
+@onready var ground_detector_long_right = $GroundDetectorLongRight
+@onready var ground_detector_long_left = $GroundDetectorLongLeft
+
 var is_dead = false
 
 func _ready():
 	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
+	if ground_detector_right.is_colliding() or ground_detector_left.is_colliding():
+		var collision_length = min(ground_detector_right.global_position.distance_to(ground_detector_right.get_collision_point()),
+									ground_detector_left.global_position.distance_to(ground_detector_left.get_collision_point()),)
+		velocity.y = clamp(-10_000/collision_length, -500, -50)
+	elif ground_detector_long_right.is_colliding() and ground_detector_long_left.is_colliding():
+		ground_collision.disabled = false
+		air_collision.disabled = true
+	else:
+		ground_collision.disabled = true
+		air_collision.disabled = false
+	
 	move_control.physics_update(delta)
 	
 	debug_animation()
@@ -35,7 +54,9 @@ func debug_animation():
 	elif move_control.air_jump_amount == 0:
 		$ColorRect.color = Color.DARK_GREEN
 	
-	if move_control.is_big_jump_peak():
+	if move_control.is_knocked_back:
+		animated_sprite.play("hit")
+	elif move_control.is_big_jump_peak():
 		animated_sprite.play("jump2")
 	elif velocity.y > 0:
 		animated_sprite.play("fall")

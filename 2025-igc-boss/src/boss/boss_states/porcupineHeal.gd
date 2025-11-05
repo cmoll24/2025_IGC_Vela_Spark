@@ -2,7 +2,7 @@ extends BossState
 class_name PorcupineHeal
 @export var boss : Boss
 
-@export var PORCUPINE_DURATION = 5
+@export var PORCUPINE_DURATION = 3
 
 var porcupine_timer = PORCUPINE_DURATION
 
@@ -11,8 +11,8 @@ var static_enemy = load("res://src/enemies/enemyStatic/enemeyStatic.tscn")
   
 func enter(_arg):
 	porcupine_timer = PORCUPINE_DURATION
-	summon_projectile(deg_to_rad(50))
-	summon_projectile(deg_to_rad(130))
+	summon_projectile(deg_to_rad(20))#deg_to_rad(50))
+	summon_projectile(deg_to_rad(160))#deg_to_rad(130))
 
 func physics_update(delta: float) -> void:
 	porcupine_timer -= delta
@@ -28,8 +28,8 @@ func summon_projectile(angle : float) -> void:
 	instance.spawnPos = boss.global_position
 	instance.angle = angle
 	instance.SPEED = 500
-	instance.TIME_UNTIL_SWITCH = 0.5
-	instance.FREEZE_TIME = 1
-	instance.TIME_UNTIL_DESPAWN = PORCUPINE_DURATION - 1.5
+	instance.TIME_UNTIL_SWITCH = 0.3
+	instance.FREEZE_TIME = 0.7
+	instance.TIME_UNTIL_DESPAWN = PORCUPINE_DURATION - 1
 	Global.get_projectile_tree().add_child(instance)
 	instance.add_rider(static_enemy)

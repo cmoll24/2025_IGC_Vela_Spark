@@ -16,7 +16,7 @@ class_name Boss
 @export var boss_positions : Array[Vector2]
 var current_pos_index : int = 0
 
-var health : int = 16
+var health : int = 25
 
 func get_next_boss_position():
 	return boss_positions[current_pos_index]
@@ -30,6 +30,7 @@ func switch_to_random_state():
 	state_machine.transition_to(state_machine.states.keys().pick_random())
 
 func _process(_delta: float) -> void:
+	$Health.text = "Health: " + str(health)
 	if right_wall_check.is_colliding() or right_wall_check_2.is_colliding():
 		state_machine.transition_to("MoveState", -1)
 	elif left_wall_check.is_colliding() or left_wall_check_2.is_colliding():

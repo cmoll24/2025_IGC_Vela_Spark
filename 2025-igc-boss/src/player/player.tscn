@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=25 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
 [ext_resource type="Texture2D" uid="uid://bvfob1acpo2vg" path="res://assets/character/Jump1.png" id="2_5f2sf"]
@@ -7,11 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://quo4cjhqfu2a" path="res://src/player/playerAttack.tscn" id="5_5f2sf"]
 [ext_resource type="Texture2D" uid="uid://btyf7jjifl8q7" path="res://assets/character/Candle_Character_Static 2.png" id="5_l271a"]
 [ext_resource type="Texture2D" uid="uid://b84o3jcv3xoub" path="res://assets/character/Candle_Character_Static.png" id="6_8ydov"]
+[ext_resource type="Texture2D" uid="uid://dfj0l6n30o4cl" path="res://assets/character/Taking_Damage.png" id="6_ylhto"]
 [ext_resource type="Texture2D" uid="uid://6ov3g338cssa" path="res://assets/character/Jump2.png" id="8_ylhto"]
 [ext_resource type="Texture2D" uid="uid://b6uqqs5focbsv" path="res://assets/character/Static.png" id="9_cwolq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
 size = Vector2(28, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylhto"]
+size = Vector2(28, 126)
 
 [sub_resource type="Animation" id="Animation_5f2sf"]
 resource_name = "Fall"
@@ -85,6 +89,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_ylhto")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_8ydov")
 }],
 "loop": true,
@@ -109,7 +121,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ydov"]
-size = Vector2(182, 157)
+size = Vector2(290, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
 size = Vector2(78, 157)
@@ -118,9 +130,14 @@ size = Vector2(78, 157)
 collision_layer = 2
 script = ExtResource("1_4anbu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="GroundCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_rxibo")
+
+[node name="AirCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_ylhto")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -143,7 +160,6 @@ offset_bottom = 51.0
 color = Color(1, 0, 0, 1)
 
 [node name="Debug_Label" type="Label" parent="."]
-visible = false
 offset_left = -33.0
 offset_top = -190.0
 offset_right = 17.0
@@ -152,7 +168,7 @@ text = "Debug"
 
 [node name="PlayerMovement" parent="." node_paths=PackedStringArray("player", "ground_detector", "air_jump_detector", "debug_label") instance=ExtResource("3_244u8")]
 player = NodePath("..")
-ground_detector = NodePath("../GroundDetector")
+ground_detector = NodePath("../SafeGroundDetector")
 air_jump_detector = NodePath("../AirJumpDetector")
 debug_label = NodePath("../Debug_Label")
 
@@ -161,11 +177,13 @@ player = NodePath("..")
 hitbox = NodePath("../player_hitbox")
 danger_detector = NodePath("../danger_detector")
 
-[node name="PlayerAttack" parent="." node_paths=PackedStringArray("player", "attackbox") instance=ExtResource("5_5f2sf")]
+[node name="PlayerAttack" parent="." node_paths=PackedStringArray("player", "attackbox", "attack_look_ahead") instance=ExtResource("5_5f2sf")]
 player = NodePath("..")
 attackbox = NodePath("../flippable/player_attackbox")
+attack_look_ahead = NodePath("../flippable/attack_look_ahead")
 
 [node name="player_hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 12
 
@@ -175,6 +193,7 @@ shape = SubResource("RectangleShape2D_244u8")
 debug_color = Color(0.7026044, 0.2792841, 1, 0.41960785)
 
 [node name="danger_detector" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -10)
 collision_layer = 0
 collision_mask = 12
@@ -183,7 +202,23 @@ collision_mask = 12
 shape = SubResource("RectangleShape2D_l271a")
 debug_color = Color(0.8948004, 0.00023064256, 0.7885427, 0.41960785)
 
-[node name="GroundDetector" type="RayCast2D" parent="."]
+[node name="SafeGroundDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 100)
+
+[node name="GroundDetectorRight" type="RayCast2D" parent="."]
+position = Vector2(13, 0)
+target_position = Vector2(0, 70)
+
+[node name="GroundDetectorLeft" type="RayCast2D" parent="."]
+position = Vector2(-13, 0)
+target_position = Vector2(0, 70)
+
+[node name="GroundDetectorLongRight" type="RayCast2D" parent="."]
+position = Vector2(11, 0)
+target_position = Vector2(0, 100)
+
+[node name="GroundDetectorLongLeft" type="RayCast2D" parent="."]
+position = Vector2(-11, 0)
 target_position = Vector2(0, 100)
 
 [node name="AirJumpDetector" type="RayCast2D" parent="."]
@@ -195,7 +230,7 @@ target_position = Vector2(0, 160)
 position = Vector2(9, -20)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_2smqc")
-animation = &"idle"
+animation = &"jump1"
 
 [node name="Sprite2D2" type="Sprite2D" parent="flippable"]
 visible = false
@@ -205,15 +240,17 @@ scale = Vector2(0.16, 0.16)
 texture = ExtResource("9_cwolq")
 
 [node name="attack_look_ahead" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/attack_look_ahead"]
-position = Vector2(83, -28.5)
+position = Vector2(137, -28.5)
 shape = SubResource("RectangleShape2D_8ydov")
 debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 

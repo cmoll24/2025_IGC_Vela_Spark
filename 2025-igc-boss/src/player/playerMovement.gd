@@ -136,6 +136,9 @@ func dash_movement(_delta):
 	
 	player.velocity.x = current_dash_speed * dash_direction
 	player.velocity.y = 0
+	
+	if dash_attack_state:
+		player.attack_control.check_end_dash()
 
 func knockback_process(delta):
 	#replace the normal velocity to one that's determind by knockback_vector
@@ -188,7 +191,16 @@ func dash() -> void:
 	dash_direction = direction_facing
 	dash_turn_around_timer.start()
 	
-	player.attack_control.check_dash_attack()
+	player.attack_control.try_dash_attack()
+
+func continue_dash():
+	has_dash = false
+	dash_state = true
+	current_dash_speed = DASH_SPEED #* 3
+	player.velocity.y = 0
+	dash_duration.start()
+	get_player_direction()
+	dash_direction = direction_facing
 
 func dash_attack() -> void:
 	has_dash = false
@@ -214,15 +226,16 @@ func end_dash():
 func end_dash_attack():
 	has_dash = true
 	air_jump_amount = MAX_AIR_JUMP_AMOUNT
-	
-	player.velocity.y = -JUMP_SPEED * 0.3
-	player.velocity.x = dash_direction * DASH_SPEED
 	dash_state = false
 	dash_attack_state = false
-	player.health_control._on_invincibility_timer_timeout()
 	dash_attack_cooldown.stop()
+	
+	if not player.attack_control.chain_dash_attack():
+		player.velocity.y = -JUMP_SPEED * 0.3
+		player.velocity.x = dash_direction * DASH_SPEED
+		player.health_control._on_invincibility_timer_timeout()
+		player.attack_control.reset_dash()
 	#end_dash()
-	player.attack_control.check_dash_attack()
 
 func apply_knockback(from_position: Vector2) -> void:
 	#knock player off the opposite direction
