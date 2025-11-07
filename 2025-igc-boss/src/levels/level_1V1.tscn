@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=4 uid="uid://k2nblcpnt072"]
+[gd_scene load_steps=17 format=4 uid="uid://k2nblcpnt072"]
 
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="1_3o7sa"]
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_ih7hf"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="1_wyrbo"]
 [ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_juu1d"]
 [ext_resource type="PackedScene" uid="uid://bp07skrp1lpff" path="res://src/enemies/enemyLaser/enemeyLaser.tscn" id="5_ou3gi"]
-[ext_resource type="PackedScene" uid="uid://cdiurkf4830i2" path="res://src/boss/boss.tscn" id="6_bn18y"]
+[ext_resource type="PackedScene" uid="uid://cdiurkf4830i2" path="res://src/boss/Boss.tscn" id="6_bn18y"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_ou3gi"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="7_fcumj"]
 [ext_resource type="PackedScene" uid="uid://ch7qi2ugoypm2" path="res://src/projectile/fallProjectile.tscn" id="8_ou3gi"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="10_fcumj"]
+[ext_resource type="PackedScene" uid="uid://b6qyc1m5puwrt" path="res://src/Global/Level Transition.tscn" id="11_6wgh1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wyrbo"]
 normal = Vector2(1, 0)
@@ -104,3 +105,6 @@ position = Vector2(437, 112)
 position = Vector2(0, 1264)
 
 [node name="ProjectileTree" type="Node2D" parent="."]
+
+[node name="Area2D" parent="." instance=ExtResource("11_6wgh1")]
+position = Vector2(383, 797)

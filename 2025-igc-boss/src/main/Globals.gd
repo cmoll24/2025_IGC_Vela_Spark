@@ -5,6 +5,8 @@ var current_level_index
 
 var game_scene : Game
 
+var player_health 
+
 func get_current_level_index():
 	return current_level_index
 

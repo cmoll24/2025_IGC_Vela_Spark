@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6qyc1m5puwrt"]
+
+[ext_resource type="Script" uid="uid://bh6cldp7mklsf" path="res://Level Transition.gd" id="1_11qy1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7brb"]
+radius = 250.0
+height = 500.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_11qy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j7brb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
