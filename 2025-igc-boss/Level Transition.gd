@@ -9,5 +9,7 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		Global.player_health = body.health_control.health
+		
 		Global.get_game_scene().load_next_level()
+		
 		
