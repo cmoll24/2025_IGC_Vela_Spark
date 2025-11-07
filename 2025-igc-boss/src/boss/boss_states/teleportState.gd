@@ -26,6 +26,7 @@ func teleport():
 	var trail : BossTrail = boss_trail.instantiate()
 	Global.get_game_scene().current_level.add_child(trail)
 	trail.draw_trail(initial_location, target_location)
+	boss.respawn_minions()
 	
 	await get_tree().create_timer(1).timeout
 	

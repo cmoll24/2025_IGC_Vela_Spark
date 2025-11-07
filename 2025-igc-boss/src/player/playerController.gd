@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		var collision_length = min(ground_detector_right.global_position.distance_to(ground_detector_right.get_collision_point()),
 									ground_detector_left.global_position.distance_to(ground_detector_left.get_collision_point()),)
 		velocity.y = clamp(-10_000/collision_length, -500, -50)
-	elif ground_detector_long_right.is_colliding() and ground_detector_long_left.is_colliding():
+	elif ground_detector_long_right.is_colliding() or ground_detector_long_left.is_colliding():
 		ground_collision.disabled = false
 		air_collision.disabled = true
 	else:

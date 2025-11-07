@@ -2,7 +2,7 @@ extends BossState
 class_name PorcupineHeal
 @export var boss : Boss
 
-@export var PORCUPINE_DURATION = 3
+@export var PORCUPINE_DURATION = 4
 
 var porcupine_timer = PORCUPINE_DURATION
 
@@ -29,7 +29,7 @@ func summon_projectile(angle : float) -> void:
 	instance.angle = angle
 	instance.SPEED = 500
 	instance.TIME_UNTIL_SWITCH = 0.3
-	instance.FREEZE_TIME = 0.7
+	instance.FREEZE_TIME = 1
 	instance.TIME_UNTIL_DESPAWN = PORCUPINE_DURATION - 1
 	Global.get_projectile_tree().add_child(instance)
 	instance.add_rider(static_enemy)
