@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ca3jni58ttg6"]
+
+[node name="PlayerCamera" type="Camera2D"]
+limit_bottom = 1080
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0

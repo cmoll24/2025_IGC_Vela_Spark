@@ -56,7 +56,7 @@ func _ready() -> void:
 	last_ground_location = player.global_position
 
 func get_player_direction():
-	if immobile_timer.is_stopped() and not is_knocked_back:
+	if immobile_timer.is_stopped() and not is_knocked_back and not player.is_dead:
 		move_input = sign(Input.get_axis("move_left", "move_right"))
 	else:
 		move_input = 0
@@ -94,6 +94,7 @@ func physics_update(delta: float) -> void:
 	
 	if is_touching_floor:
 		has_dash = true
+		air_jump_amount = MAX_AIR_JUMP_AMOUNT
 	
 	player.velocity.y = min(player.velocity.y, MAX_FALL_SPEED)
 	debug_label.text = str(player.velocity.round())
@@ -112,7 +113,7 @@ func physics_update(delta: float) -> void:
 
 var is_controller_dashed_pressed = false
 func process_controller_dash():
-	if immobile_timer.is_stopped() and not is_knocked_back:
+	if immobile_timer.is_stopped() and not is_knocked_back  and not player.is_dead:
 		if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
 			is_controller_dashed_pressed = true
 			dash_input()
@@ -153,7 +154,7 @@ func knockback_process(delta):
 		is_knocked_back = false
 
 func jump(_delta):
-	if can_player_jump():
+	if can_player_jump() and Input.is_action_pressed("jump"):
 		air_jump_amount = MAX_AIR_JUMP_AMOUNT
 		if is_jump_just_pressed():
 			coyote_timer.stop()
@@ -213,6 +214,7 @@ func dash_attack() -> void:
 	dash_direction = direction_facing
 	player.velocity.y = 0
 	player.health_control.apply_invincibility(0.2)
+	player.fire_ball_active = true
 
 func _on_dash_duration_timeout() -> void:
 	if dash_state:
@@ -257,10 +259,16 @@ func apply_immobility(time_amount : float):
 	dash_attack_state = false
 
 func _input(event: InputEvent) -> void:
-	if immobile_timer.is_stopped() and not is_knocked_back:
-		if event.is_action_pressed("jump") and not dash_attack_state:
+	if player.is_dead:
+		return
+	
+	if event.is_action_pressed("jump"): # not dash_attack_state:
 			jump_grace_timer.start()
-		elif event.is_action_pressed("dash"):
+
+	if immobile_timer.is_stopped() and not is_knocked_back:
+		#if event.is_action_pressed("jump"): # not dash_attack_state:
+		#	jump_grace_timer.start()
+		if event.is_action_pressed("dash"):
 			dash_input()
 			
 func dash_input():
@@ -269,3 +277,6 @@ func dash_input():
 		
 func can_dash():
 	return has_dash and not dash_state and dash_attack_cooldown.is_stopped()
+
+func is_dashing():
+	return dash_state or dash_attack_state

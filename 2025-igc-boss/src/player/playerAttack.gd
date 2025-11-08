@@ -9,7 +9,6 @@ class_name PlayerAttack
 var enemies_attacked_during_dash : Array = []
 
 func _ready() -> void:
-	#Engine.time_scale = 0.01
 	attackbox.body_entered.connect(_on_player_attackbox_body_entered)
 	attackbox.body_exited.connect(_on_player_attackbox_body_exited)
 	

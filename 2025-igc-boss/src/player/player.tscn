@@ -1,15 +1,32 @@
-[gd_scene load_steps=25 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=44 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
-[ext_resource type="Texture2D" uid="uid://bvfob1acpo2vg" path="res://assets/character/Jump1.png" id="2_5f2sf"]
 [ext_resource type="PackedScene" uid="uid://dkjqxy1egu868" path="res://src/player/playerMovement.tscn" id="3_244u8"]
 [ext_resource type="PackedScene" uid="uid://d0m2s3pjfjhlx" path="res://src/player/playerHealth.tscn" id="4_5f2sf"]
 [ext_resource type="PackedScene" uid="uid://quo4cjhqfu2a" path="res://src/player/playerAttack.tscn" id="5_5f2sf"]
+[ext_resource type="Texture2D" uid="uid://dcd07irloqprk" path="res://assets/character/Dash/Candle_Character_Static-1.png" id="5_hja65"]
 [ext_resource type="Texture2D" uid="uid://btyf7jjifl8q7" path="res://assets/character/Candle_Character_Static 2.png" id="5_l271a"]
+[ext_resource type="Texture2D" uid="uid://syxf1qjn81m6" path="res://assets/character/FireBall/Fireball-1.png" id="5_vwi60"]
+[ext_resource type="Texture2D" uid="uid://bopyl34ipdwqq" path="res://assets/character/Dash/Candle_Character_Static-2.png" id="6_5shm8"]
 [ext_resource type="Texture2D" uid="uid://b84o3jcv3xoub" path="res://assets/character/Candle_Character_Static.png" id="6_8ydov"]
+[ext_resource type="Texture2D" uid="uid://cxcu0hjyjb46x" path="res://assets/character/FireBall/Fireball-2.png" id="6_o04tx"]
 [ext_resource type="Texture2D" uid="uid://dfj0l6n30o4cl" path="res://assets/character/Taking_Damage.png" id="6_ylhto"]
-[ext_resource type="Texture2D" uid="uid://6ov3g338cssa" path="res://assets/character/Jump2.png" id="8_ylhto"]
-[ext_resource type="Texture2D" uid="uid://b6uqqs5focbsv" path="res://assets/character/Static.png" id="9_cwolq"]
+[ext_resource type="Texture2D" uid="uid://c4ud2briiejms" path="res://assets/character/Dash/Candle_Character_Static-3.png" id="7_5efpn"]
+[ext_resource type="Texture2D" uid="uid://dplhi2gn2b1ea" path="res://assets/character/FireBall/Fireball-3.png" id="7_j2873"]
+[ext_resource type="Texture2D" uid="uid://bvfob1acpo2vg" path="res://assets/character/Jump/Jump1.png" id="11_hja65"]
+[ext_resource type="Texture2D" uid="uid://6ov3g338cssa" path="res://assets/character/Jump/Jump2.png" id="12_5shm8"]
+[ext_resource type="Texture2D" uid="uid://dpun1mhay3b8j" path="res://assets/character/KilledDeath/Death2-2.png" id="13_4uy46"]
+[ext_resource type="Texture2D" uid="uid://7bc1s42qnxgn" path="res://assets/character/KilledDeath/Death2-1.png" id="14_k60ra"]
+[ext_resource type="Texture2D" uid="uid://cohm0cx4s7cqq" path="res://assets/character/Run/Run1.png" id="15_a4vah"]
+[ext_resource type="Texture2D" uid="uid://cf15m0s7uhwsk" path="res://assets/character/Run/Run2.png" id="16_vwi60"]
+[ext_resource type="Texture2D" uid="uid://b4palt102w4hi" path="res://assets/character/Run/Run3.png" id="17_o04tx"]
+[ext_resource type="Texture2D" uid="uid://c4mde33nqxxab" path="res://assets/character/Run/Run4.png" id="18_j2873"]
+[ext_resource type="Texture2D" uid="uid://cmselcwwck6rc" path="res://assets/character/TimeDeath/Death-1.png" id="19_dpt0q"]
+[ext_resource type="Texture2D" uid="uid://c8yfxx2c45wfi" path="res://assets/character/TimeDeath/Death-2.png" id="20_wcxbk"]
+[ext_resource type="Texture2D" uid="uid://dc6r5lh5rnf7f" path="res://assets/character/TimeDeath/Death-3.png" id="21_p6grl"]
+[ext_resource type="Texture2D" uid="uid://vv67027h1xcy" path="res://assets/character/FireAttack/Fireball-1.png" id="25_dpt0q"]
+[ext_resource type="Texture2D" uid="uid://bekaq8q8amgmt" path="res://assets/character/FireAttack/Fireball-2.png" id="26_wcxbk"]
+[ext_resource type="Texture2D" uid="uid://jltmwajt65og" path="res://assets/character/FireAttack/Fireball-3.png" id="27_p6grl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
 size = Vector2(28, 178)
@@ -26,8 +43,8 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("flippable/PlayerSprite:modulate")
-tracks/0/interp = 0
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.15, 0.25, 0.35, 0.44, 0.51),
@@ -77,8 +94,39 @@ size = Vector2(31, 124)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l271a"]
 size = Vector2(192, 230)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7e1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vwi60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o04tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j2873")
+}],
+"loop": true,
+"name": &"fireball",
+"speed": 12.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2smqc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hja65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5shm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5efpn")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_l271a")
@@ -105,7 +153,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5f2sf")
+"texture": ExtResource("11_hja65")
 }],
 "loop": true,
 "name": &"jump1",
@@ -113,11 +161,70 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_ylhto")
+"texture": ExtResource("12_5shm8")
 }],
 "loop": true,
 "name": &"jump2",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_4uy46")
+}, {
+"duration": 5.0,
+"texture": ExtResource("14_k60ra")
+}],
+"loop": false,
+"name": &"killed_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_a4vah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vwi60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_o04tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_j2873")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_dpt0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wcxbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_p6grl")
+}],
+"loop": false,
+"name": &"time_death",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmpm3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_dpt0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_wcxbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_p6grl")
+}],
+"loop": true,
+"name": &"fire_attack",
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ydov"]
@@ -145,6 +252,7 @@ libraries = {
 }
 
 [node name="DashIndicator" type="ColorRect" parent="."]
+visible = false
 offset_left = -23.0
 offset_top = -117.0
 offset_right = 22.0
@@ -225,21 +333,33 @@ target_position = Vector2(0, 100)
 target_position = Vector2(0, 160)
 
 [node name="flippable" type="Node2D" parent="."]
+modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
+
+[node name="FireBallSprite" type="AnimatedSprite2D" parent="flippable"]
+position = Vector2(8, -14)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_e7e1q")
+animation = &"fireball"
+autoplay = "fireball"
+frame_progress = 0.24261388
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="flippable"]
 position = Vector2(9, -20)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_2smqc")
-animation = &"jump1"
+animation = &"idle"
+frame_progress = 0.33834195
 
-[node name="Sprite2D2" type="Sprite2D" parent="flippable"]
+[node name="FireSprite" type="AnimatedSprite2D" parent="flippable"]
 visible = false
-modulate = Color(1, 0, 0, 1)
-position = Vector2(2.9999998, -20)
-scale = Vector2(0.16, 0.16)
-texture = ExtResource("9_cwolq")
+position = Vector2(10, -14)
+scale = Vector2(0.266333, 0.2)
+sprite_frames = SubResource("SpriteFrames_xmpm3")
+animation = &"fire_attack"
+frame_progress = 0.65446454
 
 [node name="attack_look_ahead" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -249,6 +369,7 @@ shape = SubResource("RectangleShape2D_8ydov")
 debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 

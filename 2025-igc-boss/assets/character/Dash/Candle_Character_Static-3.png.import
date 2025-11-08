@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvfob1acpo2vg"
-path="res://.godot/imported/Jump1.png-5f94c355901019a06c0f949734a93811.ctex"
+uid="uid://c4ud2briiejms"
+path="res://.godot/imported/Candle_Character_Static-3.png-a5ed69b48e167f5ec1a237c192f4a146.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/Jump1.png"
-dest_files=["res://.godot/imported/Jump1.png-5f94c355901019a06c0f949734a93811.ctex"]
+source_file="res://assets/character/Dash/Candle_Character_Static-3.png"
+dest_files=["res://.godot/imported/Candle_Character_Static-3.png-a5ed69b48e167f5ec1a237c192f4a146.ctex"]
 
 [params]
 

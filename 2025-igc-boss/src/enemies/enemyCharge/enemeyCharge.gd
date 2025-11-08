@@ -16,6 +16,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	flippable.scale.x = direction
 	
+	if not charging:
+		direction = sign(Global.get_player().global_position.x - global_position.x)
+	
 	if player_detector.is_colliding():
 		start_charge()
 	
@@ -26,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		if charge_timer < 0:
 			charging = false
 			velocity.x = 0
-			direction = -direction
+			#direction = -direction
 	
 	super._physics_process(delta)
 

@@ -9,6 +9,7 @@ class_name Player
 
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite = $flippable/PlayerSprite
+@onready var fireball_sprite = $flippable/FireBallSprite
 
 @onready var ground_collision = $GroundCollision
 @onready var air_collision = $AirCollision
@@ -19,15 +20,33 @@ class_name Player
 @onready var ground_detector_long_left = $GroundDetectorLongLeft
 
 var is_dead = false
+var cause_of_death : String
+
+var fire_ball_active = false
 
 func _ready():
+	#Engine.time_scale = 0.3
 	add_to_group("player")
+	fireball_sprite.modulate = Color(1,1,1,0)
 
 func _physics_process(delta: float) -> void:
-	if ground_detector_right.is_colliding() or ground_detector_left.is_colliding():
-		var collision_length = min(ground_detector_right.global_position.distance_to(ground_detector_right.get_collision_point()),
-									ground_detector_left.global_position.distance_to(ground_detector_left.get_collision_point()),)
-		velocity.y = clamp(-10_000/collision_length, -500, -50)
+	if is_dead:
+		ground_collision.disabled = false
+		air_collision.disabled = false
+	elif ground_detector_right.is_colliding() or ground_detector_left.is_colliding():
+		var collision_length = 0
+		if  ground_detector_right.is_colliding():
+			collision_length = (ground_detector_right.target_position + global_position).distance_to(ground_detector_right.get_collision_point())
+		if ground_detector_left.is_colliding():
+			var left_collision_length = (ground_detector_left.global_position + global_position).distance_to(ground_detector_left.get_collision_point())
+			if collision_length < left_collision_length:
+				left_collision_length = collision_length
+		#if collision_length < 20:
+		position.y -= collision_length
+		velocity.y = -10
+		#else:
+		#	print( clamp(-collision_length, -500, -50))
+		#	velocity.y = clamp(-collision_length, -500, -50)
 	elif ground_detector_long_right.is_colliding() or ground_detector_long_left.is_colliding():
 		ground_collision.disabled = false
 		air_collision.disabled = true
@@ -37,13 +56,29 @@ func _physics_process(delta: float) -> void:
 	
 	move_control.physics_update(delta)
 	
+	if fire_ball_active:
+		if abs(velocity.x) > move_control.MOVE_SPEED:
+			var alpha = (abs(velocity.x) - move_control.MOVE_SPEED) / (move_control.DASH_SPEED - move_control.MOVE_SPEED)
+			alpha = clampf(2 * alpha, 0, 1)
+			fireball_sprite.modulate = Color(1,1,1,alpha)
+		else:
+			fireball_sprite.modulate = Color(1,1,1,0)
+			fire_ball_active = false
+	
 	debug_animation()
 
 func _process(_delta: float) -> void:
-	$DashIndicator.visible = move_control.can_dash()
+	if not move_control.can_dash() and not move_control.is_dashing():
+		flip_node.modulate = Color.GRAY
+	else:
+		flip_node.modulate = Color(1.164, 1.164, 1.164)
+	#$DashIndicator.visible = move_control.can_dash()
 
 func debug_animation():
-	flip_node.scale.x = move_control.direction_facing
+	if move_control.is_dashing():
+		flip_node.scale.x = move_control.dash_direction
+	else:
+		flip_node.scale.x = move_control.direction_facing
 	
 	if move_control.dash_attack_state:
 		$ColorRect.color = Color.PURPLE
@@ -54,19 +89,31 @@ func debug_animation():
 	elif move_control.air_jump_amount == 0:
 		$ColorRect.color = Color.DARK_GREEN
 	
-	if move_control.is_knocked_back:
-		animated_sprite.play("hit")
+	if is_dead:
+		if cause_of_death == "Time":
+			play_animation("time_death")
+		else:
+			play_animation("killed_death")
+	elif move_control.is_knocked_back:
+		play_animation("hit")
+	elif move_control.dash_state or move_control.dash_attack_state:
+		play_animation("dash")
+	elif (ground_detector_right.is_colliding() or ground_detector_left.is_colliding() or is_on_floor()) and velocity.x != 0:
+		play_animation("run")
 	elif move_control.is_big_jump_peak():
-		animated_sprite.play("jump2")
+		play_animation("jump2")
 	elif velocity.y > 0:
-		animated_sprite.play("fall")
+		play_animation("fall")
 	elif velocity.y < 0:
-		animated_sprite.play("jump1")
+		play_animation("jump1")
 	elif velocity.x == 0:
-		animated_sprite.play("idle")
+		play_animation("idle")
 	else:
-		animated_sprite.play("idle")
+		play_animation("run")
 		
+func play_animation(anim_name : String):
+	if animated_sprite.animation != anim_name:
+		animated_sprite.play(anim_name)
 
 func hit(attacker: Node2D) -> void:
 	health_control.hit(attacker)
@@ -74,9 +121,15 @@ func hit(attacker: Node2D) -> void:
 #func attack():
 #	attack_control.attack()
 
-func die():
+func die(cause : String = "Attack"):
+	if is_dead:
+		return
 	print("player died")
+	cause_of_death = cause
 	is_dead = true
+	
+	await animated_sprite.animation_finished
+	
 	queue_free()
 	get_tree().reload_current_scene()
 

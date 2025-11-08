@@ -17,3 +17,5 @@ func _ready() -> void:
 	level_container.add_child(current_level)
 	
 	hud.setup()
+	
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
