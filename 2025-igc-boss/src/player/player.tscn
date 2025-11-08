@@ -231,7 +231,7 @@ animations = [{
 size = Vector2(290, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
-size = Vector2(78, 157)
+size = Vector2(106, 157)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -341,14 +341,14 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_e7e1q")
 animation = &"fireball"
 autoplay = "fireball"
-frame_progress = 0.24261388
+frame = 2
+frame_progress = 0.013207229
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="flippable"]
 position = Vector2(9, -20)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_2smqc")
 animation = &"idle"
-frame_progress = 0.33834195
 
 [node name="FireSprite" type="AnimatedSprite2D" parent="flippable"]
 visible = false
@@ -356,7 +356,8 @@ position = Vector2(10, -14)
 scale = Vector2(0.266333, 0.2)
 sprite_frames = SubResource("SpriteFrames_xmpm3")
 animation = &"fire_attack"
-frame_progress = 0.65446454
+frame = 2
+frame_progress = 0.3915347
 
 [node name="attack_look_ahead" type="Area2D" parent="flippable"]
 visible = false
@@ -369,12 +370,11 @@ shape = SubResource("RectangleShape2D_8ydov")
 debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/player_attackbox"]
-position = Vector2(31, -28.5)
+position = Vector2(45, -28.5)
 shape = SubResource("RectangleShape2D_jiejy")
 debug_color = Color(0.99947137, 0, 0.1284638, 0.41960785)
 

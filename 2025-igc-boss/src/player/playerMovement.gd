@@ -33,6 +33,7 @@ var dash_attack_state = false
 var dash_direction
 @export var DASH_SPEED : float = 1000
 var current_dash_speed = DASH_SPEED
+var dash_entry_speed : float
 
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
@@ -185,6 +186,7 @@ func can_player_jump():
 func dash() -> void:
 	has_dash = false
 	dash_state = true
+	dash_entry_speed = player.velocity.x
 	current_dash_speed = DASH_SPEED
 	player.velocity.y = 0
 	dash_duration.start()
@@ -223,7 +225,7 @@ func _on_dash_duration_timeout() -> void:
 	
 func end_dash():
 	player.velocity.y = -JUMP_SPEED * 0.1
-	player.velocity.x = dash_direction * current_move_speed
+	player.velocity.x = dash_direction * dash_entry_speed#current_move_speed
 	dash_state = false
 	dash_attack_state = false
 	player.health_control._on_invincibility_timer_timeout()
