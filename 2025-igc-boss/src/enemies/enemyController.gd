@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var move_time : float = 3.0
 @export var speed : float = 200.0
 @export var activation_delay: float = 0.1
-@export var MAX_HEALTH = 1
+@export var MAX_HEALTH : int = 1
+@export var direction : int = -1
 
-var direction = -1
 var timer = 0.0
 var active = false
 

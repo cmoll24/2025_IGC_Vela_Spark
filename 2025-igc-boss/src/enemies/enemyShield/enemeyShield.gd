@@ -1,17 +1,11 @@
-extends EnemyGrounded
-class_name EnemyCharge
+extends EnemyCharge
+class_name EnemyShield
 
-@onready var player_detector = $flippable/PlayerDetector
-@onready var stunned_timer = $StunedTimer
-
-@onready var flippable = $flippable
-
-var charging = false
-var charge_timer : float = 1
-
-var charge_speed = 900
+@onready var shield_hitbox = $shield_hitbox
+@onready var shield_sprite = $flippable/ShieldSprite
 
 func _ready() -> void:
+	shield_sprite.visible = false
 	super._ready()
 
 func _physics_process(delta: float) -> void:
@@ -27,10 +21,12 @@ func _physics_process(delta: float) -> void:
 		start_charge()
 	
 	if charging:
+		shield_sprite.visible = true
 		charge_timer -= delta
 		velocity.x = direction * charge_speed
 		
 		if charge_timer < 0:
+			shield_sprite.visible = false
 			charging = false
 			velocity.x = 0
 			#direction = -direction
@@ -45,3 +41,7 @@ func start_charge():
 
 func _on_stuned_timer_timeout() -> void:
 	modulate = Color(1,1,1)
+
+func _on_shield_hitbox_body_entered(body: Node2D) -> void:
+	if body is Player and charging:
+		body.hit(self)

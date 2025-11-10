@@ -3,40 +3,30 @@
 [ext_resource type="Script" uid="uid://h1yjj8k6xg0h" path="res://src/enemies/enemyCharge/enemeyCharge.gd" id="1_r0av8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_462bx"]
-size = Vector2(38, 38)
+size = Vector2(96, 98)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dicg"]
-size = Vector2(90, 80)
+size = Vector2(110, 110)
 
 [node name="EnemyCharge" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_r0av8")
 
-[node name="enemy_hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 10
-
-[node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
-shape = SubResource("RectangleShape2D_462bx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6dicg")
-
 [node name="flippable" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="flippable"]
-offset_left = -45.0
-offset_top = -40.0
-offset_right = 45.0
-offset_bottom = 40.0
-color = Color(1.1070073e-06, 0.60987616, 0.50301814, 1)
+[node name="ColorRect2" type="ColorRect" parent="flippable"]
+offset_left = 16.0
+offset_top = -25.0
+offset_right = 66.0
+offset_bottom = 25.0
+color = Color(0, 0.6039216, 0.63529414, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect2" type="ColorRect" parent="flippable"]
-offset_left = 6.0
-offset_top = -21.0
-offset_right = 56.0
-offset_bottom = 19.0
+[node name="ColorRect" type="ColorRect" parent="flippable"]
+offset_left = -55.0
+offset_top = -55.0
+offset_right = 55.0
+offset_bottom = 55.0
 color = Color(1.1070073e-06, 0.60987616, 0.50301814, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -44,4 +34,19 @@ metadata/_edit_use_anchors_ = true
 target_position = Vector2(450, 0)
 collision_mask = 2
 
+[node name="enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 10
+
+[node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_462bx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6dicg")
+
+[node name="StunedTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]
+[connection signal="timeout" from="StunedTimer" to="." method="_on_stuned_timer_timeout"]
