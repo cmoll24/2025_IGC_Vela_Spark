@@ -62,6 +62,7 @@ position = Vector2(692, 248)
 
 [node name="EnemyStatic5" parent="Enemies" instance=ExtResource("9_5xhb3")]
 position = Vector2(812, 247)
+is_respawnable = true
 
 [node name="EnemyCharge" parent="Enemies" instance=ExtResource("4_l7p70")]
 position = Vector2(1631.9277, 203.63959)

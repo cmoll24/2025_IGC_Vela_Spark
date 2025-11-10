@@ -52,6 +52,13 @@ func hit(attacker: Node2D) -> void:
 		player.move_control.apply_knockback(attacker.global_position)
 		print("hit!")
 
+func super_hit(attacker : Node2D):
+	player.animation_player.play("Hit")
+	take_damage()
+	apply_invincibility()
+	player.move_control.apply_knockback(attacker.global_position)
+	print("hit!")
+
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	enemy_collide.emit(body)
 

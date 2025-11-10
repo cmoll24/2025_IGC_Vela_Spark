@@ -8,12 +8,21 @@ extends CharacterBody2D
 @export var MAX_HEALTH : int = 1
 @export var direction : int = -1
 
+@export var is_respawnable = false
+@export var RESPAWN_TIME : float = 3
+var is_dead = false
+var respawn_timer : float = RESPAWN_TIME
+var repsawn_pos : Vector2
+var hide_pos = Vector2(-10_000, -10_000)
+
 var timer = 0.0
 var active = false
 
 var health = MAX_HEALTH
 
 var projectile
+
+var invulnerable = false
 
 #var cooldown = 5.0
 
@@ -27,7 +36,12 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 	
 
-#func _process(delta: float) -> void:
+func _process(delta: float) -> void:
+	if is_dead:
+		respawn_timer -= delta
+		if respawn_timer < 0:
+			respawn()
+			
 #	#going left and right
 #	position.x += direction * speed * delta
 #	timer += delta
@@ -57,7 +71,18 @@ func hit(attacker: Player) -> void:
 	if health <= 0:
 		attacker.killed_enemy(self)
 
+func respawn():
+	is_dead = false
+	respawn_timer = RESPAWN_TIME
+	global_position = repsawn_pos
+	health = MAX_HEALTH
+
 func die():
 	if is_ridding:
 		get_parent().kill_projectile()
-	queue_free()
+	if is_respawnable:
+		is_dead = true
+		repsawn_pos = global_position
+		global_position = hide_pos
+	else:
+		queue_free()

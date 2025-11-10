@@ -118,6 +118,12 @@ func play_animation(anim_name : String):
 func hit(attacker: Node2D) -> void:
 	health_control.hit(attacker)
 
+func super_hit(attacker : Node2D):
+	print('super hit player')
+	health_control.cancel_invincibility()
+	move_control.end_dash()
+	health_control.super_hit(attacker)
+
 #func attack():
 #	attack_control.attack()
 

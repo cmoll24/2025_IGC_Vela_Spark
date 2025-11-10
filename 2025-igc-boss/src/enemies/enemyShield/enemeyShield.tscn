@@ -9,7 +9,7 @@ size = Vector2(96, 98)
 size = Vector2(110, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbp0j"]
-size = Vector2(40, 108)
+size = Vector2(114, 108)
 
 [node name="EnemyShield" type="CharacterBody2D"]
 collision_layer = 4
@@ -64,7 +64,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shield_hitbox"]
-position = Vector2(70, 0)
+position = Vector2(56, 0)
 shape = SubResource("RectangleShape2D_mbp0j")
 debug_color = Color(0.97230154, 0, 0.44529122, 0.41960785)
 

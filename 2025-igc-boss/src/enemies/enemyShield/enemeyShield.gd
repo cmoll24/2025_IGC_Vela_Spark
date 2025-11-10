@@ -15,12 +15,14 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if not charging:
+		invulnerable = false
 		direction = sign(Global.get_player().global_position.x - global_position.x)
 	
 	if player_detector.is_colliding():
 		start_charge()
 	
 	if charging:
+		invulnerable = true
 		shield_sprite.visible = true
 		charge_timer -= delta
 		velocity.x = direction * charge_speed
@@ -44,4 +46,4 @@ func _on_stuned_timer_timeout() -> void:
 
 func _on_shield_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player and charging:
-		body.hit(self)
+		body.super_hit(self)
