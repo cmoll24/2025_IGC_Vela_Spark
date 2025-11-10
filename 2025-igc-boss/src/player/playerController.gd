@@ -102,3 +102,7 @@ func killed_enemy(_body: Node2D):
 	print('Enemy Slain')
 	health_control.heal(10)
 	#move_control.dash()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("restart"):
+		die()
