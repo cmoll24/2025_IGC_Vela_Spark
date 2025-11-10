@@ -16,6 +16,7 @@ func _physics_process(delta: float) -> void:
 	if attack_cooldown <= 0:
 		volley_timer -= delta
 		if volley_timer > 0:
+			direction = sign(Global.get_player().global_position.x - global_position.x)
 			summon_projectile()
 		else:
 			attack_cooldown = VOLLEY_COOLDOWN

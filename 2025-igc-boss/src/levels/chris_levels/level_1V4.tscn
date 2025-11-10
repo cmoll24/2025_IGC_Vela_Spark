@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=4 uid="uid://ccu17w332gugy"]
+[gd_scene load_steps=16 format=4 uid="uid://ccu17w332gugy"]
 
-[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_tmd7q"]
-[ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_gisqj"]
-[ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_w21xm"]
-[ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="4_gisqj"]
-[ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="5_jwhul"]
-[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="6_yieo2"]
-[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="7_e00ks"]
-[ext_resource type="PackedScene" uid="uid://cbbvhqfs8vdl1" path="res://src/enemies/enemyBarrage/enemyBarrage.tscn" id="7_w21xm"]
-[ext_resource type="PackedScene" uid="uid://dqcqmcwqjtn46" path="res://src/enemies/enemyCharge/enemeyCharge.tscn" id="8_6epw7"]
-[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="8_20wg3"]
-[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="10_vdfv7"]
+[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_wj61h"]
+[ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_pp3pc"]
+[ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_4fn8u"]
+[ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="4_dp2dm"]
+[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="5_dvurf"]
+[ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="6_anve3"]
+[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="7_anve3"]
+[ext_resource type="PackedScene" uid="uid://cbbvhqfs8vdl1" path="res://src/enemies/enemyBarrage/enemyBarrage.tscn" id="7_i0yal"]
+[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="8_i0yal"]
+[ext_resource type="PackedScene" uid="uid://dqcqmcwqjtn46" path="res://src/enemies/enemyCharge/enemeyCharge.tscn" id="8_kof05"]
+[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="9_kof05"]
+[ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="10_ptqth"]
 
 [sub_resource type="Gradient" id="Gradient_ghtb1"]
 interpolation_color_space = 2
@@ -18,7 +19,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
 resource_name = "Collision Tiles"
-texture = ExtResource("8_20wg3")
+texture = ExtResource("8_i0yal")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -33,7 +34,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fcumj")
 
 [node name="Level5" type="Node2D"]
-script = ExtResource("1_tmd7q")
+script = ExtResource("1_wj61h")
 level_name = "Level Design Test"
 
 [node name="Background" type="TextureRect" parent="."]
@@ -42,43 +43,43 @@ offset_left = -1713.0
 offset_top = -1002.0
 offset_right = 14182.0
 offset_bottom = 1255.0
-texture = ExtResource("2_gisqj")
+texture = ExtResource("2_pp3pc")
 stretch_mode = 1
 
 [node name="obstacles" type="Node2D" parent="."]
 
-[node name="Spikes" parent="obstacles" instance=ExtResource("3_w21xm")]
+[node name="Spikes" parent="obstacles" instance=ExtResource("3_4fn8u")]
 position = Vector2(126, 956)
 scale = Vector2(5, 1)
 
-[node name="Spikes2" parent="obstacles" instance=ExtResource("3_w21xm")]
+[node name="Spikes2" parent="obstacles" instance=ExtResource("3_4fn8u")]
 position = Vector2(767, 774)
 scale = Vector2(3, 2)
 
-[node name="Spikes3" parent="obstacles" instance=ExtResource("3_w21xm")]
+[node name="Spikes3" parent="obstacles" instance=ExtResource("3_4fn8u")]
 position = Vector2(704, 962)
 scale = Vector2(4, 1)
 
-[node name="Spikes4" parent="obstacles" instance=ExtResource("3_w21xm")]
+[node name="Spikes4" parent="obstacles" instance=ExtResource("3_4fn8u")]
 position = Vector2(1215, 711)
 scale = Vector2(1, 2)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
 
-[node name="EnemyStatic" parent="Enemies" instance=ExtResource("4_gisqj")]
+[node name="EnemyStatic" parent="Enemies" instance=ExtResource("4_dp2dm")]
 position = Vector2(225, 29)
 
-[node name="EnemyFall" parent="Enemies" instance=ExtResource("6_yieo2")]
+[node name="EnemyFall" parent="Enemies" instance=ExtResource("5_dvurf")]
 position = Vector2(1001, -193)
 
-[node name="EnemyArc" parent="Enemies" instance=ExtResource("5_jwhul")]
+[node name="EnemyArc" parent="Enemies" instance=ExtResource("6_anve3")]
 position = Vector2(1864, 40)
 
-[node name="EnemyBarrage" parent="Enemies" instance=ExtResource("7_w21xm")]
+[node name="EnemyBarrage" parent="Enemies" instance=ExtResource("7_i0yal")]
 position = Vector2(2280, 26)
 
-[node name="EnemyCharge" parent="Enemies" instance=ExtResource("8_6epw7")]
+[node name="EnemyCharge" parent="Enemies" instance=ExtResource("8_kof05")]
 position = Vector2(1293, 44)
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -86,19 +87,17 @@ width = 2.0
 default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
 
-[node name="Player" parent="." instance=ExtResource("7_e00ks")]
+[node name="Player" parent="." instance=ExtResource("7_anve3")]
 position = Vector2(-184, 809)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_bottom = 1080
-position_smoothing_enabled = true
+[node name="PlayerCamera" parent="Player" instance=ExtResource("10_ptqth")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["obstacles"]]
 tile_map_data = PackedByteArray("AAD7/xAAAQAAAAIAAAD8/xAAAQAAAAIAAAD9/xAAAQAAAAIAAAD+/xAAAQAAAAIAAAD//xAAAQAAAAIAAAAAABAAAQAAAAIAAAABABAAAQAAAAIAAAABABEAAQAAAAIAAAAAABEAAQAAAAIAAAD+/xEAAQAAAAIAAAD9/xEAAQAAAAIAAAD8/xEAAQAAAAIAAAD7/xEAAQAAAAIAAAD//xEAAQAAAAIAAAACABAAAQAAAAIAAAADABAAAQAAAAIAAAAEABAAAQAAAAIAAAAFABAAAQAAAAIAAAAGABAAAQAAAAIAAAAHABAAAQAAAAIAAAAIABAAAQAAAAIAAAAJABAAAQAAAAIAAAAKABAAAQAAAAIAAAALABAAAQAAAAIAAAAMABAAAQAAAAIAAAANABAAAQAAAAIAAAAOABAAAQAAAAIAAAAPABAAAQAAAAIAAAAQABAAAQAAAAIAAAARABAAAQAAAAIAAAASABAAAQAAAAIAAAATABAAAQAAAAIAAAACABEAAQAAAAIAAAADABEAAQAAAAIAAAAEABEAAQAAAAIAAAAFABEAAQAAAAIAAAAGABEAAQAAAAIAAAAHABEAAQAAAAIAAAAIABEAAQAAAAIAAAAJABEAAQAAAAIAAAAKABEAAQAAAAIAAAALABEAAQAAAAIAAAAMABEAAQAAAAIAAAANABEAAQAAAAIAAAAOABEAAQAAAAIAAAAPABEAAQAAAAIAAAAQABEAAQAAAAIAAAARABEAAQAAAAIAAAASABEAAQAAAAIAAAATABEAAQAAAAIAAAAUABAAAQAAAAIAAAAUABEAAQAAAAIAAAAVABAAAQAAAAIAAAAVABEAAQAAAAIAAAAWABAAAQAAAAIAAAAWABEAAQAAAAIAAAAXABAAAQAAAAIAAAAXABEAAQAAAAIAAAAYABAAAQAAAAIAAAAYABEAAQAAAAIAAAAZABAAAQAAAAIAAAAZABEAAQAAAAIAAAAaABAAAQAAAAIAAAAaABEAAQAAAAIAAAAbABAAAQAAAAIAAAAbABEAAQAAAAIAAAAcABAAAQAAAAIAAAAcABEAAQAAAAIAAAAdABAAAQAAAAIAAAAdABEAAQAAAAIAAAD5/xAAAQAAAAIAAAD5/xEAAQAAAAIAAAD6/xAAAQAAAAIAAAD6/xEAAQAAAAIAAAD5/w8AAQAAAAAAAAD5/w4AAQAAAAAAAAD5/w0AAQAAAAAAAAD5/wwAAQAAAAAAAAD5/wsAAQAAAAAAAAD5/woAAQAAAAAAAAD5/wkAAQAAAAAAAAD5/wgAAQAAAAAAAAD5/wcAAQAAAAAAAAD5/wYAAQAAAAAAAAD5/wUAAQAAAAAAAAD5/wQAAQAAAAAAAAD5/wMAAQAAAAAAAAD5/wIAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD5//z/AQAAAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAAAAAD5////AQAAAAAAAAAeABAAAQAAAAIAAAAeABEAAQAAAAIAAAAfABAAAQAAAAIAAAAfABEAAQAAAAIAAAAgABAAAQAAAAIAAAAgABEAAQAAAAIAAAAhABAAAQAAAAIAAAAhABEAAQAAAAIAAAAiABAAAQAAAAIAAAAiABEAAQAAAAIAAAAjABAAAQAAAAIAAAAjABEAAQAAAAIAAAAkABAAAQAAAAIAAAAkABEAAQAAAAIAAAAlABAAAQAAAAIAAAAlABEAAQAAAAIAAAAmABAAAQAAAAIAAAAmABEAAQAAAAIAAAAnABAAAQAAAAIAAAAnABEAAQAAAAIAAAAoABAAAQAAAAIAAAAoABEAAQAAAAIAAAApABAAAQAAAAIAAAApABEAAQAAAAIAAAAqABAAAQAAAAIAAAAqABEAAQAAAAIAAAArABAAAQAAAAIAAAArABEAAQAAAAIAAAAsABAAAQAAAAIAAAAsABEAAQAAAAIAAAAtABAAAQAAAAIAAAAtABEAAQAAAAIAAAAuABAAAQAAAAIAAAAuABEAAQAAAAIAAAAUAAwAAQAAAAEAAAAUAA0AAQAAAAEAAAAUAA4AAQAAAAEAAAAUAA8AAQAAAAEAAAAVAAwAAQAAAAEAAAAVAA0AAQAAAAEAAAAVAA4AAQAAAAEAAAAVAA8AAQAAAAEAAAAWAAwAAQAAAAEAAAAWAA0AAQAAAAEAAAAWAA4AAQAAAAEAAAAWAA8AAQAAAAEAAAAXAAwAAQAAAAEAAAAXAA0AAQAAAAEAAAAXAA4AAQAAAAEAAAAXAA8AAQAAAAEAAAAYAAwAAQAAAAEAAAAYAA0AAQAAAAEAAAAYAA4AAQAAAAEAAAAYAA8AAQAAAAEAAAAZAAwAAQAAAAEAAAAZAA0AAQAAAAEAAAAZAA4AAQAAAAEAAAAZAA8AAQAAAAEAAAAaAAwAAQAAAAEAAAAaAA0AAQAAAAEAAAAaAA4AAQAAAAEAAAAaAA8AAQAAAAEAAAAbAAwAAQAAAAEAAAAbAA0AAQAAAAEAAAAbAA4AAQAAAAEAAAAbAA8AAQAAAAEAAAAcAAwAAQAAAAEAAAAcAA0AAQAAAAEAAAAcAA4AAQAAAAEAAAAcAA8AAQAAAAEAAAAdAAwAAQAAAAEAAAAdAA0AAQAAAAEAAAAdAA4AAQAAAAEAAAAdAA8AAQAAAAEAAAAeAAwAAQAAAAEAAAAeAA0AAQAAAAEAAAAeAA4AAQAAAAEAAAAeAA8AAQAAAAEAAAAfAAwAAQAAAAEAAAAfAA0AAQAAAAEAAAAfAA4AAQAAAAEAAAAfAA8AAQAAAAEAAAAKAA4AAQAAAAEAAAALAA4AAQAAAAEAAAAMAA4AAQAAAAEAAAANAA4AAQAAAAEAAAAOAA4AAQAAAAEAAAAPAA0AAQAAAAEAAAAPAA4AAQAAAAEAAAAQAA0AAQAAAAEAAAAQAA4AAQAAAAEAAAARAA0AAQAAAAEAAAARAA4AAQAAAAEAAAASAA0AAQAAAAEAAAASAA4AAQAAAAEAAAATAA0AAQAAAAEAAAATAA4AAQAAAAEAAAAKAA8AAQAAAAEAAAALAA8AAQAAAAEAAAAMAA8AAQAAAAEAAAANAA8AAQAAAAEAAAAOAA8AAQAAAAEAAAAPAA8AAQAAAAEAAAAQAA8AAQAAAAEAAAARAA8AAQAAAAEAAAASAA8AAQAAAAEAAAATAA8AAQAAAAEAAAAHAA4AAQAAAAEAAAAHAA8AAQAAAAEAAAAIAA4AAQAAAAEAAAAIAA8AAQAAAAEAAAAJAA4AAQAAAAEAAAAJAA8AAQAAAAEAAAAgAAwAAQAAAAEAAAAhAAwAAQAAAAEAAAAiAAwAAQAAAAEAAAAjAAwAAQAAAAEAAAAkAAwAAQAAAAEAAAAlAAwAAQAAAAEAAAAmAAwAAQAAAAEAAAAnAAwAAQAAAAEAAAAoAAwAAQAAAAEAAAApAAwAAQAAAAEAAAAqAAwAAQAAAAEAAAArAAwAAQAAAAEAAAArAA0AAQAAAAEAAAArAA4AAQAAAAEAAAArAA8AAQAAAAEAAAAoAA8AAQAAAAEAAAAoAA4AAQAAAAEAAAAoAA0AAQAAAAEAAAAnAA0AAQAAAAEAAAAmAA0AAQAAAAEAAAAlAA0AAQAAAAEAAAAkAA0AAQAAAAEAAAAjAA0AAQAAAAEAAAAiAA0AAQAAAAEAAAAhAA0AAQAAAAEAAAAgAA0AAQAAAAEAAAAgAA4AAQAAAAEAAAAgAA8AAQAAAAEAAAAhAA8AAQAAAAEAAAAhAA4AAQAAAAEAAAAiAA4AAQAAAAEAAAAiAA8AAQAAAAEAAAAjAA8AAQAAAAEAAAAjAA4AAQAAAAEAAAAkAA4AAQAAAAEAAAAkAA8AAQAAAAEAAAAlAA8AAQAAAAEAAAAlAA4AAQAAAAEAAAAmAA4AAQAAAAEAAAAmAA8AAQAAAAEAAAAnAA8AAQAAAAEAAAAnAA4AAQAAAAEAAAApAA0AAQAAAAEAAAApAA4AAQAAAAEAAAApAA8AAQAAAAEAAAAqAA8AAQAAAAEAAAAqAA4AAQAAAAEAAAAqAA0AAQAAAAEAAAAuAA8AAQAAAAAAAAAuAA4AAQAAAAAAAAAuAA0AAQAAAAAAAAAuAAwAAQAAAAAAAAAuAAsAAQAAAAAAAAAuAAoAAQAAAAAAAAAuAAkAAQAAAAAAAAAuAAgAAQAAAAAAAAAuAAcAAQAAAAAAAAAuAAYAAQAAAAAAAAAuAAUAAQAAAAAAAAAuAAQAAQAAAAAAAAAuAAMAAQAAAAAAAAAuAP3/AQAAAAAAAAAuAP7/AQAAAAAAAAAuAP//AQAAAAAAAAAuAAAAAQAAAAAAAAAuAAEAAQAAAAAAAAAuAAIAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_riplu")
 navigation_enabled = false
 
-[node name="OutOfBounds" parent="." instance=ExtResource("10_vdfv7")]
+[node name="OutOfBounds" parent="." instance=ExtResource("9_kof05")]
 position = Vector2(0, 1264)
 
 [node name="ProjectileTree" type="Node2D" parent="."]

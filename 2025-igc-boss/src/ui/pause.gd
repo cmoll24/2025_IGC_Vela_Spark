@@ -11,12 +11,14 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = new_pause_state
 		visible = new_pause_state
 		resume.grab_focus()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_resume_pressed() -> void:
 	var pause_event = InputEventAction.new()
 	pause_event.action = "pause"
 	pause_event.pressed = true
 	Input.parse_input_event(pause_event)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false

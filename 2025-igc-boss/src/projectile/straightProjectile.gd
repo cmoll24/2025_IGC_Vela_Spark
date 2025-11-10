@@ -1,4 +1,5 @@
 extends Projectile
+class_name StraightProjectile
 
 @onready var hitArea = $Area2D
 

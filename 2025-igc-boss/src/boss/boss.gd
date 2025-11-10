@@ -14,9 +14,32 @@ class_name Boss
 @export var GRAVITY : float = 1000.0
 
 @export var boss_positions : Array[Vector2]
+@export var minions : Array[Enemy]
+var minion_spawn_info : Array
+
 var current_pos_index : int = 0
 
-var health : int = 16
+var health : int = 18
+
+func _ready() -> void:
+	for x in minions:
+		var minion_info = [x.global_position, x.get_scene_file_path()]
+		print(minion_info)
+		minion_spawn_info.append(minion_info)
+	respawn_minions()
+
+func respawn_minions():
+	for i in range(len(minions)):
+		if minions[i] and minions[i].health > 0:
+			continue
+			
+		var info = minion_spawn_info[i]
+		var pos = info[0]
+		var scene = info[1]
+		var new_minion : Enemy = load(scene).instantiate()
+		Global.get_game_scene().current_level.get_enemy_tree().add_child(new_minion)
+		new_minion.global_position = pos
+		minions[i] = new_minion
 
 func get_next_boss_position():
 	return boss_positions[current_pos_index]
@@ -29,7 +52,11 @@ func increase_boss_pos_index():
 func switch_to_random_state():
 	state_machine.transition_to(state_machine.states.keys().pick_random())
 
+func _physics_process(delta: float) -> void:
+	$flippable.scale.x = sign( Global.get_player().global_position.x - global_position.x)
+
 func _process(_delta: float) -> void:
+	$Health.text = "Health: " + str(health)
 	if right_wall_check.is_colliding() or right_wall_check_2.is_colliding():
 		state_machine.transition_to("MoveState", -1)
 	elif left_wall_check.is_colliding() or left_wall_check_2.is_colliding():
