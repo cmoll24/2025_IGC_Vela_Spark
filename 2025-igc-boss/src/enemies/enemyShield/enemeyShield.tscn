@@ -56,18 +56,18 @@ metadata/_edit_use_anchors_ = true
 target_position = Vector2(500, 0)
 collision_mask = 2
 
-[node name="StunedTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="shield_hitbox" type="Area2D" parent="."]
+[node name="shield_hitbox" type="Area2D" parent="flippable"]
 collision_layer = 0
 collision_mask = 128
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="shield_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/shield_hitbox"]
 position = Vector2(56, 0)
 shape = SubResource("RectangleShape2D_mbp0j")
 debug_color = Color(0.97230154, 0, 0.44529122, 0.41960785)
 
+[node name="StunedTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]
+[connection signal="body_entered" from="flippable/shield_hitbox" to="." method="_on_shield_hitbox_body_entered"]
 [connection signal="timeout" from="StunedTimer" to="." method="_on_stuned_timer_timeout"]
-[connection signal="body_entered" from="shield_hitbox" to="." method="_on_shield_hitbox_body_entered"]

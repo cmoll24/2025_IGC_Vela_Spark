@@ -46,6 +46,8 @@ func check_attack_body(body : Node2D):
 				player.move_control.dash_attack()
 			body.hit(player)
 			enemies_attacked_during_dash.append(body)
+		else:
+			player.move_control.end_dash()
 
 func _on_player_attackbox_body_exited(body : Node2D) -> void:
 	if player.move_control.dash_attack_state and (body is Enemy or body is Boss):
