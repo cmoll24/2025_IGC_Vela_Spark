@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=13 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -9,18 +9,21 @@
 [ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
 [ext_resource type="Script" uid="uid://c0xi0mepfssc" path="res://src/boss/boss_states/porcupineHeal.gd" id="8_ranff"]
 [ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="9_fbeph"]
+[ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
-size = Vector2(400, 379)
+size = Vector2(500, 344.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh7uy"]
-size = Vector2(371, 359)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7byyt"]
+radius = 131.0
+height = 464.0
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_3kou8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -201.0
 offset_top = -177.0
 offset_right = 201.0
@@ -28,7 +31,6 @@ offset_bottom = 200.0
 color = Color(0.7058824, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_xw3os")
 
 [node name="boss_hitbox" type="Area2D" parent="."]
@@ -36,8 +38,8 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="hitbox_collision_shape" type="CollisionShape2D" parent="boss_hitbox"]
-position = Vector2(-0.5, 12.5)
-shape = SubResource("RectangleShape2D_qh7uy")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7byyt")
 
 [node name="Phase1StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "debug_state_label")]
 script = ExtResource("2_trtgp")
@@ -80,20 +82,12 @@ script = ExtResource("9_fbeph")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://ji2we2m2t53t"
 
-[node name="Debug" type="Label" parent="."]
-offset_left = -104.0
-offset_top = -28.0
-offset_bottom = -5.0
-scale = Vector2(2, 2)
-text = "Current State"
+[node name="flippable" type="Node2D" parent="."]
 
-[node name="Health" type="Label" parent="."]
-offset_left = -104.0
-offset_top = 12.0
-offset_bottom = 35.0
-scale = Vector2(2, 2)
-text = "Health"
-horizontal_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="flippable"]
+position = Vector2(12, 11.999992)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("10_j3b7s")
 
 [node name="RightWallCheck" type="RayCast2D" parent="."]
 position = Vector2(0, 152)
@@ -110,5 +104,20 @@ target_position = Vector2(-400, 0)
 [node name="LeftWallCheck2" type="RayCast2D" parent="."]
 position = Vector2(0, -128)
 target_position = Vector2(-400, 0)
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -28.0
+offset_bottom = -5.0
+scale = Vector2(2, 2)
+text = "Current State"
+
+[node name="Health" type="Label" parent="."]
+offset_left = -104.0
+offset_top = 12.0
+offset_bottom = 35.0
+scale = Vector2(2, 2)
+text = "Health"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="boss_hitbox" to="." method="_on_boss_hitbox_body_entered"]

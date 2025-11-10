@@ -52,6 +52,9 @@ func increase_boss_pos_index():
 func switch_to_random_state():
 	state_machine.transition_to(state_machine.states.keys().pick_random())
 
+func _physics_process(delta: float) -> void:
+	$flippable.scale.x = sign( Global.get_player().global_position.x - global_position.x)
+
 func _process(_delta: float) -> void:
 	$Health.text = "Health: " + str(health)
 	if right_wall_check.is_colliding() or right_wall_check_2.is_colliding():
