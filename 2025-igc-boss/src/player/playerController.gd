@@ -180,7 +180,3 @@ func killed_enemy(_body: Node2D):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		die()
-
-
-func _on_player_health_obstacle_collide(body: Node2D) -> void:
-	pass # Replace with function body.
