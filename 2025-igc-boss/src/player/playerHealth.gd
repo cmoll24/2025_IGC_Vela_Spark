@@ -15,11 +15,11 @@ var health : float = MAX_HEALTH
 @export var DECAY_COEF := 1
 
 signal enemy_collide(body : Node2D)
-signal enemy_exit(body : Node2D)
+signal obstacle_collide(body : Node2D)
 
 func _ready() -> void:
+	hitbox.area_entered.connect(_on_player_hitbox_area_entered)
 	hitbox.body_entered.connect(_on_player_hitbox_body_entered)
-	hitbox.body_exited.connect(_on_player_hitbox_body_exited)
 	
 
 func take_damage() -> void:
@@ -35,8 +35,8 @@ func _process(delta):
 		player.die("Time")
 	
 func _on_invincibility_timer_timeout() -> void:
-	for body in hitbox.get_overlapping_bodies():
-		_on_player_hitbox_body_entered(body)
+	for area in hitbox.get_overlapping_areas():
+		_on_player_hitbox_area_entered(area)
 
 func apply_invincibility(new_invincibility_time = INVINCIBILITY_DURATION):
 	invincibility_timer.start(new_invincibility_time)
@@ -59,11 +59,13 @@ func super_hit(attacker : Node2D):
 	player.move_control.apply_knockback(attacker.global_position)
 	print("hit!")
 
-func _on_player_hitbox_body_entered(body: Node2D) -> void:
-	enemy_collide.emit(body)
+func _on_player_hitbox_area_entered(area : Area2D) -> void:
+	var parent_body = area.get_parent()
+	if parent_body is Node2D:
+		enemy_collide.emit(parent_body)
 
-func _on_player_hitbox_body_exited(body: Node2D) -> void:
-	enemy_exit.emit(body)
+func _on_player_hitbox_body_entered(body : Node2D) -> void:
+	obstacle_collide.emit(body)
 
 func is_safe() -> bool:
 	var danger_count = 0

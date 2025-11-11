@@ -38,7 +38,7 @@ var dash_entry_speed : float
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
 @export var knockback_upward_force: float = 400.0
-@export var knockback_duration: float = 0.5
+@export var knockback_duration: float = 0.3
 
 var knockback_vector: Vector2 = Vector2.ZERO
 var is_knocked_back: bool = false
@@ -150,12 +150,13 @@ func knockback_process(delta):
 	#subtract time from each frame until it become 0
 	knockback_timer -= delta
 	#gradually reduce knockback force -> Vector2.ZERO, delta * knockback_force * 2 is how fast it decays
-	knockback_vector = knockback_vector.move_toward(Vector2.ZERO, delta * knockback_force * 2)
+	#knockback_vector = knockback_vector.move_toward(Vector2.ZERO, delta * knockback_force * 2)
 	if knockback_timer <= 0:
 		is_knocked_back = false
+		player.velocity = Vector2.ZERO
 
 func jump(_delta):
-	if can_player_jump() and Input.is_action_pressed("jump"):
+	if can_player_jump():
 		air_jump_amount = MAX_AIR_JUMP_AMOUNT
 		if is_jump_just_pressed():
 			coyote_timer.stop()
@@ -171,7 +172,7 @@ func jump(_delta):
 
 
 func is_jump_just_pressed():
-	if not jump_grace_timer.is_stopped():
+	if not jump_grace_timer.is_stopped() and Input.is_action_pressed("jump"):
 		jump_grace_timer.stop()
 		return true
 	return false
@@ -224,6 +225,8 @@ func _on_dash_duration_timeout() -> void:
 		end_dash()
 	
 func end_dash():
+	if is_knocked_back:
+		return
 	player.velocity.y = -JUMP_SPEED * 0.1
 	player.velocity.x = dash_direction * dash_entry_speed#current_move_speed
 	dash_state = false
@@ -231,6 +234,8 @@ func end_dash():
 	player.health_control._on_invincibility_timer_timeout()
 
 func end_dash_attack():
+	if is_knocked_back:
+		return
 	has_dash = true
 	air_jump_amount = MAX_AIR_JUMP_AMOUNT
 	dash_state = false
@@ -254,6 +259,8 @@ func apply_knockback(from_position: Vector2) -> void:
 	player.velocity = knockback_vector
 	#set timer
 	knockback_timer = knockback_duration
+	dash_state = false
+	dash_attack_state = false
 
 func apply_immobility(time_amount : float):
 	immobile_timer.start(time_amount)

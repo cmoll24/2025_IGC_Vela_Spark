@@ -1,7 +1,7 @@
 extends EnemyCharge
 class_name EnemyShield
 
-@onready var shield_hitbox = $shield_hitbox
+@onready var shield_hitbox = $flippable/shield_hitbox
 @onready var shield_sprite = $flippable/ShieldSprite
 
 func _ready() -> void:
@@ -15,7 +15,6 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if not charging:
-		invulnerable = false
 		direction = sign(Global.get_player().global_position.x - global_position.x)
 	
 	if player_detector.is_colliding():
@@ -30,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		if charge_timer < 0:
 			shield_sprite.visible = false
 			charging = false
+			invulnerable = false
 			velocity.x = 0
 			#direction = -direction
 			stunned_timer.start()

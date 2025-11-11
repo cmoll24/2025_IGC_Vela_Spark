@@ -30,6 +30,13 @@ offset_right = 201.0
 offset_bottom = 200.0
 color = Color(0.7058824, 0, 0, 1)
 
+[node name="flippable" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="flippable"]
+position = Vector2(12, 11.999992)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("10_j3b7s")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xw3os")
 
@@ -81,13 +88,6 @@ metadata/_custom_type_script = "uid://c0xi0mepfssc"
 script = ExtResource("9_fbeph")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://ji2we2m2t53t"
-
-[node name="flippable" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="flippable"]
-position = Vector2(12, 11.999992)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("10_j3b7s")
 
 [node name="RightWallCheck" type="RayCast2D" parent="."]
 position = Vector2(0, 152)

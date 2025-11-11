@@ -25,7 +25,7 @@ var cause_of_death : String
 var fire_ball_active = false
 
 func _ready():
-	#Engine.time_scale = 0.3
+	#Engine.time_scale = 0.2
 	add_to_group("player")
 	fireball_sprite.modulate = Color(1,1,1,0)
 
@@ -159,24 +159,18 @@ func respawn():
 	health_control.apply_invincibility()
 	health_control.take_damage()
 
-
-func _on_enemy_collide(body: Node2D) -> void:
+func _on_obstacle_collide(body: Node2D) -> void:
 	if (body.is_in_group("obstacles") or body is TileMapLayer) and move_control.dash_attack_state:
 		health_control.cancel_invincibility()
 		move_control.end_dash()
+	if body.is_in_group("obstacles"):
+		hit_and_respawn(body)
+	
+
+func _on_enemy_collide(body: Node2D) -> void:
 	if body is Enemy or body is Boss:
 		if  not move_control.dash_state and not move_control.dash_attack_state:
 			hit(body)
-	if body.is_in_group("obstacles"):
-		hit_and_respawn(body)
-
-
-func _on_enemy_exit(_body: Node2D) -> void:
-	pass
-	#if move_control.dash_attack_state and (body is Enemy or body is Boss):
-	#	move_control.end_dash_attack()
-		#else:
-		#	move_control.dash()
 
 func killed_enemy(_body: Node2D):
 	#print('Enemy Slain')
@@ -186,3 +180,7 @@ func killed_enemy(_body: Node2D):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		die()
+
+
+func _on_player_health_obstacle_collide(body: Node2D) -> void:
+	pass # Replace with function body.

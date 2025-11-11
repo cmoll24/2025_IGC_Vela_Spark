@@ -47,6 +47,7 @@ func check_attack_body(body : Node2D):
 			body.hit(player)
 			enemies_attacked_during_dash.append(body)
 		else:
+			print('target is invulnerable end dash')
 			player.move_control.end_dash()
 
 func _on_player_attackbox_body_exited(body : Node2D) -> void:

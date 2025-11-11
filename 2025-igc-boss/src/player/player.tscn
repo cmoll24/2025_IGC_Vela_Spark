@@ -231,7 +231,7 @@ animations = [{
 size = Vector2(290, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiejy"]
-size = Vector2(106, 157)
+size = Vector2(90, 157)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -348,7 +348,7 @@ frame_progress = 0.013207229
 position = Vector2(9, -20)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_2smqc")
-animation = &"run"
+animation = &"idle"
 
 [node name="FireSprite" type="AnimatedSprite2D" parent="flippable"]
 visible = false
@@ -374,9 +374,9 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/player_attackbox"]
-position = Vector2(45, -28.5)
+position = Vector2(37, -28.5)
 shape = SubResource("RectangleShape2D_jiejy")
 debug_color = Color(0.99947137, 0, 0.1284638, 0.41960785)
 
 [connection signal="enemy_collide" from="PlayerHealth" to="." method="_on_enemy_collide"]
-[connection signal="enemy_exit" from="PlayerHealth" to="." method="_on_enemy_exit"]
+[connection signal="obstacle_collide" from="PlayerHealth" to="." method="_on_player_health_obstacle_collide"]
