@@ -83,27 +83,35 @@ position = Vector2(368, 46)
 
 [node name="EnemyStatic3" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(10137, -2857)
+is_respawnable = true
 
 [node name="EnemyStatic4" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(10750, -2835)
+is_respawnable = true
 
 [node name="EnemyStatic6" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(11333, -2825)
+is_respawnable = true
 
 [node name="EnemyStatic5" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(8924, -2939)
+is_respawnable = true
 
 [node name="EnemyStatic7" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(12630, -2301)
+is_respawnable = true
 
 [node name="EnemyStatic8" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(12510, -1919)
+is_respawnable = true
 
 [node name="EnemyStatic9" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(12633, -1555)
+is_respawnable = true
 
 [node name="EnemyStatic10" parent="Enemies" instance=ExtResource("5_ei3uw")]
 position = Vector2(12446, -1106)
+is_respawnable = true
 
 [node name="EnemyArc" parent="Enemies" instance=ExtResource("7_8acoy")]
 position = Vector2(14274, -1741)

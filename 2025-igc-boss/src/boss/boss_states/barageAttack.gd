@@ -32,7 +32,7 @@ func volley(delta):
 		summon_projectile(deg_to_rad(55), 500)
 		summon_projectile(deg_to_rad(75), 450)
 	if volley_number < 0:
-		transition.emit("porcupineHeal")
+		transition.emit("idleState")
 	
 
 func summon_projectile(angle : float, speed = 400) -> void:

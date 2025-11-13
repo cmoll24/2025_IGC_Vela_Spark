@@ -65,63 +65,83 @@ position = Vector2(3422, -368)
 
 [node name="EnemyStatic2" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(5754, -352)
+is_respawnable = true
 
 [node name="EnemyStatic3" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(5373, -347)
+is_respawnable = true
 
 [node name="EnemyStatic4" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(5477, -350)
+is_respawnable = true
 
 [node name="EnemyStatic5" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(5575, -347)
+is_respawnable = true
 
 [node name="EnemyStatic6" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(5660, -347)
+is_respawnable = true
 
 [node name="EnemyStatic7" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6232, -357)
+is_respawnable = true
 
 [node name="EnemyStatic8" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(5851, -352)
+is_respawnable = true
 
 [node name="EnemyStatic9" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(5955, -355)
+is_respawnable = true
 
 [node name="EnemyStatic10" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6053, -352)
+is_respawnable = true
 
 [node name="EnemyStatic11" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6138, -352)
+is_respawnable = true
 
 [node name="EnemyStatic12" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6709, -360)
+is_respawnable = true
 
 [node name="EnemyStatic13" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6328, -355)
+is_respawnable = true
 
 [node name="EnemyStatic14" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6432, -358)
+is_respawnable = true
 
 [node name="EnemyStatic15" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6530, -355)
+is_respawnable = true
 
 [node name="EnemyStatic16" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6615, -355)
+is_respawnable = true
 
 [node name="EnemyStatic17" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(7187, -365)
+is_respawnable = true
 
 [node name="EnemyStatic18" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6806, -360)
+is_respawnable = true
 
 [node name="EnemyStatic19" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(6910, -363)
+is_respawnable = true
 
 [node name="EnemyStatic20" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(7008, -360)
+is_respawnable = true
 
 [node name="EnemyStatic21" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(7093, -360)
+is_respawnable = true
 
 [node name="EnemyStatic22" parent="Enemies" instance=ExtResource("5_kyunn")]
 position = Vector2(10122, -1016)

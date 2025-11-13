@@ -33,9 +33,9 @@ func teleport():
 	boss.global_position = target_location
 	boss.increase_boss_pos_index()
 	
-	var choice = randi_range(0,99)
+	#var choice = randi_range(0,99)
 	
-	if choice < 60:
-		transition.emit("porcupineHeal")
-	else:
-		transition.emit("aimAttack")
+	#if choice < 60:
+	#	transition.emit("porcupineHeal")
+	#else:
+	transition.emit("aimAttack")
