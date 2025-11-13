@@ -96,4 +96,5 @@ func hit(_attacker: Node2D) -> void:
 
 func die():
 	Global.get_player().health_control.full_heal()
+	Global.get_player().health_decay = false
 	queue_free()

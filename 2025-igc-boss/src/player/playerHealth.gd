@@ -30,9 +30,10 @@ func take_damage() -> void:
 		player.die()
 
 func _process(delta):
-	health = health - DECAY_COEF * delta
-	if health <= 0:
-		player.die("Time")
+	if player.health_decay:
+		health = health - DECAY_COEF * delta
+		if health <= 0:
+			player.die("Time")
 	
 func _on_invincibility_timer_timeout() -> void:
 	for area in hitbox.get_overlapping_areas():

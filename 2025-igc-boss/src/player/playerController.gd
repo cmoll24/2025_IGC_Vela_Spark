@@ -19,6 +19,8 @@ class_name Player
 @onready var ground_detector_long_right = $GroundDetectorLongRight
 @onready var ground_detector_long_left = $GroundDetectorLongLeft
 
+@export var health_decay = true
+
 var is_dead = false
 var cause_of_death : String
 
