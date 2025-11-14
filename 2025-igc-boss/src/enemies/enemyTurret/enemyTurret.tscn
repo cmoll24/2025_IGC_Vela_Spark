@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bcjaxxssva3gg" path="res://src/enemies/enemyTurret/enemyTurret.gd" id="1_172qc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lsh4"]
-size = Vector2(38, 38)
+size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brukk"]
 size = Vector2(90, 80)

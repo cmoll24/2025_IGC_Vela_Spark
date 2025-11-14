@@ -1,8 +1,8 @@
 extends Area2D
  
 @export var level_name : String
-@onready var level_container = $level_container
-@onready var hud = $HUD
+#@onready var level_container = $level_container
+#@onready var hud = $HUD
 
 
 

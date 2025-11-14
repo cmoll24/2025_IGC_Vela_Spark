@@ -27,7 +27,7 @@ var cause_of_death : String
 var fire_ball_active = false
 
 func _ready():
-	#Engine.time_scale = 0.2
+	#Engine.time_scale = 0.4
 	add_to_group("player")
 	fireball_sprite.modulate = Color(1,1,1,0)
 

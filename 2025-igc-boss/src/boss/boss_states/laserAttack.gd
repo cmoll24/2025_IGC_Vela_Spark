@@ -50,6 +50,7 @@ func summon_projectile(offset : Vector2) -> void:
 	instance.angle = 0 if  boss.facing_direction > 0 else PI
 	#instance.target_x = player_x - boss.global_position.x
 	#instance.arc_height = 30
+	instance.TIME_UNTIL_DESPAWN = 5
 	Global.get_projectile_tree().add_child(instance)
 
 func summon_enemy_projectile(offset : Vector2):
@@ -57,6 +58,6 @@ func summon_enemy_projectile(offset : Vector2):
 	instance.spawnPos = boss.global_position + offset
 	instance.SPEED = 450
 	instance.angle = 0 if  boss.facing_direction > 0 else PI
-	instance.TIME_UNTIL_DESPAWN = 3
+	instance.TIME_UNTIL_DESPAWN = 5
 	Global.get_projectile_tree().add_child(instance)
 	instance.add_rider(static_enemy)

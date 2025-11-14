@@ -8,7 +8,7 @@ class_name PlayerHealth
 @export var danger_detector : Area2D
 
 @export_category("Health variables")
-@export var MAX_HEALTH := 50
+@export var MAX_HEALTH := 70
 var health : float = MAX_HEALTH
 
 @export var INVINCIBILITY_DURATION : float = 1.0
