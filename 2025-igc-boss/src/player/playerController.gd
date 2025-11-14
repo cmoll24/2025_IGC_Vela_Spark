@@ -174,8 +174,11 @@ func _on_enemy_collide(body: Node2D) -> void:
 		if  not move_control.dash_state and not move_control.dash_attack_state:
 			hit(body)
 
-func killed_enemy(_body: Node2D):
+func killed_enemy(body: Node2D):
 	#print('Enemy Slain')
+	#if body is EnemyStatic:
+	#	health_control.heal(5)
+	#lse:
 	health_control.heal(10)
 	#move_control.dash()
 

@@ -8,6 +8,11 @@ class_name Level
 
 @export var level_name : String
 
+func _ready() -> void:
+	var find_boss : Boss = get_node_or_null(NodePath("./Boss"))
+	if find_boss:
+		find_boss.setup_with_player(get_player())
+
 func _process(_delta: float) -> void:
 	var current_player_pos = player.global_position
 	

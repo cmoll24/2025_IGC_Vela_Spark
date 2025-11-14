@@ -24,12 +24,18 @@ var invulnerable = false
 
 var facing_direction : int = 1
 
+var player : Player
+
 func _ready() -> void:
 	for x in minions:
 		var minion_info = [x.global_position, x.get_scene_file_path()]
 		print(minion_info)
 		minion_spawn_info.append(minion_info)
 	respawn_minions()
+
+func setup_with_player(current_player : Player):
+	player = current_player
+	face_player()
 
 func respawn_minions():
 	for i in range(len(minions)):
@@ -56,8 +62,10 @@ func switch_to_random_state():
 	state_machine.transition_to(state_machine.states.keys().pick_random())
 
 func _physics_process(_delta: float) -> void:
-	facing_direction = sign( Global.get_player().global_position.x - global_position.x)
 	$flippable.scale.x = facing_direction
+
+func face_player():
+	facing_direction = sign( player.global_position.x - global_position.x)
 
 func _process(_delta: float) -> void:
 	$Health.text = "Health: " + str(health)
@@ -86,15 +94,15 @@ func take_damage(amount: int) -> void:
 	if global_position.y < 400:
 		choice = 0
 	
-	if choice < 60:
-		state_machine.transition_to("TeleportState")
-	else:
-		state_machine.transition_to("ChargeState")
+	#if choice < 60:
+	state_machine.transition_to("TeleportState")
+	#else:
+	#	state_machine.transition_to("ChargeState")
 
 func hit(_attacker: Node2D) -> void:
 	take_damage(1)
 
 func die():
-	Global.get_player().health_control.full_heal()
-	Global.get_player().health_decay = false
+	player.health_control.full_heal()
+	player.health_decay = false
 	queue_free()

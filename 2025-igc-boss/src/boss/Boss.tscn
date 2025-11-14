@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=12 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -7,8 +7,7 @@
 [ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
 [ext_resource type="Script" uid="uid://dbt6p8iuumtcu" path="res://src/boss/boss_states/aimAttack.gd" id="6_uiuc5"]
 [ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
-[ext_resource type="Script" uid="uid://c0xi0mepfssc" path="res://src/boss/boss_states/porcupineHeal.gd" id="8_ranff"]
-[ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="9_fbeph"]
+[ext_resource type="Script" uid="uid://bh5d3cnj1qqkb" path="res://src/boss/boss_states/laserAttack.gd" id="8_ranff"]
 [ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
@@ -69,25 +68,20 @@ script = ExtResource("5_f33m0")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://dpuar77scsx66"
 
-[node name="AimAttack" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
-script = ExtResource("6_uiuc5")
-boss = NodePath("../..")
-metadata/_custom_type_script = "uid://dbt6p8iuumtcu"
-
 [node name="BarageAttack" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
 script = ExtResource("7_ejgj4")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://w23uns11vmqo"
 
-[node name="PorcupineHeal" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+[node name="LaserAttack" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
 script = ExtResource("8_ranff")
 boss = NodePath("../..")
-metadata/_custom_type_script = "uid://c0xi0mepfssc"
+metadata/_custom_type_script = "uid://bh5d3cnj1qqkb"
 
-[node name="ChargeState" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
-script = ExtResource("9_fbeph")
+[node name="AimAttack" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("6_uiuc5")
 boss = NodePath("../..")
-metadata/_custom_type_script = "uid://ji2we2m2t53t"
+metadata/_custom_type_script = "uid://dbt6p8iuumtcu"
 
 [node name="RightWallCheck" type="RayCast2D" parent="."]
 position = Vector2(0, 152)

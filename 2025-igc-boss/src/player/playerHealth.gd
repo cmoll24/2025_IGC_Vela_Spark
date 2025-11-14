@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func take_damage() -> void:
 	#health - amount, 0 to make sure the health dont go under 0
-	health = int(health) - (int(health) % 10)
+	health -= 10 #int(health) - (int(health) % 10)
 	print("Player hit! Health:", health)
 	if health <= 0:
 		player.die()

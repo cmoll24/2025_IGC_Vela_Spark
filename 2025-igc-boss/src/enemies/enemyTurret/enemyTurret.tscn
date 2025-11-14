@@ -29,4 +29,6 @@ offset_right = 45.0
 offset_bottom = 40.0
 color = Color(0.96806353, 0, 0.27926672, 1)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]

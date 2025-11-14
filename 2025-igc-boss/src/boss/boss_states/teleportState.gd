@@ -5,7 +5,7 @@ class_name TeleportState
 
 @export var boss : Boss
 
-@export var offscreen_posiiton = Vector2(1000,-1000)
+@export var offscreen_posiiton = Vector2(-9000,9000)
 
 var initial_location : Vector2
 var target_location : Vector2
@@ -31,6 +31,7 @@ func teleport():
 	await get_tree().create_timer(1).timeout
 	
 	boss.global_position = target_location
+	boss.face_player()
 	boss.increase_boss_pos_index()
 	
 	#var choice = randi_range(0,99)
@@ -38,4 +39,4 @@ func teleport():
 	#if choice < 60:
 	#	transition.emit("porcupineHeal")
 	#else:
-	transition.emit("aimAttack")
+	transition.emit("barageAttack")

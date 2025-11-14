@@ -7,7 +7,7 @@ var last_position : Vector2
 var target_location
 
 func enter(_arg):
-	var direction_to_player_x = sign(boss.global_position.direction_to(Global.get_player().global_position).x)
+	var direction_to_player_x = sign(boss.global_position.direction_to(boss.player.global_position).x)
 	target_location = boss.global_position + direction_to_player_x * Vector2(700,0)
 
 func physics_update(delta: float) -> void:
