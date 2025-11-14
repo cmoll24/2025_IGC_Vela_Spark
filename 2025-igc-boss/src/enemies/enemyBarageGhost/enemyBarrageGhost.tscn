@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cng7k8go6bgr0"]
+
+[ext_resource type="Script" uid="uid://c2eu6qa7asmk" path="res://src/enemies/enemyBarageGhost/enemyBarrageGhost.gd" id="1_pl1ak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lsh4"]
+size = Vector2(38, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brukk"]
+size = Vector2(90, 80)
+
+[node name="EnemyBarrageGhost" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_pl1ak")
+
+[node name="enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 10
+
+[node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
+shape = SubResource("RectangleShape2D_3lsh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_brukk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -45.0
+offset_top = -40.0
+offset_right = 45.0
+offset_bottom = 40.0
+color = Color(0.6206313, 0.51357806, 0, 1)
+
+[connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]

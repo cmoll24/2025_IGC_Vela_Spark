@@ -18,7 +18,7 @@
 interpolation_color_space = 2
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v3s3"]
 resource_name = "Collision Tiles"
 texture = ExtResource("12_y1bwq")
 texture_region_size = Vector2i(64, 64)
@@ -32,7 +32,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_riplu"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_fcumj")
+sources/1 = SubResource("TileSetAtlasSource_7v3s3")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_7v3s3")
