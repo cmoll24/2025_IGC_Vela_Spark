@@ -7,6 +7,9 @@ var game_scene : Game
 
 var player_health 
 
+func _ready() -> void:
+	Engine.set_max_fps(60)
+
 func get_current_level_index():
 	return current_level_index
 

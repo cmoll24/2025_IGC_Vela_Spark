@@ -72,9 +72,10 @@ gradient = SubResource("Gradient_ghtb1")
 position = Vector2(-112, 793)
 health_decay = false
 
-[node name="PlayerCamera" parent="Player" instance=ExtResource("11_p8a1g")]
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("11_p8a1g")]
 limit_left = -450
 limit_right = 9220
+player = NodePath("..")
 
 [node name="LevelTransition" parent="." instance=ExtResource("9_7wbir")]
 position = Vector2(9223, 540)

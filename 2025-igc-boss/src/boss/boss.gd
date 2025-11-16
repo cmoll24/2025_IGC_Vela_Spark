@@ -15,9 +15,10 @@ class_name Boss
 
 @export var boss_positions : Array[Vector2]
 @export var minions : Array[Enemy]
+var pos_cycle_order = [0,1,2,1,0,2]
 var minion_spawn_info : Array
 
-var current_pos_index : int = 0
+var current_cycle_index : int = 0
 
 var health : int = 18	
 var invulnerable = false
@@ -32,6 +33,7 @@ func _ready() -> void:
 		print(minion_info)
 		minion_spawn_info.append(minion_info)
 	respawn_minions()
+	state_machine.transition_to("TeleportState")
 
 func setup_with_player(current_player : Player):
 	player = current_player
@@ -51,12 +53,12 @@ func respawn_minions():
 		minions[i] = new_minion
 
 func get_next_boss_position():
-	return boss_positions[current_pos_index]
+	return boss_positions[pos_cycle_order[current_cycle_index]]
 
 func increase_boss_pos_index():
-	current_pos_index += 1
-	if current_pos_index >= len(boss_positions):
-		current_pos_index = 0
+	current_cycle_index += 1
+	if current_cycle_index >= len(pos_cycle_order):
+		current_cycle_index = 0
 
 func switch_to_random_state():
 	state_machine.transition_to(state_machine.states.keys().pick_random())
@@ -79,6 +81,9 @@ func _on_boss_hitbox_body_entered(_body: Node2D) -> void:
 	#if body is Player:
 	#	body.damage(self)
 
+func is_combat_phase() -> bool:
+	return global_position.y > 500
+
 func take_damage(amount: int) -> void:
 	health = max(health - amount, 0)
 	
@@ -91,13 +96,13 @@ func take_damage(amount: int) -> void:
 	
 	var choice = randi_range(0,99)
 	
-	if global_position.y < 400:
+	if not is_combat_phase():
 		choice = 0
 	
-	#if choice < 60:
-	state_machine.transition_to("TeleportState")
-	#else:
-	#	state_machine.transition_to("ChargeState")
+	if choice < 40:
+		state_machine.transition_to("TeleportState")
+	else:
+		state_machine.transition_to("ChargeState")
 
 func hit(_attacker: Node2D) -> void:
 	take_damage(1)

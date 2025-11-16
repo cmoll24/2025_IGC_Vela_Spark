@@ -1,6 +1,8 @@
 extends Enemy
 class_name EnemyTurret
 
+@onready var animation_player = $AnimationPlayer
+
 @export var COOLDOWN = 2
 
 var cooldown_timer = COOLDOWN
@@ -15,6 +17,8 @@ func _physics_process(delta: float) -> void:
 	
 	if global_position.distance_squared_to(player_pos) < 3_000_000:
 		cooldown_timer -= delta
+		if cooldown_timer < 1:
+			animation_player.play("shoot")
 		if cooldown_timer < 0:
 			cooldown_timer = COOLDOWN
 			summon_projectile(player_pos)

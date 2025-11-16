@@ -19,7 +19,7 @@ class_name PlayerMovement
 @export var MOVE_SPEED : float = 500.0
 @export var H_DECELERATION : float = 10
 @export var GRAVITY : float = 1200.0
-@export var MAX_FALL_SPEED : float = 1500.0
+@export var MAX_FALL_SPEED : float = 1200.0
 
 @export_category("Jump variables")
 @export var JUMP_SPEED : float = 800.0
@@ -103,7 +103,7 @@ func physics_update(delta: float) -> void:
 		air_jump_amount = MAX_AIR_JUMP_AMOUNT
 	
 	player.velocity.y = min(player.velocity.y, MAX_FALL_SPEED)
-	debug_label.text = str(round(jump_grace_timer.time_left * 100)) + ' ' + str(round(dash_grace_timer.time_left * 100)) #str(player.velocity.round())
+	debug_label.text = str(player.velocity.round())
 	player.move_and_slide()
 
 	if player.is_on_floor():

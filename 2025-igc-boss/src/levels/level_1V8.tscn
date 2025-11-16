@@ -50,7 +50,7 @@ navigation_enabled = false
 
 [node name="Boss" parent="." node_paths=PackedStringArray("minions") instance=ExtResource("4_d5lqx")]
 position = Vector2(3825, 382)
-boss_positions = Array[Vector2]([Vector2(361, 47), Vector2(3827, 322), Vector2(1994, 800)])
+boss_positions = Array[Vector2]([Vector2(3827, 322), Vector2(361, 47), Vector2(1994, 800)])
 minions = [NodePath("../Enemies/EnemyStatic4"), NodePath("../Enemies/EnemyStatic5"), NodePath("../Enemies/EnemyTurret"), NodePath("../Enemies/EnemyTurret2")]
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -70,7 +70,8 @@ position = Vector2(1580, 192)
 [node name="Player" parent="." instance=ExtResource("7_qd476")]
 position = Vector2(-448, -670)
 
-[node name="PlayerCamera" parent="Player" instance=ExtResource("8_pxhhr")]
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("8_pxhhr")]
+player = NodePath("..")
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 2.0

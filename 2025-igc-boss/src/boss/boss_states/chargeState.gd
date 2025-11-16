@@ -15,7 +15,7 @@ func physics_update(delta: float) -> void:
 	
 	if abs(boss.global_position.x - target_location.x) < 10 \
 	or abs(boss.global_position.x - last_position.x) < 10:
-		transition.emit("idleState")
+		transition.emit("laserAttack")
 	
 	last_position = boss.global_position
 	
@@ -24,4 +24,5 @@ func physics_update(delta: float) -> void:
 	boss.move_and_slide()
 
 func exit():
+	boss.face_player()
 	boss.velocity.x = 0

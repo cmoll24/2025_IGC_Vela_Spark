@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://ca3jni58ttg6"]
+[gd_scene load_steps=2 format=3 uid="uid://ca3jni58ttg6"]
+
+[ext_resource type="Script" uid="uid://ci0l172b8kdra" path="res://src/player/player_camera.gd" id="1_08851"]
 
 [node name="PlayerCamera" type="Camera2D"]
 limit_bottom = 1080
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
+script = ExtResource("1_08851")

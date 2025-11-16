@@ -39,4 +39,7 @@ func teleport():
 	#if choice < 60:
 	#	transition.emit("porcupineHeal")
 	#else:
-	transition.emit("barageAttack")
+	if boss.is_combat_phase():
+		transition.emit("laserAttack")
+	else:
+		transition.emit("barageAttack")
