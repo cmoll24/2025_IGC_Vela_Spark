@@ -15,7 +15,7 @@ func physics_update(delta: float) -> void:
 	
 	if abs(boss.global_position.x - target_location.x) < 10 \
 	or abs(boss.global_position.x - last_position.x) < 10:
-		transition.emit("laserAttack")
+		transition.emit("straightAttack")
 	
 	last_position = boss.global_position
 	

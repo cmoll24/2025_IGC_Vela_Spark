@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=14 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bh5d3cnj1qqkb" path="res://src/boss/boss_states/laserAttack.gd" id="8_ranff"]
 [ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="10_7byyt"]
 [ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
+[ext_resource type="Script" uid="uid://cpsc7j104fhtp" path="res://src/boss/boss_states/straightAttack.gd" id="11_7byyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
 size = Vector2(500, 344.5)
@@ -88,6 +89,11 @@ metadata/_custom_type_script = "uid://dbt6p8iuumtcu"
 script = ExtResource("10_7byyt")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://ji2we2m2t53t"
+
+[node name="StraightAttack" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("11_7byyt")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://cpsc7j104fhtp"
 
 [node name="RightWallCheck" type="RayCast2D" parent="."]
 position = Vector2(0, 152)

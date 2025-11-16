@@ -37,7 +37,7 @@ func volley(delta):
 			else:
 				summon_projectile(deg_to_rad(75), 450)
 	if volley_number < 0:
-		transition.emit("laserAttack")
+		transition.emit("laserAttack")#"laserAttack")
 	
 
 func summon_projectile(angle : float, speed = 400) -> void:

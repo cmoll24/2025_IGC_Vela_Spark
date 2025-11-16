@@ -34,12 +34,12 @@ func teleport():
 	boss.face_player()
 	boss.increase_boss_pos_index()
 	
-	#var choice = randi_range(0,99)
+	var choice = randi_range(0,99)
 	
 	#if choice < 60:
 	#	transition.emit("porcupineHeal")
 	#else:
-	if boss.is_combat_phase():
-		transition.emit("laserAttack")
-	else:
+	if not boss.is_combat_phase() and choice < 60:
 		transition.emit("barageAttack")
+	else:
+		transition.emit("straightAttack")
