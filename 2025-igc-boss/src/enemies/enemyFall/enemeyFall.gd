@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
 func _process(delta: float) -> void:
+	super._process(delta)
 	cooldown -= delta
 	if cooldown <= 0:
 		summon_projectile()

@@ -44,9 +44,13 @@ tile_set = SubResource("TileSet_ml2o2")
 navigation_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("3_8487g")]
-position = Vector2(-236, 776)
+position = Vector2(18460, -1052)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("4_7wbir")]
+limit_left = -10000013
+limit_top = -10000079
+limit_right = 9999987
+limit_bottom = 1001
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
