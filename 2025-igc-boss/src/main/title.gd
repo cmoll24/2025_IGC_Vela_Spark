@@ -6,7 +6,7 @@ extends Control
 var current_level : Level
 
 func _ready() -> void:
-	var number_of_levels = 9
+	var number_of_levels = 10
 	var buttons = []
 	for i in range(1,number_of_levels+1):
 		var level_button : LevelSelector = level_selector.instantiate()
