@@ -103,7 +103,7 @@ func physics_update(delta: float) -> void:
 		air_jump_amount = MAX_AIR_JUMP_AMOUNT
 	
 	player.velocity.y = min(player.velocity.y, MAX_FALL_SPEED)
-	debug_label.text = str(player.velocity.round())
+	debug_label.text = str(dash_grace_timer.time_left) #str(player.velocity.round())
 	player.move_and_slide()
 
 	if player.is_on_floor():
@@ -119,7 +119,8 @@ func physics_update(delta: float) -> void:
 
 var is_controller_dashed_pressed = false
 func process_controller_dash():
-	if immobile_timer.is_stopped() and not is_knocked_back  and not player.is_dead:
+	#if dash_grace_timer.is_stopped():
+	#if immobile_timer.is_stopped() and not is_knocked_back  and not player.is_dead:
 		if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
 			is_controller_dashed_pressed = true
 			dash_grace_timer.start()
@@ -183,7 +184,7 @@ func is_jump_just_pressed():
 	return false
 
 func is_dash_just_pressed():
-	if not dash_grace_timer.is_stopped() and Input.is_action_pressed("dash"):
+	if not dash_grace_timer.is_stopped() and (Input.is_action_pressed("dash") or is_controller_dashed_pressed):
 		dash_grace_timer.stop()
 		return true
 	return false

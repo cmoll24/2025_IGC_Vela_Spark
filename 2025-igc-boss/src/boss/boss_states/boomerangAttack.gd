@@ -17,6 +17,7 @@ var projectile = load("res://src/projectile/boomerangProjectile.tscn")
 var attacked = false
 
 func enter(_arg):
+	attacked = false
 	timer = DURATION
 	#telegraph_timer = TELEGRAPH_TIME
 #	target_location = boss.global_position + Vector2(50,0)

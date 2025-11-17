@@ -43,15 +43,6 @@ tile_map_data = PackedByteArray("AAD7/xAAAQAAAAIAAAD8/xAAAQAAAAIAAAD9/xAAAQAAAAI
 tile_set = SubResource("TileSet_ml2o2")
 navigation_enabled = false
 
-[node name="Player" parent="." instance=ExtResource("3_8487g")]
-position = Vector2(18460, -1052)
-
-[node name="PlayerCamera" parent="Player" instance=ExtResource("4_7wbir")]
-limit_left = -10000013
-limit_top = -10000079
-limit_right = 9999987
-limit_bottom = 1001
-
 [node name="Background" type="TextureRect" parent="."]
 visible = false
 offset_left = -1713.0
@@ -60,6 +51,16 @@ offset_right = 14182.0
 offset_bottom = 1255.0
 texture = ExtResource("5_ft7h2")
 stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("3_8487g")]
+position = Vector2(0, 910)
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("4_7wbir")]
+limit_left = -10000013
+limit_top = -10000079
+limit_right = 9999987
+limit_bottom = 1105
+player = NodePath("..")
 
 [node name="OutOfBounds" parent="." instance=ExtResource("6_ffib7")]
 position = Vector2(0, 1264)
