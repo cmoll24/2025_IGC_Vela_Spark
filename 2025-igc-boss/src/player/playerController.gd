@@ -185,3 +185,8 @@ func killed_enemy(body: Node2D):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		die()
+
+func _on_attack_obstacle_body_entered(body: Node2D) -> void:
+	if (body.is_in_group("obstacles") or body is TileMapLayer) and (move_control.dash_state or move_control.dash_attack_state):
+		health_control.cancel_invincibility()
+		move_control.end_dash()

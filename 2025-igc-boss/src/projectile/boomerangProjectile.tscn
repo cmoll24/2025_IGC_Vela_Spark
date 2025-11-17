@@ -11,11 +11,11 @@ radius = 26.019224
 
 [node name="BoomerangProjectile" type="CharacterBody2D"]
 collision_layer = 128
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_u1o6f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
+modulate = Color(0.3764706, 0.3019608, 1, 1)
 position = Vector2(0, -5.9604645e-08)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_cfvmf")

@@ -1,19 +1,49 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=20 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
 [ext_resource type="Script" uid="uid://b2tw3xmq2dmkd" path="res://src/boss/boss_states/idleState.gd" id="3_0wgbl"]
+[ext_resource type="Texture2D" uid="uid://cdoxew32dx2vb" path="res://assets/boss/walk/boss_walk-4.png" id="3_sp2nh"]
+[ext_resource type="Texture2D" uid="uid://ctu7crktvrns8" path="res://assets/boss/walk/boss_walk-1.png" id="4_8qg8b"]
 [ext_resource type="Script" uid="uid://bwol4gnh5hoit" path="res://src/boss/boss_states/moveState.gd" id="4_qh7uy"]
+[ext_resource type="Texture2D" uid="uid://d1vyllj10sbt6" path="res://assets/boss/walk/boss_walk-2.png" id="5_8ajuv"]
 [ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
+[ext_resource type="Texture2D" uid="uid://0ebtsmw56b3f" path="res://assets/boss/walk/boss_walk-3.png" id="6_h40u0"]
 [ext_resource type="Script" uid="uid://dbt6p8iuumtcu" path="res://src/boss/boss_states/aimAttack.gd" id="6_uiuc5"]
 [ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
 [ext_resource type="Script" uid="uid://bh5d3cnj1qqkb" path="res://src/boss/boss_states/laserAttack.gd" id="8_ranff"]
 [ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="10_7byyt"]
 [ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
 [ext_resource type="Script" uid="uid://cpsc7j104fhtp" path="res://src/boss/boss_states/straightAttack.gd" id="11_7byyt"]
+[ext_resource type="Script" uid="uid://b43e60pq7pn5t" path="res://src/boss/boss_states/boomerangAttack.gd" id="16_8qg8b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2vrfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sp2nh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h40u0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8ajuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8qg8b")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
-size = Vector2(500, 344.5)
+size = Vector2(500, 384.25)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7byyt"]
 radius = 131.0
@@ -34,11 +64,18 @@ color = Color(0.7058824, 0, 0, 1)
 [node name="flippable" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="flippable"]
+visible = false
 position = Vector2(12, 11.999992)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("10_j3b7s")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_2vrfn")
+frame_progress = 0.25910646
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 19.875)
 shape = SubResource("RectangleShape2D_xw3os")
 
 [node name="boss_hitbox" type="Area2D" parent="."]
@@ -94,6 +131,11 @@ metadata/_custom_type_script = "uid://ji2we2m2t53t"
 script = ExtResource("11_7byyt")
 boss = NodePath("../..")
 metadata/_custom_type_script = "uid://cpsc7j104fhtp"
+
+[node name="BoomerangAttack" type="Node" parent="Phase1StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("16_8qg8b")
+boss = NodePath("../..")
+metadata/_custom_type_script = "uid://b43e60pq7pn5t"
 
 [node name="RightWallCheck" type="RayCast2D" parent="."]
 position = Vector2(0, 152)

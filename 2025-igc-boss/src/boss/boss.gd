@@ -15,8 +15,11 @@ class_name Boss
 
 @export var boss_positions : Array[Vector2]
 @export var minions : Array[Enemy]
-var pos_cycle_order = [0,1,2,1,0,2]
+var pos_cycle_order = [0,1,3,1,0,2]
 var minion_spawn_info : Array
+
+@export var ARENA_MIDDLE = 1800
+@export var ARENA_VERTICAL = 500
 
 var current_cycle_index : int = 0
 
@@ -52,6 +55,12 @@ func respawn_minions():
 		new_minion.global_position = pos
 		minions[i] = new_minion
 
+func kill_minions():
+	print('Kill all minions')
+	for x in minions:
+		if x and x.health > 0:
+			x.die()
+
 func get_next_boss_position():
 	return boss_positions[pos_cycle_order[current_cycle_index]]
 
@@ -69,6 +78,9 @@ func _physics_process(_delta: float) -> void:
 func face_player():
 	facing_direction = sign( player.global_position.x - global_position.x)
 
+func face_middle():
+	facing_direction = sign(ARENA_MIDDLE - global_position.x)
+
 func _process(_delta: float) -> void:
 	$Health.text = "Health: " + str(health)
 	if right_wall_check.is_colliding() or right_wall_check_2.is_colliding():
@@ -81,8 +93,10 @@ func _on_boss_hitbox_body_entered(_body: Node2D) -> void:
 	#if body is Player:
 	#	body.damage(self)
 
-func is_combat_phase() -> bool:
-	return global_position.y > 500
+func is_combat_phase(pos = null) -> bool:
+	if pos == null:
+		pos = global_position
+	return pos.y > ARENA_VERTICAL
 
 func take_damage(amount: int) -> void:
 	health = max(health - amount, 0)
@@ -99,7 +113,7 @@ func take_damage(amount: int) -> void:
 	if not is_combat_phase():
 		choice = 0
 	
-	if choice < 40:
+	if choice < 30:
 		state_machine.transition_to("TeleportState")
 	else:
 		state_machine.transition_to("ChargeState")

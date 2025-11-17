@@ -3,10 +3,10 @@ class_name StraightAttack
 
 @export var boss : Boss
 
-@export var TELEGRAPH_TIME : float = 0.2
+@export var WAIT_TIME : float = 12
 @export var WAVE_NUMBER : int = 3
 
-var telegraph_timer = TELEGRAPH_TIME
+var wait_timer = WAIT_TIME
 
 var attack_offset = 180
 var up_offset = -50
@@ -15,21 +15,21 @@ var projectile = load("res://src/projectile/accelerateProjectile.tscn")
 var static_enemy = load("res://src/enemies/enemyStatic/enemeyStatic.tscn")
 
 func enter(_arg):
-	telegraph_timer = TELEGRAPH_TIME
+	wait_timer = WAIT_TIME
+	attack()
 #	target_location = boss.global_position + Vector2(50,0)
 
 func physics_update(delta: float) -> void:
-	telegraph_timer -= delta
-	if telegraph_timer < 0:
-		attack(delta)
-		transition.emit("idleState")
+	wait_timer -= delta
+	if wait_timer < 0:
+		transition.emit("chargeState")
 	
 	boss.velocity.y += boss.GRAVITY * delta
 	boss.velocity.x = move_toward(boss.velocity.x, 0, delta * boss.H_DECELERATION * boss.MOVE_SPEED)
 	boss.move_and_slide()
 
-func attack(_delta):
-	var enemy_pos = randi_range(0,1)
+func attack():
+	var enemy_pos : int = randi_range(0,1)
 	
 	for i in range(WAVE_NUMBER):
 		
@@ -51,7 +51,7 @@ func attack(_delta):
 		if enemy_pos == 0:
 			enemy_pos += randi_range(0,1)
 		elif enemy_pos == 2:
-			enemy_pos += randf_range(-1,0)
+			enemy_pos += randi_range(-1,0)
 		else:
 			enemy_pos += randi_range(-1,1)
 		
