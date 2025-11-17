@@ -14,7 +14,7 @@ script = ExtResource("1_a8hw6")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 
-[node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("RectangleShape2D_jg4ye")
 
 [node name="ColorRect" type="ColorRect" parent="."]

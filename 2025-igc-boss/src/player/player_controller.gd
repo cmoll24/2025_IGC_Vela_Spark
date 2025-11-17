@@ -173,7 +173,6 @@ func apply_knockback(from_position: Vector2) -> void:
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
-		
 func die():
 	print("player died")
 	get_tree().reload_current_scene()
@@ -182,4 +181,5 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitbox":
 		take_damage(10)
 		apply_knockback(area.global_position)
-		print("hit!")
+	if area.name == "projectile_area2d":
+		print("take damage")

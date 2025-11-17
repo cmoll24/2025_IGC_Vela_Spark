@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 			cooldown = 5.0
 			volley_duration = 0.1
 	
-	
 func summon_projectile() -> void:
 	var instance = projectile.instantiate()
 	instance.spawnPos = global_position

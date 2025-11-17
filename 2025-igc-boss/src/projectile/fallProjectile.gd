@@ -14,9 +14,8 @@ func _physics_process(delta: float) -> void:
 	velocity.y += 100 * delta
 	move_and_slide()
 	
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body.name)
 	if not body.is_in_group("projectiles"):
-		print(body.name)
+		if body.name == "player_hitbox" or body.is_in_group("player"):
+			print("hit player")
 		queue_free()

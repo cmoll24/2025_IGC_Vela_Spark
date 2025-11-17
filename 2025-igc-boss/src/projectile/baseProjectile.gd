@@ -11,4 +11,7 @@ func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
 	self.add_to_group("projectiles")
+
+	
+	
 	

@@ -21,11 +21,11 @@ position = Vector2(2.0000057, 3.999998)
 scale = Vector2(0.023484003, 0.022286557)
 texture = ExtResource("1_wwl1w")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="projectile_area2d" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile_area2d"]
 shape = SubResource("CircleShape2D_156v8")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="projectile_area2d" to="." method="_on_area_2d_body_entered"]
