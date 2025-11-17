@@ -134,7 +134,7 @@ func horizontal_movement(delta):
 		if abs(player.velocity.x) <= abs(current_move_speed):
 			player.velocity.x = move_input * current_move_speed
 		else:
-			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, 0.5 * delta * current_move_speed)
+			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, delta * current_move_speed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 

@@ -7,6 +7,7 @@ var target_location
 
 func enter(direction):
 	target_location = boss.global_position + direction * Vector2(100,0)
+	boss.play_animation("walk")
 
 func physics_update(delta: float) -> void:
 	var x_diff = target_location.x - boss.global_position.x
@@ -19,3 +20,6 @@ func physics_update(delta: float) -> void:
 	boss.velocity.y += boss.GRAVITY * delta
 	boss.velocity.x = direction * boss.MOVE_SPEED
 	boss.move_and_slide()
+
+func exit():
+	boss.play_animation("walk")

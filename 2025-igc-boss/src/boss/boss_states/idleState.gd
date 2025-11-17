@@ -6,6 +6,7 @@ class_name IdleState
 var idle_duration
 
 func enter(_arg):
+	boss.play_animation("idle")
 	idle_duration = 4
 
 func physics_update(delta: float) -> void:

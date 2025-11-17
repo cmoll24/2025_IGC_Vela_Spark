@@ -7,10 +7,10 @@ var last_position : Vector2
 var target_location
 
 func enter(_arg):
-	boss.face_middle()
-	var direction_to_player_x = sign(boss.facing_direction)
-	target_location = boss.global_position + direction_to_player_x * Vector2(600,0)
-	print(target_location)
+	boss.face_player()
+	var direction_to_player_x = -sign(boss.facing_direction)
+	target_location = boss.global_position + direction_to_player_x * Vector2(400,0)
+	boss.play_animation("walk")
 
 func physics_update(delta: float) -> void:
 	var direction_x = sign(boss.global_position.direction_to(target_location).x)
@@ -22,9 +22,10 @@ func physics_update(delta: float) -> void:
 	last_position = boss.global_position
 	
 	boss.velocity.y += boss.GRAVITY * delta
-	boss.velocity.x = direction_x * boss.MOVE_SPEED * 10
+	boss.velocity.x = direction_x * boss.MOVE_SPEED * 6
 	boss.move_and_slide()
 
 func exit():
+	boss.play_animation("idle")
 	boss.face_player()
 	boss.velocity.x = 0

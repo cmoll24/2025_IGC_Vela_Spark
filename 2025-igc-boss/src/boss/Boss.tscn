@@ -1,17 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=25 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
 [ext_resource type="Script" uid="uid://b2tw3xmq2dmkd" path="res://src/boss/boss_states/idleState.gd" id="3_0wgbl"]
 [ext_resource type="Texture2D" uid="uid://cdoxew32dx2vb" path="res://assets/boss/walk/boss_walk-4.png" id="3_sp2nh"]
 [ext_resource type="Texture2D" uid="uid://ctu7crktvrns8" path="res://assets/boss/walk/boss_walk-1.png" id="4_8qg8b"]
+[ext_resource type="Texture2D" uid="uid://2srqr1f4hbqr" path="res://assets/boss/volley/Untitled_Artwork-5.png" id="4_g7m01"]
 [ext_resource type="Script" uid="uid://bwol4gnh5hoit" path="res://src/boss/boss_states/moveState.gd" id="4_qh7uy"]
 [ext_resource type="Texture2D" uid="uid://d1vyllj10sbt6" path="res://assets/boss/walk/boss_walk-2.png" id="5_8ajuv"]
 [ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
+[ext_resource type="Texture2D" uid="uid://deamla5qm3otm" path="res://assets/boss/volley/Untitled_Artwork-4.png" id="5_muxuo"]
 [ext_resource type="Texture2D" uid="uid://0ebtsmw56b3f" path="res://assets/boss/walk/boss_walk-3.png" id="6_h40u0"]
 [ext_resource type="Script" uid="uid://dbt6p8iuumtcu" path="res://src/boss/boss_states/aimAttack.gd" id="6_uiuc5"]
+[ext_resource type="Texture2D" uid="uid://bp4svbs7o43jp" path="res://assets/boss/volley/Untitled_Artwork-3.png" id="6_yahjj"]
 [ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
+[ext_resource type="Texture2D" uid="uid://yruqrjvy1kq6" path="res://assets/boss/volley/Untitled_Artwork-2.png" id="7_gcy47"]
 [ext_resource type="Script" uid="uid://bh5d3cnj1qqkb" path="res://src/boss/boss_states/laserAttack.gd" id="8_ranff"]
+[ext_resource type="Texture2D" uid="uid://4fyip238s43x" path="res://assets/boss/volley/Untitled_Artwork-1.png" id="8_ryyt3"]
 [ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="10_7byyt"]
 [ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
 [ext_resource type="Script" uid="uid://cpsc7j104fhtp" path="res://src/boss/boss_states/straightAttack.gd" id="11_7byyt"]
@@ -24,7 +29,27 @@ animations = [{
 "texture": ExtResource("3_sp2nh")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g7m01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_muxuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yahjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcy47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ryyt3")
+}],
+"loop": false,
+"name": &"volley",
 "speed": 5.0
 }, {
 "frames": [{
@@ -37,13 +62,13 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_8qg8b")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3os"]
-size = Vector2(500, 384.25)
+size = Vector2(500, 368.25)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7byyt"]
 radius = 131.0
@@ -72,10 +97,10 @@ texture = ExtResource("10_j3b7s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_2vrfn")
-frame_progress = 0.25910646
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 19.875)
+position = Vector2(0, 11.875)
 shape = SubResource("RectangleShape2D_xw3os")
 
 [node name="boss_hitbox" type="Area2D" parent="."]
@@ -168,4 +193,5 @@ scale = Vector2(2, 2)
 text = "Health"
 horizontal_alignment = 1
 
+[connection signal="animation_finished" from="flippable/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="boss_hitbox" to="." method="_on_boss_hitbox_body_entered"]

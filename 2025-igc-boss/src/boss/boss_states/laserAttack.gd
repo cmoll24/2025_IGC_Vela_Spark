@@ -22,6 +22,7 @@ func enter(_arg):
 func physics_update(delta: float) -> void:
 	telegraph_timer -= delta
 	if telegraph_timer < 0:
+		boss.play_animation("volley")
 		attack(delta)
 		transition.emit("idleState")
 	

@@ -10,6 +10,7 @@ var volley_timer = VOLLEY_COOLDOWN
 var projectile = load("res://src/projectile/arcProjectile.tscn")
 
 func enter(_arg):
+	boss.play_animation("volley")
 	volley_timer = 0
 #	target_location = boss.global_position + Vector2(50,0)
 

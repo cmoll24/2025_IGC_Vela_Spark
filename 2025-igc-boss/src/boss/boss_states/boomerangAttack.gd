@@ -24,6 +24,7 @@ func enter(_arg):
 
 func physics_update(delta: float) -> void:
 	if not attacked:
+		boss.play_animation("volley")
 		attack()
 		attacked = true
 	

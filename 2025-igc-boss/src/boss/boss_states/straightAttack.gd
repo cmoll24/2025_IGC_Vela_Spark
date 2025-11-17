@@ -3,7 +3,7 @@ class_name StraightAttack
 
 @export var boss : Boss
 
-@export var WAIT_TIME : float = 12
+@export var WAIT_TIME : float = 5
 @export var WAVE_NUMBER : int = 3
 
 var wait_timer = WAIT_TIME
@@ -16,6 +16,7 @@ var static_enemy = load("res://src/enemies/enemyStatic/enemeyStatic.tscn")
 
 func enter(_arg):
 	wait_timer = WAIT_TIME
+	boss.play_animation("volley")
 	attack()
 #	target_location = boss.global_position + Vector2(50,0)
 

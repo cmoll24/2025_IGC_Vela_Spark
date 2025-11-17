@@ -8,6 +8,8 @@ class_name Boss
 @onready var left_wall_check : RayCast2D = $LeftWallCheck
 @onready var left_wall_check_2 : RayCast2D = $LeftWallCheck2
 
+@onready var animated_sprite = $flippable/AnimatedSprite2D
+
 @export_category("Movement variables")
 @export var MOVE_SPEED : float = 100.0
 @export var H_DECELERATION : float = 30
@@ -125,3 +127,10 @@ func die():
 	player.health_control.full_heal()
 	player.health_decay = false
 	queue_free()
+
+func play_animation(new_anim : String):
+	if animated_sprite:
+		animated_sprite.play(new_anim)
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	animated_sprite.play("idle")

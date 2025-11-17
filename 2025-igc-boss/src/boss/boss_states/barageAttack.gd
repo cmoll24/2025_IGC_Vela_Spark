@@ -27,6 +27,7 @@ func physics_update(delta: float) -> void:
 func volley(delta):
 	volley_timer -= delta
 	if volley_timer < 0:
+		boss.play_animation("volley")
 		volley_number -= 1
 		volley_timer = VOLLEY_COOLDOWN
 		summon_projectile(deg_to_rad(35), 550)
