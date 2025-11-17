@@ -63,7 +63,8 @@ position = Vector2(388, 659)
 [node name="Player" parent="." instance=ExtResource("6_o5ief")]
 position = Vector2(1114, 784)
 
-[node name="PlayerCamera" parent="Player" instance=ExtResource("5_islcb")]
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("5_islcb")]
+player = NodePath("..")
 
 [node name="WorldBorder" type="Node2D" parent="."]
 process_mode = 4

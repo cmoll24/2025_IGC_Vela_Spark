@@ -6,7 +6,11 @@
 script = ExtResource("1_px13n")
 
 [node name="JumpGraceTime" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
+one_shot = true
+
+[node name="DashGraceTime" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="CoyoteTime" type="Timer" parent="."]

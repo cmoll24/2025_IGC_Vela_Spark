@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://vuyn1l8rh0e" path="res://src/enemies/enemyBarrage/enemyBarrage.gd" id="1_pcly7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lsh4"]
-size = Vector2(38, 38)
+size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brukk"]
 size = Vector2(90, 80)

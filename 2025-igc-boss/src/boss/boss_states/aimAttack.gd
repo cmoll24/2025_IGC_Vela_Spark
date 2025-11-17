@@ -4,20 +4,26 @@ class_name AimAttack
 @export var boss : Boss
 
 @export var VOLLEY_COOLDOWN = 1
-@export var VOLLEY_NUMBER = 15
 
-var volley_number = VOLLEY_NUMBER
 var volley_timer = VOLLEY_COOLDOWN
 
 var projectile = load("res://src/projectile/arcProjectile.tscn")
 
 func enter(_arg):
-	volley_number = VOLLEY_NUMBER
 	volley_timer = 0
 #	target_location = boss.global_position + Vector2(50,0)
 
 func physics_update(delta: float) -> void:
 	volley(delta)
+	
+	var distance_to_player = boss.global_position.distance_squared_to(boss.player.global_position)
+	
+	if distance_to_player < 2_000_000:
+		var choice = randf_range(0, 100)
+		if choice > 50:
+			transition.emit("laserAttack")
+		else:
+			transition.emit("barageAttack")
 	
 	boss.velocity.y += boss.GRAVITY * delta
 	boss.velocity.x = move_toward(boss.velocity.x, 0, delta * boss.H_DECELERATION * boss.MOVE_SPEED)
@@ -26,13 +32,11 @@ func physics_update(delta: float) -> void:
 func volley(delta):
 	volley_timer -= delta
 	if volley_timer < 0:
-		volley_number -= 1
 		volley_timer = VOLLEY_COOLDOWN
-		summon_projectile(0.3, 550)
-		summon_projectile(0.5, 530)
-		summon_projectile(0.7, 500)
-	if volley_number < 0:
-		transition.emit("ChargeState")
+		summon_projectile(0.5, 800)
+		summon_projectile(0.7, 800)
+		summon_projectile(1, 800)
+		summon_projectile(1.2, 800)
 	
 
 func summon_projectile(offset_percent : float = 1, speed = 800) -> void:

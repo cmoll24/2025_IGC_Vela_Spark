@@ -19,13 +19,15 @@ class_name Player
 @onready var ground_detector_long_right = $GroundDetectorLongRight
 @onready var ground_detector_long_left = $GroundDetectorLongLeft
 
+@export var health_decay = true
+
 var is_dead = false
 var cause_of_death : String
 
 var fire_ball_active = false
 
 func _ready():
-	#Engine.time_scale = 0.2
+	#Engine.time_scale = 0.4
 	add_to_group("player")
 	fireball_sprite.modulate = Color(1,1,1,0)
 
@@ -172,11 +174,19 @@ func _on_enemy_collide(body: Node2D) -> void:
 		if  not move_control.dash_state and not move_control.dash_attack_state:
 			hit(body)
 
-func killed_enemy(_body: Node2D):
+func killed_enemy(body: Node2D):
 	#print('Enemy Slain')
+	#if body is EnemyStatic:
+	#	health_control.heal(5)
+	#lse:
 	health_control.heal(10)
 	#move_control.dash()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		die()
+
+func _on_attack_obstacle_body_entered(body: Node2D) -> void:
+	if (body.is_in_group("obstacles") or body is TileMapLayer) and (move_control.dash_state or move_control.dash_attack_state):
+		health_control.cancel_invincibility()
+		move_control.end_dash()

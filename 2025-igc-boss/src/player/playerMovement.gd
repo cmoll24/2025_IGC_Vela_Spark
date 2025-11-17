@@ -2,6 +2,7 @@ extends Node
 class_name PlayerMovement
 
 @onready var jump_grace_timer = $JumpGraceTime
+@onready var dash_grace_timer = $DashGraceTime
 @onready var coyote_timer = $CoyoteTime
 @onready var dash_attack_cooldown = $DashAttackCooldown
 @onready var dash_duration = $DashDuration
@@ -18,7 +19,7 @@ class_name PlayerMovement
 @export var MOVE_SPEED : float = 500.0
 @export var H_DECELERATION : float = 10
 @export var GRAVITY : float = 1200.0
-@export var MAX_FALL_SPEED : float = 1500.0
+@export var MAX_FALL_SPEED : float = 1200.0
 
 @export_category("Jump variables")
 @export var JUMP_SPEED : float = 800.0
@@ -86,6 +87,10 @@ func physics_update(delta: float) -> void:
 		player.velocity.y += GRAVITY * delta
 		knockback_process(delta)
 	else:
+		if immobile_timer.is_stopped() and can_dash():
+			if is_dash_just_pressed():
+				dash()
+			
 		if dash_state or dash_attack_state:
 			dash_movement(delta)
 		else:
@@ -117,7 +122,7 @@ func process_controller_dash():
 	if immobile_timer.is_stopped() and not is_knocked_back  and not player.is_dead:
 		if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
 			is_controller_dashed_pressed = true
-			dash_input()
+			dash_grace_timer.start()
 		elif Input.get_action_strength("controller_dash") < 0.1:
 			is_controller_dashed_pressed = false
 
@@ -128,7 +133,7 @@ func horizontal_movement(delta):
 		if abs(player.velocity.x) <= abs(current_move_speed):
 			player.velocity.x = move_input * current_move_speed
 		else:
-			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, delta * current_move_speed)
+			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, 0.5 * delta * current_move_speed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
@@ -174,6 +179,12 @@ func jump(_delta):
 func is_jump_just_pressed():
 	if not jump_grace_timer.is_stopped() and Input.is_action_pressed("jump"):
 		jump_grace_timer.stop()
+		return true
+	return false
+
+func is_dash_just_pressed():
+	if not dash_grace_timer.is_stopped() and Input.is_action_pressed("dash"):
+		dash_grace_timer.stop()
 		return true
 	return false
 
@@ -272,17 +283,15 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("jump"): # not dash_attack_state:
-			jump_grace_timer.start()
-
-	if immobile_timer.is_stopped() and not is_knocked_back:
+		jump_grace_timer.start()
+	if event.is_action_pressed("dash"):
+		dash_grace_timer.start()
+	
+	#if immobile_timer.is_stopped() and not is_knocked_back:
 		#if event.is_action_pressed("jump"): # not dash_attack_state:
 		#	jump_grace_timer.start()
-		if event.is_action_pressed("dash"):
-			dash_input()
-			
-func dash_input():
-	if can_dash():
-		dash()
+	#	if event.is_action_pressed("dash"):
+	#		dash_input()
 		
 func can_dash():
 	return has_dash and not dash_state and dash_attack_cooldown.is_stopped()

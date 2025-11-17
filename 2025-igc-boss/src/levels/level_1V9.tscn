@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=4 uid="uid://cxwychkg4rjn7"]
+
+[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_ustpu"]
+[ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_t2fl8"]
+[ext_resource type="PackedScene" uid="uid://bxvfco2cg1dqw" path="res://src/enemies/enemyTurret/enemyTurret.tscn" id="3_k2xji"]
+[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="6_gy4gt"]
+[ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="7_k20vf"]
+[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="8_ubu7p"]
+[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="9_tmb0l"]
+
+[sub_resource type="Gradient" id="Gradient_ghtb1"]
+interpolation_color_space = 2
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
+resource_name = "Collision Tiles"
+texture = ExtResource("8_ubu7p")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_riplu"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_fcumj")
+
+[node name="Level5" type="Node2D"]
+script = ExtResource("1_ustpu")
+level_name = "Chain Dash Test"
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+offset_left = -1713.0
+offset_top = -1002.0
+offset_right = 14182.0
+offset_bottom = 1255.0
+texture = ExtResource("2_t2fl8")
+stretch_mode = 1
+
+[node name="obstacles" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(388, 659)
+
+[node name="EnemyTurret" parent="Enemies" instance=ExtResource("3_k2xji")]
+position = Vector2(759, -368)
+
+[node name="EnemyTurret2" parent="Enemies" instance=ExtResource("3_k2xji")]
+position = Vector2(1201, -371)
+
+[node name="EnemyTurret3" parent="Enemies" instance=ExtResource("3_k2xji")]
+position = Vector2(1726, -371)
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0, 1, 1)
+gradient = SubResource("Gradient_ghtb1")
+
+[node name="Player" parent="." instance=ExtResource("6_gy4gt")]
+position = Vector2(354, 938)
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("7_k20vf")]
+player = NodePath("..")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["obstacles"]]
+tile_map_data = PackedByteArray("AAD7/xAAAQAAAAIAAAD8/xAAAQAAAAIAAAD9/xAAAQAAAAIAAAD+/xAAAQAAAAIAAAD//xAAAQAAAAIAAAAAABAAAQAAAAIAAAABABAAAQAAAAIAAAABABEAAQAAAAIAAAAAABEAAQAAAAIAAAD+/xEAAQAAAAIAAAD9/xEAAQAAAAIAAAD8/xEAAQAAAAIAAAD7/xEAAQAAAAIAAAD//xEAAQAAAAIAAAACABAAAQAAAAIAAAADABAAAQAAAAIAAAAEABAAAQAAAAIAAAAFABAAAQAAAAIAAAAGABAAAQAAAAIAAAAHABAAAQAAAAIAAAAIABAAAQAAAAIAAAAJABAAAQAAAAIAAAAKABAAAQAAAAIAAAALABAAAQAAAAIAAAAMABAAAQAAAAIAAAANABAAAQAAAAIAAAAOABAAAQAAAAIAAAAPABAAAQAAAAIAAAAQABAAAQAAAAIAAAARABAAAQAAAAIAAAASABAAAQAAAAIAAAATABAAAQAAAAIAAAACABEAAQAAAAIAAAADABEAAQAAAAIAAAAEABEAAQAAAAIAAAAFABEAAQAAAAIAAAAGABEAAQAAAAIAAAAHABEAAQAAAAIAAAAIABEAAQAAAAIAAAAJABEAAQAAAAIAAAAKABEAAQAAAAIAAAALABEAAQAAAAIAAAAMABEAAQAAAAIAAAANABEAAQAAAAIAAAAOABEAAQAAAAIAAAAPABEAAQAAAAIAAAAQABEAAQAAAAIAAAARABEAAQAAAAIAAAASABEAAQAAAAIAAAATABEAAQAAAAIAAAAUABAAAQAAAAIAAAAUABEAAQAAAAIAAAAVABAAAQAAAAIAAAAVABEAAQAAAAIAAAAWABAAAQAAAAIAAAAWABEAAQAAAAIAAAAXABAAAQAAAAIAAAAXABEAAQAAAAIAAAAYABAAAQAAAAIAAAAYABEAAQAAAAIAAAAZABAAAQAAAAIAAAAZABEAAQAAAAIAAAAaABAAAQAAAAIAAAAaABEAAQAAAAIAAAAbABAAAQAAAAIAAAAbABEAAQAAAAIAAAAcABAAAQAAAAIAAAAcABEAAQAAAAIAAAAdABAAAQAAAAIAAAAdABEAAQAAAAIAAAD5/xAAAQAAAAIAAAD5/xEAAQAAAAIAAAD6/xAAAQAAAAIAAAD6/xEAAQAAAAIAAAD5/w8AAQAAAAAAAAD5/w4AAQAAAAAAAAD5/w0AAQAAAAAAAAD5/wwAAQAAAAAAAAD5/wsAAQAAAAAAAAD5/woAAQAAAAAAAAD5/wkAAQAAAAAAAAD5/wgAAQAAAAAAAAD5/wcAAQAAAAAAAAD5/wYAAQAAAAAAAAD5/wUAAQAAAAAAAAD5/wQAAQAAAAAAAAD5/wMAAQAAAAAAAAD5/wIAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD5//z/AQAAAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAAAAAD5////AQAAAAAAAAAeABAAAQAAAAIAAAAeABEAAQAAAAIAAAAfABAAAQAAAAIAAAAfABEAAQAAAAIAAAAgABAAAQAAAAIAAAAgABEAAQAAAAIAAAAhABAAAQAAAAIAAAAhABEAAQAAAAIAAAAiABAAAQAAAAIAAAAiABEAAQAAAAIAAAAjABAAAQAAAAIAAAAjABEAAQAAAAIAAAAkABAAAQAAAAIAAAAkABEAAQAAAAIAAAAlABAAAQAAAAIAAAAlABEAAQAAAAIAAAAmABAAAQAAAAIAAAAmABEAAQAAAAIAAAAnABAAAQAAAAIAAAAnABEAAQAAAAIAAAAoABAAAQAAAAIAAAAoABEAAQAAAAIAAAApABAAAQAAAAIAAAApABEAAQAAAAIAAAAqABAAAQAAAAIAAAAqABEAAQAAAAIAAAArABAAAQAAAAIAAAArABEAAQAAAAIAAAAsABAAAQAAAAIAAAAsABEAAQAAAAIAAAAtABAAAQAAAAIAAAAtABEAAQAAAAIAAAAuABAAAQAAAAIAAAAuABEAAQAAAAIAAAAuAA8AAQAAAAAAAAAuAA4AAQAAAAAAAAAuAA0AAQAAAAAAAAAuAAwAAQAAAAAAAAAuAAsAAQAAAAAAAAAuAAoAAQAAAAAAAAAuAAkAAQAAAAAAAAAuAAgAAQAAAAAAAAAuAAcAAQAAAAAAAAAuAAYAAQAAAAAAAAAuAAUAAQAAAAAAAAAuAAQAAQAAAAAAAAAuAAMAAQAAAAAAAAAuAP3/AQAAAAAAAAAuAP7/AQAAAAAAAAAuAP//AQAAAAAAAAAuAAAAAQAAAAAAAAAuAAEAAQAAAAAAAAAuAAIAAQAAAAAAAAAkAA0AAQAAAAEAAAAlAA0AAQAAAAEAAAAmAA0AAQAAAAEAAAAnAA0AAQAAAAEAAAArAAkAAQAAAAEAAAAsAAkAAQAAAAEAAAAtAAkAAQAAAAEAAAA=")
+tile_set = SubResource("TileSet_riplu")
+navigation_enabled = false
+
+[node name="OutOfBounds" parent="." instance=ExtResource("9_tmb0l")]
+position = Vector2(0, 1264)
+
+[node name="ProjectileTree" type="Node2D" parent="."]

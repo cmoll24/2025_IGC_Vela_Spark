@@ -8,11 +8,11 @@ class_name PlayerHealth
 @export var danger_detector : Area2D
 
 @export_category("Health variables")
-@export var MAX_HEALTH := 50
+@export var MAX_HEALTH := 70
 var health : float = MAX_HEALTH
 
 @export var INVINCIBILITY_DURATION : float = 1.0
-@export var DECAY_COEF := 1
+@export var DECAY_COEF := 1.4
 
 signal enemy_collide(body : Node2D)
 signal obstacle_collide(body : Node2D)
@@ -24,15 +24,16 @@ func _ready() -> void:
 
 func take_damage() -> void:
 	#health - amount, 0 to make sure the health dont go under 0
-	health = int(health) - (int(health) % 10)
+	health -= 10 #int(health) - (int(health) % 10)
 	print("Player hit! Health:", health)
 	if health <= 0:
 		player.die()
 
 func _process(delta):
-	health = health - DECAY_COEF * delta
-	if health <= 0:
-		player.die("Time")
+	if player.health_decay:
+		health = health - DECAY_COEF * delta
+		if health <= 0:
+			player.die("Time")
 	
 func _on_invincibility_timer_timeout() -> void:
 	for area in hitbox.get_overlapping_areas():
