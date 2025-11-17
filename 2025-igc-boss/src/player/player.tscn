@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://jltmwajt65og" path="res://assets/character/FireAttack/Fireball-3.png" id="27_p6grl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
-size = Vector2(28, 178)
+size = Vector2(28, 173)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylhto"]
 size = Vector2(28, 126)
@@ -235,14 +235,14 @@ size = Vector2(290, 157)
 size = Vector2(90, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwi60"]
-size = Vector2(30, 178)
+size = Vector2(30, 132)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_4anbu")
 
 [node name="GroundCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_rxibo")
 
 [node name="AirCollision" type="CollisionShape2D" parent="."]
@@ -385,7 +385,7 @@ debug_color = Color(0.99947137, 0, 0.1284638, 0.41960785)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/attack_obstacle"]
-position = Vector2(7, -15)
+position = Vector2(7, -34)
 shape = SubResource("RectangleShape2D_vwi60")
 debug_color = Color(0, 0.6470676, 0.24248996, 0.41960785)
 
