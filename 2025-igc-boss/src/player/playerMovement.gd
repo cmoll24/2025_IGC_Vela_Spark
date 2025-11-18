@@ -35,6 +35,7 @@ var dash_direction
 @export var DASH_SPEED : float = 1000
 var current_dash_speed = DASH_SPEED
 var dash_entry_speed : float
+@export var FIREBALL_DECCEL_COEF = 0.8
 
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
@@ -121,6 +122,7 @@ var is_controller_dashed_pressed = false
 func process_controller_dash():
 	#if dash_grace_timer.is_stopped():
 	#if immobile_timer.is_stopped() and not is_knocked_back  and not player.is_dead:
+	if not player.is_dead:
 		if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
 			is_controller_dashed_pressed = true
 			dash_grace_timer.start()
@@ -134,7 +136,7 @@ func horizontal_movement(delta):
 		if abs(player.velocity.x) <= abs(current_move_speed):
 			player.velocity.x = move_input * current_move_speed
 		else:
-			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, delta * current_move_speed)
+			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, FIREBALL_DECCEL_COEF * delta * current_move_speed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
@@ -295,7 +297,7 @@ func _input(event: InputEvent) -> void:
 	#		dash_input()
 		
 func can_dash():
-	return has_dash and not dash_state and dash_attack_cooldown.is_stopped()
+	return has_dash and not dash_state and dash_attack_cooldown.is_stopped() and not player.is_dead
 
 func is_dashing():
 	return dash_state or dash_attack_state
