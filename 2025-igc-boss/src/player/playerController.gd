@@ -138,8 +138,9 @@ func die(cause : String = "Attack"):
 	
 	await animated_sprite.animation_finished
 	
-	queue_free()
-	get_tree().reload_current_scene()
+	#queue_free()
+	Global.switch_to_respawn_level()
+	#get_tree().reload_current_scene()
 
 func hit_and_respawn(attacker : Node2D):
 	health_control.hit(attacker)

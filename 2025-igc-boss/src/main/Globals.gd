@@ -18,6 +18,12 @@ func switch_to_level(new_index : int):
 	current_level_index = new_index
 	get_tree().change_scene_to_file("res://src/main/game.tscn")
 
+func switch_to_respawn_level():
+	if current_level_index >= 5:
+		switch_to_level(5)
+	else:
+		switch_to_level(4)
+
 func get_game_scene():
 	return game_scene
 
