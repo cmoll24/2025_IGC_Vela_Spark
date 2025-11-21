@@ -70,6 +70,7 @@ position = Vector2(0, 1264)
 
 [node name="Spikes8" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(16769, -895)
+player_respawn = false
 
 [node name="Spikes" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(322, 957)
@@ -77,12 +78,15 @@ scale = Vector2(15, 1)
 
 [node name="Spikes2" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(10369, -773)
+player_respawn = false
 
 [node name="Spikes3" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(11968, -1151)
+player_respawn = false
 
 [node name="Spikes4" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(12351, -1154)
+player_respawn = false
 
 [node name="Spikes5" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(15175, 574)
@@ -94,18 +98,23 @@ scale = Vector2(6, 1)
 
 [node name="Spikes7" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(14593, -573)
+player_respawn = false
 
 [node name="Spikes9" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(17155, -702)
+player_respawn = false
 
 [node name="Spikes10" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(17398, -440)
+player_respawn = false
 
 [node name="Spikes11" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(17660, -141)
+player_respawn = false
 
 [node name="Spikes12" parent="Obstacles" instance=ExtResource("3_w7tsx")]
 position = Vector2(17986, 121)
+player_respawn = false
 
 [node name="LevelTransition" parent="Obstacles" instance=ExtResource("8_ei3uw")]
 position = Vector2(22958, -2426)

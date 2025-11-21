@@ -7,6 +7,8 @@ var game_scene : Game
 
 var player_health 
 
+var player_timer : float
+
 func _ready() -> void:
 	Engine.set_max_fps(60)
 
@@ -19,6 +21,7 @@ func switch_to_level(new_index : int):
 	get_tree().change_scene_to_file("res://src/main/game.tscn")
 
 func switch_to_respawn_level():
+	reset_player_timer()
 	if current_level_index >= 5:
 		switch_to_level(5)
 	else:
@@ -38,3 +41,6 @@ func switch_to_title():
 	current_level_index = null
 	game_scene = null
 	get_tree().change_scene_to_file("res://src/main/title.tscn")
+
+func reset_player_timer():
+	player_timer = 0

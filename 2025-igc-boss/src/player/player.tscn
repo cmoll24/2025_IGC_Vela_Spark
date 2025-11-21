@@ -29,10 +29,10 @@
 [ext_resource type="Texture2D" uid="uid://jltmwajt65og" path="res://assets/character/FireAttack/Fireball-3.png" id="27_p6grl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
-size = Vector2(28, 173)
+size = Vector2(28, 164)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylhto"]
-size = Vector2(28, 126)
+size = Vector2(28, 101)
 
 [sub_resource type="Animation" id="Animation_5f2sf"]
 resource_name = "Fall"
@@ -90,7 +90,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_244u8"]
-size = Vector2(26, 122)
+size = Vector2(26, 115)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l271a"]
 size = Vector2(192, 230)
@@ -235,18 +235,18 @@ size = Vector2(290, 157)
 size = Vector2(90, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwi60"]
-size = Vector2(30, 132)
+size = Vector2(30, 103)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_4anbu")
 
 [node name="GroundCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12.5)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_rxibo")
 
 [node name="AirCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -19.5)
 shape = SubResource("RectangleShape2D_ylhto")
 disabled = true
 
@@ -300,7 +300,7 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
-position = Vector2(0, -33)
+position = Vector2(0, -29.5)
 shape = SubResource("RectangleShape2D_244u8")
 debug_color = Color(0.7026044, 0.2792841, 1, 0.41960785)
 
@@ -352,7 +352,7 @@ frame_progress = 0.013207229
 position = Vector2(9, -20)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_2smqc")
-animation = &"idle"
+animation = &"dash"
 
 [node name="FireSprite" type="AnimatedSprite2D" parent="flippable"]
 visible = false
@@ -384,11 +384,10 @@ shape = SubResource("RectangleShape2D_jiejy")
 debug_color = Color(0.99947137, 0, 0.1284638, 0.41960785)
 
 [node name="attack_obstacle" type="Area2D" parent="flippable"]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/attack_obstacle"]
-position = Vector2(7, -34)
+position = Vector2(7, -19.5)
 shape = SubResource("RectangleShape2D_vwi60")
 debug_color = Color(0, 0.6470676, 0.24248996, 0.41960785)
 
