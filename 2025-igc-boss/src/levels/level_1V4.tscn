@@ -96,7 +96,8 @@ offset_top = 585.0
 offset_right = 138.0
 offset_bottom = 648.0
 theme_override_font_sizes/font_size = 45
-text = "Arrow keys to move"
+text = "Keyboard: Arrow keys to move
+Controller: Left Joystick to move"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
@@ -105,7 +106,8 @@ offset_top = 585.0
 offset_right = 1096.0
 offset_bottom = 648.0
 theme_override_font_sizes/font_size = 45
-text = "Z to Jump"
+text = "Keyboard: Z to Jump
+Controller: X to Jump"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
@@ -118,12 +120,13 @@ text = "Hold Jump to jump higher"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
-offset_left = 3202.0
+offset_left = 3086.0
 offset_top = 327.0
 offset_right = 3689.0
-offset_bottom = 390.0
+offset_bottom = 456.0
 theme_override_font_sizes/font_size = 45
-text = "Press C to dash"
+text = "Keyboard: Press C to dash
+Controller: Press R2 to dash"
 horizontal_alignment = 1
 autowrap_mode = 2
 
