@@ -115,10 +115,10 @@ func take_damage(amount: int) -> void:
 	if not is_combat_phase():
 		choice = 0
 	
-	if choice < 30:
-		state_machine.transition_to("TeleportState")
-	else:
-		state_machine.transition_to("ChargeState")
+	#if choice < 30:
+	state_machine.transition_to("TeleportState")
+	#else:
+	#	state_machine.transition_to("ChargeState")
 
 func hit(_attacker: Node2D) -> void:
 	take_damage(1)
