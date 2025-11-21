@@ -5,18 +5,18 @@
 [ext_resource type="Script" uid="uid://b2tw3xmq2dmkd" path="res://src/boss/boss_states/idleState.gd" id="3_0wgbl"]
 [ext_resource type="Texture2D" uid="uid://cdoxew32dx2vb" path="res://assets/boss/walk/boss_walk-4.png" id="3_sp2nh"]
 [ext_resource type="Texture2D" uid="uid://ctu7crktvrns8" path="res://assets/boss/walk/boss_walk-1.png" id="4_8qg8b"]
-[ext_resource type="Texture2D" uid="uid://2srqr1f4hbqr" path="res://assets/boss/volley/Untitled_Artwork-5.png" id="4_g7m01"]
+[ext_resource type="Texture2D" uid="uid://bgiwaq1uy06s6" path="res://assets/boss/volley/boss_volley-5.png" id="4_g7m01"]
 [ext_resource type="Script" uid="uid://bwol4gnh5hoit" path="res://src/boss/boss_states/moveState.gd" id="4_qh7uy"]
 [ext_resource type="Texture2D" uid="uid://d1vyllj10sbt6" path="res://assets/boss/walk/boss_walk-2.png" id="5_8ajuv"]
 [ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
-[ext_resource type="Texture2D" uid="uid://deamla5qm3otm" path="res://assets/boss/volley/Untitled_Artwork-4.png" id="5_muxuo"]
+[ext_resource type="Texture2D" uid="uid://by1c0jxr6d5er" path="res://assets/boss/volley/boss_volley-4.png" id="5_muxuo"]
 [ext_resource type="Texture2D" uid="uid://0ebtsmw56b3f" path="res://assets/boss/walk/boss_walk-3.png" id="6_h40u0"]
 [ext_resource type="Script" uid="uid://dbt6p8iuumtcu" path="res://src/boss/boss_states/aimAttack.gd" id="6_uiuc5"]
-[ext_resource type="Texture2D" uid="uid://bp4svbs7o43jp" path="res://assets/boss/volley/Untitled_Artwork-3.png" id="6_yahjj"]
+[ext_resource type="Texture2D" uid="uid://dc77t8cds77s0" path="res://assets/boss/volley/boss_volley-3.png" id="6_yahjj"]
 [ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
-[ext_resource type="Texture2D" uid="uid://yruqrjvy1kq6" path="res://assets/boss/volley/Untitled_Artwork-2.png" id="7_gcy47"]
+[ext_resource type="Texture2D" uid="uid://qrf2g0yrgoto" path="res://assets/boss/volley/boss_volley-2.png" id="7_gcy47"]
 [ext_resource type="Script" uid="uid://bh5d3cnj1qqkb" path="res://src/boss/boss_states/laserAttack.gd" id="8_ranff"]
-[ext_resource type="Texture2D" uid="uid://4fyip238s43x" path="res://assets/boss/volley/Untitled_Artwork-1.png" id="8_ryyt3"]
+[ext_resource type="Texture2D" uid="uid://v77nq4dretbi" path="res://assets/boss/volley/boss_volley-1.png" id="8_ryyt3"]
 [ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="10_7byyt"]
 [ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
 [ext_resource type="Script" uid="uid://cpsc7j104fhtp" path="res://src/boss/boss_states/straightAttack.gd" id="11_7byyt"]
@@ -97,7 +97,7 @@ texture = ExtResource("10_j3b7s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_2vrfn")
-animation = &"walk"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.875)

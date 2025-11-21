@@ -4,12 +4,14 @@ extends CanvasLayer
 @onready var fps_label = $FPS
 @onready var timer_label = $Timer
 
+@onready var touch_screen_controls = $TouchScreenControls
+
 var inputs = {}
 
 @onready var healthbar = $TextureProgressBar
 
 func _ready() -> void:
-	pass
+	touch_screen_controls.visible = Global.touch_screen_controls
 
 func setup():
 	healthbar.max_value = Global.get_player().health_control.MAX_HEALTH

@@ -9,6 +9,8 @@ var player_health
 
 var player_timer : float
 
+var touch_screen_controls : bool = false
+
 func _ready() -> void:
 	Engine.set_max_fps(60)
 
