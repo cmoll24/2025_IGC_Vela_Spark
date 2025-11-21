@@ -167,7 +167,10 @@ func _on_obstacle_collide(body: Node2D) -> void:
 		health_control.cancel_invincibility()
 		move_control.end_dash()
 	if body.is_in_group("obstacles"):
-		hit_and_respawn(body)
+		if body is Spikes and not body.player_respawn:
+			hit(body)
+		else:
+			hit_and_respawn(body)
 	
 
 func _on_enemy_collide(body: Node2D) -> void:

@@ -25,7 +25,6 @@ height = 64.0
 
 [node name="FallProjectile" type="CharacterBody2D"]
 collision_layer = 128
-collision_mask = 3
 script = ExtResource("1_pdsh1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -34,7 +33,7 @@ shape = SubResource("CircleShape2D_pdsh1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rgwoh")
 autoplay = "default"
-frame_progress = 0.30704334
+frame_progress = 0.38048068
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128

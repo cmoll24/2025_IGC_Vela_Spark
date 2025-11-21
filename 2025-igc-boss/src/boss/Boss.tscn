@@ -167,7 +167,7 @@ position = Vector2(0, 152)
 target_position = Vector2(400, 0)
 
 [node name="RightWallCheck2" type="RayCast2D" parent="."]
-position = Vector2(0, -80)
+position = Vector2(0, -40)
 target_position = Vector2(400, 0)
 
 [node name="LeftWallCheck" type="RayCast2D" parent="."]
@@ -175,7 +175,7 @@ position = Vector2(0, 152)
 target_position = Vector2(-400, 0)
 
 [node name="LeftWallCheck2" type="RayCast2D" parent="."]
-position = Vector2(0, -80)
+position = Vector2(0, -40)
 target_position = Vector2(-400, 0)
 
 [node name="Debug" type="Label" parent="."]

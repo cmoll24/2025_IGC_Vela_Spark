@@ -16,8 +16,8 @@ func _physics_process(delta: float) -> void:
 		volley_timer = VOLLEY_COOLDOWN
 		direction = sign(Global.get_player().global_position.x - global_position.x)
 		summon_projectile(deg_to_rad(30), 300)
-		summon_projectile(deg_to_rad(55), 400)
-		summon_projectile(deg_to_rad(80), 500)
+		summon_projectile(deg_to_rad(55), 450)
+		summon_projectile(deg_to_rad(80), 550)
 	
 	
 func summon_projectile(angle : float, proj_speed = 400) -> void:

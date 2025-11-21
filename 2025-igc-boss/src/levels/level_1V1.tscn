@@ -159,6 +159,9 @@ position = Vector2(19937, 303)
 [node name="EnemyArc2" parent="Enemies" instance=ExtResource("4_w2w3v")]
 position = Vector2(21070, 174)
 
+[node name="EnemyBarrage5" parent="Enemies" instance=ExtResource("8_3cppb")]
+position = Vector2(183.32263, 135.85449)
+
 [node name="Line2D" type="Line2D" parent="."]
 width = 2.0
 default_color = Color(1, 0, 1, 1)

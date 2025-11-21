@@ -11,7 +11,7 @@ radius = 26.019224
 
 [node name="ArcBossProjectile" type="CharacterBody2D"]
 collision_layer = 128
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_utdql")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

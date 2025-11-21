@@ -90,7 +90,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_244u8"]
-size = Vector2(31, 124)
+size = Vector2(26, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l271a"]
 size = Vector2(192, 230)
@@ -296,12 +296,11 @@ attackbox = NodePath("../flippable/player_attackbox")
 attack_look_ahead = NodePath("../flippable/attack_look_ahead")
 
 [node name="player_hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
-position = Vector2(0, -34)
+position = Vector2(0, -33)
 shape = SubResource("RectangleShape2D_244u8")
 debug_color = Color(0.7026044, 0.2792841, 1, 0.41960785)
 
@@ -365,6 +364,7 @@ frame = 2
 frame_progress = 0.3915347
 
 [node name="attack_look_ahead" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -374,6 +374,7 @@ shape = SubResource("RectangleShape2D_8ydov")
 debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -383,6 +384,7 @@ shape = SubResource("RectangleShape2D_jiejy")
 debug_color = Color(0.99947137, 0, 0.1284638, 0.41960785)
 
 [node name="attack_obstacle" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/attack_obstacle"]

@@ -32,7 +32,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [node name="Level7" type="Node2D"]
 script = ExtResource("1_wdv2x")
-level_name = "Boss Level 3"
+level_name = "Boss Level"
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -49,7 +49,7 @@ tile_set = SubResource("TileSet_riplu")
 navigation_enabled = false
 
 [node name="Boss" parent="." node_paths=PackedStringArray("minions") instance=ExtResource("4_d5lqx")]
-position = Vector2(2284, 791)
+position = Vector2(2510, 800)
 boss_positions = Array[Vector2]([Vector2(3827, 322), Vector2(361, 47), Vector2(351, 775), Vector2(2284, 791)])
 minions = [NodePath("../Enemies/EnemyStatic4"), NodePath("../Enemies/EnemyStatic5"), NodePath("../Enemies/EnemyTurret"), NodePath("../Enemies/EnemyTurret2")]
 
