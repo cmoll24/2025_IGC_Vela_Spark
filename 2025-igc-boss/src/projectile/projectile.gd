@@ -8,6 +8,8 @@ class_name Projectile
 @export var spawnPos : Vector2 = Vector2.ZERO
 @export var spawnRot : float = 0
 
+@export var MAX_FALL_SPEED : float = 500
+
 var despawn_timer = TIME_UNTIL_DESPAWN
 
 var enemy_rider : Enemy

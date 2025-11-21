@@ -110,6 +110,7 @@ position = Vector2(17986, 121)
 [node name="LevelTransition" parent="Obstacles" instance=ExtResource("8_ei3uw")]
 position = Vector2(22958, -2426)
 scale = Vector2(1, 2)
+load_level_index = 8
 
 [node name="Enemies" type="Node2D" parent="."]
 

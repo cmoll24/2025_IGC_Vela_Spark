@@ -60,17 +60,14 @@ scale = Vector2(4, 1)
 [node name="Spikes7" parent="obstacles" instance=ExtResource("7_wd2lx")]
 position = Vector2(3197, 5)
 scale = Vector2(3, 1)
-player_respawn = false
 
 [node name="Spikes8" parent="obstacles" instance=ExtResource("7_wd2lx")]
 position = Vector2(4029.0002, -54)
 scale = Vector2(3, 1)
-player_respawn = false
 
 [node name="Spikes9" parent="obstacles" instance=ExtResource("7_wd2lx")]
 position = Vector2(4860.249, -124)
 scale = Vector2(3, 1)
-player_respawn = false
 
 [node name="Spikes4" parent="obstacles" instance=ExtResource("7_wd2lx")]
 position = Vector2(10596.001, 952)
@@ -95,6 +92,7 @@ scale = Vector2(2, 1)
 [node name="LevelTransition" parent="obstacles" instance=ExtResource("4_6epw7")]
 position = Vector2(25386, -89)
 scale = Vector2(2, 3)
+load_level_index = 6
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
