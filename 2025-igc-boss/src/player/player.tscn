@@ -272,6 +272,7 @@ offset_bottom = 51.0
 color = Color(1, 0, 0, 1)
 
 [node name="Debug_Label" type="Label" parent="."]
+visible = false
 offset_left = -26.0
 offset_top = -158.0
 offset_right = 24.0

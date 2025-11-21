@@ -169,7 +169,7 @@ func jump(_delta):
 		if is_jump_just_pressed():
 			coyote_timer.stop()
 			player.velocity.y = -JUMP_SPEED
-	elif not air_jump_detector.is_colliding():
+	elif not air_jump_detector.is_colliding() or is_danger_below():
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
 			player.velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
@@ -178,6 +178,9 @@ func jump(_delta):
 	if not player.is_on_floor() and Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y = lerp(player.velocity.y, 0.0, 0.8)
 
+func is_danger_below():
+	var first_body_below = air_jump_detector.get_collider()
+	return first_body_below is Enemy or first_body_below is Boss or first_body_below is Spikes or first_body_below is Projectile
 
 func is_jump_just_pressed():
 	if not jump_grace_timer.is_stopped() and Input.is_action_pressed("jump"):
