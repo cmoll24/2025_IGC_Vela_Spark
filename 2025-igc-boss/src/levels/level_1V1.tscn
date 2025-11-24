@@ -1,18 +1,18 @@
 [gd_scene load_steps=17 format=4 uid="uid://bqat4apaj0hhj"]
 
-[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7thtl"]
-[ext_resource type="Texture2D" uid="uid://cxjqaailxblku" path="res://assets/background/Untitled216_20251123164416.PNG" id="2_6epw7"]
-[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="2_diq6v"]
-[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="3_8487g"]
-[ext_resource type="PackedScene" uid="uid://b6qyc1m5puwrt" path="res://src/levels/transition/Level Transition.tscn" id="4_6epw7"]
-[ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="4_7wbir"]
-[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="6_ffib7"]
-[ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="7_wd2lx"]
-[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="8_w7tsx"]
-[ext_resource type="PackedScene" uid="uid://dqcqmcwqjtn46" path="res://src/enemies/enemyCharge/enemeyCharge.tscn" id="9_diq6v"]
-[ext_resource type="PackedScene" uid="uid://bxvfco2cg1dqw" path="res://src/enemies/enemyTurret/enemyTurret.tscn" id="10_8487g"]
-[ext_resource type="PackedScene" uid="uid://cbbvhqfs8vdl1" path="res://src/enemies/enemyBarrage/enemyBarrage.tscn" id="11_7wbir"]
-[ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="13_ffib7"]
+[ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
+[ext_resource type="Texture2D" uid="uid://cxjqaailxblku" path="res://assets/background/Untitled216_20251123164416.PNG" id="2_7v3s3"]
+[ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
+[ext_resource type="PackedScene" uid="uid://b6qyc1m5puwrt" path="res://src/levels/transition/Level Transition.tscn" id="4_37pnc"]
+[ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="5_c6lwj"]
+[ext_resource type="PackedScene" uid="uid://dqcqmcwqjtn46" path="res://src/enemies/enemyCharge/enemeyCharge.tscn" id="6_n7u8m"]
+[ext_resource type="PackedScene" uid="uid://bxvfco2cg1dqw" path="res://src/enemies/enemyTurret/enemyTurret.tscn" id="7_xvths"]
+[ext_resource type="PackedScene" uid="uid://cbbvhqfs8vdl1" path="res://src/enemies/enemyBarrage/enemyBarrage.tscn" id="8_3cppb"]
+[ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="9_buawx"]
+[ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="10_ufga5"]
+[ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="11_r0rxx"]
+[ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="12_y1bwq"]
+[ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
 
 [sub_resource type="Gradient" id="Gradient_ghtb1"]
 interpolation_color_space = 2
@@ -20,7 +20,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
 resource_name = "Collision Tiles"
-texture = ExtResource("2_diq6v")
+texture = ExtResource("12_y1bwq")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -41,7 +41,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fcumj")
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_7thtl")
+script = ExtResource("1_7v3s3")
 level_name = "Level 1"
 
 [node name="Background" type="TextureRect" parent="."]
@@ -50,228 +50,228 @@ offset_left = -1713.0
 offset_top = -882.0
 offset_right = 14182.0
 offset_bottom = 1375.0
-texture = ExtResource("2_6epw7")
+texture = ExtResource("2_7v3s3")
 stretch_mode = 1
 
 [node name="obstacles" type="Node2D" parent="."]
 
-[node name="Spikes" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(132, 961)
 scale = Vector2(4, 1)
 
-[node name="Spikes3" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes3" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(704, 962)
 scale = Vector2(4, 1)
 
-[node name="Spikes7" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes7" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(3197, 5)
 scale = Vector2(3, 1)
 
-[node name="Spikes8" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes8" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(4029.0002, -54)
 scale = Vector2(3, 1)
 
-[node name="Spikes9" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes9" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(4860.249, -124)
 scale = Vector2(3, 1)
 
-[node name="Spikes4" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes4" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(10596.001, 952)
 scale = Vector2(50, 2)
 
-[node name="Spikes6" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes6" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(20736, -201)
 scale = Vector2(39, 2)
 
-[node name="Spikes5" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes5" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(11136, -69)
 scale = Vector2(2, 1)
 
-[node name="Spikes10" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes10" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(12097, -62)
 scale = Vector2(2, 1)
 
-[node name="Spikes11" parent="obstacles" instance=ExtResource("7_wd2lx")]
+[node name="Spikes11" parent="obstacles" instance=ExtResource("3_e3r8n")]
 position = Vector2(13053, -62)
 scale = Vector2(2, 1)
 
-[node name="LevelTransition" parent="obstacles" instance=ExtResource("4_6epw7")]
+[node name="LevelTransition" parent="obstacles" instance=ExtResource("4_37pnc")]
 position = Vector2(25386, -89)
 scale = Vector2(2, 3)
-load_level_index = 6
+load_level_index = 2
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(388, 659)
 
-[node name="EnemyCharge" parent="Enemies" instance=ExtResource("9_diq6v")]
+[node name="EnemyCharge" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(14045, 302)
 
-[node name="EnemyCharge2" parent="Enemies" instance=ExtResource("9_diq6v")]
+[node name="EnemyCharge2" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(15331, 311)
 
-[node name="EnemyTurret" parent="Enemies" instance=ExtResource("10_8487g")]
+[node name="EnemyTurret" parent="Enemies" instance=ExtResource("7_xvths")]
 position = Vector2(14177, -904)
 
-[node name="EnemyTurret2" parent="Enemies" instance=ExtResource("10_8487g")]
+[node name="EnemyTurret2" parent="Enemies" instance=ExtResource("7_xvths")]
 position = Vector2(14748, -906)
 
-[node name="EnemyTurret3" parent="Enemies" instance=ExtResource("10_8487g")]
+[node name="EnemyTurret3" parent="Enemies" instance=ExtResource("7_xvths")]
 position = Vector2(15317, -904)
 
-[node name="EnemyStatic" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(16967, -830)
 
-[node name="EnemyStatic2" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic2" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(17111, -830)
 
-[node name="EnemyStatic5" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic5" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(17244, -830)
 
-[node name="EnemyStatic3" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic3" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(17965, -840)
 
-[node name="EnemyStatic4" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic4" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(18106, -840)
 
-[node name="EnemyStatic6" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic6" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(18242, -840)
 
-[node name="EnemyStatic18" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic18" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20428, -983)
 
-[node name="EnemyStatic19" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic19" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20572, -983)
 
-[node name="EnemyStatic20" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic20" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20705, -983)
 
-[node name="EnemyStatic21" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic21" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20834, -985)
 
-[node name="EnemyStatic22" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic22" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20975, -985)
 
-[node name="EnemyStatic23" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic23" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21111, -985)
 
-[node name="EnemyStatic24" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic24" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21247, -987)
 
-[node name="EnemyStatic25" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic25" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21391, -987)
 
-[node name="EnemyStatic26" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic26" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21524, -987)
 
-[node name="EnemyStatic27" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic27" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21653, -989)
 
-[node name="EnemyStatic28" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic28" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21794, -989)
 
-[node name="EnemyStatic29" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic29" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21930, -989)
 
-[node name="EnemyStatic30" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic30" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22049, -995)
 
-[node name="EnemyStatic31" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic31" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22193, -995)
 
-[node name="EnemyStatic32" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic32" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22326, -995)
 
-[node name="EnemyStatic33" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic33" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22455, -997)
 
-[node name="EnemyStatic34" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic34" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22596, -997)
 
-[node name="EnemyStatic35" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic35" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22732, -997)
 
-[node name="EnemyCharge7" parent="Enemies" instance=ExtResource("9_diq6v")]
+[node name="EnemyCharge7" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(17593, 283)
 
-[node name="EnemyBarrage3" parent="Enemies" instance=ExtResource("11_7wbir")]
+[node name="EnemyBarrage3" parent="Enemies" instance=ExtResource("8_3cppb")]
 position = Vector2(19946, 280)
 
-[node name="EnemyBarrage6" parent="Enemies" instance=ExtResource("11_7wbir")]
+[node name="EnemyBarrage6" parent="Enemies" instance=ExtResource("8_3cppb")]
 position = Vector2(21133, 160)
 
-[node name="EnemyTurret4" parent="Enemies" instance=ExtResource("10_8487g")]
+[node name="EnemyTurret4" parent="Enemies" instance=ExtResource("7_xvths")]
 position = Vector2(17603, -22)
 
-[node name="EnemyTurret5" parent="Enemies" instance=ExtResource("10_8487g")]
+[node name="EnemyTurret5" parent="Enemies" instance=ExtResource("7_xvths")]
 position = Vector2(18880, 65)
 
-[node name="EnemyBarrage4" parent="Enemies" instance=ExtResource("11_7wbir")]
+[node name="EnemyBarrage4" parent="Enemies" instance=ExtResource("8_3cppb")]
 position = Vector2(17381, -557)
 
-[node name="EnemyBarrage7" parent="Enemies" instance=ExtResource("11_7wbir")]
+[node name="EnemyBarrage7" parent="Enemies" instance=ExtResource("8_3cppb")]
 position = Vector2(18378, -553)
 
-[node name="EnemyStatic7" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic7" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(2903, -769.00757)
 
-[node name="EnemyStatic8" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic8" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(3743.2488, -837)
 
-[node name="EnemyStatic9" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic9" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(4571.249, -894)
 
-[node name="EnemyCharge4" parent="Enemies" instance=ExtResource("9_diq6v")]
+[node name="EnemyCharge4" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(2908, 289)
 
-[node name="EnemyCharge6" parent="Enemies" instance=ExtResource("9_diq6v")]
+[node name="EnemyCharge6" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(3767, 289)
 
-[node name="EnemyCharge5" parent="Enemies" instance=ExtResource("9_diq6v")]
+[node name="EnemyCharge5" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(4569, 291)
 
-[node name="EnemyFall" parent="Enemies" instance=ExtResource("8_w7tsx")]
+[node name="EnemyFall" parent="Enemies" instance=ExtResource("5_c6lwj")]
 position = Vector2(3737.2488, -1827)
 
-[node name="EnemyFall2" parent="Enemies" instance=ExtResource("8_w7tsx")]
+[node name="EnemyFall2" parent="Enemies" instance=ExtResource("5_c6lwj")]
 position = Vector2(6277, -1272)
 
-[node name="EnemyFall3" parent="Enemies" instance=ExtResource("8_w7tsx")]
+[node name="EnemyFall3" parent="Enemies" instance=ExtResource("5_c6lwj")]
 position = Vector2(6986, -1283)
 
-[node name="EnemyFall4" parent="Enemies" instance=ExtResource("8_w7tsx")]
+[node name="EnemyFall4" parent="Enemies" instance=ExtResource("5_c6lwj")]
 position = Vector2(7699, -1287)
 
-[node name="EnemyStatic10" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic10" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(7450, -226)
 
-[node name="EnemyStatic11" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic11" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(8191, -230)
 
-[node name="EnemyStatic12" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic12" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(6430, -723)
 
-[node name="EnemyStatic14" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic14" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(7840, -721)
 
-[node name="EnemyStatic16" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic16" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(9250, -711)
 
-[node name="EnemyFall5" parent="Enemies" instance=ExtResource("8_w7tsx")]
+[node name="EnemyFall5" parent="Enemies" instance=ExtResource("5_c6lwj")]
 position = Vector2(8406, -1283)
 
-[node name="EnemyFall6" parent="Enemies" instance=ExtResource("8_w7tsx")]
+[node name="EnemyFall6" parent="Enemies" instance=ExtResource("5_c6lwj")]
 position = Vector2(9132, -1273)
 
-[node name="EnemyBarrage5" parent="Enemies" instance=ExtResource("11_7wbir")]
+[node name="EnemyBarrage5" parent="Enemies" instance=ExtResource("8_3cppb")]
 position = Vector2(7841.99, 96.711)
 
-[node name="EnemyStatic13" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic13" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(10818, -818)
 
-[node name="EnemyStatic15" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic15" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(11773, -813)
 
-[node name="EnemyStatic17" parent="Enemies" instance=ExtResource("13_ffib7")]
+[node name="EnemyStatic17" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(12736, -820)
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -279,10 +279,10 @@ width = 2.0
 default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
 
-[node name="Player" parent="." instance=ExtResource("3_8487g")]
+[node name="Player" parent="." instance=ExtResource("10_ufga5")]
 position = Vector2(-720, 874)
 
-[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("4_7wbir")]
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("11_r0rxx")]
 limit_top = -10000007
 limit_bottom = 1073
 player = NodePath("..")
@@ -292,7 +292,7 @@ tile_map_data = PackedByteArray("AAD7/xAAAQAAAAEAAAD8/xAAAQAAAAEAAAD9/xAAAQAAAAE
 tile_set = SubResource("TileSet_riplu")
 navigation_enabled = false
 
-[node name="OutOfBounds" parent="." instance=ExtResource("6_ffib7")]
+[node name="OutOfBounds" parent="." instance=ExtResource("13_liaun")]
 position = Vector2(0, 1264)
 
 [node name="ProjectileTree" type="Node2D" parent="."]
