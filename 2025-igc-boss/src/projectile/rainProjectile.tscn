@@ -10,8 +10,13 @@ radius = 26.019224
 
 [node name="FallProjectile" type="CharacterBody2D"]
 collision_layer = 128
-collision_mask = 3
 script = ExtResource("1_6byg5")
+SPEED = null
+TIME_UNTIL_DESPAWN = null
+angle = null
+spawnPos = null
+spawnRot = null
+MAX_FALL_SPEED = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pdsh1")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp4svbs7o43jp"
-path="res://.godot/imported/Untitled_Artwork-3.png-cbb9645f63ba04873b6d4b0b914c1109.ctex"
+uid="uid://r63fq2xgitug"
+path="res://.godot/imported/touch_button_right.png-cd8811b058299af85f70d0d75d6e72a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/boss/volley/Untitled_Artwork-3.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-3.png-cbb9645f63ba04873b6d4b0b914c1109.ctex"]
+source_file="res://assets/ui/touch_button_right.png"
+dest_files=["res://.godot/imported/touch_button_right.png-cd8811b058299af85f70d0d75d6e72a3.ctex"]
 
 [params]
 

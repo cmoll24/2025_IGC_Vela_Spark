@@ -10,7 +10,6 @@ radius = 21.0
 
 [node name="StraightProjectile" type="CharacterBody2D"]
 collision_layer = 128
-collision_mask = 3
 script = ExtResource("1_11cb4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

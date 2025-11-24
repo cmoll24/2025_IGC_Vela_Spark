@@ -15,7 +15,7 @@ func physics_update(delta: float) -> void:
 	var distance = abs(x_diff)
 	
 	if distance < 1:
-		transition.emit("idleState")
+		transition.emit("straightAttack")
 	
 	boss.velocity.y += boss.GRAVITY * delta
 	boss.velocity.x = direction * boss.MOVE_SPEED

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2srqr1f4hbqr"
-path="res://.godot/imported/Untitled_Artwork-5.png-476a16cd214183517da6bbababc66052.ctex"
+uid="uid://c0gi2k2iqu7nl"
+path="res://.godot/imported/waterdrop2.png-b38217aba288377b2eba7883401df65f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/boss/volley/Untitled_Artwork-5.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-5.png-476a16cd214183517da6bbababc66052.ctex"]
+source_file="res://assets/projectiles/waterdrop2.png"
+dest_files=["res://.godot/imported/waterdrop2.png-b38217aba288377b2eba7883401df65f.ctex"]
 
 [params]
 

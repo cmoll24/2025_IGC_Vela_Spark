@@ -10,7 +10,6 @@ radius = 21.0
 
 [node name="AccelerateProjectile" type="CharacterBody2D"]
 collision_layer = 128
-collision_mask = 3
 script = ExtResource("1_hilwv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

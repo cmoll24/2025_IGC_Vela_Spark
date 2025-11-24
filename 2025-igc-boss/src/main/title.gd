@@ -3,10 +3,17 @@ extends Control
 @onready var level_container = $VBoxContainer
 @onready var level_selector = preload("res://src/ui/levelSelector.tscn")
 
+@onready var start_button = $VBoxContainer/Start
+
 var current_level : Level
 
 func _ready() -> void:
-	var number_of_levels = 7
+	start_button.grab_focus()
+
+func create_level_select() -> void:
+	start_button.queue_free()
+	
+	var number_of_levels = 8
 	var buttons = []
 	for i in range(1,number_of_levels+1):
 		var level_button : LevelSelector = level_selector.instantiate()
@@ -21,3 +28,15 @@ func _ready() -> void:
 
 func get_level():
 	return current_level
+
+
+func _on_start_pressed() -> void:
+	Global.switch_to_level(4)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_level_select") and start_button:
+		create_level_select()
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	Global.touch_screen_controls = toggled_on

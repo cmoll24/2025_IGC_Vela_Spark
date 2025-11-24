@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxq44n7s3ceta"]
+[gd_scene load_steps=8 format=3 uid="uid://dxq44n7s3ceta"]
 
 [ext_resource type="Script" uid="uid://cbu755oj7nlxw" path="res://src/main/hud.gd" id="1_7of0l"]
 [ext_resource type="Texture2D" uid="uid://deusgd7smxaaf" path="res://assets/debug/7-debug-health-background.png" id="2_yo4nc"]
 [ext_resource type="Texture2D" uid="uid://r5dvk44njuxs" path="res://assets/debug/7-debug-health.png" id="3_vw6pp"]
+[ext_resource type="Texture2D" uid="uid://b1o68tv65ekfd" path="res://assets/ui/touch_button_left.png" id="4_wvq1s"]
+[ext_resource type="Texture2D" uid="uid://r63fq2xgitug" path="res://assets/ui/touch_button_right.png" id="5_uut0v"]
+[ext_resource type="Texture2D" uid="uid://b6pftg0yy8g4d" path="res://assets/ui/touch_button_fire.png" id="6_22mo6"]
+[ext_resource type="Texture2D" uid="uid://esltbult42j" path="res://assets/ui/touch_button_jump.png" id="7_w1qto"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7of0l")
@@ -37,3 +41,48 @@ offset_bottom = 23.0
 grow_horizontal = 0
 text = "FPS "
 horizontal_alignment = 2
+
+[node name="Timer" type="Label" parent="."]
+offset_left = 1493.0
+offset_top = 3.0
+offset_right = 1862.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 54
+text = "00:00:00"
+horizontal_alignment = 2
+
+[node name="TouchScreenControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MoveLeft" type="TouchScreenButton" parent="TouchScreenControls"]
+position = Vector2(3, 885)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("4_wvq1s")
+texture_pressed = ExtResource("4_wvq1s")
+passby_press = true
+action = "move_left"
+
+[node name="MoveRight" type="TouchScreenButton" parent="TouchScreenControls"]
+position = Vector2(202, 885)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("5_uut0v")
+texture_pressed = ExtResource("5_uut0v")
+passby_press = true
+action = "move_right"
+
+[node name="Dash" type="TouchScreenButton" parent="TouchScreenControls"]
+position = Vector2(1707, 683)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_22mo6")
+texture_pressed = ExtResource("6_22mo6")
+action = "dash"
+
+[node name="Jump" type="TouchScreenButton" parent="TouchScreenControls"]
+position = Vector2(1709, 889)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("7_w1qto")
+texture_pressed = ExtResource("7_w1qto")
+action = "jump"

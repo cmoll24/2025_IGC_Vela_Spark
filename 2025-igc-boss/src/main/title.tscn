@@ -21,7 +21,8 @@ offset_top = 32.0
 offset_right = 79.0
 offset_bottom = 55.0
 grow_horizontal = 2
-text = "2025 IGC Boss Game"
+theme_override_font_sizes/font_size = 64
+text = "2025 IGC Candle Boss Game"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -32,3 +33,20 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Start Game"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 980.0
+offset_right = 227.0
+offset_bottom = 1055.0
+scale = Vector2(2, 2)
+text = "Touch Screen Controls"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

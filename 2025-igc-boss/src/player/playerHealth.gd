@@ -31,6 +31,8 @@ func take_damage() -> void:
 
 func _process(delta):
 	if player.health_decay:
+		Global.player_timer += delta
+		
 		health = health - DECAY_COEF * delta
 		if health <= 0:
 			player.die("Time")
