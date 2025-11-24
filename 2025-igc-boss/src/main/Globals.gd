@@ -24,10 +24,10 @@ func switch_to_level(new_index : int):
 
 func switch_to_respawn_level():
 	reset_player_timer()
-	if current_level_index >= 5:
-		switch_to_level(5)
+	if current_level_index >= 1:
+		switch_to_level(1)
 	else:
-		switch_to_level(4)
+		switch_to_level(0)
 
 func get_game_scene():
 	return game_scene
