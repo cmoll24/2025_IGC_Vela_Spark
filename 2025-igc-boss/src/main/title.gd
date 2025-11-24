@@ -9,6 +9,7 @@ var current_level : Level
 
 func _ready() -> void:
 	start_button.grab_focus()
+	create_level_select() #DEBUG
 
 func create_level_select() -> void:
 	start_button.queue_free()
