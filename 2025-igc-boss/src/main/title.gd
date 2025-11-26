@@ -32,12 +32,11 @@ func get_level():
 
 
 func _on_start_pressed() -> void:
-	Global.switch_to_level(0)
+	if Global.current_input_method == null:
+		get_tree().change_scene_to_file("res://src/main/control_options.tscn")
+	else:
+		Global.switch_to_level(0)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_level_select") and start_button:
 		create_level_select()
-
-
-func _on_check_button_toggled(toggled_on: bool) -> void:
-	Global.touch_screen_controls = toggled_on

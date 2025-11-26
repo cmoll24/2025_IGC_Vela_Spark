@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=17 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_q7moy"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_votci"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b6qyc1m5puwrt" path="res://src/levels/transition/Level Transition.tscn" id="9_rllik"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="10_l2qbv"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="11_v1uv6"]
+[ext_resource type="PackedScene" uid="uid://d023wfpur3y7d" path="res://src/ui/control_info.tscn" id="13_thp8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
 resource_name = "Collision Tiles"
@@ -101,25 +102,32 @@ position = Vector2(0, 1264)
 
 [node name="ProjectileTree" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
-offset_left = -293.0
+[node name="ControlInfo" parent="." instance=ExtResource("13_thp8c")]
+offset_left = -277.0
 offset_top = 585.0
-offset_right = 138.0
-offset_bottom = 648.0
-theme_override_font_sizes/font_size = 45
-text = "Keyboard: Arrow keys to move
-Controller: Left Joystick to move"
-horizontal_alignment = 1
+offset_right = -277.0
+offset_bottom = 585.0
+keyboard_text = "Arrow keys to move"
+controller_text = "Left Joystick to move"
+touchscreen_text = "Left and Right Buttons to move"
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 665.0
+[node name="ControlInfo2" parent="." instance=ExtResource("13_thp8c")]
+offset_left = 668.0
 offset_top = 585.0
-offset_right = 1096.0
-offset_bottom = 648.0
-theme_override_font_sizes/font_size = 45
-text = "Keyboard: Z to Jump
-Controller: X to Jump"
-horizontal_alignment = 1
+offset_right = 668.0
+offset_bottom = 585.0
+keyboard_text = "Z to Jump"
+controller_text = "X to Jump"
+touchscreen_text = "Up Button to Jump"
+
+[node name="ControlInfo3" parent="." instance=ExtResource("13_thp8c")]
+offset_left = 3107.0
+offset_top = 332.0
+offset_right = 3107.0
+offset_bottom = 332.0
+keyboard_text = "Press C to dash"
+controller_text = "Press R2 to dash"
+touchscreen_text = "Press circle button to dash"
 
 [node name="Label4" type="Label" parent="."]
 offset_left = 1450.0
@@ -129,17 +137,6 @@ offset_bottom = 557.0
 theme_override_font_sizes/font_size = 45
 text = "Hold Jump to jump higher"
 horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="."]
-offset_left = 3086.0
-offset_top = 327.0
-offset_right = 3689.0
-offset_bottom = 456.0
-theme_override_font_sizes/font_size = 45
-text = "Keyboard: Press C to dash
-Controller: Press R2 to dash"
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="Label5" type="Label" parent="."]
 offset_left = 4021.0

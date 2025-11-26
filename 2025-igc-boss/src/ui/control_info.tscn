@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d023wfpur3y7d"]
+
+[ext_resource type="Script" uid="uid://dd2ndvdmuxh3m" path="res://src/ui/control_info.gd" id="1_nqthv"]
+
+[node name="ControlInfo" type="Control"]
+layout_mode = 3
+anchor_right = 0.083000004
+anchor_bottom = 0.025
+offset_right = -0.36001587
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nqthv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 48
+text = "Placeholder text"

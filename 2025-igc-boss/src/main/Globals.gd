@@ -9,7 +9,13 @@ var player_health
 
 var player_timer : float
 
-var touch_screen_controls : bool = false
+enum INPUT_METHOD {
+	KEYBOARD,
+	CONTROLLER,
+	TOUCH_SCREEN
+}
+
+var current_input_method
 
 func _ready() -> void:
 	Engine.set_max_fps(60)
@@ -46,3 +52,9 @@ func switch_to_title():
 
 func reset_player_timer():
 	player_timer = 0
+
+func set_input_method(new_input_method : INPUT_METHOD):
+	current_input_method = new_input_method
+
+func show_touch_screen_controls():
+	return current_input_method == INPUT_METHOD.TOUCH_SCREEN

@@ -11,7 +11,7 @@ var inputs = {}
 @onready var healthbar = $TextureProgressBar
 
 func _ready() -> void:
-	touch_screen_controls.visible = Global.touch_screen_controls
+	touch_screen_controls.visible = Global.show_touch_screen_controls()
 
 func setup():
 	healthbar.max_value = Global.get_player().health_control.MAX_HEALTH
