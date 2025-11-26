@@ -2,6 +2,6 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.respawn()
+		body.damage_and_respawn()
 	elif body is Enemy:
 		body.queue_free()

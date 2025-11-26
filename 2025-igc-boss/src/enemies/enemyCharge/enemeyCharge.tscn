@@ -52,7 +52,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"windup",
-"speed": 4.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_462bx"]
@@ -86,7 +86,7 @@ color = Color(1.1070073e-06, 0.60987616, 0.50301814, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerDetector" type="RayCast2D" parent="flippable"]
-target_position = Vector2(450, 0)
+target_position = Vector2(550, 0)
 collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
@@ -95,6 +95,8 @@ position = Vector2(-8, -38)
 scale = Vector2(-0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_th00m")
 animation = &"windup"
+frame = 3
+frame_progress = 0.18249997
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 4

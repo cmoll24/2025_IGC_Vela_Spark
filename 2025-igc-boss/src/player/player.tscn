@@ -352,7 +352,7 @@ frame_progress = 0.013207229
 position = Vector2(9, -20)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_2smqc")
-animation = &"dash"
+animation = &"idle"
 
 [node name="FireSprite" type="AnimatedSprite2D" parent="flippable"]
 visible = false

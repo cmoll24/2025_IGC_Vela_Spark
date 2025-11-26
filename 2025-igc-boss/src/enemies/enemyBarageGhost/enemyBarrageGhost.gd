@@ -37,6 +37,7 @@ func summon_projectile(angle : float, proj_speed = 400) -> void:
 	var instance : ArcProjectile = projectile.instantiate()
 	instance.spawnPos = global_position
 	instance.SPEED = proj_speed
+	#instance.TIME_UNTIL_DESPAWN = 5
 	instance.angle = angle if direction > 0 else PI - angle
 	Global.get_projectile_tree().add_child(instance)
 

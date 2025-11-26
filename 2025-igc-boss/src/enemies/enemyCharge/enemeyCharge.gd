@@ -9,14 +9,14 @@ class_name EnemyCharge
 @onready var flippable = $flippable
 
 var charging = false
-var charge_timer : float = 1
+var charge_timer : float = 1.2
 
-@export var WINDUP_DURATION : float = 1
+@export var WINDUP_DURATION : float = 0.57
 
 var windup = false
 var windup_timer
 
-var charge_speed = 900
+var charge_speed = 1_000
 
 func _ready() -> void:
 	super._ready()
@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	flippable.scale.x = direction
 	
 	if not stunned_timer.is_stopped():
+		enemy_grounded_process(delta)
 		return
 	
 	if not charging and not windup:
@@ -59,7 +60,9 @@ func _physics_process(delta: float) -> void:
 			#direction = -direction
 			stunned_timer.start()
 			modulate = Color(0.7,0.7,0.7)
+	enemy_grounded_process(delta)
 	
+func enemy_grounded_process(delta):
 	super._physics_process(delta)
 
 func start_windup():

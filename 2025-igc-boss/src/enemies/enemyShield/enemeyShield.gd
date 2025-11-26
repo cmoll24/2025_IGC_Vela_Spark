@@ -12,6 +12,7 @@ func _physics_process(delta: float) -> void:
 	flippable.scale.x = direction
 	
 	if not stunned_timer.is_stopped():
+		enemy_grounded_process(delta)
 		return
 	
 	if not charging and not windup:
@@ -21,8 +22,6 @@ func _physics_process(delta: float) -> void:
 	
 	if windup:
 		windup_timer -= delta
-		invulnerable = true
-		shield_sprite.visible = true
 		if windup_timer < 0:
 			start_charge()
 	
@@ -41,11 +40,11 @@ func _physics_process(delta: float) -> void:
 			stunned_timer.start()
 			modulate = Color(0.7,0.7,0.7)
 	
-	super._physics_process(delta)
+	enemy_grounded_process(delta)
 
 func _on_stuned_timer_timeout() -> void:
 	modulate = Color(1,1,1)
 
 func _on_shield_hitbox_body_entered(body: Node2D) -> void:
-	if body is Player and (charging or windup):
+	if body is Player and charging:
 		body.super_hit(self)

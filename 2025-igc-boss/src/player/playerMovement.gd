@@ -40,7 +40,7 @@ var dash_entry_speed : float
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
 @export var knockback_upward_force: float = 400.0
-@export var knockback_duration: float = 0.3
+@export var knockback_duration: float = 0.5
 
 var knockback_vector: Vector2 = Vector2.ZERO
 var is_knocked_back: bool = false

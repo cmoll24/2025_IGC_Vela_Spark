@@ -3,10 +3,10 @@ extends EnemyGrounded
 @onready var animation_player = $flippable/AnimatedSprite2D
 @onready var flippable = $flippable
 
-@export var VOLLEY_DURATION = 0.1
+@export var VOLLEY_AMOUNT = 10
 @export var VOLLEY_COOLDOWN = 5.0
 
-var volley_timer : float = VOLLEY_DURATION
+var volley_count : float = VOLLEY_AMOUNT
 var attack_cooldown : float = VOLLEY_COOLDOWN
 
 func _ready() -> void:
@@ -25,14 +25,13 @@ func _physics_process(delta: float) -> void:
 	if attack_cooldown < 0.5:
 		animation_player.play("attack")
 	
-	attack_cooldown -= delta
-	if attack_cooldown <= 0:
-		volley_timer -= delta
-		if volley_timer > 0:
+	if attack_cooldown < 0:
+		volley_count -= 1
+		if volley_count > 0:
 			summon_projectile()
 		else:
 			attack_cooldown = VOLLEY_COOLDOWN
-			volley_timer = VOLLEY_DURATION
+			volley_count = VOLLEY_AMOUNT
 	
 	
 func summon_projectile() -> void:

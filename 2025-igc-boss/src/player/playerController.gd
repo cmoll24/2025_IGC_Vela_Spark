@@ -27,7 +27,7 @@ var cause_of_death : String
 var fire_ball_active = false
 
 func _ready():
-	#Engine.time_scale = 0.4
+	#Engine.time_scale = 0.3
 	add_to_group("player")
 	fireball_sprite.modulate = Color(1,1,1,0)
 
@@ -147,20 +147,27 @@ func hit_and_respawn(attacker : Node2D):
 	if is_dead:
 		return
 	await get_tree().create_timer(0.5).timeout
-	velocity = Vector2.ZERO
-	animation_player.play("Hit")
-	health_control.apply_invincibility()
-	move_control.apply_immobility(0.2)
-	global_position = move_control.last_ground_location
+	#velocity = Vector2.ZERO
+	#animation_player.play("Hit")
+	#health_control.apply_invincibility()
+	#move_control.apply_immobility(1)
+	respawn()
+
+func damage_and_respawn():
+	#or attacker.is_in_group("obstacles")
+	#velocity = Vector2.ZERO
+	#animation_player.play("Hit")
+	#move_control.apply_immobility(1)
+	respawn()
+	#health_control.apply_invincibility()
+	health_control.take_damage()
 
 func respawn():
-	#or attacker.is_in_group("obstacles")
 	velocity = Vector2.ZERO
 	animation_player.play("Hit")
-	move_control.apply_immobility(1)
+	move_control.apply_immobility(0.5)
+	health_control.apply_invincibility(0.5)
 	global_position = move_control.last_ground_location
-	health_control.apply_invincibility()
-	health_control.take_damage()
 
 func _on_obstacle_collide(body: Node2D) -> void:
 	if (body.is_in_group("obstacles") or body is TileMapLayer) and move_control.dash_attack_state:
@@ -169,6 +176,8 @@ func _on_obstacle_collide(body: Node2D) -> void:
 	if body.is_in_group("obstacles"):
 		if body is Spikes and not body.player_respawn:
 			hit(body)
+		elif not health_control.invincibility_timer.is_stopped():
+			hit_and_respawn(body)
 		else:
 			hit_and_respawn(body)
 	
