@@ -1,6 +1,8 @@
 extends EnemyGrounded
 class_name EnemyCharge
 
+@onready var animated_sprite = $flippable/AnimatedSprite2D
+
 @onready var player_detector = $flippable/PlayerDetector
 @onready var stunned_timer = $StunedTimer
 
@@ -9,10 +11,27 @@ class_name EnemyCharge
 var charging = false
 var charge_timer : float = 1
 
+@export var WINDUP_DURATION : float = 1
+
+var windup = false
+var windup_timer
+
 var charge_speed = 900
 
 func _ready() -> void:
 	super._ready()
+	
+	windup_timer = WINDUP_DURATION
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	
+	if charging:
+		animated_sprite.play("charge")
+	elif windup:
+		animated_sprite.play("windup")
+	else:
+		animated_sprite.play("idle")
 
 func _physics_process(delta: float) -> void:
 	flippable.scale.x = direction
@@ -20,11 +39,15 @@ func _physics_process(delta: float) -> void:
 	if not stunned_timer.is_stopped():
 		return
 	
-	if not charging:
+	if not charging and not windup:
 		direction = sign(Global.get_player().global_position.x - global_position.x)
+		if player_detector.is_colliding():
+			start_windup()
 	
-	if player_detector.is_colliding():
-		start_charge()
+	if windup:
+		windup_timer -= delta
+		if windup_timer < 0:
+			start_charge()
 	
 	if charging:
 		charge_timer -= delta
@@ -39,7 +62,12 @@ func _physics_process(delta: float) -> void:
 	
 	super._physics_process(delta)
 
+func start_windup():
+	windup = true
+	windup_timer = WINDUP_DURATION
+
 func start_charge():
+	windup = false
 	charge_timer = 1
 	charging = true
 

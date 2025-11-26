@@ -174,7 +174,7 @@ func _on_obstacle_collide(body: Node2D) -> void:
 	
 
 func _on_enemy_collide(body: Node2D) -> void:
-	if body is Enemy or body is Boss:
+	if (body is Enemy or body is Boss) and not body.is_dead:
 		if  not move_control.dash_state and not move_control.dash_attack_state:
 			hit(body)
 

@@ -96,7 +96,7 @@ position = Vector2(13053, -62)
 scale = Vector2(2, 1)
 
 [node name="LevelTransition" parent="obstacles" instance=ExtResource("4_37pnc")]
-position = Vector2(25386, -89)
+position = Vector2(24946, -89)
 scale = Vector2(2, 3)
 load_level_index = 2
 

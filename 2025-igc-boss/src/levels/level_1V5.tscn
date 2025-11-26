@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b2wthbiliuvry"]
+[gd_scene load_steps=18 format=4 uid="uid://b2wthbiliuvry"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_37pnc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="11_r0rxx"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="12_y1bwq"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
+[ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="14_jwhul"]
 
 [sub_resource type="Gradient" id="Gradient_ghtb1"]
 interpolation_color_space = 2
@@ -46,6 +47,11 @@ offset_right = 14182.0
 offset_bottom = 1255.0
 texture = ExtResource("2_37pnc")
 stretch_mode = 1
+
+[node name="decoration" type="Node2D" parent="."]
+
+[node name="Bonfire" parent="decoration" instance=ExtResource("14_jwhul")]
+position = Vector2(4557, 934)
 
 [node name="obstacles" type="Node2D" parent="."]
 
@@ -161,6 +167,9 @@ position = Vector2(21070, 174)
 
 [node name="EnemyBarrage5" parent="Enemies" instance=ExtResource("8_3cppb")]
 position = Vector2(183.32263, 135.85449)
+
+[node name="EnemyCharge4" parent="Enemies" instance=ExtResource("6_n7u8m")]
+position = Vector2(4894, 241)
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 2.0

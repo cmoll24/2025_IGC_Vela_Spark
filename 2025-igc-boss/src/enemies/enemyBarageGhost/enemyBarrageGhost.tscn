@@ -1,32 +1,103 @@
-[gd_scene load_steps=4 format=3 uid="uid://cng7k8go6bgr0"]
+[gd_scene load_steps=17 format=3 uid="uid://cng7k8go6bgr0"]
 
 [ext_resource type="Script" uid="uid://c2eu6qa7asmk" path="res://src/enemies/enemyBarageGhost/enemyBarrageGhost.gd" id="1_pl1ak"]
+[ext_resource type="Texture2D" uid="uid://cogonvfmpy0e4" path="res://assets/enemies/barrage/barrage attack_01.png" id="2_kir78"]
+[ext_resource type="Texture2D" uid="uid://bvwp4a42ww4s2" path="res://assets/enemies/barrage/barrage attack_02.png" id="3_ewcg7"]
+[ext_resource type="Texture2D" uid="uid://gsyh3u6w1yol" path="res://assets/enemies/barrage/barrage attack_03.png" id="4_3wy1o"]
+[ext_resource type="Texture2D" uid="uid://c4ihw76nu5ga8" path="res://assets/enemies/barrage/barrage attack_04.png" id="5_dspyi"]
+[ext_resource type="Texture2D" uid="uid://dfnv84qq6vxn4" path="res://assets/enemies/barrage/barrage attack_05.png" id="6_3dlgh"]
+[ext_resource type="Texture2D" uid="uid://divrogp5uugor" path="res://assets/enemies/barrage/barrage attack_06.png" id="7_waqqy"]
+[ext_resource type="Texture2D" uid="uid://cc88poupw3s0l" path="res://assets/enemies/barrage/barrage die_01.png" id="8_3geuj"]
+[ext_resource type="Texture2D" uid="uid://b4h7ladauvt0q" path="res://assets/enemies/barrage/barrage die_02.png" id="9_kufjl"]
+[ext_resource type="Texture2D" uid="uid://ci25lm7vmqbw6" path="res://assets/enemies/barrage/barrage die_03.png" id="10_ysom7"]
+[ext_resource type="Texture2D" uid="uid://cpsw882kf803w" path="res://assets/enemies/barrage/barrage idle_01.png" id="11_ok5mh"]
+[ext_resource type="Texture2D" uid="uid://lax4l674cifi" path="res://assets/enemies/barrage/barrage idle_02.png" id="12_86s54"]
+[ext_resource type="Texture2D" uid="uid://ddnjxigc1gobp" path="res://assets/enemies/barrage/barrage idle_03.png" id="13_l17d6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5chua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kir78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ewcg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3wy1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dspyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3dlgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_waqqy")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3geuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kufjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ysom7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ok5mh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_86s54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_l17d6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lsh4"]
-size = Vector2(38, 38)
+size = Vector2(39, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brukk"]
-size = Vector2(90, 80)
+size = Vector2(74, 115)
 
 [node name="EnemyBarrageGhost" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_pl1ak")
+
+[node name="flippable" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
+self_modulate = Color(0.34, 0.27959335, 0.20060001, 1)
+position = Vector2(8, -48)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_5chua")
+animation = &"attack"
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 10
 
 [node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
+position = Vector2(-0.5, -25)
 shape = SubResource("RectangleShape2D_3lsh4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -30.5)
 shape = SubResource("RectangleShape2D_brukk")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -45.0
-offset_top = -40.0
-offset_right = 45.0
-offset_bottom = 40.0
-color = Color(0.6206313, 0.51357806, 0, 1)
-
+[connection signal="animation_finished" from="flippable/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]

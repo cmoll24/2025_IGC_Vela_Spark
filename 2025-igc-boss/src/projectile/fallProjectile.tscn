@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://clfdy335hbqs" path="res://assets/projectiles/waterdrop1.png" id="2_156v8"]
 [ext_resource type="Texture2D" uid="uid://c0gi2k2iqu7nl" path="res://assets/projectiles/waterdrop2.png" id="3_jqe7j"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pdsh1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_156v8"]
+radius = 7.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rgwoh"]
 animations = [{
@@ -21,25 +22,32 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_crhby"]
-height = 64.0
+radius = 8.0
+height = 52.0
 
-[node name="FallProjectile" type="CharacterBody2D"]
+[node name="FallProjectile" type="CharacterBody2D" node_paths=PackedStringArray("rotatable")]
 collision_layer = 128
 script = ExtResource("1_pdsh1")
+rotatable = NodePath("rotatable")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pdsh1")
+shape = SubResource("CircleShape2D_156v8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="rotatable" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rotatable"]
+rotation = -1.5707964
 sprite_frames = SubResource("SpriteFrames_rgwoh")
 autoplay = "default"
 frame_progress = 0.38048068
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="rotatable"]
+rotation = -1.5707964
 collision_layer = 128
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotatable/Area2D"]
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_crhby")
 
-[connection signal="body_entered" from="Area2D" to="." method="collide"]
+[connection signal="body_entered" from="rotatable/Area2D" to="." method="collide"]

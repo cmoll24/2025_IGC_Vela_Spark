@@ -6,26 +6,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdsh1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_156v8"]
-radius = 26.019224
+radius = 20.0
 
-[node name="FallProjectile" type="CharacterBody2D"]
+[node name="FallProjectile" type="CharacterBody2D" node_paths=PackedStringArray("rotatable")]
 collision_layer = 128
 script = ExtResource("1_6byg5")
-SPEED = null
-TIME_UNTIL_DESPAWN = null
-angle = null
-spawnPos = null
-spawnRot = null
-MAX_FALL_SPEED = null
+rotatable = NodePath("rotatable")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pdsh1")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.26485935, 0.5104522, 1)
-position = Vector2(0, -5.9604645e-08)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_8prgr")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128
@@ -33,5 +22,13 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_156v8")
+
+[node name="rotatable" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="rotatable"]
+modulate = Color(0, 0.26485935, 0.5104522, 1)
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_8prgr")
 
 [connection signal="body_entered" from="Area2D" to="." method="collide"]

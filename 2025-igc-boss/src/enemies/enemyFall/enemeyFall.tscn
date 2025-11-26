@@ -39,7 +39,7 @@ shape = SubResource("RectangleShape2D_462bx")
 shape = SubResource("RectangleShape2D_6dicg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.58431375, 1, 1)
+self_modulate = Color(1, 0.33999997, 0.33999997, 1)
 sprite_frames = SubResource("SpriteFrames_5rhed")
 autoplay = "default"
 

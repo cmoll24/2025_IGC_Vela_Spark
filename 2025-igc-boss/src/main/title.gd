@@ -14,7 +14,7 @@ func _ready() -> void:
 func create_level_select() -> void:
 	start_button.queue_free()
 	
-	var number_of_levels = 8
+	var number_of_levels = 9
 	var buttons = []
 	for i in range(0,number_of_levels):
 		var level_button : LevelSelector = level_selector.instantiate()

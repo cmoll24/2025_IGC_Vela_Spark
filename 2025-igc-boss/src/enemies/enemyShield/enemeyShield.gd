@@ -14,11 +14,17 @@ func _physics_process(delta: float) -> void:
 	if not stunned_timer.is_stopped():
 		return
 	
-	if not charging:
+	if not charging and not windup:
 		direction = sign(Global.get_player().global_position.x - global_position.x)
+		if player_detector.is_colliding():
+			start_windup()
 	
-	if player_detector.is_colliding():
-		start_charge()
+	if windup:
+		windup_timer -= delta
+		invulnerable = true
+		shield_sprite.visible = true
+		if windup_timer < 0:
+			start_charge()
 	
 	if charging:
 		invulnerable = true
@@ -37,13 +43,9 @@ func _physics_process(delta: float) -> void:
 	
 	super._physics_process(delta)
 
-func start_charge():
-	charge_timer = 1
-	charging = true
-
 func _on_stuned_timer_timeout() -> void:
 	modulate = Color(1,1,1)
 
 func _on_shield_hitbox_body_entered(body: Node2D) -> void:
-	if body is Player and charging:
+	if body is Player and (charging or windup):
 		body.super_hit(self)

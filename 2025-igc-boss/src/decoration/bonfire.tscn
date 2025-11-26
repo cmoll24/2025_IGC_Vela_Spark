@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://byw83nhr57gpx"]
+
+[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="1_scq67"]
+[ext_resource type="Texture2D" uid="uid://bcih4t83ve7xq" path="res://assets/objects/bonfire1.png" id="2_w4p43"]
+[ext_resource type="Texture2D" uid="uid://ddi862r20pued" path="res://assets/objects/bonfire2.png" id="3_32e3q"]
+[ext_resource type="Texture2D" uid="uid://ny6bvenwchpc" path="res://assets/objects/bonfire3.png" id="4_lag47"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hjwfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w4p43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_32e3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lag47")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Bonfire" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.98, 0.87808007, 0.7252, 0.31764707)
+scale = Vector2(4, 4)
+texture = ExtResource("1_scq67")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_hjwfo")
+autoplay = "default"
+frame_progress = 0.3103133
