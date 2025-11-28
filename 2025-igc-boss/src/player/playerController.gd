@@ -143,7 +143,8 @@ func die(cause : String = "Attack"):
 	#get_tree().reload_current_scene()
 
 func hit_and_respawn(attacker : Node2D):
-	health_control.hit(attacker)
+	print('hit and respawn')
+	health_control.super_hit(attacker)
 	if is_dead:
 		return
 	await get_tree().create_timer(0.5).timeout
@@ -170,7 +171,7 @@ func respawn():
 	global_position = move_control.last_ground_location
 
 func _on_obstacle_collide(body: Node2D) -> void:
-	if (body.is_in_group("obstacles") or body is TileMapLayer) and move_control.dash_attack_state:
+	if (body.is_in_group("obstacles") or body is TileMapLayer) and (move_control.dash_attack_state or move_control.dash_state):
 		health_control.cancel_invincibility()
 		move_control.end_dash()
 	if body.is_in_group("obstacles"):
@@ -187,7 +188,7 @@ func _on_enemy_collide(body: Node2D) -> void:
 		if  not move_control.dash_state and not move_control.dash_attack_state:
 			hit(body)
 
-func killed_enemy(body: Node2D):
+func killed_enemy(_body: Node2D):
 	#print('Enemy Slain')
 	#if body is EnemyStatic:
 	#	health_control.heal(5)

@@ -18,6 +18,7 @@ enum INPUT_METHOD {
 var current_input_method
 
 func _ready() -> void:
+	#Engine.time_scale = 0.5
 	Engine.set_max_fps(60)
 
 func get_current_level_index():

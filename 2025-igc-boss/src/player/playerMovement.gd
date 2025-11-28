@@ -87,8 +87,8 @@ func physics_update(delta: float) -> void:
 	if is_knocked_back:
 		player.velocity.y += GRAVITY * delta
 		knockback_process(delta)
-	else:
-		if immobile_timer.is_stopped() and can_dash():
+	elif  immobile_timer.is_stopped():
+		if can_dash(): #immobile_timer.is_stopped() and 
 			if is_dash_just_pressed():
 				dash()
 			
@@ -98,6 +98,8 @@ func physics_update(delta: float) -> void:
 			player.velocity.y += current_gravity * delta
 			horizontal_movement(delta)
 			jump(delta)
+	else:
+		decelerate(delta)
 	
 	if is_touching_floor:
 		has_dash = true
@@ -138,7 +140,10 @@ func horizontal_movement(delta):
 		else:
 			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, FIREBALL_DECCEL_COEF * delta * current_move_speed)
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
+		decelerate(delta)
+
+func decelerate(delta):
+	player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
 func dash_movement(_delta):
 	if not dash_turn_around_timer.is_stopped(): #Grace period to change dash direction
