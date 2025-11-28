@@ -1,18 +1,31 @@
-[gd_scene load_steps=17 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=25 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
-[ext_resource type="Texture2D" uid="uid://cxjqaailxblku" path="res://assets/background/Untitled216_20251123164416.PNG" id="2_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
+[ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="3_xvths"]
 [ext_resource type="PackedScene" uid="uid://b6qyc1m5puwrt" path="res://src/levels/transition/Level Transition.tscn" id="4_37pnc"]
+[ext_resource type="Texture2D" uid="uid://btmah2nq7xdnk" path="res://assets/background/2parallax_7.png" id="4_buawx"]
+[ext_resource type="Texture2D" uid="uid://b78hlpkhc0phs" path="res://assets/background/2parallax_6.png" id="5_3cppb"]
+[ext_resource type="Texture2D" uid="uid://mc6r0uuvikoh" path="res://assets/background/2parallax_2.png" id="5_buawx"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="5_c6lwj"]
 [ext_resource type="PackedScene" uid="uid://dqcqmcwqjtn46" path="res://src/enemies/enemyCharge/enemeyCharge.tscn" id="6_n7u8m"]
+[ext_resource type="Texture2D" uid="uid://05yub2odinxv" path="res://assets/background/2parallax_4.png" id="6_ufga5"]
+[ext_resource type="Texture2D" uid="uid://legj548kmv1q" path="res://assets/background/2parallax_5.png" id="7_r0rxx"]
 [ext_resource type="PackedScene" uid="uid://bxvfco2cg1dqw" path="res://src/enemies/enemyTurret/enemyTurret.tscn" id="7_xvths"]
 [ext_resource type="PackedScene" uid="uid://cbbvhqfs8vdl1" path="res://src/enemies/enemyBarrage/enemyBarrage.tscn" id="8_3cppb"]
+[ext_resource type="Texture2D" uid="uid://guvws8w7v2g4" path="res://assets/background/2parallax_1.png" id="8_xvths"]
 [ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="9_buawx"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="10_ufga5"]
 [ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="11_r0rxx"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="12_y1bwq"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
+
+[sub_resource type="Gradient" id="Gradient_xvths"]
+offsets = PackedFloat32Array(0, 0.88666666)
+colors = PackedColorArray(0.92156863, 0.60784316, 0.5647059, 0.13725491, 0.68777, 0.6648398, 0.9399683, 0.13725491)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xvths"]
+gradient = SubResource("Gradient_xvths")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
 resource_name = "Collision Tiles"
@@ -44,14 +57,104 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 script = ExtResource("1_7v3s3")
 level_name = "Level 1"
 
-[node name="Background" type="TextureRect" parent="."]
-visible = false
-offset_left = -1713.0
-offset_top = -882.0
-offset_right = 14182.0
-offset_bottom = 1375.0
-texture = ExtResource("2_7v3s3")
+[node name="Parallax" type="Node2D" parent="."]
+
+[node name="Parallax1" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(-1705, 486)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax1"]
+offset_left = -3111.0
+offset_top = -1475.0
+offset_right = 29445.0
+offset_bottom = 1525.0
+texture = ExtResource("3_xvths")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.125, 0.125)
+scroll_offset = Vector2(-1705, 494)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax2"]
+offset_left = -3036.0
+offset_top = -1371.0
+offset_right = 29520.0
+offset_bottom = 1629.0
+texture = ExtResource("4_buawx")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax3" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.125, 0.125)
+scroll_offset = Vector2(-1705, 598)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax3"]
+offset_left = -3111.0
+offset_top = -1579.0
+offset_right = 29445.0
+offset_bottom = 1421.0
+texture = ExtResource("5_3cppb")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax4" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.15, 0.15)
+scroll_offset = Vector2(-1705, 486)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax4"]
+offset_left = -3111.0
+offset_top = -1579.0
+offset_right = 29445.0
+offset_bottom = 1421.0
+texture = ExtResource("5_buawx")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax5" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.175, 0.175)
+scroll_offset = Vector2(-1705, 486)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax5"]
+offset_left = -3111.0
+offset_top = -1427.0
+offset_right = 29445.0
+offset_bottom = 1573.0
+texture = ExtResource("6_ufga5")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax6" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-1705, 486)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax6"]
+offset_left = -3111.0
+offset_top = -1587.0
+offset_right = 29445.0
+offset_bottom = 1413.0
+texture = ExtResource("7_r0rxx")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax7" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.225, 0.225)
+scroll_offset = Vector2(-1705, 486)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax7"]
+offset_left = -3111.0
+offset_top = -1555.0
+offset_right = 29445.0
+offset_bottom = 1445.0
+texture = ExtResource("8_xvths")
+stretch_mode = 1
+
+[node name="ColorTint2" type="TextureRect" parent="Parallax"]
+offset_left = -3543.0
+offset_top = -2136.0
+offset_right = 26332.0
+offset_bottom = 2740.0
+texture = SubResource("GradientTexture1D_xvths")
 
 [node name="obstacles" type="Node2D" parent="."]
 
