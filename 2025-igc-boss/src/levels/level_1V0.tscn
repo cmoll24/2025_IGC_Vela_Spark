@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=25 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_q7moy"]
 [ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="2_lck47"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_thp8c"]
 [ext_resource type="Texture2D" uid="uid://b78hlpkhc0phs" path="res://assets/background/2parallax_6.png" id="4_l2qbv"]
 [ext_resource type="PackedScene" uid="uid://blrpedy6a2wjq" path="res://src/enemies/enemyArc/enemyArc.tscn" id="4_rb618"]
-[ext_resource type="Texture2D" uid="uid://x4qroys38j8" path="res://assets/background/spike.png" id="4_votci"]
 [ext_resource type="PackedScene" uid="uid://xw52pno6uah0" path="res://src/enemies/enemyFall/enemeyFall.tscn" id="5_bcyl4"]
 [ext_resource type="Texture2D" uid="uid://mc6r0uuvikoh" path="res://assets/background/2parallax_2.png" id="5_v1uv6"]
 [ext_resource type="Texture2D" uid="uid://05yub2odinxv" path="res://assets/background/2parallax_4.png" id="6_6402u"]
@@ -17,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://guvws8w7v2g4" path="res://assets/background/2parallax_1.png" id="8_wlefs"]
 [ext_resource type="PackedScene" uid="uid://b6qyc1m5puwrt" path="res://src/levels/transition/Level Transition.tscn" id="9_rllik"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="10_l2qbv"]
+[ext_resource type="Texture2D" uid="uid://x4qroys38j8" path="res://assets/background/spike.png" id="10_rllik"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="11_v1uv6"]
 [ext_resource type="PackedScene" uid="uid://d023wfpur3y7d" path="res://src/ui/control_info.tscn" id="13_thp8c"]
 
@@ -158,11 +158,12 @@ scale = Vector2(33, 1)
 
 [node name="TextureRect" type="TextureRect" parent="obstacles"]
 visible = false
-offset_left = 2474.0
-offset_top = 961.0
-offset_right = 4696.0
-offset_bottom = 1033.0
-texture = ExtResource("4_votci")
+offset_left = 2473.0
+offset_top = 956.0
+offset_right = 4695.0
+offset_bottom = 1025.0
+texture = ExtResource("10_rllik")
+expand_mode = 2
 stretch_mode = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
