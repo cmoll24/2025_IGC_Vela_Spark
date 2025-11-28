@@ -86,6 +86,7 @@ color = Color(1.1070073e-06, 0.60987616, 0.50301814, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerDetector" type="RayCast2D" parent="flippable"]
+position = Vector2(0, -44)
 target_position = Vector2(550, 0)
 collision_mask = 2
 

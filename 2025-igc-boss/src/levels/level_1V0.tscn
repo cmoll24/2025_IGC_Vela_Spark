@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=27 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_q7moy"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_votci"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="6_mbg78"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="7_oro8w"]
 [ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="8_lck47"]
+[ext_resource type="Texture2D" uid="uid://guvws8w7v2g4" path="res://assets/background/2parallax_1.png" id="8_wlefs"]
+[ext_resource type="PackedScene" uid="uid://n1ilm6a3qisl" path="res://src/decoration/bush.tscn" id="9_l2qbv"]
 [ext_resource type="PackedScene" uid="uid://b6qyc1m5puwrt" path="res://src/levels/transition/Level Transition.tscn" id="9_rllik"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="10_l2qbv"]
+[ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="10_v1uv6"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="11_v1uv6"]
 [ext_resource type="PackedScene" uid="uid://d023wfpur3y7d" path="res://src/ui/control_info.tscn" id="13_thp8c"]
 
@@ -46,6 +49,18 @@ offset_right = 14182.0
 offset_bottom = 1255.0
 texture = ExtResource("2_votci")
 stretch_mode = 1
+
+[node name="decoration" type="Node2D" parent="."]
+
+[node name="Bush" parent="decoration" instance=ExtResource("9_l2qbv")]
+position = Vector2(894, 961)
+
+[node name="Bush2" parent="decoration" instance=ExtResource("9_l2qbv")]
+position = Vector2(1388, 835)
+scale = Vector2(1.5, 1.5)
+
+[node name="Bonfire" parent="decoration" instance=ExtResource("10_v1uv6")]
+position = Vector2(2058, 747)
 
 [node name="obstacles" type="Node2D" parent="."]
 

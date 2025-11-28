@@ -16,7 +16,7 @@ var charge_timer : float = 1.2
 var windup = false
 var windup_timer
 
-var charge_speed = 1_000
+var charge_speed = 1_100
 
 func _ready() -> void:
 	super._ready()

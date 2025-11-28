@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://byw83nhr57gpx"]
 
-[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="1_scq67"]
+[ext_resource type="Texture2D" uid="uid://c83cp8tks7li3" path="res://assets/background/Glow_Effect.png" id="1_scq67"]
 [ext_resource type="Texture2D" uid="uid://bcih4t83ve7xq" path="res://assets/objects/bonfire1.png" id="2_w4p43"]
 [ext_resource type="Texture2D" uid="uid://ddi862r20pued" path="res://assets/objects/bonfire2.png" id="3_32e3q"]
 [ext_resource type="Texture2D" uid="uid://ny6bvenwchpc" path="res://assets/objects/bonfire3.png" id="4_lag47"]
@@ -25,8 +25,9 @@ animations = [{
 [node name="Bonfire" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.98, 0.87808007, 0.7252, 0.31764707)
-scale = Vector2(4, 4)
+modulate = Color(0.94, 0.7165933, 0.50759995, 0.6509804)
+position = Vector2(0, -35)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_scq67")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
