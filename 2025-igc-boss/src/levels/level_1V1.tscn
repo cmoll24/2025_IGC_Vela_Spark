@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=26 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cbbvhqfs8vdl1" path="res://src/enemies/enemyBarrage/enemyBarrage.tscn" id="8_3cppb"]
 [ext_resource type="Texture2D" uid="uid://guvws8w7v2g4" path="res://assets/background/2parallax_1.png" id="8_xvths"]
 [ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="9_buawx"]
+[ext_resource type="Texture2D" uid="uid://x4qroys38j8" path="res://assets/background/spike.png" id="10_3cppb"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="10_ufga5"]
 [ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="11_r0rxx"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="12_y1bwq"]
@@ -167,14 +168,44 @@ position = Vector2(704, 962)
 scale = Vector2(4, 1)
 
 [node name="Spikes7" parent="obstacles" instance=ExtResource("3_e3r8n")]
+visible = false
 position = Vector2(3197, 5)
 scale = Vector2(3, 1)
 
+[node name="TextureRect3" type="TextureRect" parent="obstacles"]
+offset_left = 3207.0
+offset_top = -4.0
+offset_right = 3388.0
+offset_bottom = 65.0
+texture = ExtResource("10_3cppb")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="obstacles"]
+offset_left = 4041.0
+offset_top = -67.0
+offset_right = 4218.0
+offset_bottom = 2.0
+texture = ExtResource("10_3cppb")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="obstacles"]
+offset_left = 4872.0
+offset_top = -131.0
+offset_right = 5049.0
+offset_bottom = -62.0
+texture = ExtResource("10_3cppb")
+expand_mode = 2
+stretch_mode = 1
+
 [node name="Spikes8" parent="obstacles" instance=ExtResource("3_e3r8n")]
+visible = false
 position = Vector2(4029.0002, -54)
 scale = Vector2(3, 1)
 
 [node name="Spikes9" parent="obstacles" instance=ExtResource("3_e3r8n")]
+visible = false
 position = Vector2(4860.249, -124)
 scale = Vector2(3, 1)
 
