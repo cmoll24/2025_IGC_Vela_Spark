@@ -48,7 +48,7 @@ func die():
 	if is_respawnable:
 		is_dead = true
 		animation_player.play("death")
-		flippable.modulate = Color(0.3,0.2,0.2)
+		flippable.modulate = deathColor
 		await  animation_player.animation_finished
 		
 		repsawn_pos = global_position
@@ -56,7 +56,7 @@ func die():
 	else:
 		is_dead = true
 		animation_player.play("death")
-		flippable.modulate = Color(0.3,0.2,0.2)
+		flippable.modulate = deathColor
 		await  animation_player.animation_finished
 		
 		queue_free()

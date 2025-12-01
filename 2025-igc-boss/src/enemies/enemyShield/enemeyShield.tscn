@@ -71,7 +71,7 @@ script = ExtResource("1_k8hgm")
 [node name="flippable" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
-modulate = Color(1, 0.56, 0.56, 1)
+modulate = Color(0.66, 0.2244, 0.2244, 1)
 position = Vector2(-8, -38)
 rotation = 3.1415927
 scale = Vector2(0.5, -0.5)
@@ -100,6 +100,7 @@ target_position = Vector2(650, 0)
 collision_mask = 2
 
 [node name="shield_hitbox" type="Area2D" parent="flippable"]
+visible = false
 position = Vector2(6, -7)
 collision_layer = 0
 collision_mask = 128
@@ -110,6 +111,7 @@ shape = SubResource("RectangleShape2D_mbp0j")
 debug_color = Color(0.97230154, 0, 0.44529122, 0.41960785)
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 10
 
@@ -118,6 +120,7 @@ position = Vector2(-1, -6)
 shape = SubResource("RectangleShape2D_462bx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -8)
 shape = SubResource("RectangleShape2D_6dicg")
 

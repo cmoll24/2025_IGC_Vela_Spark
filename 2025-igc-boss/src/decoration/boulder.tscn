@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://i3hx3tl4wn1x"]
+
+[ext_resource type="Texture2D" uid="uid://b6bal1huccqiv" path="res://assets/objects/boulder.png" id="1_hkx4s"]
+
+[node name="Boulder" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("1_hkx4s")
