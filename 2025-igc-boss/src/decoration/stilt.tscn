@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci2ud5vgpijbp"]
+
+[ext_resource type="Texture2D" uid="uid://c2osbkb7mdub7" path="res://assets/objects/stilt.png" id="1_6tn5v"]
+
+[node name="Stilt" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 500.0
+texture = ExtResource("1_6tn5v")
+stretch_mode = 1

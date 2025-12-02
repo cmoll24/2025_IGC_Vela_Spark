@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=46 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
 [ext_resource type="PackedScene" uid="uid://dkjqxy1egu868" path="res://src/player/playerMovement.tscn" id="3_244u8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://quo4cjhqfu2a" path="res://src/player/playerAttack.tscn" id="5_5f2sf"]
 [ext_resource type="Texture2D" uid="uid://dcd07irloqprk" path="res://assets/character/Dash/Candle_Character_Static-1.png" id="5_hja65"]
 [ext_resource type="Texture2D" uid="uid://btyf7jjifl8q7" path="res://assets/character/Candle_Character_Static 2.png" id="5_l271a"]
+[ext_resource type="Texture2D" uid="uid://c83cp8tks7li3" path="res://assets/background/Glow_Effect.png" id="5_o04tx"]
 [ext_resource type="Texture2D" uid="uid://syxf1qjn81m6" path="res://assets/character/FireBall/Fireball-1.png" id="5_vwi60"]
 [ext_resource type="Texture2D" uid="uid://bopyl34ipdwqq" path="res://assets/character/Dash/Candle_Character_Static-2.png" id="6_5shm8"]
 [ext_resource type="Texture2D" uid="uid://b84o3jcv3xoub" path="res://assets/character/Candle_Character_Static.png" id="6_8ydov"]
@@ -29,10 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://jltmwajt65og" path="res://assets/character/FireAttack/Fireball-3.png" id="27_p6grl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
-size = Vector2(28, 173)
+size = Vector2(28, 164)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylhto"]
-size = Vector2(28, 126)
+size = Vector2(28, 101)
 
 [sub_resource type="Animation" id="Animation_5f2sf"]
 resource_name = "Fall"
@@ -90,7 +91,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_244u8"]
-size = Vector2(31, 124)
+size = Vector2(26, 115)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l271a"]
 size = Vector2(192, 230)
@@ -235,18 +236,18 @@ size = Vector2(290, 157)
 size = Vector2(90, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwi60"]
-size = Vector2(30, 132)
+size = Vector2(30, 103)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_4anbu")
 
 [node name="GroundCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12.5)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_rxibo")
 
 [node name="AirCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -19.5)
 shape = SubResource("RectangleShape2D_ylhto")
 disabled = true
 
@@ -272,6 +273,7 @@ offset_bottom = 51.0
 color = Color(1, 0, 0, 1)
 
 [node name="Debug_Label" type="Label" parent="."]
+visible = false
 offset_left = -26.0
 offset_top = -158.0
 offset_right = 24.0
@@ -295,12 +297,11 @@ attackbox = NodePath("../flippable/player_attackbox")
 attack_look_ahead = NodePath("../flippable/attack_look_ahead")
 
 [node name="player_hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
-position = Vector2(0, -34)
+position = Vector2(0, -29.5)
 shape = SubResource("RectangleShape2D_244u8")
 debug_color = Color(0.7026044, 0.2792841, 1, 0.41960785)
 
@@ -339,6 +340,12 @@ target_position = Vector2(0, 160)
 [node name="flippable" type="Node2D" parent="."]
 modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="flippable"]
+modulate = Color(1, 1, 1, 0.12156863)
+position = Vector2(0, -16)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("5_o04tx")
+
 [node name="FireBallSprite" type="AnimatedSprite2D" parent="flippable"]
 position = Vector2(8, -14)
 scale = Vector2(0.2, 0.2)
@@ -364,6 +371,7 @@ frame = 2
 frame_progress = 0.3915347
 
 [node name="attack_look_ahead" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -373,6 +381,7 @@ shape = SubResource("RectangleShape2D_8ydov")
 debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -385,7 +394,7 @@ debug_color = Color(0.99947137, 0, 0.1284638, 0.41960785)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flippable/attack_obstacle"]
-position = Vector2(7, -34)
+position = Vector2(7, -19.5)
 shape = SubResource("RectangleShape2D_vwi60")
 debug_color = Color(0, 0.6470676, 0.24248996, 0.41960785)
 

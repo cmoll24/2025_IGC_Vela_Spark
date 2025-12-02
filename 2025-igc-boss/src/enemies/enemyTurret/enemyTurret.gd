@@ -27,6 +27,6 @@ func _physics_process(delta: float) -> void:
 func summon_projectile(target_pos : Vector2) -> void:
 	var instance : StraightProjectile = projectile.instantiate()
 	instance.spawnPos = global_position
-	instance.SPEED = 500
+	instance.SPEED = 450
 	instance.angle = -global_position.angle_to_point(target_pos)
 	Global.get_projectile_tree().add_child(instance)

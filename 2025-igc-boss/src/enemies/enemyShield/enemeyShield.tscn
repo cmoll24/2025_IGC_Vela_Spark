@@ -1,62 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://diyl0h8763r2m"]
+[gd_scene load_steps=14 format=3 uid="uid://diyl0h8763r2m"]
 
 [ext_resource type="Script" uid="uid://br8lcq21j52gp" path="res://src/enemies/enemyShield/enemeyShield.gd" id="1_k8hgm"]
+[ext_resource type="Texture2D" uid="uid://dxo4jti5rd5kg" path="res://assets/enemies/charge/charge attack run_01.png" id="2_sopi0"]
+[ext_resource type="Texture2D" uid="uid://c1sl4wnngqa5e" path="res://assets/enemies/charge/charge attack run_02.png" id="3_g1bpm"]
+[ext_resource type="Texture2D" uid="uid://bypogmm5g24sc" path="res://assets/enemies/charge/charge attack run_03.png" id="4_qixvo"]
+[ext_resource type="Texture2D" uid="uid://djpk2acqh20vy" path="res://assets/enemies/charge/charge attack run_04.png" id="5_pfo4d"]
+[ext_resource type="Texture2D" uid="uid://d1wfjcs31bhvv" path="res://assets/enemies/charge/charge attack windup_01.png" id="6_omrq4"]
+[ext_resource type="Texture2D" uid="uid://bwe3x2ahq0jv2" path="res://assets/enemies/charge/charge attack windup_02.png" id="7_8ltxn"]
+[ext_resource type="Texture2D" uid="uid://bcejg25f2bpwr" path="res://assets/enemies/charge/charge attack windup_03.png" id="8_08eqt"]
+[ext_resource type="Texture2D" uid="uid://bqeue4edr8hdu" path="res://assets/enemies/charge/charge attack windup_04.png" id="9_0esqm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_462bx"]
-size = Vector2(96, 98)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dicg"]
-size = Vector2(110, 110)
+[sub_resource type="SpriteFrames" id="SpriteFrames_s8ehm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sopi0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g1bpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qixvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pfo4d")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_omrq4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_omrq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8ltxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_08eqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0esqm")
+}],
+"loop": true,
+"name": &"windup",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbp0j"]
 size = Vector2(114, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_462bx"]
+size = Vector2(96, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dicg"]
+size = Vector2(110, 128)
 
 [node name="EnemyShield" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_k8hgm")
 
-[node name="enemy_hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 10
-
-[node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_462bx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6dicg")
-
 [node name="flippable" type="Node2D" parent="."]
 
-[node name="ColorRect2" type="ColorRect" parent="flippable"]
-offset_left = 51.0
-offset_top = -57.0
-offset_right = 71.0
-offset_bottom = 58.0
-color = Color(0, 0.5879046, 0.67406434, 1)
-metadata/_edit_use_anchors_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
+modulate = Color(0.66, 0.2244, 0.2244, 1)
+position = Vector2(-8, -38)
+rotation = 3.1415927
+scale = Vector2(0.5, -0.5)
+sprite_frames = SubResource("SpriteFrames_s8ehm")
+animation = &"windup"
 
-[node name="ColorRect" type="ColorRect" parent="flippable"]
-offset_left = -55.0
-offset_top = -55.0
-offset_right = 55.0
-offset_bottom = 55.0
-color = Color(1.1070073e-06, 0.60987616, 0.50301814, 1)
+[node name="ColorRect2" type="ColorRect" parent="flippable"]
+offset_left = 57.0
+offset_top = -64.0
+offset_right = 77.0
+offset_bottom = 51.0
+color = Color(0.8517605, 0.0004670608, 0.829394, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ShieldSprite" type="ColorRect" parent="flippable"]
-offset_left = 50.0
-offset_top = -57.0
-offset_right = 75.0
-offset_bottom = 58.0
+offset_left = 56.0
+offset_top = -64.0
+offset_right = 81.0
+offset_bottom = 51.0
 color = Color(0.9680254, 0, 0.28247893, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerDetector" type="RayCast2D" parent="flippable"]
-target_position = Vector2(500, 0)
+position = Vector2(0, -44)
+target_position = Vector2(650, 0)
 collision_mask = 2
 
 [node name="shield_hitbox" type="Area2D" parent="flippable"]
+visible = false
+position = Vector2(6, -7)
 collision_layer = 0
 collision_mask = 128
 
@@ -65,9 +110,23 @@ position = Vector2(56, 0)
 shape = SubResource("RectangleShape2D_mbp0j")
 debug_color = Color(0.97230154, 0, 0.44529122, 0.41960785)
 
+[node name="enemy_hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 10
+
+[node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
+position = Vector2(-1, -6)
+shape = SubResource("RectangleShape2D_462bx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, -8)
+shape = SubResource("RectangleShape2D_6dicg")
+
 [node name="StunedTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]
 [connection signal="body_entered" from="flippable/shield_hitbox" to="." method="_on_shield_hitbox_body_entered"]
+[connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]
 [connection signal="timeout" from="StunedTimer" to="." method="_on_stuned_timer_timeout"]

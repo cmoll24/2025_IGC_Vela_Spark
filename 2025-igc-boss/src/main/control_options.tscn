@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3e2re6bdta74"]
+
+[ext_resource type="Script" uid="uid://bvbivr6jvi1ye" path="res://src/main/control_options.gd" id="1_d1xkq"]
+
+[node name="Control Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d1xkq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 256.0
+offset_right = 1310.0
+offset_bottom = 344.0
+theme_override_font_sizes/font_size = 64
+text = "Pick and input method"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Keyboard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Keyboard"
+
+[node name="Controller" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Controller"
+
+[node name="Touch Screen" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Touch Screen"
+
+[connection signal="pressed" from="VBoxContainer/Keyboard" to="." method="_on_keyboard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controller" to="." method="_on_controller_pressed"]
+[connection signal="pressed" from="VBoxContainer/Touch Screen" to="." method="_on_touch_screen_pressed"]

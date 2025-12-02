@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var MAX_HEALTH : int = 1
 @export var direction : int = -1
 
+@export var deathColor = Color(0.6,0.5,0.5)
+
 @export var is_respawnable = false
 @export var RESPAWN_TIME : float = 3
 var is_dead = false

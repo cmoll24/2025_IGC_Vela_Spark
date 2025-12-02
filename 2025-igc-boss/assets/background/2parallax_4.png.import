@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp4svbs7o43jp"
-path="res://.godot/imported/Untitled_Artwork-3.png-cbb9645f63ba04873b6d4b0b914c1109.ctex"
+uid="uid://05yub2odinxv"
+path="res://.godot/imported/2parallax_4.png-79ea5a7b3b6b38f9c5ed131982e368a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/boss/volley/Untitled_Artwork-3.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-3.png-cbb9645f63ba04873b6d4b0b914c1109.ctex"]
+source_file="res://assets/background/2parallax_4.png"
+dest_files=["res://.godot/imported/2parallax_4.png-79ea5a7b3b6b38f9c5ed131982e368a1.ctex"]
 
 [params]
 

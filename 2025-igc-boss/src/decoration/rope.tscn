@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3bokkjwmetd3"]
+
+[ext_resource type="Texture2D" uid="uid://si7bed3i1gbn" path="res://assets/objects/rope.png" id="1_wxsf1"]
+
+[node name="Rope" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 500.0
+texture = ExtResource("1_wxsf1")
+stretch_mode = 1

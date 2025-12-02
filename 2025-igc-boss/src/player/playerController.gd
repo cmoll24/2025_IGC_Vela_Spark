@@ -27,7 +27,7 @@ var cause_of_death : String
 var fire_ball_active = false
 
 func _ready():
-	#Engine.time_scale = 0.4
+	#Engine.time_scale = 0.3
 	add_to_group("player")
 	fireball_sprite.modulate = Color(1,1,1,0)
 
@@ -138,43 +138,57 @@ func die(cause : String = "Attack"):
 	
 	await animated_sprite.animation_finished
 	
-	queue_free()
-	get_tree().reload_current_scene()
+	#queue_free()
+	Global.switch_to_respawn_level()
+	#get_tree().reload_current_scene()
 
 func hit_and_respawn(attacker : Node2D):
-	health_control.hit(attacker)
+	print('hit and respawn')
+	health_control.super_hit(attacker)
 	if is_dead:
 		return
 	await get_tree().create_timer(0.5).timeout
-	velocity = Vector2.ZERO
-	animation_player.play("Hit")
-	health_control.apply_invincibility()
-	move_control.apply_immobility(0.2)
-	global_position = move_control.last_ground_location
+	#velocity = Vector2.ZERO
+	#animation_player.play("Hit")
+	#health_control.apply_invincibility()
+	#move_control.apply_immobility(1)
+	respawn()
 
-func respawn():
+func damage_and_respawn():
 	#or attacker.is_in_group("obstacles")
-	velocity = Vector2.ZERO
-	animation_player.play("Hit")
-	move_control.apply_immobility(1)
-	global_position = move_control.last_ground_location
-	health_control.apply_invincibility()
+	#velocity = Vector2.ZERO
+	#animation_player.play("Hit")
+	#move_control.apply_immobility(1)
+	respawn()
+	#health_control.apply_invincibility()
 	health_control.take_damage()
 
+func respawn():
+	velocity = Vector2.ZERO
+	animation_player.play("Hit")
+	move_control.apply_immobility(0.5)
+	health_control.apply_invincibility(0.5)
+	global_position = move_control.last_ground_location
+
 func _on_obstacle_collide(body: Node2D) -> void:
-	if (body.is_in_group("obstacles") or body is TileMapLayer) and move_control.dash_attack_state:
+	if (body.is_in_group("obstacles") or body is TileMapLayer) and (move_control.dash_attack_state or move_control.dash_state):
 		health_control.cancel_invincibility()
 		move_control.end_dash()
 	if body.is_in_group("obstacles"):
-		hit_and_respawn(body)
+		if body is Spikes and not body.player_respawn:
+			hit(body)
+		elif not health_control.invincibility_timer.is_stopped():
+			hit_and_respawn(body)
+		else:
+			hit_and_respawn(body)
 	
 
 func _on_enemy_collide(body: Node2D) -> void:
-	if body is Enemy or body is Boss:
+	if (body is Enemy or body is Boss) and not body.is_dead:
 		if  not move_control.dash_state and not move_control.dash_attack_state:
 			hit(body)
 
-func killed_enemy(body: Node2D):
+func killed_enemy(_body: Node2D):
 	#print('Enemy Slain')
 	#if body is EnemyStatic:
 	#	health_control.heal(5)

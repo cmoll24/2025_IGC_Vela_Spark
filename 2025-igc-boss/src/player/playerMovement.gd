@@ -35,11 +35,12 @@ var dash_direction
 @export var DASH_SPEED : float = 1000
 var current_dash_speed = DASH_SPEED
 var dash_entry_speed : float
+@export var FIREBALL_DECCEL_COEF = 0.8
 
 @export_category("Knockback variables")
 @export var knockback_force: float = 1000.0
 @export var knockback_upward_force: float = 400.0
-@export var knockback_duration: float = 0.3
+@export var knockback_duration: float = 0.5
 
 var knockback_vector: Vector2 = Vector2.ZERO
 var is_knocked_back: bool = false
@@ -86,8 +87,8 @@ func physics_update(delta: float) -> void:
 	if is_knocked_back:
 		player.velocity.y += GRAVITY * delta
 		knockback_process(delta)
-	else:
-		if immobile_timer.is_stopped() and can_dash():
+	elif  immobile_timer.is_stopped():
+		if can_dash(): #immobile_timer.is_stopped() and 
 			if is_dash_just_pressed():
 				dash()
 			
@@ -97,6 +98,8 @@ func physics_update(delta: float) -> void:
 			player.velocity.y += current_gravity * delta
 			horizontal_movement(delta)
 			jump(delta)
+	else:
+		decelerate(delta)
 	
 	if is_touching_floor:
 		has_dash = true
@@ -121,6 +124,7 @@ var is_controller_dashed_pressed = false
 func process_controller_dash():
 	#if dash_grace_timer.is_stopped():
 	#if immobile_timer.is_stopped() and not is_knocked_back  and not player.is_dead:
+	if not player.is_dead:
 		if Input.get_action_strength("controller_dash") >= 0.1 and not is_controller_dashed_pressed:
 			is_controller_dashed_pressed = true
 			dash_grace_timer.start()
@@ -134,9 +138,12 @@ func horizontal_movement(delta):
 		if abs(player.velocity.x) <= abs(current_move_speed):
 			player.velocity.x = move_input * current_move_speed
 		else:
-			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, delta * current_move_speed)
+			player.velocity.x = move_input * move_toward(abs(player.velocity.x), current_move_speed, FIREBALL_DECCEL_COEF * delta * current_move_speed)
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
+		decelerate(delta)
+
+func decelerate(delta):
+	player.velocity.x = move_toward(player.velocity.x, 0, delta * H_DECELERATION * current_move_speed)
 
 func dash_movement(_delta):
 	if not dash_turn_around_timer.is_stopped(): #Grace period to change dash direction
@@ -167,7 +174,7 @@ func jump(_delta):
 		if is_jump_just_pressed():
 			coyote_timer.stop()
 			player.velocity.y = -JUMP_SPEED
-	elif not air_jump_detector.is_colliding():
+	elif not air_jump_detector.is_colliding() or is_danger_below():
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
 			player.velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
@@ -176,6 +183,9 @@ func jump(_delta):
 	if not player.is_on_floor() and Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y = lerp(player.velocity.y, 0.0, 0.8)
 
+func is_danger_below():
+	var first_body_below = air_jump_detector.get_collider()
+	return first_body_below is Enemy or first_body_below is Boss or first_body_below is Spikes or first_body_below is Projectile
 
 func is_jump_just_pressed():
 	if not jump_grace_timer.is_stopped() and Input.is_action_pressed("jump"):
@@ -295,7 +305,7 @@ func _input(event: InputEvent) -> void:
 	#		dash_input()
 		
 func can_dash():
-	return has_dash and not dash_state and dash_attack_cooldown.is_stopped()
+	return has_dash and not dash_state and dash_attack_cooldown.is_stopped() and not player.is_dead
 
 func is_dashing():
 	return dash_state or dash_attack_state

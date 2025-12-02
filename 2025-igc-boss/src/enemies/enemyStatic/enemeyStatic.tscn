@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckeyt2issfig3"]
 
 [ext_resource type="Script" uid="uid://bdvfctmte37sr" path="res://src/enemies/enemyStatic/enemeyStatic.gd" id="1_bcxj1"]
-[ext_resource type="Texture2D" uid="uid://gowseavq2kl2" path="res://assets/enemies/bubble_1.png" id="2_p371e"]
-[ext_resource type="Texture2D" uid="uid://dp0r85dfulxxs" path="res://assets/enemies/bubble_2.png" id="3_2rfnt"]
+[ext_resource type="Texture2D" uid="uid://cdxe8xfmv0e0l" path="res://assets/enemies/1bubble_1.png" id="2_2rfnt"]
+[ext_resource type="Texture2D" uid="uid://bemq30ywtx03j" path="res://assets/enemies/1bubble_2.png" id="3_lv5pj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_462bx"]
 size = Vector2(60, 60)
@@ -14,10 +14,10 @@ size = Vector2(90, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_p371e")
+"texture": ExtResource("2_2rfnt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2rfnt")
+"texture": ExtResource("3_lv5pj")
 }],
 "loop": true,
 "name": &"default",
@@ -41,6 +41,6 @@ shape = SubResource("RectangleShape2D_6dicg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lv5pj")
 autoplay = "default"
-frame_progress = 0.057269823
+frame_progress = 0.95185924
 
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]

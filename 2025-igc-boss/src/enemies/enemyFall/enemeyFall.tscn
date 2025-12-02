@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://xw52pno6uah0"]
 
 [ext_resource type="Script" uid="uid://cfouxtqteiiby" path="res://src/enemies/enemyFall/enemeyFall.gd" id="1_7uiu7"]
-[ext_resource type="Texture2D" uid="uid://gowseavq2kl2" path="res://assets/enemies/bubble_1.png" id="2_y4d3h"]
-[ext_resource type="Texture2D" uid="uid://dp0r85dfulxxs" path="res://assets/enemies/bubble_2.png" id="3_sclqw"]
+[ext_resource type="Texture2D" uid="uid://e38ivyx76y8l" path="res://assets/enemies/2bubble_1.png" id="2_y4d3h"]
+[ext_resource type="Texture2D" uid="uid://b6kgxp3sku4gs" path="res://assets/enemies/2bubble_2.png" id="3_sclqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_462bx"]
 size = Vector2(60, 60)
@@ -33,13 +33,14 @@ collision_layer = 4
 collision_mask = 10
 
 [node name="hitbox-colli_shape2d" type="CollisionShape2D" parent="enemy_hitbox"]
+visible = false
 shape = SubResource("RectangleShape2D_462bx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_6dicg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.58431375, 1, 1)
 sprite_frames = SubResource("SpriteFrames_5rhed")
 autoplay = "default"
 

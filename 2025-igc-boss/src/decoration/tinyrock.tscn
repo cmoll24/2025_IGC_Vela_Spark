@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://05bty0tjh0vs"]
+
+[ext_resource type="Texture2D" uid="uid://bey65es08032u" path="res://assets/objects/tinyrock.png" id="1_63ogs"]
+
+[node name="TinyRock" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(63, -107)
+texture = ExtResource("1_63ogs")
