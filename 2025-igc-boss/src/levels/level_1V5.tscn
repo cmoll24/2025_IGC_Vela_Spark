@@ -197,7 +197,6 @@ tile_map_data = PackedByteArray("AAD7/xAAAQAAAAEAAAD8/xAAAQAAAAEAAAD9/xAAAQAAAAE
 tile_set = SubResource("TileSet_riplu")
 navigation_enabled = false
 
-[node name="OutOfBounds" parent="." instance=ExtResource("6_ffib7")]
 [node name="OutOfBounds" parent="." instance=ExtResource("13_liaun")]
 position = Vector2(0, 1264)
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbu755oj7nlxw" path="res://src/main/hud.gd" id="1_7of0l"]
 [ext_resource type="Texture2D" uid="uid://deusgd7smxaaf" path="res://assets/debug/7-debug-health-background.png" id="2_yo4nc"]
-[ext_resource type="Texture2D" uid="uid://etlf14me4ojw" path="res://assets/ui/Vela_HealthBar.png" id="3_svyqj"]
+[ext_resource type="Texture2D" uid="uid://r5dvk44njuxs" path="res://assets/debug/7-debug-health.png" id="3_svyqj"]
 [ext_resource type="Texture2D" uid="uid://bm5hwbbravroc" path="res://assets/ui/updatedarrowmobile.png" id="4_5dx08"]
 [ext_resource type="Texture2D" uid="uid://cj5xes5nc8nko" path="res://assets/ui/arrow mobile pressed.png" id="5_svyqj"]
 [ext_resource type="Texture2D" uid="uid://ho6ud6puimq1" path="res://assets/ui/dashmobile.png" id="6_svyqj"]
