@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://80lu1x160te3"]
 
 [ext_resource type="Script" uid="uid://chsk5srh3y4se" path="res://src/projectile/boomerangProjectile.gd" id="1_u1o6f"]
-[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="2_cfvmf"]
+[ext_resource type="Texture2D" uid="uid://b5wmtyu571jmg" path="res://assets/projectiles/bubble.png" id="2_u1o6f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7ro2"]
-radius = 14.035668
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rfvpp"]
-radius = 18.0
+radius = 20.0
 
 [node name="BoomerangProjectile" type="CharacterBody2D" node_paths=PackedStringArray("rotatable")]
 collision_layer = 128
@@ -19,19 +19,17 @@ rotatable = NodePath("rotatable")
 shape = SubResource("CircleShape2D_w7ro2")
 debug_color = Color(0.85692406, 0.0007469893, 0.8846648, 0.41960785)
 
+[node name="rotatable" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="rotatable"]
+modulate = Color(0.28246665, 0.23600002, 0.4, 1)
+texture = ExtResource("2_u1o6f")
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_rfvpp")
-
-[node name="rotatable" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="rotatable"]
-modulate = Color(0.3764706, 0.3019608, 1, 1)
-position = Vector2(0, -5.9604645e-08)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_cfvmf")
 
 [connection signal="body_entered" from="Area2D" to="." method="collide"]

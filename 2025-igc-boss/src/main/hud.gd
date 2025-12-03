@@ -8,7 +8,7 @@ extends CanvasLayer
 
 var inputs = {}
 
-@onready var healthbar = $TextureProgressBar
+@onready var healthbar = $HealthBar
 
 func _ready() -> void:
 	touch_screen_controls.visible = Global.show_touch_screen_controls()
@@ -23,6 +23,9 @@ func _process(_delta: float) -> void:
 		player_input.text = "Inputs:\n" + "\n".join(inputs.values())
 	
 	healthbar.value = Global.get_player().health_control.health
+	if healthbar.value == 0:
+		$HealthFire.play("death")
+	
 	fps_label.text = "FPS: " + str(Engine.get_frames_per_second())
 	timer_label.text = display_time(round(Global.player_timer)) #Time.get_time_string_from_unix_time(round(Global.player_timer))
 	

@@ -9,7 +9,7 @@ class_name BarageAttack
 var volley_number = VOLLEY_NUMBER
 var volley_timer = VOLLEY_COOLDOWN
 
-var projectile = load("res://src/projectile/arcProjectile.tscn")
+var projectile = load("res://src/projectile/arcBossProjectile.tscn")
 var static_enemy = load("res://src/enemies/enemyStatic/enemeyStatic.tscn")
 
 func enter(_arg):

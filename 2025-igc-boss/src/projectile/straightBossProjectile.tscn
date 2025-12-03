@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://be8ke4rfe0eqi"]
+
+[ext_resource type="Script" uid="uid://28bvxldc8hho" path="res://src/projectile/straightProjectile.gd" id="1_deyn7"]
+[ext_resource type="Texture2D" uid="uid://b5wmtyu571jmg" path="res://assets/projectiles/bubble.png" id="2_deyn7"]
+[ext_resource type="Texture2D" uid="uid://vv67027h1xcy" path="res://assets/character/FireAttack/Fireball-1.png" id="3_n5j5e"]
+[ext_resource type="Texture2D" uid="uid://bekaq8q8amgmt" path="res://assets/character/FireAttack/Fireball-2.png" id="4_mpdp0"]
+[ext_resource type="Texture2D" uid="uid://jltmwajt65og" path="res://assets/character/FireAttack/Fireball-3.png" id="5_j6jwo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7ro2"]
+radius = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4lt6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n5j5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mpdp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j6jwo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfvpp"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_7mjdv"]
+resource_name = "spin"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotatable/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.141592653589793, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_p4v1s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotatable/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5j5e"]
+_data = {
+&"RESET": SubResource("Animation_p4v1s"),
+&"spin": SubResource("Animation_7mjdv")
+}
+
+[node name="StraightProjectile" type="CharacterBody2D" node_paths=PackedStringArray("rotatable")]
+collision_layer = 128
+script = ExtResource("1_deyn7")
+rotatable = NodePath("rotatable")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w7ro2")
+
+[node name="rotatable" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rotatable"]
+self_modulate = Color(1, 1, 1, 0.78431374)
+position = Vector2(-22, 6)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_w4lt6")
+autoplay = "default"
+frame_progress = 0.6407837
+
+[node name="Sprite2D" type="Sprite2D" parent="rotatable"]
+modulate = Color(0.9098039, 0.5921569, 0.26666668, 1)
+texture = ExtResource("2_deyn7")
+
+[node name="Area2D" type="Area2D" parent="rotatable"]
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotatable/Area2D"]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_rfvpp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n5j5e")
+}
+autoplay = "spin"
+
+[connection signal="body_entered" from="rotatable/Area2D" to="." method="collide"]

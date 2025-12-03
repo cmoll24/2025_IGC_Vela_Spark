@@ -11,7 +11,7 @@ var projectile_amount = PROJECTILE_NUMBER
 
 var attack_offset = 150
 
-var projectile = load("res://src/projectile/straightProjectile.tscn")
+var projectile = load("res://src/projectile/straightBossProjectile.tscn")
 var static_enemy = load("res://src/enemies/enemyStatic/enemeyStatic.tscn")
 
 func enter(_arg):

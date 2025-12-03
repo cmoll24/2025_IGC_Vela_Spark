@@ -4,7 +4,7 @@ class_name StraightAttack
 @export var boss : Boss
 
 @export var WAIT_TIME : float = 5
-@export var WAVE_NUMBER : int = 3
+@export var WAVE_NUMBER : int = 2
 
 var wait_timer = WAIT_TIME
 
@@ -56,7 +56,7 @@ func attack():
 		else:
 			enemy_pos += randi_range(-1,1)
 		
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.3).timeout
 	
 
 func summon_projectile(offset : Vector2) -> void:

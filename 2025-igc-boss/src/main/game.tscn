@@ -70,6 +70,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="HUD" parent="." instance=ExtResource("2_lghd3")]
 
 [node name="ScreenTransiton" type="ColorRect" parent="HUD"]

@@ -1,13 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2f8xj0xoipj3"]
+[gd_scene load_steps=8 format=3 uid="uid://d2f8xj0xoipj3"]
 
 [ext_resource type="Script" uid="uid://cw1sncxa0x5p" path="res://src/projectile/accelerateProjectile.gd" id="1_hilwv"]
-[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="2_8y4rq"]
+[ext_resource type="Texture2D" uid="uid://b5wmtyu571jmg" path="res://assets/projectiles/bubble.png" id="2_hilwv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x3t4g"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7ro2"]
 radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_11cb4"]
-radius = 19.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfvpp"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_8y4rq"]
+resource_name = "spin"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotatable/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2667, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [6.283185307179586, 3.141592653589793, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dioxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotatable/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xdp5b"]
+_data = {
+&"RESET": SubResource("Animation_dioxp"),
+&"spin": SubResource("Animation_8y4rq")
+}
 
 [node name="AccelerateProjectile" type="CharacterBody2D" node_paths=PackedStringArray("rotatable")]
 collision_layer = 128
@@ -15,21 +53,26 @@ script = ExtResource("1_hilwv")
 rotatable = NodePath("rotatable")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_x3t4g")
+shape = SubResource("CircleShape2D_w7ro2")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_11cb4")
+shape = SubResource("CircleShape2D_rfvpp")
 
 [node name="rotatable" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="rotatable"]
-modulate = Color(1, 0.38039216, 0.8352941, 1)
+modulate = Color(0.36078432, 0.3137255, 0.26666668, 1)
 position = Vector2(0, -5.9604645e-08)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_8y4rq")
+texture = ExtResource("2_hilwv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xdp5b")
+}
+autoplay = "spin"
 
 [connection signal="body_entered" from="Area2D" to="." method="collide"]

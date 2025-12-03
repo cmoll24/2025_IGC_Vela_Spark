@@ -4,12 +4,12 @@ class_name EnemyBarrageGhost
 @onready var animation_player = $flippable/AnimatedSprite2D
 @onready var flippable = $flippable
 
-@export var VOLLEY_COOLDOWN = 3
+@export var VOLLEY_COOLDOWN = 3.5
 
 var volley_timer = VOLLEY_COOLDOWN
 
 func _ready() -> void:
-	projectile = load("res://src/projectile/arcBossProjectile.tscn")
+	projectile = load("res://src/projectile/arcGhostProjectile.tscn")
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	volley_timer -= delta
 	if volley_timer < 0:
 		volley_timer = VOLLEY_COOLDOWN
-		summon_projectile(deg_to_rad(30), 300)
 		summon_projectile(deg_to_rad(55), 450)
 		summon_projectile(deg_to_rad(80), 550)
 	

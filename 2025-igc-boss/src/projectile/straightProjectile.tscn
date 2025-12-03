@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctod2gbe1ct6w"]
 
 [ext_resource type="Script" uid="uid://28bvxldc8hho" path="res://src/projectile/straightProjectile.gd" id="1_11cb4"]
-[ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="2_11cb4"]
+[ext_resource type="Texture2D" uid="uid://b3dwp5mxq7fjh" path="res://assets/projectiles/spine2.png" id="2_11cb4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3t4g"]
-radius = 12.0
+radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_11cb4"]
-radius = 19.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_11cb4"]
+radius = 6.0
+height = 62.0
 
 [node name="StraightProjectile" type="CharacterBody2D" node_paths=PackedStringArray("rotatable")]
 collision_layer = 128
@@ -17,19 +18,22 @@ rotatable = NodePath("rotatable")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x3t4g")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_11cb4")
-
 [node name="rotatable" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="rotatable"]
-modulate = Color(1, 0, 0.54509807, 1)
-position = Vector2(0, -5.9604645e-08)
-scale = Vector2(0.8, 0.8)
+modulate = Color(1, 0.62863654, 0.5449209, 1)
+position = Vector2(24, -1)
+scale = Vector2(1, 1.2)
 texture = ExtResource("2_11cb4")
 
-[connection signal="body_entered" from="Area2D" to="." method="collide"]
+[node name="Area2D" type="Area2D" parent="rotatable"]
+position = Vector2(24, 0)
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotatable/Area2D"]
+position = Vector2(-3, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_11cb4")
+
+[connection signal="body_entered" from="rotatable/Area2D" to="." method="collide"]

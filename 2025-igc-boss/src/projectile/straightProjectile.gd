@@ -1,7 +1,7 @@
 extends Projectile
 class_name StraightProjectile
 
-@onready var hitArea = $Area2D
+@onready var hitArea = $rotatable/Area2D
 
 
 func _physics_process(_delta: float) -> void:
