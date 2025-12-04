@@ -99,6 +99,7 @@ func physics_update(delta: float) -> void:
 			horizontal_movement(delta)
 			jump(delta)
 	else:
+		player.velocity.y += current_gravity * delta
 		decelerate(delta)
 	
 	if is_touching_floor:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://diyl0h8763r2m"]
+[gd_scene load_steps=31 format=3 uid="uid://diyl0h8763r2m"]
 
 [ext_resource type="Script" uid="uid://br8lcq21j52gp" path="res://src/enemies/enemyShield/enemeyShield.gd" id="1_k8hgm"]
 [ext_resource type="Texture2D" uid="uid://dxo4jti5rd5kg" path="res://assets/enemies/charge/charge attack run_01.png" id="2_sopi0"]
@@ -17,6 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://bqeue4edr8hdu" path="res://assets/enemies/charge/charge attack windup_04.png" id="9_0esqm"]
 [ext_resource type="Texture2D" uid="uid://bqhctqpfoajjk" path="res://assets/enemies/charge/charger idle_04.png" id="9_7odrv"]
 [ext_resource type="Texture2D" uid="uid://dayhcmcrfgl81" path="res://assets/enemies/shield/charger shield idle_04.png" id="9_s8ehm"]
+[ext_resource type="Texture2D" uid="uid://do3r13a7irxme" path="res://assets/enemies/shield/charge shield attack run_01.png" id="14_txtbw"]
+[ext_resource type="Texture2D" uid="uid://dk68u16w0dmtx" path="res://assets/enemies/shield/charge shield attack run_02.png" id="15_2jtkl"]
+[ext_resource type="Texture2D" uid="uid://h0lihj4laq3" path="res://assets/enemies/shield/charge shield attack run_03.png" id="16_yo7bx"]
+[ext_resource type="Texture2D" uid="uid://bawe2bjya8ltj" path="res://assets/enemies/shield/charge shield attack run_04.png" id="17_4f63l"]
+[ext_resource type="Texture2D" uid="uid://dwroslmxn13bt" path="res://assets/enemies/shield/charge shield attack windup_01.png" id="22_n187w"]
+[ext_resource type="Texture2D" uid="uid://bjtx0u5iiau7j" path="res://assets/enemies/shield/charge shield attack windup_02.png" id="23_4bxbk"]
+[ext_resource type="Texture2D" uid="uid://3xtrlywrtegf" path="res://assets/enemies/shield/charge shield attack windup_03.png" id="24_m6ay3"]
+[ext_resource type="Texture2D" uid="uid://cmc4qvrqpp7ew" path="res://assets/enemies/shield/charge shield attack windup_04.png" id="25_nx4ot"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s8ehm"]
 animations = [{
@@ -69,12 +77,24 @@ animations = [{
 }],
 "loop": true,
 "name": &"windup",
-"speed": 4.0
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_py8bg"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_txtbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2jtkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_yo7bx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4f63l")
+}],
 "loop": true,
 "name": &"charge",
 "speed": 7.0
@@ -96,10 +116,22 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_n187w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_4bxbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_m6ay3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_nx4ot")
+}],
 "loop": true,
 "name": &"windup",
-"speed": 4.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbp0j"]
@@ -114,6 +146,7 @@ size = Vector2(110, 128)
 [node name="EnemyShield" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_k8hgm")
+WINDUP_DURATION = 0.35
 
 [node name="flippable" type="Node2D" parent="."]
 
@@ -123,7 +156,7 @@ position = Vector2(-8, -38)
 rotation = 3.1415927
 scale = Vector2(0.5, -0.5)
 sprite_frames = SubResource("SpriteFrames_s8ehm")
-animation = &"idle"
+animation = &"windup"
 
 [node name="ShieldAnimation" type="AnimatedSprite2D" parent="flippable"]
 modulate = Color(0.78885716, 0.725333, 0.5550161, 1)
@@ -131,7 +164,7 @@ position = Vector2(-8, -38)
 rotation = 3.1415927
 scale = Vector2(0.5, -0.5)
 sprite_frames = SubResource("SpriteFrames_py8bg")
-animation = &"idle"
+animation = &"windup"
 
 [node name="ColorRect2" type="ColorRect" parent="flippable"]
 visible = false

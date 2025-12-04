@@ -6,7 +6,8 @@ class_name EnemyShield
 @onready var shield_animation = $flippable/ShieldAnimation
 
 func _ready() -> void:
-	shield_sprite.visible = false
+	#shield_sprite.visible = false
+	shield_animation.self_modulate = Color(1,1,1)
 	super._ready()
 
 func _process(delta: float) -> void:
@@ -18,6 +19,7 @@ func _process(delta: float) -> void:
 		shield_animation.play("windup")
 	else:
 		shield_animation.play("idle")
+	shield_animation.frame = animated_sprite.frame
 
 func _physics_process(delta: float) -> void:
 	flippable.scale.x = direction
@@ -38,12 +40,14 @@ func _physics_process(delta: float) -> void:
 	
 	if charging:
 		invulnerable = true
-		shield_sprite.visible = true
+		#shield_sprite.visible = true
+		shield_animation.self_modulate = Color(1,0.5,0.2)
 		charge_timer -= delta
 		velocity.x = direction * charge_speed
 		
 		if charge_timer < 0:
-			shield_sprite.visible = false
+			#shield_sprite.visible = false
+			shield_animation.self_modulate = Color(1,1,1)
 			charging = false
 			invulnerable = false
 			velocity.x = 0
