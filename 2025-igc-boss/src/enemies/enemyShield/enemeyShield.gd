@@ -3,10 +3,21 @@ class_name EnemyShield
 
 @onready var shield_hitbox = $flippable/shield_hitbox
 @onready var shield_sprite = $flippable/ShieldSprite
+@onready var shield_animation = $flippable/ShieldAnimation
 
 func _ready() -> void:
 	shield_sprite.visible = false
 	super._ready()
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	
+	if charging:
+		shield_animation.play("charge")
+	elif windup:
+		shield_animation.play("windup")
+	else:
+		shield_animation.play("idle")
 
 func _physics_process(delta: float) -> void:
 	flippable.scale.x = direction

@@ -179,6 +179,7 @@ position = Vector2(0, -40)
 target_position = Vector2(-400, 0)
 
 [node name="Debug" type="Label" parent="."]
+visible = false
 offset_left = -104.0
 offset_top = -28.0
 offset_bottom = -5.0
@@ -186,6 +187,7 @@ scale = Vector2(2, 2)
 text = "Current State"
 
 [node name="Health" type="Label" parent="."]
+visible = false
 offset_left = -104.0
 offset_top = 12.0
 offset_bottom = 35.0

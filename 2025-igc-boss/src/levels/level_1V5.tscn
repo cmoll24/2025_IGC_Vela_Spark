@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b2wthbiliuvry"]
+[gd_scene load_steps=17 format=4 uid="uid://b2wthbiliuvry"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_37pnc"]
@@ -30,10 +30,6 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7v3s3")
-
-[sub_resource type="Gradient" id="Gradient_ghtb1"]
-interpolation_color_space = 2
-colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_7v3s3")
@@ -175,11 +171,6 @@ position = Vector2(183.32263, 135.85449)
 
 [node name="EnemyCharge4" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(4894, 241)
-
-[node name="Line2D" type="Line2D" parent="."]
-width = 2.0
-default_color = Color(1, 0, 1, 1)
-gradient = SubResource("Gradient_ghtb1")
 
 [node name="Player" parent="." instance=ExtResource("10_ufga5")]
 position = Vector2(-112, 793)

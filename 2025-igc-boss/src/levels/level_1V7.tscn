@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://gba16kj5dcci"]
+[gd_scene load_steps=12 format=4 uid="uid://gba16kj5dcci"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_lknex"]
 [ext_resource type="Texture2D" uid="uid://dgxkgog6itxut" path="res://assets/debug/debug_background.jpg" id="2_d5jfb"]
@@ -25,10 +25,6 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fcumj")
-
-[sub_resource type="Gradient" id="Gradient_ghtb1"]
-interpolation_color_space = 2
-colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_lknex")
@@ -130,11 +126,6 @@ position = Vector2(14272, -2571)
 
 [node name="EnemyArc4" parent="Enemies" instance=ExtResource("7_8acoy")]
 position = Vector2(13311, -2569)
-
-[node name="Line2D" type="Line2D" parent="."]
-width = 2.0
-default_color = Color(1, 0, 1, 1)
-gradient = SubResource("Gradient_ghtb1")
 
 [node name="Player" parent="." instance=ExtResource("8_rg3au")]
 position = Vector2(-766, 717)

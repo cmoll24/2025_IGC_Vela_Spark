@@ -1,14 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqcqmcwqjtn46"]
+[gd_scene load_steps=17 format=3 uid="uid://dqcqmcwqjtn46"]
 
 [ext_resource type="Script" uid="uid://h1yjj8k6xg0h" path="res://src/enemies/enemyCharge/enemeyCharge.gd" id="1_r0av8"]
 [ext_resource type="Texture2D" uid="uid://dxo4jti5rd5kg" path="res://assets/enemies/charge/charge attack run_01.png" id="2_2doyf"]
 [ext_resource type="Texture2D" uid="uid://c1sl4wnngqa5e" path="res://assets/enemies/charge/charge attack run_02.png" id="3_dd8co"]
 [ext_resource type="Texture2D" uid="uid://bypogmm5g24sc" path="res://assets/enemies/charge/charge attack run_03.png" id="4_w3tat"]
 [ext_resource type="Texture2D" uid="uid://djpk2acqh20vy" path="res://assets/enemies/charge/charge attack run_04.png" id="5_1vk0l"]
+[ext_resource type="Texture2D" uid="uid://knx3pshe5f7c" path="res://assets/enemies/charge/charger idle_01.png" id="6_1e3mw"]
 [ext_resource type="Texture2D" uid="uid://d1wfjcs31bhvv" path="res://assets/enemies/charge/charge attack windup_01.png" id="6_bnxsf"]
 [ext_resource type="Texture2D" uid="uid://bwe3x2ahq0jv2" path="res://assets/enemies/charge/charge attack windup_02.png" id="7_1e3mw"]
+[ext_resource type="Texture2D" uid="uid://dgq26qjeqnlfs" path="res://assets/enemies/charge/charger idle_02.png" id="7_wt8yo"]
+[ext_resource type="Texture2D" uid="uid://y71ihdracwpw" path="res://assets/enemies/charge/charger idle_03.png" id="8_3bggy"]
 [ext_resource type="Texture2D" uid="uid://bcejg25f2bpwr" path="res://assets/enemies/charge/charge attack windup_03.png" id="8_wt8yo"]
 [ext_resource type="Texture2D" uid="uid://bqeue4edr8hdu" path="res://assets/enemies/charge/charge attack windup_04.png" id="9_3bggy"]
+[ext_resource type="Texture2D" uid="uid://bqhctqpfoajjk" path="res://assets/enemies/charge/charger idle_04.png" id="9_th00m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_th00m"]
 animations = [{
@@ -31,7 +35,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_bnxsf")
+"texture": ExtResource("6_1e3mw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wt8yo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3bggy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_th00m")
 }],
 "loop": true,
 "name": &"idle",
@@ -95,9 +108,9 @@ modulate = Color(0.7951315, 0.74742097, 0.39291725, 1)
 position = Vector2(-8, -38)
 scale = Vector2(-0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_th00m")
-animation = &"windup"
-frame = 3
-frame_progress = 0.18249997
+animation = &"idle"
+frame = 2
+frame_progress = 0.8739809
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 visible = false

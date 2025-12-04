@@ -3,7 +3,7 @@ class_name EnemyTurret
 
 @onready var animation_player = $AnimationPlayer
 
-@export var COOLDOWN = 2
+@export var COOLDOWN = 3
 
 var cooldown_timer = COOLDOWN
 
@@ -27,6 +27,6 @@ func _physics_process(delta: float) -> void:
 func summon_projectile(target_pos : Vector2) -> void:
 	var instance : StraightProjectile = projectile.instantiate()
 	instance.spawnPos = global_position
-	instance.SPEED = 450
+	instance.SPEED = 440
 	instance.angle = -global_position.angle_to_point(target_pos)
 	Global.get_projectile_tree().add_child(instance)
