@@ -12,13 +12,18 @@ func _physics_process(delta: float) -> void:
 	flippable.scale.x = direction
 	
 	if not stunned_timer.is_stopped():
+		enemy_grounded_process(delta)
 		return
 	
-	if not charging:
+	if not charging and not windup:
 		direction = sign(Global.get_player().global_position.x - global_position.x)
+		if player_detector.is_colliding():
+			start_windup()
 	
-	if player_detector.is_colliding():
-		start_charge()
+	if windup:
+		windup_timer -= delta
+		if windup_timer < 0:
+			start_charge()
 	
 	if charging:
 		invulnerable = true
@@ -35,11 +40,7 @@ func _physics_process(delta: float) -> void:
 			stunned_timer.start()
 			modulate = Color(0.7,0.7,0.7)
 	
-	super._physics_process(delta)
-
-func start_charge():
-	charge_timer = 1
-	charging = true
+	enemy_grounded_process(delta)
 
 func _on_stuned_timer_timeout() -> void:
 	modulate = Color(1,1,1)

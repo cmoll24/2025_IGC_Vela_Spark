@@ -4,22 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://n5v0b2ld27mk" path="res://assets/debug/projectile.png" id="2_8y4rq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3t4g"]
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_11cb4"]
-radius = 21.0
+radius = 19.0
 
-[node name="AccelerateProjectile" type="CharacterBody2D"]
+[node name="AccelerateProjectile" type="CharacterBody2D" node_paths=PackedStringArray("rotatable")]
 collision_layer = 128
 script = ExtResource("1_hilwv")
+rotatable = NodePath("rotatable")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x3t4g")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.38039216, 0.8352941, 1)
-position = Vector2(0, -5.9604645e-08)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_8y4rq")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128
@@ -27,5 +23,13 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_11cb4")
+
+[node name="rotatable" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="rotatable"]
+modulate = Color(1, 0.38039216, 0.8352941, 1)
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_8y4rq")
 
 [connection signal="body_entered" from="Area2D" to="." method="collide"]

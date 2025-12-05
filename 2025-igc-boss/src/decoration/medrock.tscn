@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://g2330gti4dse"]
+
+[ext_resource type="Texture2D" uid="uid://dbkbylkwn3fnn" path="res://assets/objects/mediumrock.png" id="1_iappu"]
+
+[node name="MediumRock" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(50, -107)
+texture = ExtResource("1_iappu")

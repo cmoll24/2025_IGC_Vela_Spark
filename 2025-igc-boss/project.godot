@@ -30,6 +30,10 @@ window/stretch/mode="canvas_items"
 
 obstacles=""
 
+[importer_defaults]
+
+image={}
+
 [input]
 
 ui_accept={

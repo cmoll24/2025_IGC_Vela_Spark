@@ -9,9 +9,16 @@ var player_health
 
 var player_timer : float
 
-var touch_screen_controls : bool = false
+enum INPUT_METHOD {
+	KEYBOARD,
+	CONTROLLER,
+	TOUCH_SCREEN
+}
+
+var current_input_method
 
 func _ready() -> void:
+	#Engine.time_scale = 0.5
 	Engine.set_max_fps(60)
 
 func get_current_level_index():
@@ -24,10 +31,10 @@ func switch_to_level(new_index : int):
 
 func switch_to_respawn_level():
 	reset_player_timer()
-	if current_level_index >= 5:
-		switch_to_level(5)
+	if current_level_index >= 1:
+		switch_to_level(1)
 	else:
-		switch_to_level(4)
+		switch_to_level(0)
 
 func get_game_scene():
 	return game_scene
@@ -46,3 +53,9 @@ func switch_to_title():
 
 func reset_player_timer():
 	player_timer = 0
+
+func set_input_method(new_input_method : INPUT_METHOD):
+	current_input_method = new_input_method
+
+func show_touch_screen_controls():
+	return current_input_method == INPUT_METHOD.TOUCH_SCREEN

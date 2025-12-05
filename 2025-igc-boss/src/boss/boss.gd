@@ -25,10 +25,12 @@ var minion_spawn_info : Array
 
 var current_cycle_index : int = 0
 
-var health : int = 15
+var health : int = 13
 var invulnerable = false
 
 var facing_direction : int = 1
+
+var is_dead = false
 
 var player : Player
 

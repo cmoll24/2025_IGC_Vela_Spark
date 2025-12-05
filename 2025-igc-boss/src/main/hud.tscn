@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxq44n7s3ceta"]
+[gd_scene load_steps=7 format=3 uid="uid://dxq44n7s3ceta"]
 
 [ext_resource type="Script" uid="uid://cbu755oj7nlxw" path="res://src/main/hud.gd" id="1_7of0l"]
 [ext_resource type="Texture2D" uid="uid://deusgd7smxaaf" path="res://assets/debug/7-debug-health-background.png" id="2_yo4nc"]
-[ext_resource type="Texture2D" uid="uid://r5dvk44njuxs" path="res://assets/debug/7-debug-health.png" id="3_vw6pp"]
-[ext_resource type="Texture2D" uid="uid://b1o68tv65ekfd" path="res://assets/ui/touch_button_left.png" id="4_wvq1s"]
-[ext_resource type="Texture2D" uid="uid://r63fq2xgitug" path="res://assets/ui/touch_button_right.png" id="5_uut0v"]
-[ext_resource type="Texture2D" uid="uid://b6pftg0yy8g4d" path="res://assets/ui/touch_button_fire.png" id="6_22mo6"]
-[ext_resource type="Texture2D" uid="uid://esltbult42j" path="res://assets/ui/touch_button_jump.png" id="7_w1qto"]
+[ext_resource type="Texture2D" uid="uid://r5dvk44njuxs" path="res://assets/debug/7-debug-health.png" id="3_svyqj"]
+[ext_resource type="Texture2D" uid="uid://bm5hwbbravroc" path="res://assets/ui/updatedarrowmobile.png" id="4_5dx08"]
+[ext_resource type="Texture2D" uid="uid://cj5xes5nc8nko" path="res://assets/ui/arrow mobile pressed.png" id="5_svyqj"]
+[ext_resource type="Texture2D" uid="uid://ho6ud6puimq1" path="res://assets/ui/dashmobile.png" id="6_svyqj"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7of0l")
@@ -22,14 +21,14 @@ text = "Inputs:"
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 offset_left = 7.0
 offset_top = 6.0
-offset_right = 71.0
-offset_bottom = 70.0
+offset_right = 207.0
+offset_bottom = 206.0
+value = 25.0
 fill_mode = 4
 texture_under = ExtResource("2_yo4nc")
-texture_over = ExtResource("3_vw6pp")
+texture_over = ExtResource("3_svyqj")
 texture_progress = ExtResource("2_yo4nc")
 tint_under = Color(1, 0, 0, 1)
-tint_over = Color(0.0051856074, 0.9282323, 1.0431446, 1)
 tint_progress = Color(0, 1, 0, 1)
 
 [node name="FPS" type="Label" parent="."]
@@ -59,30 +58,28 @@ offset_bottom = 40.0
 
 [node name="MoveLeft" type="TouchScreenButton" parent="TouchScreenControls"]
 position = Vector2(3, 885)
-scale = Vector2(3, 3)
-texture_normal = ExtResource("4_wvq1s")
-texture_pressed = ExtResource("4_wvq1s")
+texture_normal = ExtResource("4_5dx08")
+texture_pressed = ExtResource("5_svyqj")
 passby_press = true
 action = "move_left"
 
 [node name="MoveRight" type="TouchScreenButton" parent="TouchScreenControls"]
-position = Vector2(202, 885)
-scale = Vector2(3, 3)
-texture_normal = ExtResource("5_uut0v")
-texture_pressed = ExtResource("5_uut0v")
+position = Vector2(395, 884)
+scale = Vector2(-1, 1)
+texture_normal = ExtResource("4_5dx08")
+texture_pressed = ExtResource("5_svyqj")
 passby_press = true
 action = "move_right"
 
 [node name="Dash" type="TouchScreenButton" parent="TouchScreenControls"]
 position = Vector2(1707, 683)
-scale = Vector2(3, 3)
-texture_normal = ExtResource("6_22mo6")
-texture_pressed = ExtResource("6_22mo6")
+texture_normal = ExtResource("6_svyqj")
+texture_pressed = ExtResource("6_svyqj")
 action = "dash"
 
 [node name="Jump" type="TouchScreenButton" parent="TouchScreenControls"]
-position = Vector2(1709, 889)
-scale = Vector2(3, 3)
-texture_normal = ExtResource("7_w1qto")
-texture_pressed = ExtResource("7_w1qto")
+position = Vector2(1911, 885)
+rotation = 1.5707964
+texture_normal = ExtResource("4_5dx08")
+texture_pressed = ExtResource("5_svyqj")
 action = "jump"

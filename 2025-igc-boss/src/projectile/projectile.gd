@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Projectile
 
+@export var rotatable : Node2D
+
 @export var SPEED = 1000
 @export var TIME_UNTIL_DESPAWN = 10
 
@@ -24,6 +26,8 @@ func _ready():
 	velocity = Vector2(SPEED, 0).rotated(-angle)
 
 func _process(delta: float) -> void:
+	rotatable.rotation = velocity.angle()
+	
 	despawn_timer -= delta
 	if despawn_timer <= 0:
 		queue_free()
