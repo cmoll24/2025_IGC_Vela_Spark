@@ -274,7 +274,7 @@ default_color = Color(1, 0, 1, 1)
 gradient = SubResource("Gradient_ghtb1")
 
 [node name="Player" parent="." instance=ExtResource("3_8487g")]
-position = Vector2(-158, 924)
+position = Vector2(-760, 903)
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("4_7wbir")]
 limit_top = -10000007
