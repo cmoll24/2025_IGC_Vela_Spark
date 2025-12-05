@@ -1,6 +1,8 @@
 class_name Enemy
 extends CharacterBody2D
 
+@onready var enemy_death_sound = load("res://src/enemies/EnemyDeathSound.tscn")
+
 @export var GRAVITY : float = 1000.0
 @export var move_time : float = 3.0
 @export var speed : float = 200.0
@@ -83,8 +85,15 @@ func die():
 	if is_ridding:
 		get_parent().kill_projectile()
 	if is_respawnable:
+		play_death_sound()
 		is_dead = true
 		repsawn_pos = global_position
 		global_position = hide_pos
 	else:
+		play_death_sound()
 		queue_free()
+
+func play_death_sound():
+	var death_sound : AudioStreamPlayer2D = enemy_death_sound.instantiate()
+	Global.get_game_scene().current_level.add_child(death_sound)
+	death_sound.global_position = self.global_position

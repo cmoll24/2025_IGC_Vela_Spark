@@ -22,7 +22,7 @@ func teleport():
 	
 	await get_tree().create_timer(0.5).timeout
 	
-	boss.global_position = offscreen_posiiton
+	boss.global_position = target_location
 	
 	var trail : BossTrail = boss_trail.instantiate()
 	Global.get_game_scene().current_level.add_child(trail)
@@ -33,9 +33,9 @@ func teleport():
 	else:
 		boss.kill_minions()
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	
-	boss.global_position = target_location
+	#boss.global_position = target_location
 	boss.face_middle()
 	boss.increase_boss_pos_index()
 	

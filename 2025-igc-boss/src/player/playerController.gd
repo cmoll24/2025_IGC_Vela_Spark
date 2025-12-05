@@ -19,7 +19,14 @@ class_name Player
 @onready var ground_detector_long_right = $GroundDetectorLongRight
 @onready var ground_detector_long_left = $GroundDetectorLongLeft
 
+@onready var jump_sound = $JumpSound
+@onready var dash_sound = $DashSound
+@onready var hurt_sound = $HurtSound
+@onready var water_sound = $WaterSound
+
+
 @export var health_decay = true
+
 
 var is_dead = false
 var cause_of_death : String
@@ -119,6 +126,7 @@ func play_animation(anim_name : String):
 
 func hit(attacker: Node2D) -> void:
 	health_control.hit(attacker)
+	hurt_sound.play()
 
 func super_hit(attacker : Node2D):
 	print('super hit player')
@@ -175,6 +183,10 @@ func _on_obstacle_collide(body: Node2D) -> void:
 		health_control.cancel_invincibility()
 		move_control.end_dash()
 	if body.is_in_group("obstacles"):
+		if body is Spikes and body.visible:
+			water_sound.play()
+		else:
+			hurt_sound.play()
 		if body is Spikes and not body.player_respawn:
 			hit(body)
 		elif not health_control.invincibility_timer.is_stopped():

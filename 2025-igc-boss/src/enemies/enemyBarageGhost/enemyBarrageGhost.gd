@@ -44,6 +44,7 @@ func die():
 	if is_ridding:
 		get_parent().kill_projectile()
 	if is_respawnable:
+		play_death_sound()
 		is_dead = true
 		animation_player.play("death")
 		flippable.modulate = deathColor
@@ -52,6 +53,7 @@ func die():
 		repsawn_pos = global_position
 		global_position = hide_pos
 	else:
+		play_death_sound()
 		is_dead = true
 		animation_player.play("death")
 		flippable.modulate = deathColor

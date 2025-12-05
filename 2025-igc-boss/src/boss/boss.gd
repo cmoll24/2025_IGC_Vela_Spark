@@ -9,6 +9,10 @@ class_name Boss
 @onready var left_wall_check_2 : RayCast2D = $LeftWallCheck2
 
 @onready var animated_sprite = $flippable/AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
+
+@onready var hurt_sound = $HurtSound
+@onready var death_sound = $DeathSound
 
 @export_category("Movement variables")
 @export var MOVE_SPEED : float = 100.0
@@ -104,10 +108,13 @@ func is_combat_phase(pos = null) -> bool:
 
 func take_damage(amount: int) -> void:
 	health = max(health - amount, 0)
+	hurt_sound.play()
 	
 	if health <= 0:
 		die()
-
+	
+	if is_dead:
+		return
 	
 	if state_machine.is_current_state("TeleportState"):
 		return
@@ -126,8 +133,14 @@ func hit(_attacker: Node2D) -> void:
 	take_damage(1)
 
 func die():
+	is_dead = true
 	player.health_control.full_heal()
 	player.health_decay = false
+	
+	z_index = -1
+	death_sound.play()
+	animation_player.play("death")
+	await animation_player.animation_finished
 	queue_free()
 
 func play_animation(new_anim : String):

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://olle5ehbv4l3"]
+[gd_scene load_steps=10 format=3 uid="uid://olle5ehbv4l3"]
 
 [ext_resource type="Script" uid="uid://b5ef2g6cfo7c2" path="res://src/main/game.gd" id="1_4n6et"]
 [ext_resource type="Texture2D" uid="uid://vschsjpy2w82" path="res://assets/ui/vignette.png" id="2_02q1w"]
 [ext_resource type="PackedScene" uid="uid://dxq44n7s3ceta" path="res://src/main/hud.tscn" id="2_lghd3"]
 [ext_resource type="PackedScene" uid="uid://dhygbolntnhnm" path="res://src/ui/pause.tscn" id="3_lghd3"]
+[ext_resource type="AudioStream" uid="uid://c1hqp2isqdom" path="res://assets/sound/CaveAmbienceLoop.mp3" id="5_vp2t8"]
 
 [sub_resource type="Animation" id="Animation_02q1w"]
 length = 0.001
@@ -98,3 +99,8 @@ root_node = NodePath("../HUD")
 libraries = {
 &"": SubResource("AnimationLibrary_cpn03")
 }
+
+[node name="CaveAmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vp2t8")
+volume_db = -10.0
+autoplay = true

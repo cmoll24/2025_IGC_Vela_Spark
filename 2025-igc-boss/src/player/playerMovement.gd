@@ -175,11 +175,13 @@ func jump(_delta):
 		if is_jump_just_pressed():
 			coyote_timer.stop()
 			player.velocity.y = -JUMP_SPEED
+			player.jump_sound.play()
 	elif not air_jump_detector.is_colliding() or is_danger_below():
 		if air_jump_amount > 0 and is_jump_just_pressed():
 			air_jump_amount -= 1
 			player.velocity.y = -JUMP_SPEED #* 0.8 #Reduce jump height of double jump
-			#has_dash = true #DEBUG TEST GIVES YOU DASH AFTER JUMPING SECOND TIME
+			player.jump_sound.play()
+			#has_dash = true #DEBUG GIVES YOU DASH AFTER JUMPING SECOND TIME
 	
 	if not player.is_on_floor() and Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y = lerp(player.velocity.y, 0.0, 0.8)
@@ -208,6 +210,7 @@ func can_player_jump():
 	return false
 
 func dash() -> void:
+	player.dash_sound.play()
 	has_dash = false
 	dash_state = true
 	dash_entry_speed = player.velocity.x

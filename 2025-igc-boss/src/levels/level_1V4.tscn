@@ -203,7 +203,7 @@ position = Vector2(1020, 602)
 position = Vector2(1580, 192)
 
 [node name="Player" parent="." instance=ExtResource("7_qd476")]
-position = Vector2(-448, -670)
+position = Vector2(-487, -621)
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("8_pxhhr")]
 player = NodePath("..")

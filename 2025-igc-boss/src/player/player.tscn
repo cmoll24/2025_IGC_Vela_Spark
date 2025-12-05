@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c6m2t238knjov"]
+[gd_scene load_steps=50 format=3 uid="uid://c6m2t238knjov"]
 
 [ext_resource type="Script" uid="uid://bybhs41x0ko0u" path="res://src/player/playerController.gd" id="1_4anbu"]
 [ext_resource type="PackedScene" uid="uid://dkjqxy1egu868" path="res://src/player/playerMovement.tscn" id="3_244u8"]
@@ -28,6 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://vv67027h1xcy" path="res://assets/character/FireAttack/Fireball-1.png" id="25_dpt0q"]
 [ext_resource type="Texture2D" uid="uid://bekaq8q8amgmt" path="res://assets/character/FireAttack/Fireball-2.png" id="26_wcxbk"]
 [ext_resource type="Texture2D" uid="uid://jltmwajt65og" path="res://assets/character/FireAttack/Fireball-3.png" id="27_p6grl"]
+[ext_resource type="AudioStream" uid="uid://cmes6pl518dju" path="res://assets/sound/CDJumpLaunch.mp3" id="29_j2873"]
+[ext_resource type="AudioStream" uid="uid://di5tkuyfqxx05" path="res://assets/sound/FlameDashSound.mp3" id="30_dpt0q"]
+[ext_resource type="AudioStream" uid="uid://jaaf3vqhrxu1" path="res://assets/sound/PlayerHurtSound.mp3" id="31_wcxbk"]
+[ext_resource type="AudioStream" uid="uid://us6h7y0jsyxx" path="res://assets/sound/PlayerWaterExtinguishSound.mp3" id="32_p6grl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxibo"]
 size = Vector2(28, 164)
@@ -397,6 +401,26 @@ collision_layer = 0
 position = Vector2(7, -19.5)
 shape = SubResource("RectangleShape2D_vwi60")
 debug_color = Color(0, 0.6470676, 0.24248996, 0.41960785)
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("29_j2873")
+bus = &"sound effect"
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_dpt0q")
+volume_db = -30.0
+pitch_scale = 2.0
+bus = &"sound effect"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_wcxbk")
+volume_db = -30.0
+bus = &"sound effect"
+
+[node name="WaterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_p6grl")
+volume_db = -12.0
+bus = &"sound effect"
 
 [connection signal="enemy_collide" from="PlayerHealth" to="." method="_on_enemy_collide"]
 [connection signal="obstacle_collide" from="PlayerHealth" to="." method="_on_obstacle_collide"]
