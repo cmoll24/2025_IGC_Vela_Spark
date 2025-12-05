@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=28 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -317,57 +317,75 @@ position = Vector2(18242, -840)
 
 [node name="EnemyStatic18" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20428, -983)
+amplitude = 50.0
 
 [node name="EnemyStatic19" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20572, -983)
+amplitude = 50.0
 
 [node name="EnemyStatic20" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20705, -983)
+amplitude = 50.0
 
 [node name="EnemyStatic21" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20834, -985)
+amplitude = 50.0
 
 [node name="EnemyStatic22" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(20975, -985)
+amplitude = 50.0
 
 [node name="EnemyStatic23" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21111, -985)
+amplitude = 50.0
 
 [node name="EnemyStatic24" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21247, -987)
+amplitude = 50.0
 
 [node name="EnemyStatic25" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21391, -987)
+amplitude = 50.0
 
 [node name="EnemyStatic26" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21524, -987)
+amplitude = 50.0
 
 [node name="EnemyStatic27" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21653, -989)
+amplitude = 50.0
 
 [node name="EnemyStatic28" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21794, -989)
+amplitude = 50.0
 
 [node name="EnemyStatic29" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(21930, -989)
+amplitude = 50.0
 
 [node name="EnemyStatic30" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22049, -995)
+amplitude = 50.0
 
 [node name="EnemyStatic31" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22193, -995)
+amplitude = 50.0
 
 [node name="EnemyStatic32" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22326, -995)
+amplitude = 50.0
 
 [node name="EnemyStatic33" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22455, -997)
+amplitude = 50.0
 
 [node name="EnemyStatic34" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22596, -997)
+amplitude = 50.0
 
 [node name="EnemyStatic35" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(22732, -997)
+amplitude = 50.0
 
 [node name="EnemyCharge7" parent="Enemies" instance=ExtResource("6_n7u8m")]
 position = Vector2(17593, 283)
