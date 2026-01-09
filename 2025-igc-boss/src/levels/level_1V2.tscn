@@ -76,7 +76,6 @@ level_name = "Level 2"
 metadata/_edit_horizontal_guides_ = [-3975.0]
 
 [node name="Parallax" type="Node2D" parent="."]
-visible = false
 
 [node name="Parallax1" type="Parallax2D" parent="Parallax"]
 scroll_scale = Vector2(0.1, 0.1)

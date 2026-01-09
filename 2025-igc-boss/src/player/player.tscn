@@ -310,7 +310,6 @@ shape = SubResource("RectangleShape2D_244u8")
 debug_color = Color(0.7026044, 0.2792841, 1, 0.41960785)
 
 [node name="danger_detector" type="Area2D" parent="."]
-visible = false
 position = Vector2(0, -10)
 collision_layer = 0
 collision_mask = 12
@@ -363,7 +362,7 @@ frame_progress = 0.013207229
 position = Vector2(9, -20)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_2smqc")
-animation = &"idle"
+animation = &"dash"
 
 [node name="FireSprite" type="AnimatedSprite2D" parent="flippable"]
 visible = false
@@ -375,7 +374,6 @@ frame = 2
 frame_progress = 0.3915347
 
 [node name="attack_look_ahead" type="Area2D" parent="flippable"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -385,7 +383,6 @@ shape = SubResource("RectangleShape2D_8ydov")
 debug_color = Color(1, 0.8413334, 0.32, 0.41960785)
 
 [node name="player_attackbox" type="Area2D" parent="flippable"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 

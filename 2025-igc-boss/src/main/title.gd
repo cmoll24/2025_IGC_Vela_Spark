@@ -35,6 +35,7 @@ func _on_start_pressed() -> void:
 	if Global.current_input_method == null:
 		get_tree().change_scene_to_file("res://src/main/control_options.tscn")
 	else:
+		Global.player_timer = 0
 		Global.switch_to_level(0)
 
 func _input(event: InputEvent) -> void:
