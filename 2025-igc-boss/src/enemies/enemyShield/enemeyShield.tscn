@@ -151,7 +151,6 @@ WINDUP_DURATION = 0.35
 [node name="flippable" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
-modulate = Color(0.66, 0.2244, 0.2244, 1)
 position = Vector2(-8, -38)
 rotation = 3.1415927
 scale = Vector2(0.5, -0.5)
@@ -159,12 +158,12 @@ sprite_frames = SubResource("SpriteFrames_s8ehm")
 animation = &"windup"
 
 [node name="ShieldAnimation" type="AnimatedSprite2D" parent="flippable"]
-modulate = Color(0.78885716, 0.725333, 0.5550161, 1)
+modulate = Color(0.8352941, 0.7529412, 0.68235296, 1)
 position = Vector2(-8, -38)
 rotation = 3.1415927
 scale = Vector2(0.5, -0.5)
 sprite_frames = SubResource("SpriteFrames_py8bg")
-animation = &"windup"
+animation = &"charge"
 
 [node name="ColorRect2" type="ColorRect" parent="flippable"]
 visible = false

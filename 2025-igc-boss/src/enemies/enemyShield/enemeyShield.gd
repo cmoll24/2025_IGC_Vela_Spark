@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if charging:
 		invulnerable = true
 		#shield_sprite.visible = true
-		shield_animation.self_modulate = Color(1,0.5,0.2)
+		shield_animation.self_modulate = Color(1,0.2,0.2)
 		charge_timer -= delta
 		velocity.x = direction * charge_speed
 		
