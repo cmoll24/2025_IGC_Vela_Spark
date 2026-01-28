@@ -1,6 +1,8 @@
 extends EnemyGrounded
 class_name EnemyCharge
 
+@onready var dizzy_animation = $Dizzy
+
 @onready var animated_sprite = $flippable/AnimatedSprite2D
 
 @onready var player_detector = $flippable/PlayerDetector
@@ -20,6 +22,8 @@ var charge_speed = 1_100
 
 func _ready() -> void:
 	super._ready()
+	
+	dizzy_animation.visible = false
 	
 	windup_timer = WINDUP_DURATION
 
@@ -60,6 +64,7 @@ func _physics_process(delta: float) -> void:
 			#direction = -direction
 			stunned_timer.start()
 			modulate = Color(0.7,0.7,0.7)
+			dizzy_animation.visible = true
 	enemy_grounded_process(delta)
 	
 func enemy_grounded_process(delta):
@@ -76,3 +81,4 @@ func start_charge():
 
 func _on_stuned_timer_timeout() -> void:
 	modulate = Color(1,1,1)
+	dizzy_animation.visible = false

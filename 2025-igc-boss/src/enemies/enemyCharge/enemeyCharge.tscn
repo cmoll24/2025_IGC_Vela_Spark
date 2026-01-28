@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqcqmcwqjtn46"]
+[gd_scene load_steps=21 format=3 uid="uid://dqcqmcwqjtn46"]
 
 [ext_resource type="Script" uid="uid://h1yjj8k6xg0h" path="res://src/enemies/enemyCharge/enemeyCharge.gd" id="1_r0av8"]
 [ext_resource type="Texture2D" uid="uid://dxo4jti5rd5kg" path="res://assets/enemies/charge/charge attack run_01.png" id="2_2doyf"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bcejg25f2bpwr" path="res://assets/enemies/charge/charge attack windup_03.png" id="8_wt8yo"]
 [ext_resource type="Texture2D" uid="uid://bqeue4edr8hdu" path="res://assets/enemies/charge/charge attack windup_04.png" id="9_3bggy"]
 [ext_resource type="Texture2D" uid="uid://bqhctqpfoajjk" path="res://assets/enemies/charge/charger idle_04.png" id="9_th00m"]
+[ext_resource type="Texture2D" uid="uid://ctvkr1li5741r" path="res://assets/enemies/dizzy/dizzy1.png" id="14_3bggy"]
+[ext_resource type="Texture2D" uid="uid://rufmq2gfrvj4" path="res://assets/enemies/dizzy/dizzy2.png" id="15_th00m"]
+[ext_resource type="Texture2D" uid="uid://bqfsyds834aod" path="res://assets/enemies/dizzy/dizzy3.png" id="16_5egwg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_th00m"]
 animations = [{
@@ -74,6 +77,23 @@ size = Vector2(96, 104)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dicg"]
 size = Vector2(110, 128)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nl42p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_3bggy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_th00m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5egwg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="EnemyCharge" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_r0av8")
@@ -127,6 +147,13 @@ shape = SubResource("RectangleShape2D_6dicg")
 
 [node name="StunedTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Dizzy" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -56.000004)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_nl42p")
+autoplay = "default"
+frame_progress = 0.46348307
 
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]
 [connection signal="timeout" from="StunedTimer" to="." method="_on_stuned_timer_timeout"]

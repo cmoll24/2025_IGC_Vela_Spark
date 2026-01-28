@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://diyl0h8763r2m"]
+[gd_scene load_steps=35 format=3 uid="uid://diyl0h8763r2m"]
 
 [ext_resource type="Script" uid="uid://br8lcq21j52gp" path="res://src/enemies/enemyShield/enemeyShield.gd" id="1_k8hgm"]
 [ext_resource type="Texture2D" uid="uid://dxo4jti5rd5kg" path="res://assets/enemies/charge/charge attack run_01.png" id="2_sopi0"]
@@ -25,6 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://bjtx0u5iiau7j" path="res://assets/enemies/shield/charge shield attack windup_02.png" id="23_4bxbk"]
 [ext_resource type="Texture2D" uid="uid://3xtrlywrtegf" path="res://assets/enemies/shield/charge shield attack windup_03.png" id="24_m6ay3"]
 [ext_resource type="Texture2D" uid="uid://cmc4qvrqpp7ew" path="res://assets/enemies/shield/charge shield attack windup_04.png" id="25_nx4ot"]
+[ext_resource type="Texture2D" uid="uid://ctvkr1li5741r" path="res://assets/enemies/dizzy/dizzy1.png" id="26_4f63l"]
+[ext_resource type="Texture2D" uid="uid://rufmq2gfrvj4" path="res://assets/enemies/dizzy/dizzy2.png" id="27_n187w"]
+[ext_resource type="Texture2D" uid="uid://bqfsyds834aod" path="res://assets/enemies/dizzy/dizzy3.png" id="28_4bxbk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s8ehm"]
 animations = [{
@@ -143,6 +146,23 @@ size = Vector2(96, 104)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dicg"]
 size = Vector2(110, 128)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_m6ay3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_4f63l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_n187w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_4bxbk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="EnemyShield" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_k8hgm")
@@ -163,7 +183,7 @@ position = Vector2(-8, -38)
 rotation = 3.1415927
 scale = Vector2(0.5, -0.5)
 sprite_frames = SubResource("SpriteFrames_py8bg")
-animation = &"charge"
+animation = &"windup"
 
 [node name="ColorRect2" type="ColorRect" parent="flippable"]
 visible = false
@@ -215,6 +235,13 @@ shape = SubResource("RectangleShape2D_6dicg")
 
 [node name="StunedTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Dizzy" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.9999995, -70)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_m6ay3")
+autoplay = "default"
+frame_progress = 0.2365474
 
 [connection signal="body_entered" from="flippable/shield_hitbox" to="." method="_on_shield_hitbox_body_entered"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]

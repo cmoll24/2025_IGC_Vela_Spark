@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if charging:
 		invulnerable = true
 		#shield_sprite.visible = true
-		shield_animation.self_modulate = Color(1,0.2,0.2)
+		#shield_animation.self_modulate = Color(1,0.2,0.2)
 		charge_timer -= delta
 		velocity.x = direction * charge_speed
 		
@@ -54,11 +54,13 @@ func _physics_process(delta: float) -> void:
 			#direction = -direction
 			stunned_timer.start()
 			modulate = Color(0.7,0.7,0.7)
+			dizzy_animation.visible = true
 	
 	enemy_grounded_process(delta)
 
 func _on_stuned_timer_timeout() -> void:
 	modulate = Color(1,1,1)
+	dizzy_animation.visible = false
 
 func _on_shield_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player and charging:
