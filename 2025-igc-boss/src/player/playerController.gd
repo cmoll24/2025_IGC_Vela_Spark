@@ -27,7 +27,7 @@ class_name Player
 
 @export var health_decay = true
 
-var brightened
+var darkened_color = Color(0.7,0.7,0.7)
 
 var is_dead = false
 var cause_of_death : String
@@ -35,6 +35,7 @@ var cause_of_death : String
 var fire_ball_active = false
 
 func _ready():
+	modulate = darkened_color
 	#Engine.time_scale = 0.3
 	add_to_group("player")
 	fireball_sprite.modulate = Color(1,1,1,0)
@@ -222,4 +223,4 @@ func brighten(brightened_color):
 	modulate = brightened_color
 
 func unbrighten():
-	modulate = Color.WHITE
+	modulate = darkened_color

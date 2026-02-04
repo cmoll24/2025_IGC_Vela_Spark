@@ -268,14 +268,20 @@ position = Vector2(0, 1264)
 
 [node name="ProjectileTree" type="Node2D" parent="."]
 
-[node name="PlayerLight" parent="." instance=ExtResource("25_k6ew3")]
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="PlayerLight" parent="Lighting" instance=ExtResource("25_k6ew3")]
 position = Vector2(3399, 635)
 
-[node name="PlayerLight2" parent="." instance=ExtResource("25_k6ew3")]
+[node name="PlayerLight2" parent="Lighting" instance=ExtResource("25_k6ew3")]
 position = Vector2(3840, 505)
 scale = Vector2(2, 2)
 
-[node name="PlayerLight3" parent="." instance=ExtResource("25_k6ew3")]
+[node name="PlayerLight3" parent="Lighting" instance=ExtResource("25_k6ew3")]
 position = Vector2(5164.9995, 533)
 rotation = 0.5235988
 scale = Vector2(2, 2)
+
+[node name="PlayerLight4" parent="Lighting" instance=ExtResource("25_k6ew3")]
+position = Vector2(2059, 660)
+scale = Vector2(2, 1)
