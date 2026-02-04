@@ -1,18 +1,18 @@
 [gd_scene load_steps=17 format=3 uid="uid://blrpedy6a2wjq"]
 
 [ext_resource type="Script" uid="uid://bvg3ymxegb8pu" path="res://src/enemies/enemyArc/enemyArc.gd" id="1_etvum"]
-[ext_resource type="Texture2D" uid="uid://cogonvfmpy0e4" path="res://assets/enemies/barrage/barrage attack_01.png" id="2_3lxx8"]
-[ext_resource type="Texture2D" uid="uid://bvwp4a42ww4s2" path="res://assets/enemies/barrage/barrage attack_02.png" id="3_eptvf"]
-[ext_resource type="Texture2D" uid="uid://gsyh3u6w1yol" path="res://assets/enemies/barrage/barrage attack_03.png" id="4_prdc4"]
-[ext_resource type="Texture2D" uid="uid://c4ihw76nu5ga8" path="res://assets/enemies/barrage/barrage attack_04.png" id="5_385us"]
-[ext_resource type="Texture2D" uid="uid://dfnv84qq6vxn4" path="res://assets/enemies/barrage/barrage attack_05.png" id="6_rvaoh"]
-[ext_resource type="Texture2D" uid="uid://divrogp5uugor" path="res://assets/enemies/barrage/barrage attack_06.png" id="7_kig0i"]
-[ext_resource type="Texture2D" uid="uid://cc88poupw3s0l" path="res://assets/enemies/barrage/barrage die_01.png" id="8_te7qv"]
-[ext_resource type="Texture2D" uid="uid://b4h7ladauvt0q" path="res://assets/enemies/barrage/barrage die_02.png" id="9_gli05"]
-[ext_resource type="Texture2D" uid="uid://ci25lm7vmqbw6" path="res://assets/enemies/barrage/barrage die_03.png" id="10_immb2"]
-[ext_resource type="Texture2D" uid="uid://cpsw882kf803w" path="res://assets/enemies/barrage/barrage idle_01.png" id="11_abd21"]
-[ext_resource type="Texture2D" uid="uid://lax4l674cifi" path="res://assets/enemies/barrage/barrage idle_02.png" id="12_ykq48"]
-[ext_resource type="Texture2D" uid="uid://ddnjxigc1gobp" path="res://assets/enemies/barrage/barrage idle_03.png" id="13_bb2ys"]
+[ext_resource type="Texture2D" uid="uid://dktgl8sirose" path="res://assets/enemies/barragev2/v2barrage_attack_01.png" id="2_3lxx8"]
+[ext_resource type="Texture2D" uid="uid://ddd70jorehem4" path="res://assets/enemies/barragev2/v2barrage_attack_02.png" id="3_eptvf"]
+[ext_resource type="Texture2D" uid="uid://ckfrefmp0eavi" path="res://assets/enemies/barragev2/v2barrage_attack_03.png" id="4_prdc4"]
+[ext_resource type="Texture2D" uid="uid://c4envru8ix0x5" path="res://assets/enemies/barragev2/v2barrage_attack_04.png" id="5_385us"]
+[ext_resource type="Texture2D" uid="uid://b6k2hhmp6vx5b" path="res://assets/enemies/barragev2/v2barrage_attack_05.png" id="6_rvaoh"]
+[ext_resource type="Texture2D" uid="uid://cuk4leum2bgu6" path="res://assets/enemies/barragev2/v2barrage_attack_06.png" id="7_kig0i"]
+[ext_resource type="Texture2D" uid="uid://dwy7b6w6elc4o" path="res://assets/enemies/barragev2/v2barrage_die_01.png" id="8_te7qv"]
+[ext_resource type="Texture2D" uid="uid://dppllmr5jxqq" path="res://assets/enemies/barragev2/v2barrage_die_02.png" id="9_gli05"]
+[ext_resource type="Texture2D" uid="uid://5rwgb5f7j08x" path="res://assets/enemies/barragev2/v2barrage_die_03.png" id="10_immb2"]
+[ext_resource type="Texture2D" uid="uid://hptkl47bjb8k" path="res://assets/enemies/barragev2/v2barrage_idle_01.png" id="11_abd21"]
+[ext_resource type="Texture2D" uid="uid://cu0jhfqyv1mry" path="res://assets/enemies/barragev2/v2barrage_idle_02png.png" id="12_ykq48"]
+[ext_resource type="Texture2D" uid="uid://cjy7bxvu7q5q5" path="res://assets/enemies/barragev2/v2barrage_idle_03.png" id="13_bb2ys"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iaj0d"]
 animations = [{
@@ -81,11 +81,11 @@ script = ExtResource("1_etvum")
 [node name="flippable" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
-self_modulate = Color(0.62136024, 0.35730875, 0.2524628, 1)
 position = Vector2(8, -48)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iaj0d")
-animation = &"attack"
+animation = &"idle"
+frame_progress = 0.47171143
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 visible = false
