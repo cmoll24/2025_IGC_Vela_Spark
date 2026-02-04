@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 			#direction = -direction
 			stunned_timer.start()
-			modulate = Color(0.7,0.7,0.7)
+			flippable.modulate = Color(0.7,0.7,0.7)
 			dizzy_animation.visible = true
 	enemy_grounded_process(delta)
 	
@@ -80,5 +80,5 @@ func start_charge():
 	charging = true
 
 func _on_stuned_timer_timeout() -> void:
-	modulate = Color(1,1,1)
+	flippable.modulate = Color(1,1,1)
 	dizzy_animation.visible = false

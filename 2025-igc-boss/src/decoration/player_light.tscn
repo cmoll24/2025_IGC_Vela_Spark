@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://5yuim1cyshda"]
+
+[ext_resource type="Script" uid="uid://lbajpy1fv7bf" path="res://src/decoration/player_light.gd" id="1_atx60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8h4f"]
+size = Vector2(100, 800)
+
+[node name="PlayerLight" type="Area2D"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_atx60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_c8h4f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -40.0
+offset_top = -390.0
+offset_right = 60.0
+offset_bottom = 410.0
+color = Color(1, 0.9255881, 0.39151636, 0.1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

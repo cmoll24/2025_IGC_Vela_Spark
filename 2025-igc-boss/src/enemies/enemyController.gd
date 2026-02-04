@@ -97,3 +97,9 @@ func play_death_sound():
 	var death_sound : AudioStreamPlayer2D = enemy_death_sound.instantiate()
 	Global.get_game_scene().current_level.add_child(death_sound)
 	death_sound.global_position = self.global_position
+
+func brighten(brightened_color):
+	modulate = brightened_color
+
+func unbrighten():
+	modulate = Color.WHITE

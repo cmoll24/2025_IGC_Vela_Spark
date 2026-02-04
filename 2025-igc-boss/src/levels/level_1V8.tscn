@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dtav8706bc66j"]
+[gd_scene load_steps=30 format=4 uid="uid://dtav8706bc66j"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_kfd3v"]
 [ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="2_7i0di"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="12_k6ew3"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="13_02b6f"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="14_kgwji"]
+[ext_resource type="PackedScene" uid="uid://5yuim1cyshda" path="res://src/decoration/player_light.tscn" id="25_k6ew3"]
 
 [sub_resource type="Gradient" id="Gradient_lck47"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -266,3 +267,15 @@ player = NodePath("..")
 position = Vector2(0, 1264)
 
 [node name="ProjectileTree" type="Node2D" parent="."]
+
+[node name="PlayerLight" parent="." instance=ExtResource("25_k6ew3")]
+position = Vector2(3399, 635)
+
+[node name="PlayerLight2" parent="." instance=ExtResource("25_k6ew3")]
+position = Vector2(3840, 505)
+scale = Vector2(2, 2)
+
+[node name="PlayerLight3" parent="." instance=ExtResource("25_k6ew3")]
+position = Vector2(5164.9995, 533)
+rotation = 0.5235988
+scale = Vector2(2, 2)

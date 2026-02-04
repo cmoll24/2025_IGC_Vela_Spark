@@ -149,3 +149,9 @@ func play_animation(new_anim : String):
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	animated_sprite.play("idle")
+
+func brighten(brightened_color):
+	modulate = brightened_color
+
+func unbrighten():
+	modulate = Color.WHITE

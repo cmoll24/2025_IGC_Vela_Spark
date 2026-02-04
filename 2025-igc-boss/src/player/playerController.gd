@@ -27,6 +27,7 @@ class_name Player
 
 @export var health_decay = true
 
+var brightened
 
 var is_dead = false
 var cause_of_death : String
@@ -216,3 +217,9 @@ func _on_attack_obstacle_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("obstacles") or body is TileMapLayer) and (move_control.dash_state or move_control.dash_attack_state):
 		health_control.cancel_invincibility()
 		move_control.end_dash()
+
+func brighten(brightened_color):
+	modulate = brightened_color
+
+func unbrighten():
+	modulate = Color.WHITE
