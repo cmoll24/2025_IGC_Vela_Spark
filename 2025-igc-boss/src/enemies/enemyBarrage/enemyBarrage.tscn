@@ -75,6 +75,7 @@ size = Vector2(60, 92)
 size = Vector2(90, 144)
 
 [node name="EnemyBarrage" type="CharacterBody2D"]
+self_modulate = Color(0.5568628, 0.5019608, 0.44313726, 1)
 collision_layer = 4
 script = ExtResource("1_pcly7")
 

@@ -2,6 +2,7 @@ extends Enemy
 class_name EnemyTurret
 
 @onready var animation_player = $AnimationPlayer
+@onready var animated_sprite = $rotate/AnimatedSprite2D2
 
 @export var COOLDOWN = 3
 
@@ -22,7 +23,9 @@ func _physics_process(delta: float) -> void:
 		if cooldown_timer < 0:
 			cooldown_timer = COOLDOWN
 			summon_projectile(player_pos)
-	
+			animated_sprite.play("idle")
+		if cooldown_timer < 1.4:
+			animated_sprite.play("attack")
 	
 func summon_projectile(target_pos : Vector2) -> void:
 	var instance : StraightProjectile = projectile.instantiate()

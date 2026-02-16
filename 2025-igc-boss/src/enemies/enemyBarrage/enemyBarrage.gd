@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	
 func summon_projectile(angle : float, proj_speed = 400) -> void:
 	var instance : ArcProjectile = projectile.instantiate()
+	instance.modulate = Color(0.557, 0.502, 0.443)
 	instance.spawnPos = global_position
 	instance.SPEED = proj_speed
 	instance.angle = angle if direction > 0 else PI - angle

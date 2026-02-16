@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 func summon_projectile() -> void:
 	var instance : ArcProjectile = projectile.instantiate()
+	instance.modulate = Color(0.694, 0.486, 0.294)
 	instance.spawnPos = global_position
 	var angle = randf_range(deg_to_rad(30),deg_to_rad(50))
 	instance.SPEED = randf_range(350,450)

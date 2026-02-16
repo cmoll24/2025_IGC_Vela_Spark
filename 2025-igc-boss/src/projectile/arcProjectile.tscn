@@ -20,7 +20,6 @@ shape = SubResource("CircleShape2D_w7ro2")
 [node name="rotatable" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="rotatable"]
-modulate = Color(0.78, 0.45551997, 0.2808, 1)
 position = Vector2(7.999999, -5.9604645e-08)
 texture = ExtResource("2_jvxmy")
 

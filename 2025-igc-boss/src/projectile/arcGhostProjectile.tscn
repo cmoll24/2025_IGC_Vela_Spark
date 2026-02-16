@@ -22,7 +22,6 @@ debug_color = Color(0.85692406, 0.0007469893, 0.8846648, 0.41960785)
 [node name="rotatable" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="rotatable"]
-modulate = Color(0.55, 0.297, 0.297, 0.89411765)
 position = Vector2(7.999999, -5.9604645e-08)
 texture = ExtResource("2_cssku")
 
