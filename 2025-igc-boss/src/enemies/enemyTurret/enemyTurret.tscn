@@ -37,7 +37,10 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u6t1x"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
@@ -147,7 +150,8 @@ self_modulate = Color(0.92, 0.4692, 0.4692, 1)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_7810u")
 autoplay = "default"
-frame_progress = 0.41809148
+frame = 3
+frame_progress = 0.44615543
 
 [node name="MouthAnimation" type="AnimatedSprite2D" parent="rotate"]
 self_modulate = Color(0.92, 0.4692, 0.4692, 1)

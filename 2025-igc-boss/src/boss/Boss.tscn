@@ -1,26 +1,45 @@
-[gd_scene load_steps=30 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=49 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
 [ext_resource type="Script" uid="uid://b2tw3xmq2dmkd" path="res://src/boss/boss_states/idleState.gd" id="3_0wgbl"]
 [ext_resource type="Texture2D" uid="uid://cdoxew32dx2vb" path="res://assets/boss/walk/boss_walk-4.png" id="3_sp2nh"]
 [ext_resource type="Texture2D" uid="uid://ctu7crktvrns8" path="res://assets/boss/walk/boss_walk-1.png" id="4_8qg8b"]
+[ext_resource type="Texture2D" uid="uid://bmd2wb7bv3jm7" path="res://assets/boss/teleport/Teleport_Animation-1.png" id="4_eu3tv"]
 [ext_resource type="Texture2D" uid="uid://bgiwaq1uy06s6" path="res://assets/boss/volley/boss_volley-5.png" id="4_g7m01"]
 [ext_resource type="Script" uid="uid://bwol4gnh5hoit" path="res://src/boss/boss_states/moveState.gd" id="4_qh7uy"]
 [ext_resource type="Texture2D" uid="uid://d1vyllj10sbt6" path="res://assets/boss/walk/boss_walk-2.png" id="5_8ajuv"]
 [ext_resource type="Script" uid="uid://dpuar77scsx66" path="res://src/boss/boss_states/teleportState.gd" id="5_f33m0"]
 [ext_resource type="Texture2D" uid="uid://by1c0jxr6d5er" path="res://assets/boss/volley/boss_volley-4.png" id="5_muxuo"]
+[ext_resource type="Texture2D" uid="uid://djgrvepa57x1c" path="res://assets/boss/teleport/Teleport_Animation-2.png" id="5_txgae"]
 [ext_resource type="Texture2D" uid="uid://0ebtsmw56b3f" path="res://assets/boss/walk/boss_walk-3.png" id="6_h40u0"]
+[ext_resource type="Texture2D" uid="uid://di7a0omow12qi" path="res://assets/boss/teleport/Teleport_Animation-3.png" id="6_oh0qo"]
 [ext_resource type="Script" uid="uid://dbt6p8iuumtcu" path="res://src/boss/boss_states/aimAttack.gd" id="6_uiuc5"]
 [ext_resource type="Texture2D" uid="uid://dc77t8cds77s0" path="res://assets/boss/volley/boss_volley-3.png" id="6_yahjj"]
+[ext_resource type="Texture2D" uid="uid://dctjmwsw6shll" path="res://assets/boss/teleport/Teleport_Animation-4.png" id="7_0p4ks"]
 [ext_resource type="Script" uid="uid://w23uns11vmqo" path="res://src/boss/boss_states/barageAttack.gd" id="7_ejgj4"]
 [ext_resource type="Texture2D" uid="uid://qrf2g0yrgoto" path="res://assets/boss/volley/boss_volley-2.png" id="7_gcy47"]
+[ext_resource type="Texture2D" uid="uid://b0hedrisejuo0" path="res://assets/boss/teleport/Teleport_Animation-5.png" id="8_3yy7r"]
 [ext_resource type="Script" uid="uid://bh5d3cnj1qqkb" path="res://src/boss/boss_states/laserAttack.gd" id="8_ranff"]
 [ext_resource type="Texture2D" uid="uid://v77nq4dretbi" path="res://assets/boss/volley/boss_volley-1.png" id="8_ryyt3"]
+[ext_resource type="Texture2D" uid="uid://ckuivrg0tlik6" path="res://assets/boss/teleport/Teleport_Animation-6.png" id="9_vfjwa"]
+[ext_resource type="Texture2D" uid="uid://dfvq35chg6nw" path="res://assets/boss/teleport/Teleport_Animation-7.png" id="10_4t5jb"]
 [ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="10_7byyt"]
 [ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
 [ext_resource type="Script" uid="uid://cpsc7j104fhtp" path="res://src/boss/boss_states/straightAttack.gd" id="11_7byyt"]
+[ext_resource type="Texture2D" uid="uid://c8udu7lsdabdn" path="res://assets/boss/teleport/Teleport_Animation-8.png" id="11_8d4sl"]
+[ext_resource type="Texture2D" uid="uid://bogf6m4uw0to6" path="res://assets/boss/teleport/Teleport_Animation-9.png" id="12_btocc"]
+[ext_resource type="Texture2D" uid="uid://dsxamm3ju4dki" path="res://assets/boss/teleport/Teleport_Animation-10.png" id="13_dcrvn"]
+[ext_resource type="Texture2D" uid="uid://ciml6bryrh7fu" path="res://assets/boss/teleport/Teleport_Animation-11.png" id="14_gh3ja"]
+[ext_resource type="Texture2D" uid="uid://bio5qahj1pojx" path="res://assets/boss/teleport/Teleport_Animation-12.png" id="15_ugnsp"]
 [ext_resource type="Script" uid="uid://b43e60pq7pn5t" path="res://src/boss/boss_states/boomerangAttack.gd" id="16_8qg8b"]
+[ext_resource type="Texture2D" uid="uid://d1kd21fbuascb" path="res://assets/boss/teleport/Teleport_Animation-13.png" id="16_52ov8"]
+[ext_resource type="Texture2D" uid="uid://cvymp3r6l5xlf" path="res://assets/boss/teleport/Teleport_Animation-14.png" id="17_7tb71"]
+[ext_resource type="Texture2D" uid="uid://cbx782jqfsp00" path="res://assets/boss/teleport/Teleport_Animation-15.png" id="18_4lhsw"]
+[ext_resource type="Texture2D" uid="uid://dtlxhsygyd5ga" path="res://assets/boss/teleport/Teleport_Animation-16.png" id="19_w1gcl"]
+[ext_resource type="Texture2D" uid="uid://c45fgp524v1x3" path="res://assets/boss/teleport/Teleport_Animation-17.png" id="20_lj0n1"]
+[ext_resource type="Texture2D" uid="uid://c622s1hf5y8b2" path="res://assets/boss/teleport/Teleport_Animation-18.png" id="21_c2vm8"]
+[ext_resource type="Texture2D" uid="uid://dnxnbf6nnsdha" path="res://assets/boss/teleport/Teleport_Animation-19.png" id="22_16ob0"]
 [ext_resource type="AudioStream" uid="uid://dpegsd0vijifp" path="res://assets/sound/BossHurtSound.mp3" id="22_muxuo"]
 [ext_resource type="AudioStream" uid="uid://ctlxe26lmp056" path="res://assets/sound/BossDeathSound.mp3" id="23_yahjj"]
 
@@ -33,6 +52,130 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eu3tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_txgae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oh0qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0p4ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3yy7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vfjwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4t5jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8d4sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_btocc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dcrvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gh3ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ugnsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_52ov8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7tb71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4lhsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w1gcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lj0n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_c2vm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_16ob0")
+}],
+"loop": false,
+"name": &"teleport_appear",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_16ob0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_c2vm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lj0n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w1gcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4lhsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7tb71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_52ov8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ugnsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gh3ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dcrvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_btocc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8d4sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4t5jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vfjwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3yy7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0p4ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oh0qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_txgae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eu3tv")
+}],
+"loop": false,
+"name": &"teleport_disappear",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,7 +279,7 @@ texture = ExtResource("10_j3b7s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_2vrfn")
-animation = &"idle"
+animation = &"teleport_appear"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.875)

@@ -11,7 +11,7 @@ var initial_location : Vector2
 var target_location : Vector2
 
 func enter(_arg):
-	boss.play_animation("idle")
+	boss.play_animation("teleport_disappear")
 	initial_location = boss.global_position
 	target_location = boss.get_next_boss_position()
 	
@@ -33,7 +33,8 @@ func teleport():
 	else:
 		boss.kill_minions()
 	
-	await get_tree().create_timer(0.5).timeout
+	boss.play_animation("teleport_appear")
+	await get_tree().create_timer(1.2).timeout
 	
 	#boss.global_position = target_location
 	boss.face_middle()

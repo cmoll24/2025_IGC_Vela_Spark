@@ -6,7 +6,7 @@ class_name EnemyBarrageGhost
 
 @export var VOLLEY_COOLDOWN = 3.5
 
-var volley_timer = VOLLEY_COOLDOWN
+var volley_timer : float = VOLLEY_COOLDOWN
 
 func _ready() -> void:
 	projectile = load("res://src/projectile/arcGhostProjectile.tscn")
@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 		animation_player.play("attack")
 		
 	
-	volley_timer -= delta
 	if volley_timer < 0:
 		volley_timer = VOLLEY_COOLDOWN
 		summon_projectile(deg_to_rad(55), 450)
