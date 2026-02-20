@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek5mqf65kuft"
-path="res://.godot/imported/turret idle_01.png-0180724555b558dfd0737462fa9ebdc6.ctex"
+uid="uid://nedswo278oeu"
+path="res://.godot/imported/Turret_MouthScream_2.png-005db2cb84cb1e831107e5dc5d160dd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/turret/turret idle_01.png"
-dest_files=["res://.godot/imported/turret idle_01.png-0180724555b558dfd0737462fa9ebdc6.ctex"]
+source_file="res://assets/enemies/turret/Turret_MouthScream_2.png"
+dest_files=["res://.godot/imported/Turret_MouthScream_2.png-005db2cb84cb1e831107e5dc5d160dd7.ctex"]
 
 [params]
 

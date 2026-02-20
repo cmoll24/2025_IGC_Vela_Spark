@@ -1,18 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxvfco2cg1dqw"]
+[gd_scene load_steps=19 format=3 uid="uid://bxvfco2cg1dqw"]
 
 [ext_resource type="Script" uid="uid://bcjaxxssva3gg" path="res://src/enemies/enemyTurret/enemyTurret.gd" id="1_172qc"]
-[ext_resource type="Texture2D" uid="uid://bek5mqf65kuft" path="res://assets/enemies/turret/turret idle_01.png" id="2_k30cr"]
-[ext_resource type="Texture2D" uid="uid://cxp4dx7nm5xc1" path="res://assets/enemies/turretv2/turret_attack_01.png" id="3_lxqhx"]
-[ext_resource type="Texture2D" uid="uid://cbhdyc1lkdq76" path="res://assets/enemies/turretv2/turret_attack_02.png" id="4_7bsnq"]
-[ext_resource type="Texture2D" uid="uid://savjr5u7ttm3" path="res://assets/enemies/turretv2/turret_attack_03.png" id="5_iss6i"]
-[ext_resource type="Texture2D" uid="uid://dlxxxlyckjqbu" path="res://assets/enemies/turretv2/turret_attack_04.png" id="6_3dn7n"]
-[ext_resource type="Texture2D" uid="uid://dqcfynosjhix3" path="res://assets/enemies/turretv2/turret_attack_05.png" id="7_ci5g7"]
-[ext_resource type="Texture2D" uid="uid://lupafffpur0h" path="res://assets/enemies/turretv2/turret_attack_06.png" id="8_j34cb"]
-[ext_resource type="Texture2D" uid="uid://4y1bra4jxmh7" path="res://assets/enemies/turretv2/turret_attack_07.png" id="9_wpfpo"]
-[ext_resource type="Texture2D" uid="uid://cebif50btulqc" path="res://assets/enemies/turretv2/turret_idle_01.png" id="10_sfo1o"]
-[ext_resource type="Texture2D" uid="uid://fu8rcg8c7tsb" path="res://assets/enemies/turretv2/turret_idle_02.png" id="11_u6t1x"]
-[ext_resource type="Texture2D" uid="uid://dpro7cvo1egbu" path="res://assets/enemies/turretv2/turret_idle_03.png" id="12_sko7y"]
-[ext_resource type="Texture2D" uid="uid://c4vqnfg7oa1wi" path="res://assets/enemies/turretv2/turret_idle_04.png" id="13_cvei7"]
+[ext_resource type="Texture2D" uid="uid://bvlhj4n5r8k0p" path="res://assets/enemies/turret/Turret_Idle_1.png" id="2_357kc"]
+[ext_resource type="Texture2D" uid="uid://5cl1edvmuo8w" path="res://assets/enemies/turret/Turret_Idle_2.png" id="3_0vtdk"]
+[ext_resource type="Texture2D" uid="uid://c21uuyahub4pb" path="res://assets/enemies/turret/Turret_Idle_3.png" id="4_lxqhx"]
+[ext_resource type="Texture2D" uid="uid://bh84uiaj7tv7x" path="res://assets/enemies/turret/Turret_Idle_4.png" id="5_7bsnq"]
+[ext_resource type="Texture2D" uid="uid://v1o3cbgsau6l" path="res://assets/enemies/turret/Turret_MouthScream_1.png" id="6_iss6i"]
+[ext_resource type="Texture2D" uid="uid://nedswo278oeu" path="res://assets/enemies/turret/Turret_MouthScream_2.png" id="7_3dn7n"]
+[ext_resource type="Texture2D" uid="uid://bgmum8ensicfl" path="res://assets/enemies/turret/Turret_MouthScream_3.png" id="8_ci5g7"]
+[ext_resource type="Texture2D" uid="uid://c7s21luwq46qs" path="res://assets/enemies/turret/Turret_MouthScream_4.png" id="9_j34cb"]
+[ext_resource type="Texture2D" uid="uid://b3epuiagmtucj" path="res://assets/enemies/turret/Turret_Spit_1.png" id="10_wpfpo"]
+[ext_resource type="Texture2D" uid="uid://8egk5qkik6pw" path="res://assets/enemies/turret/Turret_Spit_2.png" id="11_sfo1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brukk"]
 size = Vector2(90, 80)
@@ -21,56 +19,53 @@ size = Vector2(90, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_k30cr")
+"texture": ExtResource("2_357kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0vtdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lxqhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7bsnq")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rc7xl"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6t1x"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_lxqhx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_7bsnq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_iss6i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_3dn7n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_ci5g7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_j34cb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_wpfpo")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_sfo1o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_u6t1x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_sko7y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_cvei7")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_iss6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3dn7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ci5g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_j34cb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wpfpo")
+}, {
+"duration": 2.0,
+"texture": ExtResource("11_sfo1o")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"shoot",
 "speed": 5.0
 }]
 
@@ -151,16 +146,15 @@ shape = SubResource("RectangleShape2D_brukk")
 self_modulate = Color(0.92, 0.4692, 0.4692, 1)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_7810u")
+autoplay = "default"
+frame_progress = 0.41809148
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="rotate"]
+[node name="MouthAnimation" type="AnimatedSprite2D" parent="rotate"]
 self_modulate = Color(0.92, 0.4692, 0.4692, 1)
-position = Vector2(21, 0)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_rc7xl")
-animation = &"attack"
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_u6t1x")
+animation = &"shoot"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="ColorRect" type="ColorRect" parent="rotate"]
 visible = false
@@ -182,5 +176,6 @@ shape = SubResource("RectangleShape2D_3lsh4")
 libraries = {
 &"": SubResource("AnimationLibrary_7810u")
 }
+autoplay = "RESET"
 
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]
