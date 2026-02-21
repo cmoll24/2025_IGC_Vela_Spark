@@ -116,10 +116,10 @@ animations = [{
 "speed": 15.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": ExtResource("22_16ob0")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("21_c2vm8")
 }, {
 "duration": 1.0,
@@ -175,7 +175,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"teleport_disappear",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -279,7 +279,7 @@ texture = ExtResource("10_j3b7s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_2vrfn")
-animation = &"teleport_appear"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.875)

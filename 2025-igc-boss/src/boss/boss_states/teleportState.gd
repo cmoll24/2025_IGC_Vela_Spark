@@ -2,6 +2,7 @@ extends BossState
 class_name TeleportState
 
 @onready var boss_trail : PackedScene = load("res://src/boss/bossTrail.tscn")
+@onready var boss_teleport_animation : PackedScene = load("res://src/boss/boss_teleport_animtion.tscn")
 
 @export var boss : Boss
 
@@ -11,7 +12,6 @@ var initial_location : Vector2
 var target_location : Vector2
 
 func enter(_arg):
-	boss.play_animation("teleport_disappear")
 	initial_location = boss.global_position
 	target_location = boss.get_next_boss_position()
 	
@@ -21,6 +21,13 @@ func enter(_arg):
 func teleport():
 	
 	await get_tree().create_timer(0.5).timeout
+	
+	#boss.play_animation("teleport_disappear")
+	var tele_anim : BossTeleportAnimation = boss_teleport_animation.instantiate()
+	Global.get_game_scene().current_level.add_child(tele_anim)
+	tele_anim.global_position = boss.global_position
+	tele_anim.scale.x = boss.facing_direction
+	tele_anim.start()
 	
 	boss.global_position = target_location
 	
