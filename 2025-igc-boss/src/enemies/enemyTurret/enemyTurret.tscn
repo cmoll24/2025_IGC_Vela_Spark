@@ -1,16 +1,28 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxvfco2cg1dqw"]
+[gd_scene load_steps=27 format=3 uid="uid://bxvfco2cg1dqw"]
 
 [ext_resource type="Script" uid="uid://bcjaxxssva3gg" path="res://src/enemies/enemyTurret/enemyTurret.gd" id="1_172qc"]
-[ext_resource type="Texture2D" uid="uid://bvlhj4n5r8k0p" path="res://assets/enemies/turret/Turret_Idle_1.png" id="2_357kc"]
-[ext_resource type="Texture2D" uid="uid://5cl1edvmuo8w" path="res://assets/enemies/turret/Turret_Idle_2.png" id="3_0vtdk"]
-[ext_resource type="Texture2D" uid="uid://c21uuyahub4pb" path="res://assets/enemies/turret/Turret_Idle_3.png" id="4_lxqhx"]
-[ext_resource type="Texture2D" uid="uid://bh84uiaj7tv7x" path="res://assets/enemies/turret/Turret_Idle_4.png" id="5_7bsnq"]
-[ext_resource type="Texture2D" uid="uid://v1o3cbgsau6l" path="res://assets/enemies/turret/Turret_MouthScream_1.png" id="6_iss6i"]
-[ext_resource type="Texture2D" uid="uid://nedswo278oeu" path="res://assets/enemies/turret/Turret_MouthScream_2.png" id="7_3dn7n"]
-[ext_resource type="Texture2D" uid="uid://bgmum8ensicfl" path="res://assets/enemies/turret/Turret_MouthScream_3.png" id="8_ci5g7"]
-[ext_resource type="Texture2D" uid="uid://c7s21luwq46qs" path="res://assets/enemies/turret/Turret_MouthScream_4.png" id="9_j34cb"]
-[ext_resource type="Texture2D" uid="uid://b3epuiagmtucj" path="res://assets/enemies/turret/Turret_Spit_1.png" id="10_wpfpo"]
-[ext_resource type="Texture2D" uid="uid://8egk5qkik6pw" path="res://assets/enemies/turret/Turret_Spit_2.png" id="11_sfo1o"]
+[ext_resource type="Texture2D" uid="uid://c23xiww2ak2ut" path="res://assets/enemies/shellguy/shellguy _1.png" id="2_cvei7"]
+[ext_resource type="Texture2D" uid="uid://bn524f876hlwe" path="res://assets/enemies/shellguy/shellguy _2.png" id="3_rc7xl"]
+[ext_resource type="Texture2D" uid="uid://cp00yfd75id8x" path="res://assets/enemies/shellguy/shellguy _3.png" id="4_tu0lm"]
+[ext_resource type="Texture2D" uid="uid://dsl3o6qku4c7l" path="res://assets/enemies/shellguy/shellguy _4.png" id="5_bgmcr"]
+[ext_resource type="Texture2D" uid="uid://mmgnfaltlxa6" path="res://assets/enemies/shellguy/shellguy _5.png" id="6_7gxrx"]
+[ext_resource type="Texture2D" uid="uid://tr1sipguney" path="res://assets/enemies/shellguy/shellguy _6.png" id="7_5yjdn"]
+[ext_resource type="Texture2D" uid="uid://bwr8a8h22kq0r" path="res://assets/enemies/shellguy/shellguy _7.png" id="8_7hb6u"]
+[ext_resource type="Texture2D" uid="uid://borbjmcf812g8" path="res://assets/enemies/shellguy/shellguy _8.png" id="9_0waql"]
+[ext_resource type="Texture2D" uid="uid://cu5imummmvw1e" path="res://assets/enemies/shellguy/shellguy _9.png" id="10_i078v"]
+[ext_resource type="Texture2D" uid="uid://bllm6u25w76a0" path="res://assets/enemies/shellguy/shellguy _10.png" id="11_hj71m"]
+[ext_resource type="Texture2D" uid="uid://bejb63gq1oyov" path="res://assets/enemies/shellguy/shellguy _11.png" id="12_jqpjq"]
+[ext_resource type="Texture2D" uid="uid://b68oidm6mooqw" path="res://assets/enemies/shellguy/shellguy _12.png" id="13_ha68b"]
+[ext_resource type="Texture2D" uid="uid://7l0knhle8l4q" path="res://assets/enemies/shellguy/shellguy _13.png" id="14_wfhdd"]
+[ext_resource type="Texture2D" uid="uid://bp8faw55v2k1j" path="res://assets/enemies/shellguy/shellguy _14.png" id="15_jrece"]
+[ext_resource type="Texture2D" uid="uid://csi5ogvm6i50v" path="res://assets/enemies/shellguy/shellguy _15.png" id="16_craf3"]
+[ext_resource type="Texture2D" uid="uid://ca7e10j33ms6j" path="res://assets/enemies/shellguy/shellguy _16.png" id="17_gov41"]
+[ext_resource type="Texture2D" uid="uid://ccepbs14aqwo2" path="res://assets/enemies/shellguy/shellguy _17.png" id="18_4gf8f"]
+[ext_resource type="Texture2D" uid="uid://ulrbp6phen6u" path="res://assets/enemies/shellguy/shellguy _18.png" id="19_owlqt"]
+[ext_resource type="Texture2D" uid="uid://b34uqpjm8obhf" path="res://assets/enemies/shellguy/shellguy _19.png" id="20_b5nsu"]
+[ext_resource type="Texture2D" uid="uid://uxow8beexwrp" path="res://assets/enemies/shellguy/shellguy_idle_1.png" id="21_gi6hk"]
+[ext_resource type="Texture2D" uid="uid://cxsb1vi3ycsjv" path="res://assets/enemies/shellguy/shellguy_idle_2.png" id="22_jwapn"]
+[ext_resource type="Texture2D" uid="uid://duhlqfldblb2m" path="res://assets/enemies/shellguy/shellguy_idle_3.png" id="23_8vqa5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brukk"]
 size = Vector2(90, 80)
@@ -19,122 +31,86 @@ size = Vector2(90, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_357kc")
+"texture": ExtResource("2_cvei7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_0vtdk")
+"texture": ExtResource("3_rc7xl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_lxqhx")
+"texture": ExtResource("4_tu0lm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_7bsnq")
+"texture": ExtResource("5_bgmcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7gxrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5yjdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7hb6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0waql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i078v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hj71m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jqpjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ha68b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wfhdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jrece")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_craf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gov41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4gf8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_owlqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_b5nsu")
 }],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_u6t1x"]
-animations = [{
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("21_gi6hk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jwapn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8vqa5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jwapn")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_iss6i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3dn7n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ci5g7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_j34cb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_wpfpo")
-}, {
-"duration": 2.0,
-"texture": ExtResource("11_sfo1o")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"shoot",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lsh4"]
 size = Vector2(55, 92)
-
-[sub_resource type="Animation" id="Animation_k30cr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("rotate/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.96806353, 0, 0.27926672, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("rotate/AnimatedSprite2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.92, 0.4692, 0.4692, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_acylf"]
-resource_name = "shoot"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("rotate/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333, 0.70000005, 1, 1.05),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.96806353, 0, 0.27926672, 1), Color(0.37, 0, 0.0925, 1), Color(1, 0.69092274, 0.8226721, 1), Color(0.96806353, 0, 0.27926672, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("rotate/AnimatedSprite2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.033333335, 0.7, 0.8666667, 1.0666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.92, 0.4692, 0.4692, 1), Color(0.37406895, 0.10440453, 0.11916857, 1), Color(0.93503875, 0.81988055, 0.6662493, 1), Color(0.92, 0.4692, 0.4692, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7810u"]
-_data = {
-&"RESET": SubResource("Animation_k30cr"),
-&"shoot": SubResource("Animation_acylf")
-}
 
 [node name="EnemyTurret" type="CharacterBody2D"]
 collision_layer = 4
@@ -146,18 +122,9 @@ shape = SubResource("RectangleShape2D_brukk")
 [node name="rotate" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rotate"]
-self_modulate = Color(0.92, 0.4692, 0.4692, 1)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_7810u")
-autoplay = "default"
-frame = 3
-frame_progress = 0.44615543
-
-[node name="MouthAnimation" type="AnimatedSprite2D" parent="rotate"]
-self_modulate = Color(0.92, 0.4692, 0.4692, 1)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_u6t1x")
-animation = &"shoot"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="ColorRect" type="ColorRect" parent="rotate"]
@@ -176,10 +143,5 @@ collision_mask = 10
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_3lsh4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7810u")
-}
-autoplay = "RESET"
-
+[connection signal="animation_finished" from="rotate/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="collide"]
