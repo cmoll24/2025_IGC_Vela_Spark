@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://dtav8706bc66j"]
+[gd_scene load_steps=37 format=4 uid="uid://dtav8706bc66j"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_kfd3v"]
 [ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="2_7i0di"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://5yuim1cyshda" path="res://src/decoration/player_light.tscn" id="25_k6ew3"]
 [ext_resource type="Shader" uid="uid://bcs13bqpg8idu" path="res://assets/shaders/polygon_mask.gdshader" id="26_kgwji"]
 [ext_resource type="Texture2D" uid="uid://dktbejf153ykr" path="res://assets/background/brighter tile.png" id="27_kgwji"]
+[ext_resource type="Shader" uid="uid://c78ag8ony3d8c" path="res://assets/shaders/rectangle_mask.gdshader" id="28_6uqhn"]
 
 [sub_resource type="Gradient" id="Gradient_lck47"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -83,6 +84,12 @@ shader_parameter/position_y = 2.3
 shader_parameter/border_width = 0.1
 shader_parameter/border_color = Color(0.34901962, 0.34901962, 1, 0)
 shader_parameter/maintain_aspect_ratio = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vki0v"]
+shader = ExtResource("28_6uqhn")
+shader_parameter/width = 3.15
+shader_parameter/rotation = -29.99999715
+shader_parameter/position_x = 1.8
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_kfd3v")
@@ -332,18 +339,27 @@ stretch_mode = 1
 
 [node name="LightArea2" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_6uqhn")
-offset_left = 4736.0
+offset_left = 4353.0
 offset_top = 1024.0
-offset_right = 5104.0
+offset_right = 4721.0
 offset_bottom = 1271.0
 texture = ExtResource("27_kgwji")
 stretch_mode = 1
 
 [node name="LightArea3" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_ws5kc")
-offset_left = 4672.0
+offset_left = 4289.0
 offset_top = 1024.0
-offset_right = 5124.0
+offset_right = 4741.0
 offset_bottom = 1449.0
+texture = ExtResource("27_kgwji")
+stretch_mode = 1
+
+[node name="LightArea4" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_vki0v")
+offset_left = 4673.0
+offset_top = 1024.0
+offset_right = 5067.0
+offset_bottom = 1302.0
 texture = ExtResource("27_kgwji")
 stretch_mode = 1
