@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=32 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -14,15 +14,19 @@
 [ext_resource type="PackedScene" uid="uid://bxvfco2cg1dqw" path="res://src/enemies/enemyTurret/enemyTurret.tscn" id="7_xvths"]
 [ext_resource type="PackedScene" uid="uid://cbbvhqfs8vdl1" path="res://src/enemies/enemyBarrage/enemyBarrage.tscn" id="8_3cppb"]
 [ext_resource type="Texture2D" uid="uid://guvws8w7v2g4" path="res://assets/background/2parallax_1.png" id="8_xvths"]
+[ext_resource type="PackedScene" uid="uid://cjn6tiundbn6c" path="res://src/decoration/cloud.tscn" id="9_251aq"]
 [ext_resource type="PackedScene" uid="uid://ckeyt2issfig3" path="res://src/enemies/enemyStatic/enemeyStatic.tscn" id="9_buawx"]
 [ext_resource type="PackedScene" uid="uid://ci2ud5vgpijbp" path="res://src/decoration/stilt.tscn" id="9_r0rxx"]
 [ext_resource type="Texture2D" uid="uid://x4qroys38j8" path="res://assets/background/spike.png" id="10_3cppb"]
 [ext_resource type="PackedScene" uid="uid://c6m2t238knjov" path="res://src/player/player.tscn" id="10_ufga5"]
 [ext_resource type="PackedScene" uid="uid://ca3jni58ttg6" path="res://src/player/playerCamera.tscn" id="11_r0rxx"]
 [ext_resource type="PackedScene" uid="uid://i3hx3tl4wn1x" path="res://src/decoration/boulder.tscn" id="11_y1bwq"]
+[ext_resource type="PackedScene" uid="uid://b512sau465i7l" path="res://src/decoration/palmTest.tscn" id="12_liaun"]
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="12_y1bwq"]
+[ext_resource type="PackedScene" uid="uid://5yuim1cyshda" path="res://src/decoration/player_light.tscn" id="13_251aq"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
 [ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="21_buawx"]
+[ext_resource type="PackedScene" uid="uid://k8x8w6sop5y2" path="res://src/decoration/underLight.tscn" id="27_smo1o"]
 
 [sub_resource type="Gradient" id="Gradient_xvths"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -176,6 +180,10 @@ texture = SubResource("GradientTexture1D_xvths")
 
 [node name="Decoration" type="Node2D" parent="."]
 
+[node name="Cloud" parent="Decoration" instance=ExtResource("9_251aq")]
+position = Vector2(-1084, 487)
+scale = Vector2(0.67, 0.67)
+
 [node name="Stilt" parent="Decoration" instance=ExtResource("9_r0rxx")]
 offset_left = 1598.0
 offset_top = 624.0
@@ -187,6 +195,12 @@ position = Vector2(1338, 932)
 
 [node name="Boulder" parent="Decoration" instance=ExtResource("11_y1bwq")]
 position = Vector2(49, 983)
+
+[node name="PalmTest" parent="Decoration" instance=ExtResource("12_liaun")]
+position = Vector2(-339, 1047)
+
+[node name="PlayerLight" parent="Decoration" instance=ExtResource("13_251aq")]
+position = Vector2(-89, 692)
 
 [node name="obstacles" type="Node2D" parent="."]
 
@@ -483,3 +497,8 @@ player = NodePath("..")
 position = Vector2(0, 1264)
 
 [node name="ProjectileTree" type="Node2D" parent="."]
+
+[node name="tile_lighting" type="Node2D" parent="."]
+
+[node name="UnderLight" parent="tile_lighting" instance=ExtResource("27_smo1o")]
+position = Vector2(723, 373)
