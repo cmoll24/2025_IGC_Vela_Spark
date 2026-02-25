@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b512sau465i7l"]
+
+[ext_resource type="Texture2D" uid="uid://6bqiuj8njmno" path="res://assets/objects/palmTest.png" id="1_os7ah"]
+
+[node name="PalmTest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(628, -236)
+texture = ExtResource("1_os7ah")

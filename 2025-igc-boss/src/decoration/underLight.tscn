@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://k8x8w6sop5y2"]
+
+[ext_resource type="Texture2D" uid="uid://cvcn67dq4trbq" path="res://assets/objects/underLight.png" id="1_fr3vc"]
+
+[node name="UnderLight" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fr3vc")
