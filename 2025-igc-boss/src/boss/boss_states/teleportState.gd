@@ -24,9 +24,10 @@ func teleport():
 	
 	#boss.play_animation("teleport_disappear")
 	var tele_anim : BossTeleportAnimation = boss_teleport_animation.instantiate()
-	Global.get_game_scene().current_level.add_child(tele_anim)
+	boss.get_parent().add_child(tele_anim)
 	tele_anim.global_position = boss.global_position
 	tele_anim.scale.x = boss.facing_direction
+	tele_anim.z_index = boss.z_index
 	tele_anim.start()
 	
 	boss.global_position = target_location

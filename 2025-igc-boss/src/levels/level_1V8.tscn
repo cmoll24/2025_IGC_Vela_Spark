@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dtav8706bc66j"]
+[gd_scene load_steps=35 format=4 uid="uid://dtav8706bc66j"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_kfd3v"]
 [ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="2_7i0di"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="13_02b6f"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="14_kgwji"]
 [ext_resource type="PackedScene" uid="uid://5yuim1cyshda" path="res://src/decoration/player_light.tscn" id="25_k6ew3"]
+[ext_resource type="Shader" uid="uid://bcs13bqpg8idu" path="res://assets/shaders/polygon_mask.gdshader" id="26_kgwji"]
+[ext_resource type="Texture2D" uid="uid://dktbejf153ykr" path="res://assets/background/brighter tile.png" id="27_kgwji"]
 
 [sub_resource type="Gradient" id="Gradient_lck47"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -48,6 +50,39 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7v3s3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7d1so"]
+shader = ExtResource("26_kgwji")
+shader_parameter/size = 2.221
+shader_parameter/sides = 4
+shader_parameter/rotation = 45.0000192375
+shader_parameter/position_x = 2.31
+shader_parameter/position_y = 1.03200009652
+shader_parameter/border_width = 0.1
+shader_parameter/border_color = Color(0.34901962, 0.34901962, 1, 0)
+shader_parameter/maintain_aspect_ratio = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uqhn"]
+shader = ExtResource("26_kgwji")
+shader_parameter/size = 2.2
+shader_parameter/sides = 4
+shader_parameter/rotation = 15.000017812500005
+shader_parameter/position_x = 2.35
+shader_parameter/position_y = 0.5
+shader_parameter/border_width = 0.1
+shader_parameter/border_color = Color(0.34901962, 0.34901962, 1, 0)
+shader_parameter/maintain_aspect_ratio = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws5kc"]
+shader = ExtResource("26_kgwji")
+shader_parameter/size = 2.2
+shader_parameter/sides = 4
+shader_parameter/rotation = 15.000017812500005
+shader_parameter/position_x = 2.3
+shader_parameter/position_y = 2.3
+shader_parameter/border_width = 0.1
+shader_parameter/border_color = Color(0.34901962, 0.34901962, 1, 0)
+shader_parameter/maintain_aspect_ratio = true
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_kfd3v")
@@ -146,10 +181,10 @@ texture = ExtResource("8_ws5kc")
 stretch_mode = 1
 
 [node name="ColorTint" type="TextureRect" parent="Parallax"]
-offset_left = -1603.0
-offset_top = -1753.0
-offset_right = 12026.0
-offset_bottom = 2512.0
+offset_left = -1598.0
+offset_top = -1607.0
+offset_right = 12031.0
+offset_bottom = 2658.0
 texture = SubResource("GradientTexture1D_vki0v")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -285,3 +320,30 @@ scale = Vector2(2, 2)
 [node name="PlayerLight4" parent="Lighting" instance=ExtResource("25_k6ew3")]
 position = Vector2(2059, 660)
 scale = Vector2(2, 1)
+
+[node name="LightArea" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_7d1so")
+offset_left = 3712.0
+offset_top = 1024.0
+offset_right = 3988.0
+offset_bottom = 1153.0
+texture = ExtResource("27_kgwji")
+stretch_mode = 1
+
+[node name="LightArea2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6uqhn")
+offset_left = 4736.0
+offset_top = 1024.0
+offset_right = 5104.0
+offset_bottom = 1271.0
+texture = ExtResource("27_kgwji")
+stretch_mode = 1
+
+[node name="LightArea3" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ws5kc")
+offset_left = 4672.0
+offset_top = 1024.0
+offset_right = 5124.0
+offset_bottom = 1449.0
+texture = ExtResource("27_kgwji")
+stretch_mode = 1
