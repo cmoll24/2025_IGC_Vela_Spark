@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=33 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
 [ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="21_buawx"]
 [ext_resource type="PackedScene" uid="uid://k8x8w6sop5y2" path="res://src/decoration/underLight.tscn" id="27_smo1o"]
+[ext_resource type="Texture2D" uid="uid://dc0dt6xninhra" path="res://assets/objects/underLight2.png" id="28_vhta8"]
 
 [sub_resource type="Gradient" id="Gradient_xvths"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -172,10 +173,10 @@ texture = ExtResource("8_xvths")
 stretch_mode = 1
 
 [node name="ColorTint2" type="TextureRect" parent="Parallax"]
-offset_left = -3543.0
-offset_top = -2136.0
-offset_right = 26332.0
-offset_bottom = 2740.0
+offset_left = -3704.0
+offset_top = -2009.0
+offset_right = 26171.0
+offset_bottom = 2867.0
 texture = SubResource("GradientTexture1D_xvths")
 
 [node name="Decoration" type="Node2D" parent="."]
@@ -501,4 +502,21 @@ position = Vector2(0, 1264)
 [node name="tile_lighting" type="Node2D" parent="."]
 
 [node name="UnderLight" parent="tile_lighting" instance=ExtResource("27_smo1o")]
+visible = false
 position = Vector2(723, 373)
+
+[node name="WaterUnderLight" type="TextureRect" parent="tile_lighting"]
+offset_left = 129.0
+offset_top = 871.0
+offset_right = 383.0
+offset_bottom = 1025.0
+texture = ExtResource("28_vhta8")
+expand_mode = 1
+
+[node name="WaterUnderLight2" type="TextureRect" parent="tile_lighting"]
+offset_left = 704.0
+offset_top = 870.0
+offset_right = 958.0
+offset_bottom = 1024.0
+texture = ExtResource("28_vhta8")
+expand_mode = 1
