@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b8au5brqvt6nm"]
+
+[ext_resource type="Shader" uid="uid://b78xpoxitrpob" path="res://src/levels/brightner.gdshader" id="1_m2ja8"]
+
+[resource]
+shader = ExtResource("1_m2ja8")
+shader_parameter/light_color = Color(0.78550386, 0.7448885, 0.47620222, 0.25882354)
+shader_parameter/strength = 1.0
+shader_parameter/softness = 1.0

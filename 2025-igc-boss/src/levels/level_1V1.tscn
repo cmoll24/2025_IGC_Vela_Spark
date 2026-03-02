@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=36 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="12_y1bwq"]
 [ext_resource type="PackedScene" uid="uid://5yuim1cyshda" path="res://src/decoration/player_light.tscn" id="13_251aq"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
+[ext_resource type="Shader" uid="uid://c78ag8ony3d8c" path="res://assets/shaders/rectangle_mask.gdshader" id="15_de7vx"]
+[ext_resource type="Texture2D" uid="uid://6bqiuj8njmno" path="res://assets/objects/palmTest.png" id="16_2tdb8"]
 [ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="21_buawx"]
 [ext_resource type="PackedScene" uid="uid://k8x8w6sop5y2" path="res://src/decoration/underLight.tscn" id="27_smo1o"]
 [ext_resource type="Texture2D" uid="uid://dc0dt6xninhra" path="res://assets/objects/underLight2.png" id="28_vhta8"]
@@ -35,6 +37,12 @@ colors = PackedColorArray(0.92156863, 0.60784316, 0.5647059, 0.13725491, 0.68777
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xvths"]
 gradient = SubResource("Gradient_xvths")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xqt6"]
+shader = ExtResource("15_de7vx")
+shader_parameter/width = 0.1
+shader_parameter/rotation = 20.000005224999995
+shader_parameter/position_x = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
 resource_name = "Collision Tiles"
@@ -202,6 +210,14 @@ position = Vector2(-339, 1047)
 
 [node name="PlayerLight" parent="Decoration" instance=ExtResource("13_251aq")]
 position = Vector2(-89, 692)
+
+[node name="TextureRect" type="TextureRect" parent="Decoration"]
+material = SubResource("ShaderMaterial_1xqt6")
+offset_left = 122.0
+offset_top = -184.0
+offset_right = 2122.0
+offset_bottom = 1816.0
+texture = ExtResource("16_2tdb8")
 
 [node name="obstacles" type="Node2D" parent="."]
 

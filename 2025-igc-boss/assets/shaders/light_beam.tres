@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cjj1a38olovap"]
+
+[ext_resource type="Shader" uid="uid://djabl30ax8em3" path="res://assets/shaders/brightner_mask.gdshader" id="1_hv05k"]
+
+[resource]
+shader = ExtResource("1_hv05k")
+shader_parameter/light_color = Color(0.78550386, 0.7448885, 0.47620222, 0.25882354)
+shader_parameter/strength = 1.0
+shader_parameter/softness = 1.0
+shader_parameter/width = 0.3
+shader_parameter/rotation = -19.1489966345775
+shader_parameter/position_x = 0.5

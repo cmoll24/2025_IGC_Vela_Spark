@@ -25,10 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="13_02b6f"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="14_kgwji"]
 [ext_resource type="PackedScene" uid="uid://5yuim1cyshda" path="res://src/decoration/player_light.tscn" id="25_k6ew3"]
-[ext_resource type="Shader" uid="uid://bcs13bqpg8idu" path="res://assets/shaders/polygon_mask.gdshader" id="26_kgwji"]
+[ext_resource type="Shader" uid="uid://dtxirtm58ke7a" path="res://rectangle_mask.gdshader" id="26_7d1so"]
 [ext_resource type="Texture2D" uid="uid://dktbejf153ykr" path="res://assets/background/brighter tile.png" id="27_kgwji"]
-[ext_resource type="Shader" uid="uid://c78ag8ony3d8c" path="res://assets/shaders/rectangle_mask.gdshader" id="28_6uqhn"]
 [ext_resource type="Texture2D" uid="uid://bcih4t83ve7xq" path="res://assets/objects/bonfire1.png" id="29_7d1so"]
+[ext_resource type="Material" uid="uid://b8au5brqvt6nm" path="res://assets/shaders/light_material_1.tres" id="29_vki0v"]
+[ext_resource type="Shader" uid="uid://b78xpoxitrpob" path="res://src/levels/brightner.gdshader" id="29_ws5kc"]
 
 [sub_resource type="Gradient" id="Gradient_lck47"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -53,50 +54,29 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7v3s3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7d1so"]
-shader = ExtResource("26_kgwji")
-shader_parameter/size = 2.221
-shader_parameter/sides = 4
-shader_parameter/rotation = 45.0000192375
-shader_parameter/position_x = 2.31
-shader_parameter/position_y = 1.03200009652
-shader_parameter/border_width = 0.1
-shader_parameter/border_color = Color(0.34901962, 0.34901962, 1, 0)
-shader_parameter/maintain_aspect_ratio = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uqhn"]
-shader = ExtResource("26_kgwji")
-shader_parameter/size = 2.2
-shader_parameter/sides = 4
-shader_parameter/rotation = 15.000017812500005
-shader_parameter/position_x = 2.35
-shader_parameter/position_y = 0.5
-shader_parameter/border_width = 0.1
-shader_parameter/border_color = Color(0.34901962, 0.34901962, 1, 0)
-shader_parameter/maintain_aspect_ratio = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws5kc"]
-shader = ExtResource("26_kgwji")
-shader_parameter/size = 2.2
-shader_parameter/sides = 4
-shader_parameter/rotation = 15.000017812500005
-shader_parameter/position_x = 2.3
-shader_parameter/position_y = 2.3
-shader_parameter/border_width = 0.1
-shader_parameter/border_color = Color(0.34901962, 0.34901962, 1, 0)
-shader_parameter/maintain_aspect_ratio = true
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vki0v"]
-shader = ExtResource("28_6uqhn")
+shader = ExtResource("26_7d1so")
 shader_parameter/width = 3.13
 shader_parameter/rotation = -29.99999715
 shader_parameter/position_x = 1.83
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffs2"]
-shader = ExtResource("28_6uqhn")
+shader = ExtResource("26_7d1so")
 shader_parameter/width = 0.2
 shader_parameter/rotation = -39.999997625
 shader_parameter/position_x = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7d1so"]
+shader = ExtResource("29_ws5kc")
+shader_parameter/light_color = Color(1, 1, 1, 0.259)
+shader_parameter/strength = 1.0
+shader_parameter/softness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws5kc"]
+shader = ExtResource("29_ws5kc")
+shader_parameter/light_color = Color(1.0187511, 0.9909582, 0, 0.149)
+shader_parameter/strength = 0.8800000418
+shader_parameter/softness = 1.0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_kfd3v")
@@ -195,10 +175,10 @@ texture = ExtResource("8_ws5kc")
 stretch_mode = 1
 
 [node name="ColorTint" type="TextureRect" parent="Parallax"]
-offset_left = -1598.0
-offset_top = -1607.0
-offset_right = 12031.0
-offset_bottom = 2658.0
+offset_left = -1852.0
+offset_top = -1077.0
+offset_right = 11777.0
+offset_bottom = 3188.0
 texture = SubResource("GradientTexture1D_vki0v")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -335,33 +315,6 @@ scale = Vector2(2, 2)
 position = Vector2(2059, 660)
 scale = Vector2(2, 1)
 
-[node name="LightArea" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_7d1so")
-offset_left = 3712.0
-offset_top = 1024.0
-offset_right = 3988.0
-offset_bottom = 1153.0
-texture = ExtResource("27_kgwji")
-stretch_mode = 1
-
-[node name="LightArea2" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_6uqhn")
-offset_left = 4353.0
-offset_top = 1024.0
-offset_right = 4721.0
-offset_bottom = 1271.0
-texture = ExtResource("27_kgwji")
-stretch_mode = 1
-
-[node name="LightArea3" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_ws5kc")
-offset_left = 4289.0
-offset_top = 1024.0
-offset_right = 4741.0
-offset_bottom = 1449.0
-texture = ExtResource("27_kgwji")
-stretch_mode = 1
-
 [node name="LightArea4" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_vki0v")
 offset_left = 4672.0
@@ -379,3 +332,26 @@ offset_right = 5148.0
 offset_bottom = 1025.0
 texture = ExtResource("29_7d1so")
 stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("29_vki0v")
+offset_left = 4446.0
+offset_top = 1026.0
+offset_right = 4664.8135
+offset_bottom = 1252.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7d1so")
+offset_left = 4476.9995
+offset_top = -408.0002
+offset_right = 4695.813
+offset_bottom = 1411.5568
+rotation = 0.2617994
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ws5kc")
+offset_left = 5714.9995
+offset_top = -456.0002
+offset_right = 5933.813
+offset_bottom = 1363.5568
+rotation = 0.2617994
