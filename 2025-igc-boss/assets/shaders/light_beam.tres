@@ -8,5 +8,5 @@ shader_parameter/light_color = Color(0.78550386, 0.7448885, 0.47620222, 0.258823
 shader_parameter/strength = 1.0
 shader_parameter/softness = 1.0
 shader_parameter/width = 0.3
-shader_parameter/rotation = -19.1489966345775
+shader_parameter/rotation = -40.8729976664675
 shader_parameter/position_x = 0.5

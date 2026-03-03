@@ -336,6 +336,13 @@ offset_top = 960.0
 offset_right = 1248.0
 offset_bottom = 1153.0
 
+[node name="ColorRect3" type="ColorRect" parent="decoration_above"]
+material = ExtResource("22_ivaxa")
+offset_left = 496.0
+offset_top = 965.0
+offset_right = 785.0
+offset_bottom = 1206.0
+
 [node name="LevelTransition" parent="." instance=ExtResource("9_rllik")]
 position = Vector2(9796, -338)
 scale = Vector2(2, 10)

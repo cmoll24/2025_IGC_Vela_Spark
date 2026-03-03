@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=40 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -25,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://r3x6xc2kjti" path="res://assets/background/colision_tile.png" id="12_y1bwq"]
 [ext_resource type="PackedScene" uid="uid://5yuim1cyshda" path="res://src/decoration/player_light.tscn" id="13_251aq"]
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
-[ext_resource type="Shader" uid="uid://c78ag8ony3d8c" path="res://assets/shaders/rectangle_mask.gdshader" id="15_de7vx"]
 [ext_resource type="Texture2D" uid="uid://6bqiuj8njmno" path="res://assets/objects/palmTest.png" id="16_2tdb8"]
 [ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="21_buawx"]
 [ext_resource type="PackedScene" uid="uid://k8x8w6sop5y2" path="res://src/decoration/underLight.tscn" id="27_smo1o"]
@@ -37,12 +36,6 @@ colors = PackedColorArray(0.92156863, 0.60784316, 0.5647059, 0.13725491, 0.68777
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xvths"]
 gradient = SubResource("Gradient_xvths")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xqt6"]
-shader = ExtResource("15_de7vx")
-shader_parameter/width = 0.1
-shader_parameter/rotation = 20.000005224999995
-shader_parameter/position_x = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcumj"]
 resource_name = "Collision Tiles"
@@ -83,6 +76,138 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fcumj")
+
+[sub_resource type="Shader" id="Shader_de7vx"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+
+uniform vec4 light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform float strength : hint_range(0.0, 2.0) = 1.0;
+uniform float softness : hint_range(0.0, 1.0) = 0.2;
+
+// Width of the rectangle
+uniform float width = 0.5;
+
+// Rotation of the rectangle
+uniform float rotation : hint_range(-90.0, 90.0) = 0.0;
+
+// Center point of the polygon
+uniform float position_x = 0.5;
+
+void fragment() {
+    vec4 screen_col = texture(SCREEN_TEXTURE, SCREEN_UV);
+
+    // Use this object's alpha as mask
+    float mask = texture(TEXTURE, UV).a;
+
+    // soften edges
+    mask = smoothstep(0.0, softness, mask);
+
+    // apply color lighting
+    vec3 lit = screen_col.rgb + (light_color.rgb * strength);
+
+    // blend only where mask exists
+    COLOR.rgb = mix(screen_col.rgb, lit, mask * light_color.a);
+    COLOR.a = mask;
+
+	float width_x = width * cos(radians(rotation));
+	float width_y = width * sin(radians(rotation));
+	float slope = tan(radians(rotation));
+
+	if (UV.x - position_x - width_x > (slope * (UV.y + width_y))) {
+		COLOR.a = 0.0;
+	}
+
+	if (UV.x - position_x < slope * UV.y) {
+		COLOR.a = 0.0;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tdb8"]
+shader = SubResource("Shader_de7vx")
+shader_parameter/light_color = Color(0.78550386, 0.7448885, 0.47620222, 0.25882354)
+shader_parameter/strength = 1.0
+shader_parameter/softness = 1.0
+shader_parameter/width = 0.3
+shader_parameter/rotation = -40.8729976664675
+shader_parameter/position_x = 0.5
+
+[sub_resource type="Shader" id="Shader_6pdk7"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+
+uniform vec4 light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform float strength : hint_range(0.0, 2.0) = 1.0;
+uniform float softness : hint_range(0.0, 1.0) = 0.2;
+
+// Width of the rectangle
+uniform float width = 0.5;
+
+// Rotation of the rectangle
+uniform float rotation : hint_range(-90.0, 90.0) = 0.0;
+
+// Center point of the polygon
+uniform float position_x = 0.5;
+
+void fragment() {
+    vec4 screen_col = texture(SCREEN_TEXTURE, SCREEN_UV);
+
+    // Use this object's alpha as mask
+    float mask = texture(TEXTURE, UV).a;
+
+    // soften edges
+    mask = smoothstep(0.0, softness, mask);
+
+    // apply color lighting
+    vec3 lit = screen_col.rgb + (light_color.rgb * strength);
+
+    // blend only where mask exists
+    COLOR.rgb = mix(screen_col.rgb, lit, mask * light_color.a);
+    COLOR.a = mask;
+
+	float width_x = width * cos(radians(rotation));
+	float width_y = width * sin(radians(rotation));
+	float slope = tan(radians(rotation));
+
+	if (UV.x - position_x - width_x > (slope * (UV.y + width_y))) {
+		COLOR.a = 0.0;
+	}
+
+	if (UV.x - position_x < slope * UV.y) {
+		COLOR.a = 0.0;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xqt6"]
+shader = SubResource("Shader_6pdk7")
+shader_parameter/light_color = Color(0.6901961, 0.6156863, 0.43137255, 0.5058824)
+shader_parameter/strength = 1.0
+shader_parameter/softness = 0.2
+shader_parameter/width = 0.59
+shader_parameter/rotation = -40.8729976664675
+shader_parameter/position_x = 0.65
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pdk7"]
+shader = SubResource("Shader_6pdk7")
+shader_parameter/light_color = Color(0.6901961, 0.6156863, 0.43137255, 0.5058824)
+shader_parameter/strength = 1.0
+shader_parameter/softness = 0.2
+shader_parameter/width = 0.59
+shader_parameter/rotation = -40.8729976664675
+shader_parameter/position_x = 0.09
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gaqum"]
+shader = SubResource("Shader_6pdk7")
+shader_parameter/light_color = Color(0.6901961, 0.6156863, 0.43137255, 0.5058824)
+shader_parameter/strength = 1.0
+shader_parameter/softness = 0.2
+shader_parameter/width = 0.69
+shader_parameter/rotation = -40.8729976664675
+shader_parameter/position_x = 0.91
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_7v3s3")
@@ -205,19 +330,10 @@ position = Vector2(1338, 932)
 [node name="Boulder" parent="Decoration" instance=ExtResource("11_y1bwq")]
 position = Vector2(49, 983)
 
-[node name="PalmTest" parent="Decoration" instance=ExtResource("12_liaun")]
-position = Vector2(-339, 1047)
+[node name="Palm" type="Node2D" parent="Decoration"]
+position = Vector2(618, 933)
 
-[node name="PlayerLight" parent="Decoration" instance=ExtResource("13_251aq")]
-position = Vector2(-89, 692)
-
-[node name="TextureRect" type="TextureRect" parent="Decoration"]
-material = SubResource("ShaderMaterial_1xqt6")
-offset_left = 122.0
-offset_top = -184.0
-offset_right = 2122.0
-offset_bottom = 1816.0
-texture = ExtResource("16_2tdb8")
+[node name="PalmTest" parent="Decoration/Palm" instance=ExtResource("12_liaun")]
 
 [node name="obstacles" type="Node2D" parent="."]
 
@@ -502,14 +618,6 @@ position = Vector2(11773, -813)
 [node name="EnemyStatic17" parent="Enemies" instance=ExtResource("9_buawx")]
 position = Vector2(12736, -820)
 
-[node name="Player" parent="." instance=ExtResource("10_ufga5")]
-position = Vector2(-720, 874)
-
-[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("11_r0rxx")]
-limit_top = -10000007
-limit_bottom = 1073
-player = NodePath("..")
-
 [node name="OutOfBounds" parent="." instance=ExtResource("13_liaun")]
 position = Vector2(0, 1264)
 
@@ -536,3 +644,64 @@ offset_right = 958.0
 offset_bottom = 1024.0
 texture = ExtResource("28_vhta8")
 expand_mode = 1
+
+[node name="Node2D" type="Node2D" parent="tile_lighting"]
+
+[node name="Tree0Lighting" type="Node2D" parent="tile_lighting"]
+position = Vector2(246, -303)
+
+[node name="TextureRect2" type="TextureRect" parent="tile_lighting/Tree0Lighting"]
+material = SubResource("ShaderMaterial_2tdb8")
+offset_right = 2000.0
+offset_bottom = 2000.0
+texture = ExtResource("16_2tdb8")
+
+[node name="ColorRect" type="ColorRect" parent="tile_lighting/Tree0Lighting"]
+material = SubResource("ShaderMaterial_1xqt6")
+offset_left = 130.75
+offset_top = 1200.52
+offset_right = 392.7472
+offset_bottom = 1455.5195
+scale = Vector2(1.25, 1.25)
+
+[node name="ColorRect4" type="ColorRect" parent="tile_lighting/Tree0Lighting"]
+material = SubResource("ShaderMaterial_6pdk7")
+offset_left = 382.00003
+offset_top = 1276.0
+offset_right = 643.9979
+offset_bottom = 1530.9995
+scale = Vector2(0.66, 0.66)
+
+[node name="ColorRect3" type="ColorRect" parent="tile_lighting/Tree0Lighting"]
+material = SubResource("ShaderMaterial_gaqum")
+offset_left = 56.0
+offset_top = 1436.0
+offset_right = 317.9972
+offset_bottom = 1690.9995
+scale = Vector2(0.33, 0.33)
+
+[node name="PlayerLight" parent="tile_lighting/Tree0Lighting" instance=ExtResource("13_251aq")]
+visible = false
+position = Vector2(809.9999, 782)
+rotation = 0.71383965
+scale = Vector2(1.9959301, 1.7399999)
+
+[node name="PlayerLight2" parent="tile_lighting/Tree0Lighting" instance=ExtResource("13_251aq")]
+visible = false
+position = Vector2(294, 632)
+rotation = 1.2715292
+scale = Vector2(11.025946, -0.25210455)
+
+[node name="PlayerLight3" parent="tile_lighting/Tree0Lighting" instance=ExtResource("13_251aq")]
+visible = false
+position = Vector2(523, 449)
+rotation = -0.90652996
+scale = Vector2(11.025946, 1.0214367)
+
+[node name="Player" parent="." instance=ExtResource("10_ufga5")]
+position = Vector2(-720, 874)
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("11_r0rxx")]
+limit_top = -10000007
+limit_bottom = 1073
+player = NodePath("..")
