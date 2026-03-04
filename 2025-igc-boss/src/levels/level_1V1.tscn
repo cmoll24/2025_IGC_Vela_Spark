@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=41 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://6bqiuj8njmno" path="res://assets/objects/palmTest.png" id="16_2tdb8"]
 [ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="21_buawx"]
 [ext_resource type="PackedScene" uid="uid://k8x8w6sop5y2" path="res://src/decoration/underLight.tscn" id="27_smo1o"]
+[ext_resource type="Texture2D" uid="uid://cjihy7dfg2ojh" path="res://assets/objects/beam1.png" id="28_de7vx"]
 [ext_resource type="Texture2D" uid="uid://dc0dt6xninhra" path="res://assets/objects/underLight2.png" id="28_vhta8"]
 
 [sub_resource type="Gradient" id="Gradient_xvths"]
@@ -645,8 +646,6 @@ offset_bottom = 1024.0
 texture = ExtResource("28_vhta8")
 expand_mode = 1
 
-[node name="Node2D" type="Node2D" parent="tile_lighting"]
-
 [node name="Tree0Lighting" type="Node2D" parent="tile_lighting"]
 position = Vector2(246, -303)
 
@@ -697,6 +696,11 @@ visible = false
 position = Vector2(523, 449)
 rotation = -0.90652996
 scale = Vector2(11.025946, 1.0214367)
+
+[node name="Sprite2D" type="Sprite2D" parent="tile_lighting/Tree0Lighting"]
+position = Vector2(2009, -82)
+rotation = 0.28657913
+texture = ExtResource("28_de7vx")
 
 [node name="Player" parent="." instance=ExtResource("10_ufga5")]
 position = Vector2(-720, 874)
