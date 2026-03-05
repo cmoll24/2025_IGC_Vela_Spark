@@ -11,6 +11,8 @@ class_name Player
 @onready var animated_sprite = $flippable/PlayerSprite
 @onready var fireball_sprite = $flippable/FireBallSprite
 
+@onready var player_hitbox = $player_hitbox
+
 @onready var ground_collision = $GroundCollision
 @onready var air_collision = $AirCollision
 
@@ -78,7 +80,14 @@ func _physics_process(delta: float) -> void:
 	
 	debug_animation()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	var light_color : Color = darkened_color
+	for area in player_hitbox.get_overlapping_areas():
+		if area is PlayerLight:
+			light_color = area.brightened_color
+			break
+	modulate = modulate.lerp(light_color, 5 * delta)
+	
 	if not move_control.can_dash() and not move_control.is_dashing():
 		flip_node.modulate = Color.GRAY
 	else:
@@ -195,10 +204,9 @@ func _on_obstacle_collide(body: Node2D) -> void:
 			hit_and_respawn(body)
 		else:
 			hit_and_respawn(body)
-	
 
 func _on_enemy_collide(body: Node2D) -> void:
-	if (body is Enemy or body is Boss) and not body.is_dead:
+	if (body is Enemy or (body is Boss and body.can_deal_damage)) and not body.is_dead:
 		if  not move_control.dash_state and not move_control.dash_attack_state:
 			hit(body)
 
@@ -218,9 +226,3 @@ func _on_attack_obstacle_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("obstacles") or body is TileMapLayer) and (move_control.dash_state or move_control.dash_attack_state):
 		health_control.cancel_invincibility()
 		move_control.end_dash()
-
-func brighten(brightened_color):
-	modulate = brightened_color
-
-func unbrighten():
-	modulate = darkened_color

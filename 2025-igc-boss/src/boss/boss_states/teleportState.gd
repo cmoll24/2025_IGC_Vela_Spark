@@ -12,6 +12,7 @@ var initial_location : Vector2
 var target_location : Vector2
 
 func enter(_arg):
+	boss.can_deal_damage = false
 	initial_location = boss.global_position
 	target_location = boss.get_next_boss_position()
 	
@@ -60,3 +61,6 @@ func teleport():
 			transition.emit("boomerangAttack")
 	else:
 		transition.emit("straightAttack")
+
+func exit():
+	boss.can_deal_damage = true

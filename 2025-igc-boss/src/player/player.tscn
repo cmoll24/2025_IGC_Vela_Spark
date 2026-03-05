@@ -302,7 +302,7 @@ attack_look_ahead = NodePath("../flippable/attack_look_ahead")
 
 [node name="player_hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 12
+collision_mask = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 position = Vector2(0, -29.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=39 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_7v3s3"]
 [ext_resource type="PackedScene" uid="uid://gsv221h3cqya" path="res://src/obstacles/Spikes.tscn" id="3_e3r8n"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://chpu8dpd081yq" path="res://src/obstacles/outOfBounds.tscn" id="13_liaun"]
 [ext_resource type="Texture2D" uid="uid://6bqiuj8njmno" path="res://assets/objects/palmTest.png" id="16_2tdb8"]
 [ext_resource type="PackedScene" uid="uid://byw83nhr57gpx" path="res://src/decoration/bonfire.tscn" id="21_buawx"]
+[ext_resource type="Shader" uid="uid://dpa03556a0jl" path="res://assets/shaders/efficient_light.gdshader" id="27_de7vx"]
 [ext_resource type="PackedScene" uid="uid://k8x8w6sop5y2" path="res://src/decoration/underLight.tscn" id="27_smo1o"]
 [ext_resource type="Texture2D" uid="uid://dc0dt6xninhra" path="res://assets/objects/underLight2.png" id="28_vhta8"]
 
@@ -77,137 +78,72 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fcumj")
 
-[sub_resource type="Shader" id="Shader_de7vx"]
+[sub_resource type="Shader" id="Shader_2tdb8"]
 code = "shader_type canvas_item;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear, repeat_disable;
 
 uniform vec4 light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
 uniform float strength : hint_range(0.0, 2.0) = 1.0;
-uniform float softness : hint_range(0.0, 1.0) = 0.2;
 
-// Width of the rectangle
-uniform float width = 0.5;
+uniform float width_x = 0.5;
+uniform float slope = 0.0;
+//uniform float rotation : hint_range(-90.0, 90.0) = 0.0;
+uniform float position_x : hint_range(0.0, 1.0) = 0.5;
 
-// Rotation of the rectangle
-uniform float rotation : hint_range(-90.0, 90.0) = 0.0;
 
-// Center point of the polygon
-uniform float position_x = 0.5;
 
 void fragment() {
-    vec4 screen_col = texture(SCREEN_TEXTURE, SCREEN_UV);
+	// Clipping check
+    if ((UV.x - position_x - width_x) > (slope * UV.y)) {
+        //COLOR.a = 0.0;
+		discard;
+	}
+    if ((UV.x - position_x) < (slope * UV.y)) {
+        //COLOR.a = 0.0;
+        discard;
+	 }
 
     // Use this object's alpha as mask
     float mask = texture(TEXTURE, UV).a;
-
-    // soften edges
-    mask = smoothstep(0.0, softness, mask);
-
+	
+	if (mask < 0.001) {
+        //COLOR.a = 0.0;
+        discard;
+    }
+	
+	vec4 screen_col = texture(SCREEN_TEXTURE, SCREEN_UV);
     // apply color lighting
     vec3 lit = screen_col.rgb + (light_color.rgb * strength);
 
-    // blend only where mask exists
+    // blend
     COLOR.rgb = mix(screen_col.rgb, lit, mask * light_color.a);
-    COLOR.a = mask;
-
-	float width_x = width * cos(radians(rotation));
-	float width_y = width * sin(radians(rotation));
-	float slope = tan(radians(rotation));
-
-	if (UV.x - position_x - width_x > (slope * (UV.y + width_y))) {
-		COLOR.a = 0.0;
-	}
-
-	if (UV.x - position_x < slope * UV.y) {
-		COLOR.a = 0.0;
-	}
 }
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2tdb8"]
-shader = SubResource("Shader_de7vx")
+shader = SubResource("Shader_2tdb8")
 shader_parameter/light_color = Color(0.78550386, 0.7448885, 0.47620222, 0.25882354)
 shader_parameter/strength = 1.0
-shader_parameter/softness = 1.0
-shader_parameter/width = 0.3
-shader_parameter/rotation = -40.8729976664675
-shader_parameter/position_x = 0.5
-
-[sub_resource type="Shader" id="Shader_6pdk7"]
-code = "shader_type canvas_item;
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
-
-uniform vec4 light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
-uniform float strength : hint_range(0.0, 2.0) = 1.0;
-uniform float softness : hint_range(0.0, 1.0) = 0.2;
-
-// Width of the rectangle
-uniform float width = 0.5;
-
-// Rotation of the rectangle
-uniform float rotation : hint_range(-90.0, 90.0) = 0.0;
-
-// Center point of the polygon
-uniform float position_x = 0.5;
-
-void fragment() {
-    vec4 screen_col = texture(SCREEN_TEXTURE, SCREEN_UV);
-
-    // Use this object's alpha as mask
-    float mask = texture(TEXTURE, UV).a;
-
-    // soften edges
-    mask = smoothstep(0.0, softness, mask);
-
-    // apply color lighting
-    vec3 lit = screen_col.rgb + (light_color.rgb * strength);
-
-    // blend only where mask exists
-    COLOR.rgb = mix(screen_col.rgb, lit, mask * light_color.a);
-    COLOR.a = mask;
-
-	float width_x = width * cos(radians(rotation));
-	float width_y = width * sin(radians(rotation));
-	float slope = tan(radians(rotation));
-
-	if (UV.x - position_x - width_x > (slope * (UV.y + width_y))) {
-		COLOR.a = 0.0;
-	}
-
-	if (UV.x - position_x < slope * UV.y) {
-		COLOR.a = 0.0;
-	}
-}
-"
+shader_parameter/width_x = 0.5
+shader_parameter/slope = -0.76
+shader_parameter/position_x = 0.450000021375
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1xqt6"]
-shader = SubResource("Shader_6pdk7")
+shader = ExtResource("27_de7vx")
 shader_parameter/light_color = Color(0.6901961, 0.6156863, 0.43137255, 0.5058824)
 shader_parameter/strength = 1.0
-shader_parameter/softness = 0.2
-shader_parameter/width = 0.59
-shader_parameter/rotation = -40.8729976664675
-shader_parameter/position_x = 0.65
+shader_parameter/width_x = 0.8
+shader_parameter/slope = -0.76
+shader_parameter/position_x = 0.650000030875
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6pdk7"]
-shader = SubResource("Shader_6pdk7")
+shader = ExtResource("27_de7vx")
 shader_parameter/light_color = Color(0.6901961, 0.6156863, 0.43137255, 0.5058824)
 shader_parameter/strength = 1.0
-shader_parameter/softness = 0.2
-shader_parameter/width = 0.59
-shader_parameter/rotation = -40.8729976664675
-shader_parameter/position_x = 0.09
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gaqum"]
-shader = SubResource("Shader_6pdk7")
-shader_parameter/light_color = Color(0.6901961, 0.6156863, 0.43137255, 0.5058824)
-shader_parameter/strength = 1.0
-shader_parameter/softness = 0.2
-shader_parameter/width = 0.69
-shader_parameter/rotation = -40.8729976664675
-shader_parameter/position_x = 0.91
+shader_parameter/width_x = 0.7
+shader_parameter/slope = -0.76
+shader_parameter/position_x = 0.26000001235
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_7v3s3")
@@ -671,14 +607,6 @@ offset_top = 1276.0
 offset_right = 643.9979
 offset_bottom = 1530.9995
 scale = Vector2(0.66, 0.66)
-
-[node name="ColorRect3" type="ColorRect" parent="tile_lighting/Tree0Lighting"]
-material = SubResource("ShaderMaterial_gaqum")
-offset_left = 56.0
-offset_top = 1436.0
-offset_right = 317.9972
-offset_bottom = 1690.9995
-scale = Vector2(0.33, 0.33)
 
 [node name="PlayerLight" parent="tile_lighting/Tree0Lighting" instance=ExtResource("13_251aq")]
 visible = false
