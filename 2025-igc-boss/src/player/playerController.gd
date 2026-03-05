@@ -82,11 +82,13 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	var light_color : Color = darkened_color
+	var speed_scale : int = 5
 	for area in player_hitbox.get_overlapping_areas():
 		if area is PlayerLight:
 			light_color = area.brightened_color
+			speed_scale = area.brightening_speed
 			break
-	modulate = modulate.lerp(light_color, 5 * delta)
+	modulate = modulate.lerp(light_color, speed_scale * delta)
 	
 	if not move_control.can_dash() and not move_control.is_dashing():
 		flip_node.modulate = Color.GRAY

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=30 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_q7moy"]
 [ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="2_lck47"]
@@ -24,8 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://l7ldc081n8bc" path="res://src/decoration/fossil1.tscn" id="20_fvqhm"]
 [ext_resource type="PackedScene" uid="uid://g2330gti4dse" path="res://src/decoration/medrock.tscn" id="20_wlefs"]
 [ext_resource type="PackedScene" uid="uid://dd2odmql22ii8" path="res://src/decoration/fossil5.tscn" id="21_ivaxa"]
-[ext_resource type="Material" uid="uid://cjj1a38olovap" path="res://assets/shaders/light_beam.tres" id="22_ivaxa"]
-[ext_resource type="Shader" uid="uid://djabl30ax8em3" path="res://assets/shaders/brightner_mask.gdshader" id="23_yx0q3"]
 
 [sub_resource type="Gradient" id="Gradient_lck47"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -77,15 +75,6 @@ sources/1 = SubResource("TileSetAtlasSource_fcumj")
 [sub_resource type="Gradient" id="Gradient_ghtb1"]
 interpolation_color_space = 2
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rkha"]
-shader = ExtResource("23_yx0q3")
-shader_parameter/light_color = Color(0.78550386, 0.7448885, 0.47620222, 0.25882354)
-shader_parameter/strength = 1.0
-shader_parameter/softness = 1.0
-shader_parameter/width = 0.5
-shader_parameter/rotation = -7.659996088849994
-shader_parameter/position_x = 0.4
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_q7moy")
@@ -321,27 +310,6 @@ scale = Vector2(1.5, 1.5)
 
 [node name="MediumRock" parent="decoration_above" instance=ExtResource("20_wlefs")]
 position = Vector2(7040, 320)
-
-[node name="ColorRect" type="ColorRect" parent="decoration_above"]
-material = ExtResource("22_ivaxa")
-offset_left = 1319.0
-offset_top = 832.0
-offset_right = 1590.0
-offset_bottom = 1153.0
-
-[node name="ColorRect2" type="ColorRect" parent="decoration_above"]
-material = SubResource("ShaderMaterial_1rkha")
-offset_left = 935.0
-offset_top = 960.0
-offset_right = 1248.0
-offset_bottom = 1153.0
-
-[node name="ColorRect3" type="ColorRect" parent="decoration_above"]
-material = ExtResource("22_ivaxa")
-offset_left = 496.0
-offset_top = 965.0
-offset_right = 785.0
-offset_bottom = 1206.0
 
 [node name="LevelTransition" parent="." instance=ExtResource("9_rllik")]
 position = Vector2(9796, -338)
