@@ -108,15 +108,16 @@ func is_combat_phase(pos = null) -> bool:
 	return pos.y > ARENA_VERTICAL
 
 func take_damage(amount: int) -> void:
-	health = max(health - amount, 0)
-	hurt_sound.play()
+	health = health - amount
 	
 	if health <= 0:
 		die()
+		return
 	
 	if is_dead:
 		return
 	
+	hurt_sound.play()
 	if state_machine.is_current_state("TeleportState"):
 		return
 	
@@ -129,11 +130,11 @@ func die():
 	is_dead = true
 	player.health_control.full_heal()
 	player.health_decay = false
-	
-	z_index = -1
+
 	death_sound.play()
-	animation_player.play("death")
-	await animation_player.animation_finished
+	animated_sprite.play("death")
+	#animation_player.play("death")
+	await animated_sprite.animation_finished
 	queue_free()
 
 func play_animation(new_anim : String):
