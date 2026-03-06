@@ -75,12 +75,6 @@ animations = [{
 "duration": 2.0,
 "texture": ExtResource("5_muxuo")
 }, {
-"duration": 2.0,
-"texture": ExtResource("4_g7m01")
-}, {
-"duration": 2.0,
-"texture": ExtResource("5_muxuo")
-}, {
 "duration": 1.0,
 "texture": ExtResource("5_xqiyp")
 }, {
@@ -371,7 +365,6 @@ texture = ExtResource("10_j3b7s")
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_2vrfn")
 animation = &"death"
-frame_progress = 0.6826623
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.875)
