@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://dm6bhs0bc6ji1"]
+[gd_scene load_steps=10 format=3 uid="uid://dm6bhs0bc6ji1"]
+
+[ext_resource type="Texture2D" uid="uid://cejbm73itjexj" path="res://assets/boss/candle/Boss_Flame1.png" id="1_0ne5h"]
+[ext_resource type="Texture2D" uid="uid://d4mrdqkj88ew7" path="res://assets/boss/candle/Boss_Flame8.png" id="2_itepu"]
+[ext_resource type="Texture2D" uid="uid://bro2qyf84w8pp" path="res://assets/boss/candle/Boss_Flame3.png" id="3_lf6tm"]
+[ext_resource type="Texture2D" uid="uid://due73nyml1v4d" path="res://assets/boss/candle/Boss_Flame6.png" id="4_syfkn"]
+[ext_resource type="Texture2D" uid="uid://c0r4y15cju2d2" path="res://assets/boss/candle/Boss_Flame4.png" id="5_cg347"]
+[ext_resource type="Texture2D" uid="uid://dneugjopgmcgm" path="res://assets/boss/candle/Boss_Flame2.png" id="6_xs618"]
+[ext_resource type="Texture2D" uid="uid://cnse7gdo8i0cp" path="res://assets/boss/candle/Boss_Flame5.png" id="7_hyb2q"]
+[ext_resource type="Texture2D" uid="uid://bxpgdlukutbmq" path="res://assets/boss/candle/Boss_Flame7.png" id="8_ur0v2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8dm4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0ne5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_itepu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lf6tm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_syfkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cg347")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xs618")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hyb2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ur0v2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [node name="BossCandle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v8dm4")
+frame = 6
+frame_progress = 0.998494
