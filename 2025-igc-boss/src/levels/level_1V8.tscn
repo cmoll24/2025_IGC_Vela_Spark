@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://dtav8706bc66j"]
+[gd_scene load_steps=35 format=4 uid="uid://dtav8706bc66j"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_kfd3v"]
 [ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="2_7i0di"]
@@ -28,8 +28,6 @@
 [ext_resource type="Shader" uid="uid://dtxirtm58ke7a" path="res://rectangle_mask.gdshader" id="26_7d1so"]
 [ext_resource type="Texture2D" uid="uid://dktbejf153ykr" path="res://assets/background/brighter tile.png" id="27_kgwji"]
 [ext_resource type="Texture2D" uid="uid://bcih4t83ve7xq" path="res://assets/objects/bonfire1.png" id="29_7d1so"]
-[ext_resource type="Material" uid="uid://b8au5brqvt6nm" path="res://assets/shaders/light_material_1.tres" id="29_vki0v"]
-[ext_resource type="Shader" uid="uid://b78xpoxitrpob" path="res://src/levels/brightner.gdshader" id="29_ws5kc"]
 
 [sub_resource type="Gradient" id="Gradient_lck47"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -65,18 +63,6 @@ shader = ExtResource("26_7d1so")
 shader_parameter/width = 0.2
 shader_parameter/rotation = -39.999997625
 shader_parameter/position_x = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7d1so"]
-shader = ExtResource("29_ws5kc")
-shader_parameter/light_color = Color(1, 1, 1, 0.259)
-shader_parameter/strength = 1.0
-shader_parameter/softness = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws5kc"]
-shader = ExtResource("29_ws5kc")
-shader_parameter/light_color = Color(1.0187511, 0.9909582, 0, 0.149)
-shader_parameter/strength = 0.8800000418
-shader_parameter/softness = 1.0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_kfd3v")
@@ -334,14 +320,12 @@ texture = ExtResource("29_7d1so")
 stretch_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = ExtResource("29_vki0v")
 offset_left = 4446.0
 offset_top = 1026.0
 offset_right = 4664.8135
 offset_bottom = 1252.0
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_7d1so")
 offset_left = 4476.9995
 offset_top = -408.0002
 offset_right = 4695.813
@@ -349,7 +333,6 @@ offset_bottom = 1411.5568
 rotation = 0.2617994
 
 [node name="ColorRect3" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_ws5kc")
 offset_left = 5714.9995
 offset_top = -456.0002
 offset_right = 5933.813

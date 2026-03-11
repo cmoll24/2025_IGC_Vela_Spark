@@ -251,7 +251,7 @@ texture = SubResource("GradientTexture1D_xvths")
 [node name="Decoration" type="Node2D" parent="."]
 
 [node name="Cloud" parent="Decoration" instance=ExtResource("9_251aq")]
-position = Vector2(-1084, 487)
+position = Vector2(-2412, 440)
 scale = Vector2(0.67, 0.67)
 
 [node name="Stilt" parent="Decoration" instance=ExtResource("9_r0rxx")]

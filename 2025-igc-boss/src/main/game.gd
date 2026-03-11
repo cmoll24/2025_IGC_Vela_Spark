@@ -36,3 +36,9 @@ func load_level(new_level) -> void:
 	level_container.add_child(current_level)
 	current_level.get_player().health_control.health = Global.player_health
 	animation_player.play("fade_out")
+
+func hide_UI():
+	hud.hide()
+
+func show_UI():
+	hud.show()

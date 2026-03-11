@@ -314,7 +314,7 @@ position = Vector2(7040, 320)
 [node name="LevelTransition" parent="." instance=ExtResource("9_rllik")]
 position = Vector2(9796, -338)
 scale = Vector2(2, 10)
-load_level_index = 1
+load_level_index = 10
 
 [node name="OutOfBounds" parent="." instance=ExtResource("11_v1uv6")]
 position = Vector2(0, 1264)
