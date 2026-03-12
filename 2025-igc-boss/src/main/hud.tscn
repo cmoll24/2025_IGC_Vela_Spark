@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxq44n7s3ceta"]
+[gd_scene load_steps=15 format=3 uid="uid://dxq44n7s3ceta"]
 
 [ext_resource type="Script" uid="uid://cbu755oj7nlxw" path="res://src/main/hud.gd" id="1_7of0l"]
 [ext_resource type="Texture2D" uid="uid://crakg55fhyldx" path="res://assets/ui/Vela_HealthBar_Fill.png" id="2_svyqj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cj5xes5nc8nko" path="res://assets/ui/arrow mobile pressed.png" id="5_svyqj"]
 [ext_resource type="Texture2D" uid="uid://ho6ud6puimq1" path="res://assets/ui/dashmobile.png" id="6_svyqj"]
 [ext_resource type="Texture2D" uid="uid://c0k78owd10maw" path="res://assets/ui/HealthFrame.png" id="7_qw8kp"]
+[ext_resource type="FontFile" uid="uid://8yjtirvwxysi" path="res://assets/font/Salsa/Salsa-Regular.ttf" id="8_d833s"]
 [ext_resource type="Texture2D" uid="uid://dd65b80etsp8s" path="res://assets/ui/menumobileupdated.png" id="8_k7y1h"]
 [ext_resource type="Texture2D" uid="uid://n15df7kr2x1x" path="res://assets/ui/menumobilelit.png" id="9_d833s"]
 
@@ -99,6 +100,7 @@ offset_left = 1397.0
 offset_top = 3.0
 offset_right = 1766.0
 offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("8_d833s")
 theme_override_font_sizes/font_size = 54
 text = "00:00:00"
 horizontal_alignment = 2

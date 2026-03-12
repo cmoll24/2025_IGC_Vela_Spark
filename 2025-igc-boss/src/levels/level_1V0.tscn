@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bqat4apaj0hhj"]
+[gd_scene load_steps=31 format=4 uid="uid://bqat4apaj0hhj"]
 
 [ext_resource type="Script" uid="uid://c5lrvtf7k18k6" path="res://src/levels/level.gd" id="1_q7moy"]
 [ext_resource type="Texture2D" uid="uid://ct707k5jm877c" path="res://assets/background/2parallax_3.png" id="2_lck47"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://l7ldc081n8bc" path="res://src/decoration/fossil1.tscn" id="20_fvqhm"]
 [ext_resource type="PackedScene" uid="uid://g2330gti4dse" path="res://src/decoration/medrock.tscn" id="20_wlefs"]
 [ext_resource type="PackedScene" uid="uid://dd2odmql22ii8" path="res://src/decoration/fossil5.tscn" id="21_ivaxa"]
+[ext_resource type="FontFile" uid="uid://8yjtirvwxysi" path="res://assets/font/Salsa/Salsa-Regular.ttf" id="25_fvqhm"]
 
 [sub_resource type="Gradient" id="Gradient_lck47"]
 offsets = PackedFloat32Array(0, 0.88666666)
@@ -353,6 +354,7 @@ offset_left = 1450.0
 offset_top = 494.0
 offset_right = 2010.0
 offset_bottom = 557.0
+theme_override_fonts/font = ExtResource("25_fvqhm")
 theme_override_font_sizes/font_size = 45
 text = "Hold Jump to jump higher"
 horizontal_alignment = 1
@@ -362,6 +364,7 @@ offset_left = 4021.0
 offset_top = 148.0
 offset_right = 4508.0
 offset_bottom = 277.0
+theme_override_fonts/font = ExtResource("25_fvqhm")
 theme_override_font_sizes/font_size = 45
 text = "Press jump in the air  to double jump"
 horizontal_alignment = 1
@@ -372,6 +375,7 @@ offset_left = 5611.0
 offset_top = -348.0
 offset_right = 6098.0
 offset_bottom = -219.0
+theme_override_fonts/font = ExtResource("25_fvqhm")
 theme_override_font_sizes/font_size = 45
 text = "Dash through enemies to burn them"
 horizontal_alignment = 1
@@ -382,6 +386,7 @@ offset_left = 6652.0
 offset_top = -337.0
 offset_right = 7139.0
 offset_bottom = -208.0
+theme_override_fonts/font = ExtResource("25_fvqhm")
 theme_override_font_sizes/font_size = 45
 text = "Burning enemies restores your dash"
 horizontal_alignment = 1
@@ -392,6 +397,7 @@ offset_left = 7635.0
 offset_top = -126.0
 offset_right = 8232.0
 offset_bottom = -63.0
+theme_override_fonts/font = ExtResource("25_fvqhm")
 theme_override_font_sizes/font_size = 45
 text = "Killing enemies heals you"
 horizontal_alignment = 1

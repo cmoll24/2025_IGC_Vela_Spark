@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d023wfpur3y7d"]
+[gd_scene load_steps=3 format=3 uid="uid://d023wfpur3y7d"]
 
 [ext_resource type="Script" uid="uid://dd2ndvdmuxh3m" path="res://src/ui/control_info.gd" id="1_nqthv"]
+[ext_resource type="FontFile" uid="uid://8yjtirvwxysi" path="res://assets/font/Salsa/Salsa-Regular.ttf" id="2_l07pa"]
 
 [node name="ControlInfo" type="Control"]
 layout_mode = 3
@@ -15,5 +16,6 @@ script = ExtResource("1_nqthv")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_l07pa")
 theme_override_font_sizes/font_size = 48
 text = "Placeholder text"

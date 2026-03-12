@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhygbolntnhnm"]
+[gd_scene load_steps=3 format=3 uid="uid://dhygbolntnhnm"]
 
 [ext_resource type="Script" uid="uid://pn1xxh8yefk4" path="res://src/ui/pause.gd" id="1_3v2ig"]
+[ext_resource type="FontFile" uid="uid://8yjtirvwxysi" path="res://assets/font/Salsa/Salsa-Regular.ttf" id="2_8vqgg"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -29,16 +30,24 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Menu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8vqgg")
 theme_override_font_sizes/font_size = 48
 text = "Game Paused"
 
+[node name="Label2" type="Label" parent="Menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8vqgg")
+theme_override_font_sizes/font_size = 48
+
 [node name="Resume" type="Button" parent="Menu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8vqgg")
 theme_override_font_sizes/font_size = 48
 text = "Resume"
 
 [node name="Quit" type="Button" parent="Menu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8vqgg")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 

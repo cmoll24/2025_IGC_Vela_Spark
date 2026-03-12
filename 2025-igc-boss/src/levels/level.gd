@@ -8,6 +8,7 @@ class_name Level
 @export var level_name : String
 
 func _ready() -> void:
+	Global.get_game_scene().show_UI()
 	var find_boss : Boss = get_node_or_null(NodePath("./BossTree/Boss"))
 	if find_boss:
 		find_boss.setup_with_player(get_player())
