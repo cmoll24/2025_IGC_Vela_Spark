@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=65 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -57,7 +57,6 @@
 [ext_resource type="Texture2D" uid="uid://c622s1hf5y8b2" path="res://assets/boss/teleport/Teleport_Animation-18.png" id="21_c2vm8"]
 [ext_resource type="Texture2D" uid="uid://33wfumev7pw" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-1.png" id="21_m16dm"]
 [ext_resource type="Texture2D" uid="uid://dnxnbf6nnsdha" path="res://assets/boss/teleport/Teleport_Animation-19.png" id="22_16ob0"]
-[ext_resource type="AudioStream" uid="uid://dpegsd0vijifp" path="res://assets/sound/BossHurtSound.mp3" id="22_muxuo"]
 [ext_resource type="AudioStream" uid="uid://ctlxe26lmp056" path="res://assets/sound/BossDeathSound.mp3" id="23_yahjj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2vrfn"]
@@ -461,11 +460,6 @@ offset_bottom = 35.0
 scale = Vector2(2, 2)
 text = "Health"
 horizontal_alignment = 1
-
-[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("22_muxuo")
-volume_db = -10.0
-max_distance = 10000.0
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_yahjj")

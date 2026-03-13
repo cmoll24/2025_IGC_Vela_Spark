@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwic20tndt42p"]
+[gd_scene load_steps=42 format=3 uid="uid://bwic20tndt42p"]
 
 [ext_resource type="Texture2D" uid="uid://dnxnbf6nnsdha" path="res://assets/boss/teleport/Teleport_Animation-19.png" id="1_mf6k4"]
 [ext_resource type="Texture2D" uid="uid://c622s1hf5y8b2" path="res://assets/boss/teleport/Teleport_Animation-18.png" id="2_bbq3k"]
@@ -20,6 +20,26 @@
 [ext_resource type="Texture2D" uid="uid://djgrvepa57x1c" path="res://assets/boss/teleport/Teleport_Animation-2.png" id="18_panbl"]
 [ext_resource type="Texture2D" uid="uid://bmd2wb7bv3jm7" path="res://assets/boss/teleport/Teleport_Animation-1.png" id="19_berjx"]
 [ext_resource type="Script" uid="uid://bkw1l4qkd4gdi" path="res://src/boss/boss_teleport_animtion.gd" id="20_y3yit"]
+[ext_resource type="AudioStream" uid="uid://dpegsd0vijifp" path="res://assets/sound/BossHurtSound.mp3" id="21_bbq3k"]
+[ext_resource type="Texture2D" uid="uid://bwutxkfjb0lof" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-19.png" id="21_gqeum"]
+[ext_resource type="Texture2D" uid="uid://d11cavdfkfqs6" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-18.png" id="22_832fw"]
+[ext_resource type="Texture2D" uid="uid://ck4rkmhsw6pco" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-17.png" id="23_ci3oh"]
+[ext_resource type="Texture2D" uid="uid://bkgmehdobrey0" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-16.png" id="24_pv8yj"]
+[ext_resource type="Texture2D" uid="uid://cn23mld058o26" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-15.png" id="25_p3hk7"]
+[ext_resource type="Texture2D" uid="uid://cwnjuhafiarhc" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-14.png" id="26_4srhw"]
+[ext_resource type="Texture2D" uid="uid://dmnf8qqi6o485" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-13.png" id="27_xhab2"]
+[ext_resource type="Texture2D" uid="uid://c6dt60egp0ro0" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-12.png" id="28_0jphc"]
+[ext_resource type="Texture2D" uid="uid://c6kfs8xph3umi" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-11.png" id="29_i44ew"]
+[ext_resource type="Texture2D" uid="uid://gdqrrcrccpbn" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-10.png" id="30_b0v2c"]
+[ext_resource type="Texture2D" uid="uid://c1xrq7qudmqxb" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-9.png" id="31_5168p"]
+[ext_resource type="Texture2D" uid="uid://jt8vnnpwjynk" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-8.png" id="32_p7upq"]
+[ext_resource type="Texture2D" uid="uid://b1dbfin5rlya4" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-7.png" id="33_cylq6"]
+[ext_resource type="Texture2D" uid="uid://b7jn7xum0gwn8" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-6.png" id="34_b30c1"]
+[ext_resource type="Texture2D" uid="uid://bd047g58dq503" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-5.png" id="35_d11sy"]
+[ext_resource type="Texture2D" uid="uid://b482j78vfm8lj" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-4.png" id="36_x0gll"]
+[ext_resource type="Texture2D" uid="uid://bk4xmjivt15un" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-3.png" id="37_c6puj"]
+[ext_resource type="Texture2D" uid="uid://c3pkux0b70xle" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-2.png" id="38_kek21"]
+[ext_resource type="Texture2D" uid="uid://33wfumev7pw" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-1.png" id="39_2lvfd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gqeum"]
 animations = [{
@@ -84,6 +104,68 @@ animations = [{
 "loop": false,
 "name": &"teleport_disappear",
 "speed": 18.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_gqeum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_832fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ci3oh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_pv8yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_p3hk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_4srhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xhab2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0jphc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_i44ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_b0v2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_5168p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_p7upq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_cylq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_b30c1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_d11sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_x0gll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_c6puj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_kek21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_2lvfd")
+}],
+"loop": false,
+"name": &"teleport_disappear_flameless",
+"speed": 18.0
 }]
 
 [node name="BossTeleportAnimation" type="Node2D"]
@@ -93,6 +175,12 @@ script = ExtResource("20_y3yit")
 position = Vector2(0, -15.000001)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_gqeum")
-animation = &"teleport_disappear"
+animation = &"teleport_disappear_flameless"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_bbq3k")
+volume_db = -10.0
+max_distance = 10000.0
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="finished" from="HurtSound" to="." method="_on_hurt_sound_finished"]

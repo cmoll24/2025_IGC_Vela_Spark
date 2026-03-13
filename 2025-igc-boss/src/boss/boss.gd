@@ -11,7 +11,6 @@ class_name Boss
 @onready var animated_sprite = $flippable/AnimatedSprite2D
 @onready var animation_player = $AnimationPlayer
 
-@onready var hurt_sound = $HurtSound
 @onready var death_sound = $DeathSound
 
 @export_category("Movement variables")
@@ -117,7 +116,6 @@ func take_damage(amount: int) -> void:
 	if is_dead:
 		return
 	
-	hurt_sound.play()
 	if state_machine.is_current_state("TeleportState"):
 		return
 	
