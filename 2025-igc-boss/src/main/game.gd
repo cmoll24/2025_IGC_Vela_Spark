@@ -6,8 +6,11 @@ var level_file_path = "res://src/levels/level_1V{level_num}.tscn"
 @onready var level_container = $level_container
 @onready var hud = $HUD
 @onready var animation_player = $AnimationPlayer
+@onready var music_controller : MusicController = $MusicController
 
 var current_level : Level
+
+signal switch_level(new_level : int)
 
 func _ready() -> void:
 	Global.game_scene = self
@@ -18,11 +21,14 @@ func _ready() -> void:
 	level_container.add_child(current_level)
 	
 	hud.setup()
+	music_controller.setup(self)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
-func load_level(new_level) -> void:
-	print("Load Next Level")
+func load_level(new_level : int) -> void:
+	print("Load Next Level " + str(new_level))
+	switch_level.emit(new_level)
+	
 	animation_player.play("fade_in")
 	await get_tree().create_timer(1).timeout
 	current_level.queue_free()

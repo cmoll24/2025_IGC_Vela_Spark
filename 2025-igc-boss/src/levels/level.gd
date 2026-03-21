@@ -5,7 +5,7 @@ class_name Level
 @onready var projectile_tree = $ProjectileTree
 @onready var enemy_tree = $Enemies
 
-@export var level_name : String
+#@export var level_name : String
 
 func _ready() -> void:
 	Global.get_game_scene().show_UI()

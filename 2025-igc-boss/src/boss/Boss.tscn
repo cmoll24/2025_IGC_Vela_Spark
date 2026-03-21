@@ -57,7 +57,7 @@
 [ext_resource type="Texture2D" uid="uid://c622s1hf5y8b2" path="res://assets/boss/teleport/Teleport_Animation-18.png" id="21_c2vm8"]
 [ext_resource type="Texture2D" uid="uid://33wfumev7pw" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-1.png" id="21_m16dm"]
 [ext_resource type="Texture2D" uid="uid://dnxnbf6nnsdha" path="res://assets/boss/teleport/Teleport_Animation-19.png" id="22_16ob0"]
-[ext_resource type="AudioStream" uid="uid://ctlxe26lmp056" path="res://assets/sound/BossDeathSound.mp3" id="23_yahjj"]
+[ext_resource type="AudioStream" uid="uid://ctlxe26lmp056" path="res://assets/audio/sound/BossDeathSound.mp3" id="23_yahjj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2vrfn"]
 animations = [{

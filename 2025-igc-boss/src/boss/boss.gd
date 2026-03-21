@@ -129,6 +129,7 @@ func die():
 	player.health_control.full_heal()
 	player.health_decay = false
 
+	Global.get_game_scene().music_controller.stop_music()
 	death_sound.play()
 	animated_sprite.play("death")
 	#animation_player.play("death")

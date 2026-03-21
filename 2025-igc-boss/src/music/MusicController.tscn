@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://d041iwipro8m1"]
+
+[ext_resource type="Script" uid="uid://bljoyavqoes82" path="res://src/music/music_controller.gd" id="1_gk7fi"]
+[ext_resource type="PackedScene" uid="uid://damfif35pdhdk" path="res://src/music/MusicPlayer.tscn" id="2_2lbxl"]
+[ext_resource type="AudioStream" uid="uid://d03c2w4q1t1jv" path="res://assets/audio/music/ebunny-anxiety-364958.mp3" id="2_7bmw8"]
+[ext_resource type="AudioStream" uid="uid://dmdrok7f547wx" path="res://assets/audio/music/ebunny-dark-hero-366518.mp3" id="3_8vngv"]
+[ext_resource type="AudioStream" uid="uid://cuhoqphwfdm6m" path="res://assets/audio/music/ebunny-horror-loop-366825.mp3" id="4_j8gy8"]
+
+[node name="MusicController" type="Node"]
+script = ExtResource("1_gk7fi")
+
+[node name="CutsceneMusic" parent="." instance=ExtResource("2_2lbxl")]
+stream = ExtResource("2_7bmw8")
+volume_db = -38.0
+bus = &"music"
+default_volume = -38.0
+
+[node name="BossMusic" parent="." instance=ExtResource("2_2lbxl")]
+stream = ExtResource("3_8vngv")
+volume_db = -25.0
+bus = &"music"
+parameters/looping = true
+default_volume = -25.0
+
+[node name="LevelMusic" parent="." instance=ExtResource("2_2lbxl")]
+stream = ExtResource("4_j8gy8")
+volume_db = -38.0
+bus = &"music"
+parameters/looping = true
+default_volume = -38.0
