@@ -132,6 +132,7 @@ func die():
 	Global.get_game_scene().music_controller.stop_music()
 	death_sound.play()
 	animated_sprite.play("death")
+	kill_minions()
 	#animation_player.play("death")
 	await animated_sprite.animation_finished
 	queue_free()
