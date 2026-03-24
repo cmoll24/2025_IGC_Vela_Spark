@@ -105,5 +105,6 @@ libraries = {
 stream = ExtResource("5_vp2t8")
 volume_db = -10.0
 autoplay = true
+bus = &"sound effect"
 
 [node name="MusicController" parent="." instance=ExtResource("6_cpn03")]

@@ -5,8 +5,8 @@ class_name MusicController
 @onready var boss_music : MusicPlayer = $BossMusic
 @onready var level_music : MusicPlayer = $LevelMusic
 
-var quiet_audio_volume : float = -80
-var music_volume : float = -38
+#var quiet_audio_volume : float = -80
+#var music_volume : float = -30
 
 func setup(game_scene : Game):
 	game_scene.switch_level.connect(load_level_music)

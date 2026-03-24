@@ -465,6 +465,7 @@ horizontal_alignment = 1
 stream = ExtResource("23_yahjj")
 volume_db = -25.0
 max_distance = 10000.0
+bus = &"sound effect"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -11,9 +11,9 @@ script = ExtResource("1_gk7fi")
 
 [node name="CutsceneMusic" parent="." instance=ExtResource("2_2lbxl")]
 stream = ExtResource("2_7bmw8")
-volume_db = -38.0
+volume_db = -32.0
 bus = &"music"
-default_volume = -38.0
+default_volume = -32.0
 
 [node name="BossMusic" parent="." instance=ExtResource("2_2lbxl")]
 stream = ExtResource("3_8vngv")
@@ -24,7 +24,7 @@ default_volume = -25.0
 
 [node name="LevelMusic" parent="." instance=ExtResource("2_2lbxl")]
 stream = ExtResource("4_j8gy8")
-volume_db = -38.0
+volume_db = -35.0
 bus = &"music"
 parameters/looping = true
-default_volume = -38.0
+default_volume = -35.0

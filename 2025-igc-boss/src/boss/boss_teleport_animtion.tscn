@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://djgrvepa57x1c" path="res://assets/boss/teleport/Teleport_Animation-2.png" id="18_panbl"]
 [ext_resource type="Texture2D" uid="uid://bmd2wb7bv3jm7" path="res://assets/boss/teleport/Teleport_Animation-1.png" id="19_berjx"]
 [ext_resource type="Script" uid="uid://bkw1l4qkd4gdi" path="res://src/boss/boss_teleport_animtion.gd" id="20_y3yit"]
-[ext_resource type="AudioStream" uid="uid://dpegsd0vijifp" path="res://assets/sound/BossHurtSound.mp3" id="21_bbq3k"]
+[ext_resource type="AudioStream" uid="uid://dpegsd0vijifp" path="res://assets/audio/sound/BossHurtSound.mp3" id="21_bbq3k"]
 [ext_resource type="Texture2D" uid="uid://bwutxkfjb0lof" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-19.png" id="21_gqeum"]
 [ext_resource type="Texture2D" uid="uid://d11cavdfkfqs6" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-18.png" id="22_832fw"]
 [ext_resource type="Texture2D" uid="uid://ck4rkmhsw6pco" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-17.png" id="23_ci3oh"]
@@ -181,6 +181,7 @@ animation = &"teleport_disappear_flameless"
 stream = ExtResource("21_bbq3k")
 volume_db = -10.0
 max_distance = 10000.0
+bus = &"sound effect"
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="finished" from="HurtSound" to="." method="_on_hurt_sound_finished"]
