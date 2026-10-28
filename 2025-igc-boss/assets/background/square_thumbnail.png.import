@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clr37rchabgf6"
-path="res://.godot/imported/Adobe Express - file (2) (1).png-2b3d737d26aa951666d51ececa9e6347.ctex"
+uid="uid://dxhld8lf7uxy2"
+path="res://.godot/imported/square_thumbnail.png-22dc1ff2397825b2066e1d0f1e688f42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/debug/Adobe Express - file (2) (1).png"
-dest_files=["res://.godot/imported/Adobe Express - file (2) (1).png-2b3d737d26aa951666d51ececa9e6347.ctex"]
+source_file="res://assets/background/square_thumbnail.png"
+dest_files=["res://.godot/imported/square_thumbnail.png-22dc1ff2397825b2066e1d0f1e688f42.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=64 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
@@ -31,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://dfvq35chg6nw" path="res://assets/boss/teleport/Teleport_Animation-7.png" id="10_4t5jb"]
 [ext_resource type="Script" uid="uid://ji2we2m2t53t" path="res://src/boss/boss_states/chargeState.gd" id="10_7byyt"]
 [ext_resource type="Texture2D" uid="uid://c6dt60egp0ro0" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-12.png" id="10_620id"]
-[ext_resource type="Texture2D" uid="uid://d1ubcgj86cssb" path="res://assets/debug/boss.png" id="10_j3b7s"]
 [ext_resource type="Script" uid="uid://cpsc7j104fhtp" path="res://src/boss/boss_states/straightAttack.gd" id="11_7byyt"]
 [ext_resource type="Texture2D" uid="uid://c8udu7lsdabdn" path="res://assets/boss/teleport/Teleport_Animation-8.png" id="11_8d4sl"]
 [ext_resource type="Texture2D" uid="uid://c6kfs8xph3umi" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-11.png" id="11_a5bpl"]
@@ -358,7 +357,6 @@ color = Color(0.7058824, 0, 0, 1)
 visible = false
 position = Vector2(12, 11.999992)
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("10_j3b7s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
 scale = Vector2(0.7, 0.7)
