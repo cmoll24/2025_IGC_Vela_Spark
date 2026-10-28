@@ -28,6 +28,7 @@ var minion_spawn_info : Array
 
 var current_cycle_index : int = 0
 
+@export var MAX_HEALTH = 13
 var health : int = 13
 var invulnerable = false
 
@@ -39,6 +40,9 @@ var can_deal_damage = true
 var player : Player
 
 func _ready() -> void:
+	health = MAX_HEALTH
+	update_holes()
+	
 	for x in minions:
 		var minion_info = [x.global_position, x.get_scene_file_path()]
 		print(minion_info)
@@ -109,6 +113,8 @@ func is_combat_phase(pos = null) -> bool:
 func take_damage(amount: int) -> void:
 	health = health - amount
 	
+	update_holes()
+	
 	if health <= 0:
 		die()
 		return
@@ -120,6 +126,10 @@ func take_damage(amount: int) -> void:
 		return
 	
 	state_machine.transition_to("TeleportState")
+
+func update_holes() -> void:
+	var num_holes = MAX_HEALTH - health
+	animated_sprite.material.set_shader_parameter("hole_count", num_holes)
 
 func hit(_attacker: Node2D) -> void:
 	take_damage(1)

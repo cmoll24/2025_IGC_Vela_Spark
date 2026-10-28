@@ -1,6 +1,7 @@
-[gd_scene load_steps=64 format=3 uid="uid://cdiurkf4830i2"]
+[gd_scene load_steps=66 format=3 uid="uid://cdiurkf4830i2"]
 
 [ext_resource type="Script" uid="uid://bddlppbo5a7i4" path="res://src/boss/boss.gd" id="1_3kou8"]
+[ext_resource type="Shader" uid="uid://xwh63wmvfbgq" path="res://assets/shaders/boss_holes.gdshader" id="2_lj0n1"]
 [ext_resource type="Script" uid="uid://cvisiyccpem42" path="res://src/boss/bossStateMachine.gd" id="2_trtgp"]
 [ext_resource type="Script" uid="uid://b2tw3xmq2dmkd" path="res://src/boss/boss_states/idleState.gd" id="3_0wgbl"]
 [ext_resource type="Texture2D" uid="uid://cdoxew32dx2vb" path="res://assets/boss/walk/boss_walk-4.png" id="3_sp2nh"]
@@ -57,6 +58,18 @@
 [ext_resource type="Texture2D" uid="uid://33wfumev7pw" path="res://assets/boss/teleport_flameless/No_Flame_Boss_Teleport-1.png" id="21_m16dm"]
 [ext_resource type="Texture2D" uid="uid://dnxnbf6nnsdha" path="res://assets/boss/teleport/Teleport_Animation-19.png" id="22_16ob0"]
 [ext_resource type="AudioStream" uid="uid://ctlxe26lmp056" path="res://assets/audio/sound/BossDeathSound.mp3" id="23_yahjj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2vm8"]
+shader = ExtResource("2_lj0n1")
+shader_parameter/hole_count = 15
+shader_parameter/seed = 1.0
+shader_parameter/sprite_size = Vector2(512, 256)
+shader_parameter/center_offset = Vector2(0, 0)
+shader_parameter/min_radius = 25.0
+shader_parameter/max_radius = 50.0
+shader_parameter/spread = 1.0
+shader_parameter/rim_color = Color(0.1, 0, 0, 1)
+shader_parameter/rim_width = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2vrfn"]
 animations = [{
@@ -359,15 +372,18 @@ position = Vector2(12, 11.999992)
 scale = Vector2(0.9, 0.9)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flippable"]
+material = SubResource("ShaderMaterial_c2vm8")
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_2vrfn")
 animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 11.875)
 shape = SubResource("RectangleShape2D_xw3os")
 
 [node name="boss_hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
