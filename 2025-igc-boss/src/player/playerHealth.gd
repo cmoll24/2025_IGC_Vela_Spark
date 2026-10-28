@@ -21,6 +21,9 @@ func _ready() -> void:
 	hitbox.area_entered.connect(_on_player_hitbox_area_entered)
 	hitbox.body_entered.connect(_on_player_hitbox_body_entered)
 	
+	if player.START_DECAY_ON_MOVE:
+		player.health_decay = false
+	
 
 func take_damage() -> void:
 	#health - amount, 0 to make sure the health dont go under 0
@@ -30,7 +33,7 @@ func take_damage() -> void:
 		player.die()
 
 func _process(delta):
-	if player.health_decay:
+	if Global.get_game_scene().current_level.ENABLE_PLAYER_DECAY and player.health_decay:
 		Global.player_timer += delta
 		
 		health = health - DECAY_COEF * delta
@@ -84,3 +87,15 @@ func heal(amount : float):
 
 func full_heal():
 	health = MAX_HEALTH
+	
+func _input(event: InputEvent) -> void:
+	#If we have start decay on move then start decay as soon as we detect an input
+	if not player.health_decay and player.START_DECAY_ON_MOVE:
+		#is there an input
+		if event.is_action_pressed("move_left") or \
+			event.is_action_pressed("move_right") or \
+			event.is_action_pressed("dash") or \
+			event.is_action_pressed("controller_dash") or \
+			event.is_action_pressed("jump"):
+				player.health_decay = true
+			

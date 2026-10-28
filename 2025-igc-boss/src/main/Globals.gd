@@ -17,6 +17,8 @@ enum INPUT_METHOD {
 
 var current_input_method
 
+var RESPAWN_LEVEL_INDEX = 1
+
 func _ready() -> void:
 	#Engine.time_scale = 0.5
 	Engine.set_max_fps(60)
@@ -31,8 +33,8 @@ func switch_to_level(new_index : int):
 
 func switch_to_respawn_level():
 	reset_player_timer()
-	if current_level_index >= 1:
-		switch_to_level(1)
+	if current_level_index >= RESPAWN_LEVEL_INDEX:
+		switch_to_level(RESPAWN_LEVEL_INDEX)
 	else:
 		switch_to_level(0)
 

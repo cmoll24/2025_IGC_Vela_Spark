@@ -147,7 +147,6 @@ shader_parameter/position_x = 0.26000001235
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_7v3s3")
-level_name = "Level 1"
 
 [node name="Parallax" type="Node2D" parent="."]
 
@@ -628,6 +627,7 @@ scale = Vector2(11.025946, 1.0214367)
 
 [node name="Player" parent="." instance=ExtResource("10_ufga5")]
 position = Vector2(-720, 874)
+START_DECAY_ON_MOVE = true
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("11_r0rxx")]
 limit_top = -10000007

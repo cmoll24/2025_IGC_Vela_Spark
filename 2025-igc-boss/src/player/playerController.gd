@@ -26,8 +26,12 @@ class_name Player
 @onready var hurt_sound = $HurtSound
 @onready var water_sound = $WaterSound
 
+#true if the player is currently taking tick damage
+#false if the player is not currently taking tick damage
+#this is different from level ENABLE_PLAYER_DECAY
+var health_decay = true
 
-@export var health_decay = true
+@export var START_DECAY_ON_MOVE = false
 
 var darkened_color = Color(0.7,0.7,0.7)
 

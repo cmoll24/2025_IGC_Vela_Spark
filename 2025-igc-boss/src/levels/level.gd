@@ -5,6 +5,8 @@ class_name Level
 @onready var projectile_tree = $ProjectileTree
 @onready var enemy_tree = $Enemies
 
+@export var ENABLE_PLAYER_DECAY = true
+
 #@export var level_name : String
 
 func _ready() -> void:

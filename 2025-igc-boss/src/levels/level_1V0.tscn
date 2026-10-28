@@ -79,7 +79,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_q7moy")
-level_name = "Tutorial"
+ENABLE_PLAYER_DECAY = false
 
 [node name="Parallax" type="Node2D" parent="."]
 
@@ -250,7 +250,6 @@ gradient = SubResource("Gradient_ghtb1")
 
 [node name="Player" parent="." instance=ExtResource("7_oro8w")]
 position = Vector2(-112, 793)
-health_decay = false
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("8_lck47")]
 limit_left = -100000
